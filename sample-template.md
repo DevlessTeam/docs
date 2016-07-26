@@ -1,8 +1,8 @@
 ## #NAV
 
-    - [object one](#object-one)
-    - [object two](#object-two)
-    - [object three](#bject-three)
+- [object one](#object-one)
+- [object two](#object-two)
+- [object three](#object-three)
 
 
 <a name="object-one"></a>

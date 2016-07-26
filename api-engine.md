@@ -382,6 +382,26 @@ die($output);
 
 One other thing available within a script is all of the devless methods found in the [devless core api docs ](#coreapi) as well as the ones from the underlying framework, in this case, Laravel.
 
+Also you may run ``scripts`` before and after making api calls to data endpoints.
+
+You can designate logic to be run by the engine on db calls 
+eg:
+``` 
+ function DvBefore($request) {
+    //run some logic here
+    return $request;
+ }
+```
+To work  with response given out by the engine use the ``DVAfter()`` method
+
+```
+ function DVAfter($response) {
+   //run ome logic here
+   return $response
+}
+```
+**NB**: ``DvBefore`` and ``DvAfter`` will only work with data from db calls made from the same parent service
+
 <a name="Lean-View"></a>
 
 <a name="Lean-View"></a>
@@ -392,7 +412,6 @@ This provides a way to prepare a simple management console for each service .
 
 For instance in the case of the authentication service we created above , we might want to throw in a simple dashboard to display how many users we have and how many of them are active.
 
-**NB: This project is still in its infancy and the doc is likely to be updated frequently**
 
 
 

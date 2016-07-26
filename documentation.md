@@ -7,3 +7,6 @@
  
 - SDKs
     - [Javascript SDK](/docs/{{version}}/js-sdk)
+
+- Reference
+    - [Status Codes](/docs/{{version}}/status-code)

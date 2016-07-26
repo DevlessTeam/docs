@@ -1,6 +1,15 @@
 - [Devless API Engine(DAE)](#Devless-API-Engine(DAE))
 - [DAE](#DAE)
 - [What is the devless API engine](#What-is-the-devless-API-engine)
+- [Features of the API engine include](#Features-of-the-API-engine-include)
+- [Structure of the Authentication Service](#Structure-of-the-Authentication-Service)
+- [Creating the table](#Creating-the-table)
+- [Adding data to table](#Adding-data-to-table)
+- [Query data from  table](#Query-data-from-table)
+- [Updating data to table](#Updating-data-to-table)
+- [Delete data from table](#Delete-data-from-table)
+- [Accessing scripts](#Accessing-scripts)
+- [Lean View](#Lean-View)
 
 <a name="Devless-API-Engine(DAE)"></a>
 ## Devless API Engine(DAE)
@@ -59,6 +68,8 @@ eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``
 For the rest of the documentation, we will assume to create a user authentication service.
 
 <a name="Structure-of-the-Authentication-Service"></a>
+
+<a name="Structure-of-the-Authentication-Service"></a>
 ## Structure of the Authentication Service
 
 * Table name is authentication 
@@ -71,6 +82,9 @@ Also, we assume our server is on  http://localhost:8000/   .
 
 **NB:** To get started you need to register a new service in the database either via the management console or from a database management client. In our case its assumed we have done that and the name of the service is authentication.
 
+<a name="Creating-the-table"></a>
+
+<a name="Creating-the-table"></a>
 ## Creating the table
 ```
 METHOD: POST 
@@ -155,6 +169,7 @@ The ``Response Body`` provides three pieces of information the ``status__code`` 
 
 Next step would be adding some data to the table
 
+<a name="Adding-data-to-table"></a>
 ## Adding data to  table
 ```
 METHOD: POST 
@@ -190,7 +205,7 @@ We will repeat the above by replacing the name `` Edmond`` with ``Charles`` and 
 Now we can query our table 
 
 
-
+<a name="Query-data-from-table"></a>
 ## Query data from  table
 ```
 METHOD: GET 
@@ -226,8 +241,8 @@ Now we query the authentication table using the get parameters provided by the e
 Next, we change the username from Edmond to James 
 
 
-
-## Updating  data to  table
+<a name="Updating-data-to-table"></a>
+## Updating data to table
 ```
 METHOD: PATCH
 
@@ -265,7 +280,7 @@ In other to update a field in the table you need to pass the ``table name`` and 
 Now that we have made changes to our table content we can now try to delete a field ,truncate the table then delete the whole table. 
 
 
-
+<a name="Delete-data-from-table"></a>
 ## Delete  data from  table
 
 ```
@@ -308,6 +323,8 @@ We have gone through a basic CRUD operation using the api engine. The next thing
 Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client
 
  <a name="Lean-View"></a>
+ 
+<a name="Accessing-scripts"></a> 
 ## Accessing scripts
 ```
 METHOD: GET, DELETE, POST, PATCH
@@ -362,6 +379,8 @@ die($output);
 ```
 
 One other thing available within a script is all of the devless methods found in the [devless core api docs ](#coreapi) as well as the ones from the underlying framework, in this case, Laravel.
+
+<a name="Lean-View"></a>
 
 <a name="Lean-View"></a>
 ## Lean View

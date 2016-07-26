@@ -395,7 +395,7 @@ eg:
 To work  with response given out by the engine use the ``DVAfter()`` method
 
 ```
- function DVAfter($response) {
+ function DvAfter($response) {
    //run some logic here
    return $response
 }

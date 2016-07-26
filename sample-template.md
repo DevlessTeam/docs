@@ -2,7 +2,7 @@
 
     - [object one](#object-one)
     - [object two](#object-two)
-    - [object three](#pbject-three)
+    - [object three](#bject-three)
 
 
 <a name="object-one"></a>

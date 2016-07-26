@@ -396,7 +396,7 @@ To work  with response given out by the engine use the ``DVAfter()`` method
 
 ```
  function DVAfter($response) {
-   //run ome logic here
+   //run some logic here
    return $response
 }
 ```

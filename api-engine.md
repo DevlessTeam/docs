@@ -1,25 +1,30 @@
-[Devless API Engine(DAE)](#Devless API Engine(DAE))
-[DAE](#DAE)
-[What is the devless API engine](#What is the devless API engine)
+- [Devless API Engine(DAE)](#Devless-API-Engine(DAE))
+- [DAE](#DAE)
+- [What is the devless API engine](#What-is-the-devless-API-engine)
 
+<a name="Devless-API-Engine(DAE)"></a>
 ## Devless API Engine(DAE)
 **Devless API Engine(DAE)** is an open source api engine that generates a crud access to databases as well as executes PHP scripts. 
 
 The current implementation of the devless api engine is in PHP and on top of the Laravel framework. 
 
+<a name="DAE"></a>
 ## DAE
 **DAE** can be used as a standalone (accessed solely via API calls ) however a management console is provided to interact with the api engine and is available @ the complete [devless suite](https://github.com/DevlessTeam/DV-PHP-CORE).
 
 This document explains the various syntax for accessing and working with  the API engine.
 
+<a name="What-is-the-devless-API-engine"></a>
 ## What is the devless API engine ?
 The devless API engine is  a Laravel based application that generates restful endpoints by connecting to a data access point  (database). It also has the ability to  execute PHP scripts within a sandbox .
 
 **Installation procedure**
 
 Check out the installation docs 
+
 #### [README](https://github.com/DevlessTeam/DV-PHP-CORE/blob/master/readme.md)
 
+<a name="Features-of-the-API-engine-include"></a>
 ## Features of the API engine include :
 
 **Database access**
@@ -53,6 +58,7 @@ eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``
 
 For the rest of the documentation, we will assume to create a user authentication service.
 
+<a name="Structure-of-the-Authentication-Service"></a>
 ## Structure of the Authentication Service
 
 * Table name is authentication 
@@ -299,8 +305,9 @@ This is very trivial and understandable as by now you would have noticed the pat
 
 We have gone through a basic CRUD operation using the api engine. The next thing we are going to look at is the script . 
 
-Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client 
- 
+Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client
+
+ <a name="Lean-View"></a>
 ## Accessing scripts
 ```
 METHOD: GET, DELETE, POST, PATCH
@@ -356,7 +363,7 @@ die($output);
 
 One other thing available within a script is all of the devless methods found in the [devless core api docs ](#coreapi) as well as the ones from the underlying framework, in this case, Laravel.
 
-
+<a name="Lean-View"></a>
 ## Lean View
 One last resource we need to look at is the ``Lean View``.
 

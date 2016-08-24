@@ -9,14 +9,13 @@
 * composer
 
 **Installation procedure**
-* Clone the repo (git clone https://github.com/DevlessTeam/DV-PHP-CORE.git) 
+* Clone the repo (git clone https://github.com/DevlessTeam/DV-PHP-CORE.git)
 * cd ../DV-PHP-CORE
 * run composer install to grab dependecies
-* copy .env.example to .env and update the database options 
+* copy .env.example to .env and update the database options
 * run migrations with php artisan migrate
 * `` php artisan serve``
 
 If everything goes on smoothly you should be able to access the setup screen at localhost:8000
 
-If you will need extra  help setting up you may check out the laravel [installation](https://laravel.com/docs/5.1) guide as the devless core is based of laravel. 
-
+If you will need extra help setting up you may check out the laravel [installation](https://laravel.com/docs/5.1) guide as the Devless core is based of laravel. 

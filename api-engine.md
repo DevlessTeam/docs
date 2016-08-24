@@ -1,21 +1,42 @@
+## #NAV
 
+  - [Devless API Engine(DAE)](#Devless-API-Engine(DAE))
+  - [DAE](#DAE)
+  - [What is the devless API engine](#What-is-the-devless-API-engine)
+  - [Features of the API engine include](#Features-of-the-API-engine-include)
+  - [Structure of the Authentication Service](#Structure-of-the-Authentication-Service)
+  - [Creating the table](#Creating-the-table)
+  - [Adding data to table](#Adding-data-to-table)
+  - [Query data from  table](#Query-data-from-table)
+  - [Updating data to table](#Updating-data-to-table)
+  - [Delete data from table](#Delete-data-from-table)
+  - [Accessing scripts](#Accessing-scripts)
+  - [Lean View](#Lean-View)
+
+<a name="Devless-API-Engine(DAE)"></a>
+## Devless API Engine(DAE)
 **Devless API Engine(DAE)** is an open source api engine that generates a crud access to databases as well as executes PHP scripts. 
 
 The current implementation of the devless api engine is in PHP and on top of the Laravel framework. 
 
+<a name="DAE"></a>
+## DAE
 **DAE** can be used as a standalone (accessed solely via API calls ) however a management console is provided to interact with the api engine and is available @ the complete [devless suite](https://github.com/DevlessTeam/DV-PHP-CORE).
 
 This document explains the various syntax for accessing and working with  the API engine.
 
-### What is the devless API engine ?
+<a name="What-is-the-devless-API-engine"></a>
+## What is the devless API engine ?
 The devless API engine is  a Laravel based application that generates restful endpoints by connecting to a data access point  (database). It also has the ability to  execute PHP scripts within a sandbox .
 
 **Installation procedure**
 
 Check out the installation docs 
+
 #### [README](https://github.com/DevlessTeam/DV-PHP-CORE/blob/master/readme.md)
 
-### Features of the API engine include :
+<a name="Features-of-the-API-engine-include"></a>
+## Features of the API engine include :
 
 **Database access**
 * Create  database tables 
@@ -48,7 +69,10 @@ eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``
 
 For the rest of the documentation, we will assume to create a user authentication service.
 
-**Structure of the Authentication Service** 
+<a name="Structure-of-the-Authentication-Service"></a>
+
+<a name="Structure-of-the-Authentication-Service"></a>
+## Structure of the Authentication Service
 
 * Table name is authentication 
 
@@ -60,7 +84,10 @@ Also, we assume our server is on  http://localhost:8000/   .
 
 **NB:** To get started you need to register a new service in the database either via the management console or from a database management client. In our case its assumed we have done that and the name of the service is authentication.
 
-**Creating the table** 
+<a name="Creating-the-table"></a>
+
+<a name="Creating-the-table"></a>
+## Creating the table
 ```
 METHOD: POST 
 
@@ -144,7 +171,8 @@ The ``Response Body`` provides three pieces of information the ``status__code`` 
 
 Next step would be adding some data to the table
 
-**Adding data to  table** 
+<a name="Adding-data-to-table"></a>
+## Adding data to  table
 ```
 METHOD: POST 
 
@@ -179,8 +207,8 @@ We will repeat the above by replacing the name `` Edmond`` with ``Charles`` and 
 Now we can query our table 
 
 
-
-**Query data from  table** 
+<a name="Query-data-from-table"></a>
+## Query data from  table
 ```
 METHOD: GET 
 
@@ -215,8 +243,8 @@ Now we query the authentication table using the get parameters provided by the e
 Next, we change the username from Edmond to James 
 
 
-
-**Updating  data to  table** 
+<a name="Updating-data-to-table"></a>
+## Updating data to table
 ```
 METHOD: PATCH
 
@@ -254,8 +282,8 @@ In other to update a field in the table you need to pass the ``table name`` and 
 Now that we have made changes to our table content we can now try to delete a field ,truncate the table then delete the whole table. 
 
 
-
-**Delete  data from  table** 
+<a name="Delete-data-from-table"></a>
+## Delete  data from  table
 
 ```
 METHOD: DELETE
@@ -294,9 +322,12 @@ This is very trivial and understandable as by now you would have noticed the pat
 
 We have gone through a basic CRUD operation using the api engine. The next thing we are going to look at is the script . 
 
-Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client 
+Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client
+
+ <a name="Lean-View"></a>
  
-**Accessing scripts**
+<a name="Accessing-scripts"></a> 
+## Accessing scripts
 ```
 METHOD: GET, DELETE, POST, PATCH
 
@@ -351,15 +382,36 @@ die($output);
 
 One other thing available within a script is all of the devless methods found in the [devless core api docs ](#coreapi) as well as the ones from the underlying framework, in this case, Laravel.
 
+Also you may run ``scripts`` before and after making api calls to data endpoints.
 
+You can designate logic to be run by the engine on db calls 
+eg:
+``` 
+ function DvBefore($request) {
+    //run some logic here
+    return $request;
+ }
+```
+To work  with response given out by the engine use the ``DVAfter()`` method
 
+```
+ function DvAfter($response) {
+   //run some logic here
+   return $response
+}
+```
+**NB**: ``DvBefore`` and ``DvAfter`` will only work with data from db calls made from the same parent service
+
+<a name="Lean-View"></a>
+
+<a name="Lean-View"></a>
+## Lean View
 One last resource we need to look at is the ``Lean View``.
 
 This provides a way to prepare a simple management console for each service .
 
 For instance in the case of the authentication service we created above , we might want to throw in a simple dashboard to display how many users we have and how many of them are active.
 
-**NB: This project is still in its infancy and the doc is likely to be updated frequently**
 
 
 

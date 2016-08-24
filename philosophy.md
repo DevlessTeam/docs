@@ -1,4 +1,4 @@
-## #NAV
+## PHILOSOPHY
 
 - [Concept](#concept)
 

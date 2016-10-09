@@ -1,4 +1,4 @@
-## #NAV
+## Api Engine
 
   - [Devless API Engine(DAE)](#Devless-API-Engine(DAE))
   - [DAE](#DAE)
@@ -15,7 +15,7 @@
 
 <a name="Devless-API-Engine(DAE)"></a>
 ## Devless API Engine(DAE)
-**Devless API Engine(DAE)** is an open source api engine that generates a crud access to databases as well as executes PHP scripts. 
+**Devless API Engine(DAE)** is an open source api engine that generates a crud access to databases as well as allows the execution of rules against data . 
 
 The current implementation of the devless api engine is in PHP and on top of the Laravel framework. 
 
@@ -23,11 +23,11 @@ The current implementation of the devless api engine is in PHP and on top of the
 ## DAE
 **DAE** can be used as a standalone (accessed solely via API calls ) however a management console is provided to interact with the api engine and is available @ the complete [devless suite](https://github.com/DevlessTeam/DV-PHP-CORE).
 
-This document explains the various syntax for accessing and working with  the API engine.
+This document explains the various syntax for accessing and working with  the Devless API engine.
 
 <a name="What-is-the-devless-API-engine"></a>
 ## What is the devless API engine ?
-The devless API engine is  a Laravel based application that generates restful endpoints by connecting to a data access point  (database). It also has the ability to  execute PHP scripts within a sandbox .
+The devless API engine is  a Laravel based application that generates restful endpoints by connecting to a data access point  (database). It also has the ability to  execute rule based scripts within a sandbox .
 
 **Installation procedure**
 
@@ -50,7 +50,7 @@ Check out the installation docs
  * Truncate , delete and drop  tables 
 
 **Scripts**
-* Run scripts within sandbox 
+* Run rules within sandbox 
 
 **Views**
 * Access to html\php views 
@@ -68,8 +68,6 @@ eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``
 **Endpoints definition for specific resources and actions** 
 
 For the rest of the documentation, we will assume to create a user authentication service.
-
-<a name="Structure-of-the-Authentication-Service"></a>
 
 <a name="Structure-of-the-Authentication-Service"></a>
 ## Structure of the Authentication Service
@@ -234,7 +232,7 @@ RESPONSE PAYLOAD:
 ```
 Now we query the authentication table using the get parameters provided by the engine.
  * The ``table`` parameter is used to provide the table name 
-* The ``order`` parameter makes it possible to arrange the data in descending order based on the field provided 
+* The ``orderBy`` parameter makes it possible to arrange the data in descending order based on the field provided 
 * The ``where`` parameter is used to get data where the field provided before the comma contains the data passed
 * The ``size`` parameter is used to set the total number of records to be returned.
 * The ``offset`` parameter sets an offset on the record.
@@ -324,83 +322,12 @@ We have gone through a basic CRUD operation using the api engine. The next thing
 
 Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [Devless complete ](#devlesscomplete). Another way you can add a script is doing so with a database client
 
- <a name="Lean-View"></a>
  
 <a name="Accessing-scripts"></a> 
 ## Accessing scripts
-```
-METHOD: GET, DELETE, POST, PATCH
-
-URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/script
-
-HEADERS: define suitable content-type
-
-REQUEST PAYLOAD:
-{  
-   "resource":[  
-      {  
-    well format json goes here
-      }
-
-    ]
-}        
-
-
-RESPONSE PAYLOAD:  will return whatever is retuned by the script
-```
-In our example we will assume we have ``echo " hello world! "`` in the script column , by hitting the above URL we should see ``"hello world"`` outputted.
-
-All Request payload  can be accessed via ``$payload``  this is an array of all the request parameters including the method type ``($payload['method'])``, also the parameters passed ``($payload['params'])`` as well as a a copy of the script currently being run ``($payload['script'])``
-
-Also within your script, devless provides a service method  with which you can
-Simulate a call to any ``service``.
-
-Eg: Simulating a get call to the authentication service 
-
-``language: PHP``
-
-```
-$json ='
-{  
-   "resource":{
-        
-         "table":["authenticate"],
-    "order":["username"],
-    "where":["username,edmond"]
-              }
-
-  
-}        
-  '; 
-
-
-$output = DvService($json, 'auth', 'db', 'GET');
-
-die($output);
-
-```
-
-One other thing available within a script is all of the devless methods found in the [devless core api docs ](#coreapi) as well as the ones from the underlying framework, in this case, Laravel.
-
-Also you may run ``scripts`` before and after making api calls to data endpoints.
-
-You can designate logic to be run by the engine on db calls 
-eg:
-``` 
- function DvBefore($request) {
-    //run some logic here
-    return $request;
- }
-```
-To work  with response given out by the engine use the ``DVAfter()`` method
-
-```
- function DvAfter($response) {
-   //run some logic here
-   return $response
-}
-```
-**NB**: ``DvBefore`` and ``DvAfter`` will only work with data from db calls made from the same parent service
+- Scripts are run each time you make a call to any of the db resources 
+- Each Service has a script assigned to it  
+- Detailed explation of how to use scripts can be found at [Services](/docs/{{version}}/service)#scripts
 
 <a name="Lean-View"></a>
 
@@ -411,13 +338,6 @@ One last resource we need to look at is the ``Lean View``.
 This provides a way to prepare a simple management console for each service .
 
 For instance in the case of the authentication service we created above , we might want to throw in a simple dashboard to display how many users we have and how many of them are active.
-
-
-
-
-
-
-
 
 
 

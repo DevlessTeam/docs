@@ -3,7 +3,7 @@
   
 # Devless SDKS 
 Devless provides SDKs to make connecting to the Devless backend easy.
-The Devless SDK makes it possible to **add**, **query**, **update**, **delete** data as well as **execute** scripts.
+The Devless SDK makes it possible to **add**, **query**, **update**, **delete** data as well as **execute** rpc calls.
 
 Available SDKs:
 

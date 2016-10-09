@@ -214,6 +214,7 @@ class demo
 
 }
 ```
+
 Each method within the Action Class is decorated within the comment with the kind of access rights you want to attach to it. eg: `` @ACL private`` denotes that no client can be able to call on that method als `` @ACL protected`` requires the client to be authenticated before being granted access to the method. A method may be made open and available to every client by setting the method access rights to ``@ACL public``.
 
 **NB**: A method without an @ACL decorator is not registed as an Action Class method.

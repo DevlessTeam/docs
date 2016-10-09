@@ -1,11 +1,17 @@
 ## MANAGEMENT CONSOLE
 
 -[App](#app)
+
 -[Services](#services)
+
 -[Service Hub](#hub)
+
 -[Privacy](#privacy)
+
 -[API Console](#api-console)
+
 -[Data Tables](#data-tables)
+
 -[Migration](#migration)
 
 

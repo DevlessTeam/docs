@@ -1,18 +1,12 @@
 ## MANAGEMENT CONSOLE
 
--[App](#app)
-
--[Services](#services)
-
--[Service Hub](#hub)
-
--[Privacy](#privacy)
-
--[API Console](#api-console)
-
--[Data Tables](#data-tables)
-
--[Migration](#migration)
+- [App](#app)
+- [Services](#services)
+- [Service Hub](#hub)
+- [Privacy](#privacy)
+- [API Console](#api-console)
+- [Data Tables](#data-tables)
+- [Migration](#migration)
 
 
 The management console is used to administer your Devless instance. The console is segmented into App, Services, Privacy, API Console, Data tables and Migration. Below is a detailed breakdown of each section.

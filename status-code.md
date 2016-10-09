@@ -42,7 +42,3 @@
 | 608            | Request method not supported                     | the api engine allows request coming in with the following methods only get,post,patch and delete. All other methods used will throw this error                                                                                                                                                                         |
 | 604            | Service,does not exist or is not active          | Raised when a service is set to be inactive or does not exist                                                                                                                                                                                                                                                           |
 | 605            | No such service resource try (script,db or view) | Raised,when a user tries to access a resource of a service which is not available ..Example of supported resources are view,script, db and schema                                                                                                                                                                       |
-
-<a name="object-three"></a>
-## Object Three
-**Object Three** this line is a sample doc about object three 

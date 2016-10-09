@@ -4,6 +4,7 @@
     - [Management Console](/docs/{{version}}/management-console)
     - [Api Engine](/docs/{{version}}/api-engine)
     - [Tutorials](/docs/{{version}}/tutorials)
+    - [Q&A](/docs/{{version}}/qna)
  
 - SDKs
     - [Javascript SDK](/docs/{{version}}/js-sdk)

@@ -2,7 +2,7 @@
 
 - [Requirements](#requirements)
 - [installation](#installation-procedure)
-- [Local Install](#local-install)
+- [One Click Install](#one-click-install)
 
 <a name="requirements"></a>
 ## Requirements
@@ -22,12 +22,14 @@
 * run ``composer install`` to grab dependecies. (Installing Composer](https://getcomposer.org/download/)
 * copy .env.example to .env and update the database options
 * run migrations with php artisan migrate
-* `` php artisan serve``
+* `` ./devless serve``
 
 If everything goes on smoothly you should be able to access the setup screen at localhost:8000
 
 If you will need extra help setting up you may check out the laravel [installation](https://laravel.com/docs/5.1) guide as the Devless core is based of laravel.
 
-<a name="local-install"></a>
-## Local Installs
-You  may also choose to run one of our [local installers](https://devless.io/#!/get-started). Supported OS include Windows, OS X, Ubuntu.
+<a name="one-click-install"></a>
+## One click Install
+You  may also choose to run one of our Click to deploy options 
+
+* [Heroku](https://heroku.com/deploy?template=https://github.com/DevlessTeam/DV-PHP-CORE/tree/heroku). 

@@ -4,12 +4,17 @@
     - [Management Console](/docs/{{version}}/management-console)
     - [Devless Service](/docs/{{version}}/service)
     - [Authentication](/docs/{{version}}/auth)
+    - [Folder Structure](/docs/{{version}}/folder-structure)
     - [Api Engine](/docs/{{version}}/api-engine)
     - [Tutorials](/docs/{{version}}/tutorials)
-    - [Q&A](/docs/{{version}}/qna)
- 
+    
 - SDKs
-    - [Javascript SDK](/docs/{{version}}/js-sdk)
+    - [SDKs](/docs/{{version}}/SDKs)
+    - [Javascript SDK](/docs/{{version}}/SDKs)
+    - [PHP SDK](/docs/{{version}}/SDKs)
 
 - Reference
     - [Status Codes](/docs/{{version}}/status-code)
+
+- Appendix
+	- [Assertion Library](/docs/{{version}}/assertions)	

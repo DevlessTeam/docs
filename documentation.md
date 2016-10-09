@@ -2,7 +2,7 @@
     - [Philosophy](/docs/{{version}}/philosophy)
     - [Installation](/docs/{{version}}/installation)
     - [Management Console](/docs/{{version}}/management-console)
-    - [Devless Service](/docs/{{version}}/service)
+    - [Services](/docs/{{version}}/service)
     - [Authentication](/docs/{{version}}/auth)
     - [Folder Structure](/docs/{{version}}/folder-structure)
     - [Api Engine](/docs/{{version}}/api-engine)
@@ -18,3 +18,5 @@
 
 - Appendix
 	- [Assertion Library](/docs/{{version}}/assertions)	
+	- [DataStore](/docs/{{version}}/assertions)	
+

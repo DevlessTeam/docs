@@ -5,7 +5,7 @@
 - [Working with Tables](#tables)
 - [Scripts](#scripts)
 - [Action Classes](#actionclass)
-- [Console](#object-three)
+- [Console](#console)
 
 
 <a name="create-service"></a>
@@ -112,12 +112,135 @@ similar to
 You can have as many elseWhenever statements in between  ``->whenever('assert here')`` and ``->ifAllFails()`` just like with ``else if(){}`` in the case of ``if(){}`` and ``else{}``
 
  **Assertions**:
-As with every flow control there is a need for a statement to assert to either true or false to direct the flow. In the case of scripts Devless provides a  [library](/docs/{{version}}/assertions) full of methods to help with assertions eg ``` Assert::Eq($value1, $value2)  notEq($value, $value2) range($value, $min, $max)
+As with every flow control system there is a need for a statement to assert to either true or false to direct the flow. In the case of scripts Devless provides a  [library](/docs/{{version}}/assertions) full of methods to help with assertions eg ``` Assert::Eq($value1, $value2)  notEq($value, $value2) range($value, $min, $max)
 endsWith($value, $suffix) regex($value, $pattern) etc```
-For the list of all assetions check out the   [Assertion Library](/docs/{{version}}/assertions)
 
- **Available Vars**
+For the list of all assetions please  check out the   [Assertion Library](/docs/{{version}}/assertions)
 
+Also there are three ways to execute logic once an assetion passes 
 
+- run('service_name', 'method_name', ['param_key'=>'params_value']) //running an action class 
+- succeedWith('message goes here')
+- failWith('message goes here')
+**Example complete script flow**
+```
+use App\Helpers\Assert as Assert;
+
+$re = $rules
+
+->onCreate()->whenever(Assert::Eq($input_name, 'james'))
+    ->run('notify', 'email',['user_email'=>$input_email])
+    
+->elseWhenever(Assert::Eq($input_name,'ema'))
+    ->succeedWith('Am not sending you an email')
+    
+->ifAllFails()
+    ->failWith('well non of the above flow statements asserted to true');
+```
+ **Available scope Variables**
+ 
+ Within the scope of a script there are list of useful variables made available:
+ - $user_id : This provides the id of the user placing the request provided they are logged in 
+ - $user_token: This is the JWT token of the user placing the request  provided the user is logged in 
+ - $input_*: This is a prefixed variable usually set when the request passes parameters. eg when a user places a addData() request with say a parameter body like {"name":"edmond", "age":34} script will make edmond available under the variable name $input_name and age accessed via $input_age. 
+
+<a name="actionclass"></a>
+## Action Classes
+**An ActionClass** is a class with the class name representing the name of the service. The Action Class can be found under ``"resources/views/service_views/service_name/ActionClass.php"``
+
+In the event where there is more to the implementation of your backend you may want to write out logic in Devless native language PHP and methods from the Action Class would be made available within scripts and also to the client application via the available  [SDKs](/docs/{{version}}/SDKs).
+An example of a typical Action Class 
+```
+<?php
+
+/**
+ * Created by Devless.
+ * Author: eddymens
+ * Date Created: 9th of October 2016 08:30:41 AM
+ * @Service: demo
+ * @Version: 1.0
+ */
+
+//Action method for serviceName
+class demo
+{
+    public $serviceName = 'demo';
+
+    /**
+     * Sample method accessible to via endpoint
+     * @ACL private
+     */
+    public function methodone()
+    {
+        return "Sample Protected Method";
+    }
+
+    /**
+     * Sample method accessible only by authenticated users
+     * @ACL protected
+     */
+    public function methodtwo()
+    {
+        return "Sample Protected Method";
+    }
+
+    /**
+     * Sample method not accessible via endpoint
+     * @ACL public
+     */
+    public function methodthree()
+    {
+        return "Sample Protected Method";
+    }
+
+    /**
+     * This method will execute on service importation
+     * @ACL private
+     */
+    public function __onImport()
+    {
+        //add code here
+    }
+
+    /**
+     * This method will execute on service exportation
+     * @ACL private
+     */
+    public function __onDelete()
+    {
+        //add code here
+
+    }
+
+}
+```
+Each method within the Action Class is decorated within the comment with the kind of access rights you want to attach to it. eg: `` @ACL private`` denotes that no client can be able to call on that method als `` @ACL protected`` requires the client to be authenticated before being granted access to the method. A method may be made open and available to every client by setting the method access rights to ``@ACL public``.
+
+**NB**: A method without an @ACL decorator is not registed as an Action Class method.
+
+By defualt on creating a service a couple of methods are generated two of the most important methods are ``__onImport()`` : Code contained in this method will executed when the service is imported into a Devless instance. and ``__onDelete()`` likewise will execute whenever you export a service from a Devless instance.
+
+All all of Devless internals are available to service Action Classes
+
+Two of the most important utilities available within the Action Class includes 
+[DataStore](/docs/{{version}}/assertions)	
+and the 
+[PHP SDK](/docs/{{version}}/SDKs)
+
+<a name="console"></a>
+## Console
+**Console** a.k.a lean views can be said to be the eye of each service. A simple admin manager may be created to micro manage the service.
+The entry point for every view for a service by name "service_name" is ``"resources/views/service_views/service_name/index.blade.php"``
+
+There are a bunch of helpers available to make the development of service views fairely easy eg:
+
+- ``DvAssetPath($payload, $partialAssetPath)`` //get asset files from the assets folder eg: ``DvAssetPath($payload, 'js/main.js')`` 
+- ``DvAdminOnly($message = "Sorry you don't have access to this page")`` //set ontop to make sure non Admins cant access the file or page 
+- ``<a href="DvNavigate($payload, $pageName)" />``
+- ``DvRedirect($url, $time)``
+
+By default ``$payload`` is set  and contains every information regarding the particular service
+
+**NB**: We are working hard to make available a quick and easy way to build admin panels for services. Also data management is easy with the Data Tables and service view / console or lean view will be needed as your application grows. 
 
 

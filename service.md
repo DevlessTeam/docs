@@ -223,7 +223,7 @@ By defualt on creating a service a couple of methods are generated two of the mo
 All all of Devless internals are available to service Action Classes
 
 Two of the most important utilities available within the Action Class includes 
-[DataStore](/docs/{{version}}/assertions)	
+[DataStore](/docs/{{version}}/datastore)	
 and the 
 [PHP SDK](/docs/{{version}}/SDKs)
 

@@ -9,13 +9,12 @@
     
 - SDKs
     - [SDKs](/docs/{{version}}/SDKs)
-    - [Javascript SDK](/docs/{{version}}/SDKs)
-    - [PHP SDK](/docs/{{version}}/SDKs)
+    
 
 - Reference
     - [Status Codes](/docs/{{version}}/status-code)
 
 - Appendix
 	- [Assertion Library](/docs/{{version}}/assertions)	
-	- [DataStore](/docs/{{version}}/assertions)	
+	- [DataStore](/docs/{{version}}/datastore)	
 

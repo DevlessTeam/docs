@@ -6,6 +6,8 @@
 - [Add records](#add)
 - [update records](#update)
 - [Deleting table and records](#delete)
+- [Instance Info](#info)
+- [Dump](#dump)
 
 
 <a name="ds">DataStore</a>
@@ -89,3 +91,39 @@ To drop table
 ```
 DataStore('serviceName', 'tableName')->drop()
 ```
+
+<a name="info">Instance Info</a>
+
+ You may also get all info about the Devless instance using the DataStore from within your application.
+
+ ```
+ $instance = DataStore::instanceInfo();
+        
+ $user = $instance['admin'];
+ $app  = $instance['app'];
+
+ var_dump($user, $app)
+ ``` 
+
+<a name="dump">Dump</a>
+
+Devless also provides a key/value store. This could be used to store user configuration settings or any data not part of the service but relates to the current instance only
+
+```
+ use App\Helpers\DataStore; 
+
+
+ 
+ DataStore::setDump('created_on', time())
+
+ $data = getDump('created_on')
+ var_dump($data);
+
+ DataStore::updateDump('created_on', time())
+
+ $data = getDump('created_on')
+
+ DataStore::destroyDump('created_on')
+
+``` 
+

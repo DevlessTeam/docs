@@ -1,5 +1,3 @@
-## #Nav
-  - [Javascript SDK](#javascript-sdk)
   
 # Devless SDKS 
 Devless provides SDKs to make connecting to the Devless backend easy.

@@ -14,13 +14,13 @@
 
 **DataStore** 
  Helper is the Devless internal api for working with data related to services. 
-The api can be accessed from within the rules engine as well as.
+The api can be accessed from within the rules engine as well.
 
 **To use the DataStore class** 
 
 Set ``use App\Helpers\DataStore;``
 ``use App\Http\Controllers\ServiceController as service ;``
-at the very top of the class right after the ``<?php`` tag
+at the very top of the class right after the ``<?php`` tag then 
 
 <a name="init">Initialize Service DI</a>
 
@@ -47,9 +47,9 @@ Available query parameters include :
 
 ``OrderBy($field)`` OrderBy makes it possible to order the records in asc order based on the given $field.
 
-``where($column, $value)`` You may also query data where a given $column equals a given $value  NB:where may also be used when updating particular records 
+``where($column, $value)`` You may also query data where a given ``$column`` equals a given ``$value``  NB: ``where`` may also be used when updating particular records. 
 
-``offset($number)`` Its also possible to skip a number of records with the offset parameter by providing the $number of records to skip  
+``offset($number)`` Its also possible to skip a number of records with the offset parameter by providing the $number of records to skip.  
 
 <a name="add">Add Records</a>
 

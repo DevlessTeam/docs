@@ -27,12 +27,9 @@ This document explains the various syntax for accessing and working with  the De
 
 <a name="What-is-the-devless-API-engine"></a>
 ## What is the devless API engine ?
-The devless API engine is  a Laravel based application that generates restful endpoints by connecting to a data access point  (database). It also has the ability to  execute rule based scripts within a sandbox .
+The devless API engine is  a Laravel based backend engine that generates restful endpoints by connecting to a data access point  (database). It also has the ability to execute rules based scripts within a sandbox .
 
 **Installation procedure**
-
-Check out the installation docs 
-
 #### [README](https://github.com/DevlessTeam/DV-PHP-CORE/blob/master/readme.md)
 
 <a name="Features-of-the-API-engine-include"></a>
@@ -43,11 +40,11 @@ Check out the installation docs
 
 * Add data to tables 
 
- * Query tables 
+* Query tables 
 
- * Updates data in  tables 
+* Updates data in  tables 
 
- * Truncate , delete and drop  tables 
+* Truncate , delete and drop  tables 
 
 **Scripts**
 * Run rules within sandbox 
@@ -57,9 +54,9 @@ Check out the installation docs
 
 As you would have noticed from above the Devless API Engine(DAE) works with three main entities tables, scripts and  "lean views"  each known as a **RESOURCE** . 
 
-You can also pair up resources known as **SERVICES**  and this can be responsible for one functionality of the **APPLICATION**. 
+You can also pair up resources together known as  **SERVICES**  and this is responsible for one functionality of the **APPLICATION**. 
 
-In response to this order of organisation the restful endpoints are generates in the form:
+In response to this order of organisation the restful endpoints are generated in the form:
 ``` <hostname>\service\<service_name>\<resource_name>\ ```
 
  
@@ -67,7 +64,7 @@ eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``
 
 **Endpoints definition for specific resources and actions** 
 
-For the rest of the documentation, we will assume to create a user authentication service.
+For the rest of the documentation, we will assume creating a user authentication service.
 
 <a name="Structure-of-the-Authentication-Service"></a>
 ## Structure of the Authentication Service
@@ -327,7 +324,7 @@ Again whenever you create a service with the management console a scripting colu
 ## Accessing scripts
 - Scripts are run each time you make a call to any of the db resources 
 - Each Service has a script assigned to it  
-- Detailed explation of how to use scripts can be found at [Services](/docs/{{version}}/service)#scripts
+- Detailed explanation of how to use scripts can be found at [Services](/docs/{{version}}/service)#scripts
 
 <a name="Lean-View"></a>
 

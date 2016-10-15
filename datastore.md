@@ -6,19 +6,21 @@
 - [Add records](#add)
 - [update records](#update)
 - [Deleting table and records](#delete)
+- [Instance Info](#info)
+- [Dump](#dump)
 
 
 <a name="ds">DataStore</a>
 
 **DataStore** 
  Helper is the Devless internal api for working with data related to services. 
-The api can be accessed from within the rules engine as well as.
+The api can be accessed from within the rules engine as well.
 
 **To use the DataStore class** 
 
 Set ``use App\Helpers\DataStore;``
 ``use App\Http\Controllers\ServiceController as service ;``
-at the very top of the class right after the ``<?php`` tag
+at the very top of the class right after the ``<?php`` tag then 
 
 <a name="init">Initialize Service DI</a>
 
@@ -45,9 +47,9 @@ Available query parameters include :
 
 ``OrderBy($field)`` OrderBy makes it possible to order the records in asc order based on the given $field.
 
-``where($column, $value)`` You may also query data where a given $column equals a given $value  NB:where may also be used when updating particular records 
+``where($column, $value)`` You may also query data where a given ``$column`` equals a given ``$value``  NB: ``where`` may also be used when updating particular records. 
 
-``offset($number)`` Its also possible to skip a number of records with the offset parameter by providing the $number of records to skip  
+``offset($number)`` Its also possible to skip a number of records with the offset parameter by providing the $number of records to skip.  
 
 <a name="add">Add Records</a>
 
@@ -89,3 +91,39 @@ To drop table
 ```
 DataStore('serviceName', 'tableName')->drop()
 ```
+
+<a name="info">Instance Info</a>
+
+ You may also get all info about the Devless instance using the DataStore from within your application.
+
+ ```
+ $instance = DataStore::instanceInfo();
+        
+ $user = $instance['admin'];
+ $app  = $instance['app'];
+
+ var_dump($user, $app)
+ ``` 
+
+<a name="dump">Dump</a>
+
+Devless also provides a key/value store. This could be used to store user configuration settings or any data not part of the service but relates to the current instance only
+
+```
+ use App\Helpers\DataStore; 
+
+
+ 
+ DataStore::setDump('created_on', time())
+
+ $data = getDump('created_on')
+ var_dump($data);
+
+ DataStore::updateDump('created_on', time())
+
+ $data = getDump('created_on')
+
+ DataStore::destroyDump('created_on')
+
+``` 
+

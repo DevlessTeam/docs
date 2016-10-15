@@ -3,7 +3,7 @@
     - [Installation](/docs/{{version}}/installation)
     - [Management Console](/docs/{{version}}/management-console)
     - [Services](/docs/{{version}}/service)
-    - [Authentication](/docs/{{version}}/auth)
+    - [Authentication](/docs/{{version}}/authentication)
     - [Api Engine](/docs/{{version}}/api-engine)
     - [Tutorials](/docs/{{version}}/tutorials)
     

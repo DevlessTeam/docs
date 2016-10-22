@@ -6,7 +6,7 @@ The Devless SDK makes it possible to **add**, **query**, **update**, **delete** 
 Available SDKs:
 
 <a name="javascript-sdk"></a>
-[Javascript SDK](https://github.com/DevlessTeam/docs/blob/master/sdk/js-sdk.md)
+[Javascript SDK](https://github.com/DevlessTeam/DV-JS-SDK/blob/master/README.md)
 
 [Python SDK](https://github.com/DevlessTeam/DV-PY-SDK/blob/master/README.md)
 

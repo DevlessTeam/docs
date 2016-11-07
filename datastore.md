@@ -73,7 +73,7 @@ DataStore::service('serviceName', 'tableName')->addData([
 To update records you need the record id
 ```
 $data = ['firstName'=>'james'];
-DataStore('serviceName', 'tableName')->where($id, $value)->update($data)
+DataStore::service('serviceName', 'tableName', $service)->where($id, $value)->update($data)
 ```
 <a name="delete">Delete tables or records</a>
 

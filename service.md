@@ -106,13 +106,13 @@ use App\Helpers\Assert as Assert;
 
  **DevLess flow control**
 
- ``->whenever('assert here')->run()->elseWhenever('assert here')->run()->ifAllFails()``
+ ``->whenever('assert here')->run()->elseWhenever('assert here')->run()->otherwise()``
 
 similar to
 
 ``if('assert here'){} else if('assert here'){} else{}``    
 
-You can have as many elseWhenever statements in between  ``->whenever('assert here')`` and ``->ifAllFails()`` just like with ``else if(){}`` in the case of ``if(){}`` and ``else{}``.
+You can have as many elseWhenever statements in between  ``->whenever('assert here')`` and ``->otherwise()`` just like with ``else if(){}`` in the case of ``if(){}`` and ``else{}``.
 
  **Assertions**:
 As with every flow control system there is a need for a statement to assert to either true or false to direct the flow. In the case of scripts DevLess provides a  [library](/docs/{{version}}/assertions) full of methods to help with assertions eg ``` Assert::Eq($value1, $value2)  notEq($value, $value2) range($value, $min, $max)
@@ -139,7 +139,7 @@ $re = $rules
 ->elseWhenever(Assert::Eq($input_name,'ema'))
     ->succeedWith('Am not sending you an email')
 
-->ifAllFails()
+->otherwise()
     ->failWith('well non of the above flow statements asserted to true');
 ```
  **Available scope Variables**

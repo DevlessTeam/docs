@@ -242,7 +242,7 @@ There are a bunch of helpers available to make the development of service views 
 
 - ``DvAssetPath($payload, $partialAssetPath)`` //get asset files from the assets folder eg: ``DvAssetPath($payload, 'js/main.js')``
 - ``DvAdminOnly("Sorry you don't have access to this page")`` //set ontop to make sure non "Admins" cant access the file or page
-- ``<a href="DvNavigate($payload, 'pageName');" />``
+- ``<a href="<?= DvNavigate($payload, 'pageName'); ?>" />``
 - ``DvRedirect($url, $time);`` //redirect the page to the given url
 
 By default ``$payload`` is set  and contains every information regarding the particular service

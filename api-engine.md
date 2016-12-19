@@ -1,33 +1,33 @@
-## Api Engine
+## API Engine
 
   - [DevLess API Engine(DAE)](#DevLess-API-Engine(DAE))
   - [DAE](#DAE)
-  - [What is the devless API engine](#What-is-the-DevLess-API-Engine)
-  - [Features of the API engine include](#Features-of-the-API-engine-include)
+  - [What is the DevLess API engine](#What-is-the-DevLess-API-Engine)
+  - [Features of the API engine](#Features-of-the-API-engine-include)
   - [Structure of the Authentication Service](#Structure-of-the-Authentication-Service)
-  - [Creating the table](#Creating-the-table)
+  - [Creating a table](#Creating-the-table)
   - [Adding data to table](#Adding-data-to-table)
   - [Query data from  table](#Query-data-from-table)
-  - [Updating data to table](#Updating-data-to-table)
+  - [Updating data in table](#Updating-data-to-table)
   - [Delete data from table](#Delete-data-from-table)
   - [Accessing scripts](#Accessing-scripts)
   - [Lean View](#Lean-View)
 
 <a name="DevLess-API-Engine(DAE)"></a>
 ## DevLess API Engine(DAE)
-**DevLess API Engine(DAE)** is an open source api engine that generates a crud access to databases as well as allows the execution of rules against data .
+**DevLess API Engine(DAE)** is an open source API engine that generates a CRUD access to databases as well as allows the execution of rules against data.
 
 The current implementation of the DevLess API Engine is in PHP and on top of the Laravel framework.
 
 <a name="DAE"></a>
 ## DAE
-**DAE** can be used as a standalone (accessed solely via API calls ) however a management console is provided to interact with the api engine and is available @ the complete [DevLess suite](https://github.com/DevlessTeam/DV-PHP-CORE).
+**DAE** can be used as a standalone (accessed solely via API calls) however a management console is provided to interact with the API engine and is available in the complete [DevLess suite](https://github.com/DevlessTeam/DV-PHP-CORE).
 
 This document explains the various syntax for accessing and working with  the DevLess API Engine.
 
 <a name="What-is-the-DevLess-API-Engine"></a>
-## What is the DevLess API Engine ?
-The DevLess API Engine is  a Laravel based backend engine that generates restful endpoints by connecting to a data access point  (database). It also has the ability to execute rules based scripts within a sandbox .
+## What is the DevLess API Engine?
+The DevLess API Engine is  a Laravel based backend engine that generates RESTful endpoints by connecting to a data access point (database). It also has the ability to execute rules based on scripts within a sandbox.
 
 **Installation procedure**
 #### [README](https://github.com/DevlessTeam/DV-PHP-CORE/blob/master/readme.md)
@@ -44,13 +44,13 @@ The DevLess API Engine is  a Laravel based backend engine that generates restful
 
 * Updates data in  tables
 
-* Truncate , delete and drop  tables
+* Truncate, delete and drop  tables
 
 **Scripts**
 * Run rules within sandbox
 
 **Views**
-* Access to html\php views
+* Access to HTML\PHP views
 
 As you would have noticed from above the DevLess API Engine(DAE) works with three main entities tables, scripts and  "lean views"  each known as a **RESOURCE** .
 
@@ -77,7 +77,7 @@ For the rest of the documentation, we will assume creating a user authentication
 
 Also, we assume our server is on  http://localhost:8000/   .
 
-**NB:** To get started you need to register a new service in the database either via the management console or from a database management client. In our case its assumed we have done that and the name of the service is authentication.
+**NB:** To get started you need to register a new service in the database either via the management console or from a database management client. In our case it is assumed we have done that and the name of the service is authentication.
 
 <a name="Creating-the-table"></a>
 
@@ -126,7 +126,7 @@ REQUEST PAYLOAD:
 RESPONSE PAYLOAD: {"status_code":606,"message":"created table successfully","payload":[]}
 ```    
 
-**Explanation** : From the URL after the ``api/v1/service`` route the service_name ``authentication`` is passed followed by the ``schema`` sub route which is the  route for creating new tables for any service.
+**Explanation** : From the URL after the ``api/v1/service`` route, the service_name ``authentication`` is passed followed by the ``schema`` sub-route which is the  route for creating new tables for any service.
 
 Also, the request payload takes the name of the table to be created and is prefixed with the service name during the creation of the table itself to ensure tables from other services do not conflict.
 You may also add a table description but this is optional
@@ -162,7 +162,11 @@ For the ``field`` , there are a couple of options you have to provide with some 
 * ``"validation"`` if this is set to true all  data input into this field would be run against a validator based on the ``field_type`` selected
 
 
-The ``Response Body`` provides three pieces of information the ``status__code`` in this case ``606``, a ``message`` and ``payload`` which might contain extra   information or return data . You may find the complete list status code in the **[appendix](#appendix)**
+The ``Response Body`` provides three pieces of information:
+ the ``status__code`` in this case ``606``, 
+ a ``message`` and 
+ ``payload`` which might contain extra   information or return data.
+ You may find the complete list of status code in the **[appendix](#appendix)**
 
 Next step would be adding some data to the table
 
@@ -197,7 +201,7 @@ RESPONSE PAYLOAD: {"status_code":609,"message":"data has been added to table suc
 ```
 
 
-We will repeat the above by replacing the name `` Edmond`` with ``Charles`` and keeping the password same. So now we have two records in the authentication table.
+We will repeat the above by replacing the name ``Edmond`` with ``Charles`` and keeping the password same. So now we have two records in the authentication table.
 
 Now we can query our table
 
@@ -228,14 +232,14 @@ RESPONSE PAYLOAD:
 }
 ```
 Now we query the authentication table using the get parameters provided by the engine.
- * The ``table`` parameter is used to provide the table name
+* The ``table`` parameter is used to provide the table name
 * The ``orderBy`` parameter makes it possible to arrange the data in descending order based on the field provided
 * The ``where`` parameter is used to get data where the field provided before the comma contains the data passed
 * The ``size`` parameter is used to set the total number of records to be returned.
 * The ``offset`` parameter sets an offset on the record.
 
 
-Next, we change the username from Edmond to James
+Next, we are going to change the username from Edmond to James
 
 
 <a name="Updating-data-to-table"></a>
@@ -271,10 +275,10 @@ REQUEST PAYLOAD:
 RESPONSE PAYLOAD: {"status_code":619,"message":"table authentication updated successfully","payload":[]}
 ```
 
-In other to update a field in the table you need to pass the ``table name`` and the ``parameters``. All you need to pass  is the field name and new data as well as the ``id`` of that field as shown above.
+In other to update a field in the table you need to pass the ``table name`` and the ``parameters``. The parameters will include the field name and new data as well as the ``id`` of that field as shown above.
 
 
-Now that we have made changes to our table content we can now try to delete a field ,truncate the table then delete the whole table.
+Now that we have made changes to our table content we can now try to delete a field, truncate the table then delete the whole table.
 
 
 <a name="Delete-data-from-table"></a>
@@ -304,25 +308,25 @@ REQUEST PAYLOAD:
     ]
 }        
 
-RESPONSE PAYLOAD: {"status_code":636,"message":"The table or field has been delete","payload":[]}
+RESPONSE PAYLOAD: {"status_code":636,"message":"The table or field has been deleted","payload":[]}
 ```
 
 This is very trivial and understandable as by now you would have noticed the pattern :)
 
-* To truncate the table you set the ``truncate`` parameter to ``true`` "truncate":true  this returns a response as ```{"status_code":636,"message":"The table or field has been truncate","payload":[]}```
+* To truncate the table you set the ``truncate`` parameter to ``true`` "truncate":true  this returns a response as ```{"status_code":636,"message":"The table or field has been truncated","payload":[]}```
 
 * You may also drop the table by passing ``true`` to the ``drop`` parameter this also returns a response as ``{"status_code":636,"message":"dropped table successfully","payload":[]}``
 
 
 
-We have gone through a basic CRUD operation using the api engine. The next thing we are going to look at is the script .
+We have gone through a basic CRUD operation using the API engine. The next thing we are going to look at is the script .
 
-Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete api engine with the management console download it from [DevLess complete ](#devlesscomplete). Another way you can add a script is doing so with a database client
+Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete API engine with the management console download it from [DevLess complete](#devlesscomplete). Another way you can add a script is doing so with a database client
 
 
 <a name="Accessing-scripts"></a>
 ## Accessing scripts
-- Scripts are run each time you make a call to any of the db resources
+- Scripts are run each time you make a call to any of the database resources
 - Each Service has a script assigned to it  
 - Detailed explanation of how to use scripts can be found at [Services](/docs/{{version}}/service)#scripts
 

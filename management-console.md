@@ -1,4 +1,4 @@
-## MANAGEMENT CONSOLE
+## Management Console
 
 - [App](#app)
 - [Services](#services)
@@ -31,12 +31,12 @@ The Service Hub is the store house for resuable services hosted by DevLess. Thes
 <a name="privacy"></a>
  ## Privacy
 
-Manage the access control level (ACL) of  Service endpoints . The ACL options are **Private** , **Authenticated** and **Public**. Any newly created service has its privacy set to **Private** which means no client application can access endpoints of that particular service . The **Authenticated** option requires the client application user to be [logged in](/docs/{{version}}/authentication). This is handled by the [DevLess SDKs](/docs/{{version}}/SDKs). A client application can access the backend without authentication if the ACL on the service is set to **Public.**
+Manage the access control level (ACL) of Service endpoints. The ACL options are **Private** , **Authenticated** and **Public**. Any newly created service has its privacy set to **Private** which means no client application can access endpoints of that particular service. The **Authenticated** option requires the client application user to be [logged in](/docs/{{version}}/authentication). This is handled by the [DevLess SDKs](/docs/{{version}}/SDKs). A client application can access the backend without authentication if the ACL on the service is set to **Public.**
 
 <a name="api-console"></a>
  ## API Console
 
-Run CRUD simulations on your services internally. Use our Postman like feature to visualize the expected response from the DevLess backend.
+Run CRUD simulations on your services internally. Use our Postman-like feature to visualize the expected response from the DevLess backend.
 ### Steps
 - Select the Service
 - Select the Table

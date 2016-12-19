@@ -12,9 +12,8 @@
 
 <a name="ds">DataStore</a>
 
-**DataStore**
- Helper is the DevLess internal api for working with data related to services.
-The api can be accessed from within the rules engine as well.
+**DataStore** Helper is the DevLess internal API for working with data related to services.
+The API can be accessed from within the rules engine as well.
 
 **To use the DataStore class**
 
@@ -49,7 +48,7 @@ Available query parameters include :
 
 ``where($column, $value)`` You may also query data where a given ``$column`` equals a given ``$value``  NB: ``where`` may also be used when updating particular records.
 
-``offset($number)`` Its also possible to skip a number of records with the offset parameter by providing the $number of records to skip.  
+``offset($number)`` It is also possible to skip a number of records with the offset parameter by providing the $number of records to skip.  
 
 <a name="add">Add Records</a>
 

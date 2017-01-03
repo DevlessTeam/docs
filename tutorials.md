@@ -157,6 +157,7 @@ function getAddresses(){
 _Remember to call this function `getAddresses()` at the beginning of the script tag_
 
 * _Update_ addresses
+
 ```
 function updateAddress(id){
 	Devless.queryData('addressbook', 'addresses', {where:["id," + id]}, function(response){
@@ -192,6 +193,7 @@ function update(id){
 ```
 
 * _Delete_ addresses
+
 ```
 function deleteAddress(id){
 	Devless.deleteData('addressbook', 'addresses', 'id', id, function(response){
@@ -207,4 +209,4 @@ We should now have a working address book with the addresses persisted with a De
 
 [![Screenshot from 2017-01-02 11-10-52.png](https://s20.postimg.org/j34xb35od/Screenshot_from_2017_01_02_11_10_52.png)](https://postimg.org/image/qj46wvtdl/)
 
-See the full code [here](https://gist.github.com/johnotu/5b7f1e96d7b0138ddb292273949169c8)
+See the full code on [Gist](https://gist.github.com/johnotu/5b7f1e96d7b0138ddb292273949169c8) and [Pastebin](http://pastebin.com/AyaCD0R7).

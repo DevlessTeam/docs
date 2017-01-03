@@ -157,6 +157,7 @@ function getAddresses(){
 _Remember to call this function `getAddresses()` at the beginning of the script tag_
 
 * _Update_ addresses
+
 ```
 function updateAddress(id){
 	Devless.queryData('addressbook', 'addresses', {where:["id," + id]}, function(response){
@@ -192,6 +193,7 @@ function update(id){
 ```
 
 * _Delete_ addresses
+
 ```
 function deleteAddress(id){
 	Devless.deleteData('addressbook', 'addresses', 'id', id, function(response){

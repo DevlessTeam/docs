@@ -38,7 +38,7 @@ DataStore::service('serviceName', 'tableName', $service)->queryData();
 You may pass in query parameters
 eg: The size parameter gets a given number of results
 ```
-DataStore::service('serviceName', 'tableName')->size(7)->queryData();
+DataStore::service('serviceName', 'tableName', $service)->size(7)->queryData();
 ```
 Available query parameters include :
 
@@ -56,11 +56,11 @@ Available query parameters include :
 
 To add data to a given table  passing it in as an array of values
 ```
-DataStore::service('serviceName', 'tableName')->addData([['firstName'=>'edmond','lastName'=>'Mensah']])
+DataStore::service('serviceName', 'tableName', $service)->addData([['firstName'=>'edmond','lastName'=>'Mensah']])
 ```
 You may also make double entries
 ```
-DataStore::service('serviceName', 'tableName')->addData([
+DataStore::service('serviceName', 'tableName', $service)->addData([
 ['firstName'=>'edmond','lastName'=>'Mensah'],
 ['firstName'=>'charles','lastName'=>'Feggerson']
 ])
@@ -80,15 +80,15 @@ DataStore::service('serviceName', 'tableName', $service)->where($id, $value)->up
 
 To delete records from the table
 ```
-DataStore('serviceName', 'tableName')->where($id, $value)->delete();
+DataStore('serviceName', 'tableName', $service)->where($id, $value)->delete();
 ```
 To truncate a table
 ```
-DataStore('serviceName', 'tableName')->truncate()
+DataStore('serviceName', 'tableName', $service)->truncate()
 ```
 To drop table
 ```
-DataStore('serviceName', 'tableName')->drop()
+DataStore('serviceName', 'tableName', $service)->drop()
 ```
 
 <a name="info">Instance Info</a>

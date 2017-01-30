@@ -30,4 +30,4 @@ If you will need extra help setting up you may check out the Laravel [installati
 
 <a name="one-click-install"></a>
 ## One click Install
-You  may also choose to run our  [Heroku click to deploy](https://heroku.com/deploy?template=https://github.com/DevlessTeam/DV-PHP-CORE/tree/heroku) option
+You  may also choose to run our  [Heroku click to deploy](https://heroku.com/deploy?template=https://github.com/DevlessTeam/DV-PHP-CORE/tree/heroku2) option

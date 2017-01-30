@@ -5,7 +5,10 @@
     - [Services](/docs/{{version}}/service)
     - [Authentication](/docs/{{version}}/authentication)
     - [Api Engine](/docs/{{version}}/api-engine)
-    - [Tutorials](/docs/{{version}}/tutorials)
+
+- Tutorials
+    - [A Simple Address Book ](/docs/{{version}}/address-book)
+    - [A Simple Blog Engine ](/docs/{{version}}/blog-engine)
     
 - SDKs
     - [SDKs](/docs/{{version}}/SDKs)

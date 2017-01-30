@@ -11,7 +11,9 @@
     - [A Simple Blog Engine ](/docs/{{version}}/blog-engine)
     
 - SDKs
+    - [HTML SDKs](/docs/{{version}}/html-sdk)
     - [SDKs](/docs/{{version}}/SDKs)
+    
     
 
 - Reference

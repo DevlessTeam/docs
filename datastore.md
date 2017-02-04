@@ -74,6 +74,8 @@ To update records you need the record id
 $data = ['firstName'=>'james'];
 DataStore::service('serviceName', 'tableName', $service)->where($id, $value)->update($data)
 ```
+***NB: $id should be a string identifier ('id') if not declared as a variable*** 
+
 <a name="delete">Delete tables or records</a>
 
 **Deleting table and records**

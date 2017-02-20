@@ -114,15 +114,15 @@ DevLess also provides a key/value store. This could be used to store user config
  use App\Helpers\DataStore;
 
 
- DataStore::setDump('created_on', time())
+ DataStore::setDump('created_on', time());
 
- $data = getDump('created_on')
+ $data = getDump('created_on');
  var_dump($data);
 
- DataStore::updateDump('created_on', time())
+ DataStore::updateDump('created_on', time());
 
- $data = getDump('created_on')
+ $data = getDump('created_on');
 
- DataStore::destroyDump('created_on')
+ DataStore::destroyDump('created_on');
 
 ```

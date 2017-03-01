@@ -14,14 +14,14 @@ The management console is used to administer your DevLess instance. The console 
 <a name="app"></a>
 ## App
 
-This segment holds the configurations of the instance. The instance and the admin details can be updated from here. App key and token to access the instance from within your application can also be found here.
+This segment holds the configurations of your DevLess instance. The instance and the admin details can be updated from here. App token to access the instance from within your application can also be found here.
 
-**NB** : Changing the app key or token will revoke access rights to DevLess from an app connecting to the instance. This feature is very useful in situations where access to your backend is compromised.
+**NB** : Changing the app token will revoke access rights to DevLess from an app connecting to the instance. This feature is very useful in situations where access to your backend is compromised.
 
 <a name="services"></a>
 ## Services
 
-Services are the core components of the backend instance. A service is a representation of a feature of your  app. To have a complete application one might need one or more services installed and integrated to bring the backend features of the app to life. There are three ways to install a service into a DevLess instance, i.e. [Creating](/docs/{{version}}/service) or [importing](#migration) one and from the [Service Hub](#hub).
+Services are the core components of the DevLess framework. A service is a representation of a feature of your  app. To have a complete application one might need one or more services installed and integrated to bring the backend features of the app to life. There are three ways to install a service into a DevLess instance, i.e. [Creating](/docs/{{version}}/service) or [importing](#migration) one and from the [Service Hub](#hub).
 
 <a name="hub"></a>
 ## Service Hub
@@ -31,7 +31,7 @@ The Service Hub is the store house for resuable services hosted by DevLess. Thes
 <a name="privacy"></a>
  ## Privacy
 
-Manage the access control level (ACL) of Service endpoints. The ACL options are **Private** , **Authenticated** and **Public**. Any newly created service has its privacy set to **Private** which means no client application can access endpoints of that particular service. The **Authenticated** option requires the client application user to be [logged in](/docs/{{version}}/authentication). This is handled by the [DevLess SDKs](/docs/{{version}}/SDKs). A client application can access the backend without authentication if the ACL on the service is set to **Public.**
+Manage the access control levels (ACL) of Service endpoints. The ACL options are **Private** , **Authenticated** and **Public**. Any newly created service has its privacy set to **Private** which means no client application can access endpoints of that particular service. The **Authenticated** option requires the client application user to be [logged in](/docs/{{version}}/authentication). This is handled by the [DevLess SDKs](/docs/{{version}}/SDKs). A client application can access the backend without authentication if the ACL on the service is set to **Public.**
 
 <a name="api-console"></a>
  ## API Console

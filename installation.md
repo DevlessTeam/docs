@@ -8,7 +8,7 @@
 ## Requirements
 * Database (MySQL, PostgreSQL, SQLSRV)
 * An HTTP server
-* PHP 5.5.9 or greater
+* PHP 5.6.10 or greater
 * OpenSSL PHP Extension
 * PDO PHP Extension
 * Mbstring PHP Extension
@@ -26,7 +26,7 @@
 
 If everything goes smoothly you should be able to access the setup screen at [localhost:8000](http://localhost:8000)
 
-If you will need extra help setting up you may check out the Laravel [installation](https://laravel.com/docs/5.1) guide as the DevLess core is based of Laravel.
+If you will need extra help setting up you may check out the [Laravel installation](https://laravel.com/docs/5.1) guide as the DevLess core is based of Laravel.
 
 <a name="one-click-install"></a>
 ## One click Install

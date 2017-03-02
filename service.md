@@ -156,7 +156,7 @@ use App\Helpers\Assert as Assert;
 ```
 
 
-Also  **onTable('table_name')** is method is provided incase you want to run a block of code only if a particular table is selected. 
+Also  **onTable('table_name')**  method is provided incase you want to run a block of code only if a particular table is selected. 
 
 eg:
 

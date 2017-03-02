@@ -15,7 +15,7 @@
 
 <a name="DevLess-API-Engine(DAE)"></a>
 ## DevLess API Engine(DAE)
-**DevLess API Engine(DAE)** is an open source API engine that generates a CRUD access to databases as well as allows the execution of rules against data.
+**DevLess API Engine(DAE)** is an open source API engine that generates CRUD API access to databases as well as allows the execution of rules against data.
 
 The current implementation of the DevLess API Engine is in PHP and on top of the Laravel framework.
 
@@ -23,7 +23,7 @@ The current implementation of the DevLess API Engine is in PHP and on top of the
 ## DAE
 **DAE** can be used as a standalone (accessed solely via API calls) however a management console is provided to interact with the API engine and is available in the complete [DevLess suite](https://github.com/DevlessTeam/DV-PHP-CORE).
 
-This document explains the various syntax for accessing and working with  the DevLess API Engine.
+This document explains the various syntax for accessing and working with the DevLess API Engine.
 
 <a name="What-is-the-DevLess-API-Engine"></a>
 ## What is the DevLess API Engine?
@@ -46,13 +46,13 @@ The DevLess API Engine is  a Laravel based backend engine that generates RESTful
 
 * Truncate, delete and drop  tables
 
-**Scripts**
+**Rules**
 * Run rules within sandbox
 
 **Views**
-* Access to HTML\PHP views
+* Access to HTML views
 
-As you would have noticed from above the DevLess API Engine(DAE) works with three main entities tables, scripts and  "lean views"  each known as a **RESOURCE** .
+As you would have noticed from above the DevLess API Engine(DAE) works with three main entities tables, rules and  "lean views"  each known as a **RESOURCE** .
 
 You can also pair up resources together known as  **SERVICES**  and this is responsible for one functionality of the **APPLICATION**.
 
@@ -60,7 +60,7 @@ In response to this order of organisation the restful endpoints are generated in
 ``` <hostname>\service\<service_name>\<resource_name>\ ```
 
 
-eg: ``` https:\\demo.devless.io\service\authentication\db?table=authentication``` *(this example gets all data from the authentication table)*
+eg: ``` https:\\demo.devless.io\service\authentication\db?table=auth_table``` *(this example gets all data from the auth_table)*
 
 **Endpoints definition for specific resources and actions**
 
@@ -69,7 +69,7 @@ For the rest of the documentation, we will assume creating a user authentication
 <a name="Structure-of-the-Authentication-Service"></a>
 ## Structure of the Authentication Service
 
-* Table name is authentication
+* Table name is auth_table
 
 **Fields required include**
 * username (string)
@@ -77,7 +77,7 @@ For the rest of the documentation, we will assume creating a user authentication
 
 Also, we assume our server is on  http://localhost:8000/   .
 
-**NB:** To get started you need to register a new service in the database either via the management console or from a database management client. In our case it is assumed we have done that and the name of the service is authentication.
+**NB:** To get started you need to create a new service either via the management console or from a database management client. In our case it is assumed we have done that and the name of the service name is authentication.
 
 <a name="Creating-the-table"></a>
 
@@ -95,7 +95,7 @@ REQUEST PAYLOAD:
 {  
      "resource":[  
         {  
-           "name":"authentication",
+           "name":"auth_table",
            "description":" demo authenticate users",
            "field":[  
 
@@ -135,32 +135,30 @@ For the ``field`` , there are a couple of options you have to provide with some 
 
 ``"name"`` this is the name to be given to the field and this is required.
 
-``"field_type"`` this is a soft data type and is required as well. The options available are shown below on the left and the translated database type on the right
+``"field_type"`` this is a soft data type and is required as well. The options available are shown below on the left and their translated database type on the right
 
-    'text'      => 'string',
+    'text'       => 'string',
     'textarea'   => 'longText',
     'integer'    => 'integer',
-    'money'      => 'double',
+    'decimal'      => 'double',
     'password'   => 'string',
     'percentage' => 'integer',
     'url'        => 'string',
     'timestamp'  => 'timestamp',
     'boolean'    => 'boolean',
     'email'      => 'string',
-    'reference'  => 'integer',  
+    'reference'  => 'integer',
+    'base64'     => 'base64',
 
 **NB:** The password ``"field_type"``  hashes any data provided in the name field automatically.
 
-* ``"default"``  you could also setup a default value for the field
+* ``"default"``  Allows you to setup a default value for the field.
 
-* ``"required"`` you can make this field a required field
+* ``"required"`` You can make the field a required field.
 
-* ``"is_unique"`` states whether this field should be unique or not
+* ``"is_unique"`` States whether this field should be unique or not.
 
-* ``"ref_table"`` also in the case where the ``field_type`` you chose was a ``reference`` type you would have to  select the table you would like to reference . The engine automatically creates the relationship between the  field and primary key of the table being referenced.
-
-* ``"validation"`` if this is set to true all  data input into this field would be run against a validator based on the ``field_type`` selected
-
+* ``"ref_table"`` also in the case where the ``field_type`` you chose was a ``reference`` type you would have to  select the table you would like to reference . The engine automatically creates the relationship between the  field and primary key of the table being referenced. Also you can set the `ref_table` to _devless_users this will reference the users table.
 
 The ``Response Body`` provides three pieces of information:
  the ``status__code`` in this case ``606``, 
@@ -184,7 +182,7 @@ REQUEST PAYLOAD:
 {  
    "resource":[  
       {  
-         "name":"authentication",
+         "name":"auth_table",
          "field":[  
 
             {  
@@ -201,7 +199,7 @@ RESPONSE PAYLOAD: {"status_code":609,"message":"data has been added to table suc
 ```
 
 
-We will repeat the above by replacing the name ``Edmond`` with ``Charles`` and keeping the password same. So now we have two records in the authentication table.
+We will repeat the above by replacing the name ``Edmond`` with ``Charles`` and keeping the password same. So now we have two records in auth_table.
 
 Now we can query our table
 
@@ -211,7 +209,7 @@ Now we can query our table
 ```
 METHOD: GET
 
-URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db?table=authentication&order=username&where=username,edmond&size=2
+URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db?table=auth_table&order=username&where=username,edmond&size=2
 
 HEADERS:
 
@@ -231,13 +229,13 @@ RESPONSE PAYLOAD:
   }
 }
 ```
-Now we query the authentication table using the get parameters provided by the engine.
-* The ``table`` parameter is used to provide the table name
-* The ``orderBy`` parameter makes it possible to arrange the data in descending order based on the field provided
-* The ``where`` parameter is used to get data where the field provided before the comma contains the data passed
+Now we query the auth_table using the get parameters provided by the engine.
+* The ``table`` parameter is used to provide the table name.
+* The ``orderBy`` parameter makes it possible to arrange the data in descending order based on the field provided.
+* The ``where`` parameter is used to get data where the field provided before the comma contains the data passed.
+* The ``orWhere`` parameter allows for collective query of data that might contain a keyword.
 * The ``size`` parameter is used to set the total number of records to be returned.
 * The ``offset`` parameter sets an offset on the record.
-
 
 Next, we are going to change the username from Edmond to James
 
@@ -255,7 +253,7 @@ REQUEST PAYLOAD:
 {  
    "resource":[  
       {  
-         "name":"authentication",
+         "name":"auth_table",
          "params":[  
             {  
                "where":"id,1",
@@ -295,7 +293,7 @@ REQUEST PAYLOAD:
 {  
    "resource":[  
       {  
-         "name":"authentication",
+         "name":"auth_table",
          "params":[  
             {  
                "delete":"true",         

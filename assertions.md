@@ -9,8 +9,6 @@ Assertion::between($value, $lowerLimit, $upperLimit);
 
 Assertion::betweenExclusive($value, $lowerLimit, $upperLimit);
 
-Assertion::betweenLength($value, $minLength, $maxLength);
-
 Assertion::boolean($value);
 
 Assertion::choice($value, $choices);

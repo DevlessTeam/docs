@@ -97,9 +97,9 @@ use App\Helpers\Assert as Assert;
 								->run('service_name', 'methodname',[])
 
  ```
- The above code is always run once a call is made to the service and the methods attached to the chain after the ``onCreate()`` method will be executed when the client attempts to add data to any of the service tables.
+ The above code is always executed when a call is made to the service and the methods attached to the chain after the ``onCreate()`` method will be executed when the client attempts to add data to any of the service tables.
 
- ``->whenever(Assert::Eq(25, $input_age))`` states that whenever the input age (``$input_age``) is equal (``Assert::Eq()``) to ``25`` the ``methodname`` from the [ActionClass](#actionclass) ``service_name`` should be run
+ ``->whenever(Assert::Eq(25, $input_age))`` states that whenever the input age (``$input_age``) is equal (``Assert::Eq()``) to ``25`` the ``methodname`` from the [ActionClass](#actionclass) ``service_name`` should be executed.
 
  **Flow Control**
 
@@ -136,8 +136,8 @@ For the list of all assetions available please check out the [Assertion Library]
 Also there are four ways to execute logic once an assetion passes
 
 - ``run('service_name', 'method_name', ['param1'])`` //running an action class
-- ``succeedWith('message goes here')``
-- ``failWith('message goes here')``
+- ``succeedWith('success message goes here')``
+- ``failWith(' failure message goes here')``
 
 **Example of a complete rules flow**
 
@@ -180,7 +180,7 @@ use App\Helpers\Assert as Assert;
 
  **Available scope Variables**
 
- Within the scope of a script there are list of useful variables made available:
+ Within the scope of a script there are a handful of useful variables made available:
  - ``$user_id``: This provides the id of the user placing the request provided they are logged in
  - ``$user_token``: This is the JSON Web Token(JWT) of the user making the request provided they are logged in. 
  - ``$input_*``: This is a prefixed variable usually set when the request comes with parameters. eg when a user makes a ``addData()`` request  using any of the SDKs with say a parameter body like ``{"name":"edmond", "age":34}`` Rules will make "edmond" available under the variable name ``$input_name`` and "age" accessed via ``$input_age`` respectively.
@@ -213,7 +213,7 @@ class demo
 		 */
 		public function methodone()
 		{
-				return "Sample Protected Method";
+				return "Sample Public Method";
 		}
 
 		/**
@@ -231,7 +231,7 @@ class demo
 		 */
 		public function methodthree()
 		{
-				return "Sample Protected Method";
+				return "Sample Private Method";
 		}
 
 		/**
@@ -262,17 +262,17 @@ Each method within the Action Class is decorated within the comment section with
 
 By default on creating a service a couple of methods are generated two of the most important methods are ``__onImport()`` : Code contained in this method will be executed when the service is imported into a DevLess instance. and ``__onDelete()`` will execute whenever you export a service from a DevLess instance.
 
-All of DevLess internals are available to service Action Classes.
+All of DevLess internals are available to Action Classes.
 
 Two of the most important utilities available within the Action Class includes:
 [DataStore](/docs/{{version}}/datastore)
 and the
-[PHP SDK](/docs/{{version}}/SDKs)
+[PHP SDK](/docs/{{version}}/SDKs). Useful when you need to get results from another DevLess instance.
 
 <a name="console"></a>
-## Console
-**Console** a.k.a lean views can be said to be the eye of each service. A simple admin manager may be created to micro manage the service.
-The entry point of views for a service by name "service_name" is ``"resources/views/service_views/service_name/index.blade.php"``.
+## Admin
+**Admin** a.k.a lean views can be said to be the eye of each service. A simple admin manager may be created to micro manage the service.
+The entry point of views for a service by name "service_name" is ``"resources/views/service_views/service_name/index.blade.php"``. You might want to create a friendly UI for your service so end users can interact with the service directly.
 
 There are a bunch of helpers available to make the development of service views fairely easy eg:
 

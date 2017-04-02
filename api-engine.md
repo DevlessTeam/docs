@@ -232,10 +232,11 @@ RESPONSE PAYLOAD:
 Now we query the auth_table using the get parameters provided by the engine.
 * The ``table`` parameter is used to provide the table name.
 * The ``orderBy`` parameter makes it possible to arrange the data in descending order based on the field provided.
-* The ``where`` parameter is used to get data where the field provided before the comma contains the data passed.
-* The ``orWhere`` parameter allows for collective query of data that might contain a keyword.
+* The ``where`` parameter is used to get data where the field provided before the comma contains the data passed. ``eg: &where=name,edmond``
+* The ``orWhere`` parameter allows for quering data that might contain a keyword. ``eg: &orWhere=name,edmond``.
 * The ``size`` parameter is used to set the total number of records to be returned.
 * The ``offset`` parameter sets an offset on the record.
+* The ``search`` parater allows to search columns of a table that might contain a keyword.``eg: &search=name,edmond``.
 
 Next, we are going to change the username from Edmond to James
 

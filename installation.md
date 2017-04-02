@@ -3,7 +3,7 @@
 - [Requirements](#requirements)
 - [One Click Heroku Install](#one-click-install)
 - [Docker Procedure](#docker-procedure)
-- [Manual](#installation-procedure)
+- [Local Installation](#installation-procedure)
 
 
 

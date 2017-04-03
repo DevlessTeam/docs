@@ -17,7 +17,7 @@ You  may also choose to run our  [Heroku click to deploy](https://heroku.com/dep
 ## Docker procedure
 * You will need [Docker](https://docs.docker.com/engine/installation/) installed 
 * Run the following command on your terminal or command prompt `docker run -p 4545:80 -d --restart always eddymens/devless`.
-* You can now visit `http://localhost:8000:4545` in your browser of choice.  
+* You can now visit `http://localhost:4545` in your browser of choice.  
 * You may change the port `4545` to whichever one you prefer provided its available. 
 
 

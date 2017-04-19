@@ -3,6 +3,7 @@
 - [Creating Services](#create-service)
 - [Database Setup](#database-setup)
 - [Working with Tables](#tables)
+	- [Validations](#validations)
 - [Scripts](#scripts)
 - [Action Classes](#actionclass)
 - [Console](#console)
@@ -24,7 +25,6 @@ To create a **service**
 Services are the backbone of the DevLess framework. DevLess allows each service to connect to different data sources if needed. But by default DevLess uses the underlying database for every service unless otherwise specified.
 During the creation of a service you may specify the database options else leave as is to use the default.
 
-
 <a name="tables"></a>
 ## Working with Tables
 **Creating Tables:** Once you have successfully created a service you can start creating tables.
@@ -39,7 +39,7 @@ and for the **Add Fields** section you can begin creating fields as needed.
 You will need to provide :
 
 - **Field Name**: This will be the name of the field.
-- **Field Type**: This allows you to pick the data type as well as validation to associate with this field. You may select from the dropdown the field type that applies.
+- **Field Type**: This allows you to pick the data type as well as validation to associate with this field. You may select from the dropdown the field type that applies. Refer to [Validations](#validations) for more details.
 - **Reference Table**: In the case where you have already created a table for the particular service, you can  reference that table by selecting it. The referencing is automatically done via the id from within DevLess. Also you may reference a user from within the framework, which is available within the dropdown.
 - **Default Value(optional)**: You may also set the default value for the field.
 - **REQUIRED**: Once this option is ticked the client app has to always make sure this field is filled else the request is rejected by DevLess.
@@ -51,6 +51,17 @@ You will need to provide :
 
 Once you are satisfied with your field entries hit on Create Table to create it.
 Once the table is created successfully it should show up on the **TABLES** tab. You can now try accessing the table from the [Api Console](/docs/{{1.0}}/management-console/#api-console).
+<a name="validations"></a>
+### Validations
+* Selecting the field types add validation rules to that particular field.
+	* **TEXT** 	=> 	The field under validation must be a string with 255 character limit
+	* **TEXTAREA** 	=> 	The field under validation must be a string with 65,535 character limit
+	* **INTEGER** 	=>	The field under validation must be an integer
+	* **DECIMALS** 	=> 	The field under validation must be a double and `nullable`
+	* **PASSWORD** 	=> 	The field is hashed and stored securely using Laravel's in-built hash implementation
+	* **EMAIL** 	=> 	The field under validation must be formatted as an e-mail address
+	* **BASE64** 	=> 	The field under validatiom must be a base64 string with `65.535kb` limit
+	* **REFERENCE** => 	The field is for creating and maintaining referential integriy between two table belonging to a module.
 
 <a name="scripts"></a>
 ## Working with Rules

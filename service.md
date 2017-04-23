@@ -3,8 +3,8 @@
 - [Creating Services](#create-service)
 - [Database Setup](#database-setup)
 - [Working with Tables](#tables)
-	- [Validations](#validations)
-- [Scripts](#scripts)
+- [Validations](#validations)
+- [Rules](#rules)
 - [Action Classes](#actionclass)
 - [Console](#console)
 
@@ -50,7 +50,7 @@ You will need to provide :
 **NB:** You are not required to add an id to the table as this is done automatically within DevLess.	
 
 Once you are satisfied with your field entries hit on Create Table to create it.
-Once the table is created successfully it should show up on the **TABLES** tab. You can now try accessing the table from the [Api Console](/docs/{{1.0}}/management-console/#api-console).
+Once the table is created successfully it should show up on the **TABLES** tab. You can now try accessing the table from the [Api Console](/docs/{{version}}/management-console/#api-console).
 <a name="validations"></a>
 ### Validations
 * Selecting the field types add validation rules to that particular field.
@@ -63,7 +63,7 @@ Once the table is created successfully it should show up on the **TABLES** tab. 
 	* **BASE64** 	=> 	The field under validatiom must be a base64 string with `65.535kb` limit
 	* **REFERENCE** => 	The field is for creating and maintaining referential integriy between two table belonging to a module.
 
-<a name="scripts"></a>
+<a name="rules"></a>
 ## Working with Rules
 **A Rule** is the glue feature of a service. It is based on the philosophy that if there is any logic that can be processed within the client without leaving the system **vulnerable**  then it should be done leaving the backend to **validate**, **persist data** and perform **actions** that is possible only on the backend, in this case DevLess. Rules are equiped to validate and perform actions based on assertions.
 The core utilites available within a Rules are :

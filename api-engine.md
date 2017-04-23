@@ -89,7 +89,7 @@ METHOD: POST
 
 URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/schema
 
-HEADERS: Content-Type application/json
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 
 REQUEST PAYLOAD:
 
@@ -176,7 +176,7 @@ METHOD: POST
 
 URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db/
 
-HEADERS: Content-Type application/json
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 
 REQUEST PAYLOAD:
 
@@ -212,7 +212,7 @@ METHOD: GET
 
 URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db?table=auth_table&order=username&where=username,edmond&size=2
 
-HEADERS:
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 
 REQUEST PAYLOAD: passed as part of the URL
 
@@ -249,7 +249,7 @@ METHOD: PATCH
 
 URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db
 
-HEADERS: Content-Type application/json
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 
 REQUEST PAYLOAD:
 {  
@@ -289,7 +289,7 @@ METHOD: DELETE
 
 URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db
 
-HEADERS: Content-Type application/json
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 
 REQUEST PAYLOAD:
 {  
@@ -329,6 +329,70 @@ Again whenever you create a service with the management console a scripting colu
 - Rules are run each time you make a call to any of the CRUD actions
 - Each Service has a Rules section.
 - Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service)#scripts
+
+<a name="rpc"></a>
+## RPC Calls
+DevLess Services come with in built functionalities that can be accessed via RPC calls. 
+some of these functionalities include Authentication (SignUp, Login, profile ..).
+Also Every new service created has an [ActionClass](/docs/{{version}}/service)#actionclass which is basically a class within which you can add methods. These methods are then accesible
+over RPC.
+
+## Request structure
+
+```
+METHOD: POST
+
+URL_STRUCTURE: http://localhost:8000/api/v1/service/service_name/rpc?action=method
+
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
+
+REQUEST PAYLOAD:
+{
+      "jsonrpc": "2.0",
+      "method": "service_name",
+      "id": "1000",
+      "params": []
+}      
+
+```
+
+## SignUp call via RPC. 
+
+```
+METHOD: POST
+
+URL_STRUCTURE: http://localhost:8000/api/v1/service/devless/rpc?action=signUp
+
+HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
+
+REQUEST PAYLOAD:
+{
+      "jsonrpc": "2.0",
+      "method": "devless",
+      "id": "1000",
+      "params": ["moon@gmail.com", "password","username","03043355646","fname","lname","null"]
+}      
+
+RESPONSE PAYLOAD: {
+  "status_code": 637,
+  "message": "Got RPC response successfully",
+  "payload": {
+    "jsonrpc": "2.0",
+    "result": {
+      "profile": {
+        "username": "jeff",
+        "first_name": "fname",
+        "last_name": "lname",
+        "phone_number": "03043355646",
+        "id": 42,
+        "email": "moon@gmail.com"
+      },
+      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IntcInRva2VuXCI6XCIzMmJkOTgwNmQxN2U5YWZjN2UwYjMzMzU0MmQ5NTJjNlwifSI.GEdumRzlZHGPv5Do5DrezjHX_llLRoFUI1_u32J0vE0"
+    },
+    "id": "1000"
+  }
+}
+```
 
 <a name="Lean-View"></a>
 

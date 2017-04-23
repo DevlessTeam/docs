@@ -328,13 +328,13 @@ Again whenever you create a service with the management console a scripting colu
 ## Accessing rules
 - Rules are run each time you make a call to any of the CRUD actions
 - Each Service has a Rules section.
-- Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service)#scripts
+- Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service#scripts)
 
 <a name="rpc"></a>
 ## RPC Calls
 DevLess Services come with in built functionalities that can be accessed via RPC calls. 
 some of these functionalities include Authentication (SignUp, Login, profile ..).
-Also Every new service created has an [ActionClass](/docs/{{version}}/service)#actionclass which is basically a class within which you can add methods. These methods are then accesible
+Also Every new service created has an [ActionClass](/docs/{{version}}/service#actionclass) which is basically a class within which you can add methods. These methods are then accesible
 over RPC.
 
 ## Request structure

@@ -342,7 +342,7 @@ over RPC.
 ```
 METHOD: POST
 
-URL_STRUCTURE: http://localhost:8000/api/v1/service/service_name/rpc?action=method
+URL_STRUCTURE: http://localhost:8000/api/v1/service/service_name/rpc?action=method_name
 
 HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
 

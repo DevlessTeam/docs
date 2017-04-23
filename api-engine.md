@@ -10,7 +10,8 @@
   - [Query data from  table](#Query-data-from-table)
   - [Updating data in table](#Updating-data-to-table)
   - [Delete data from table](#Delete-data-from-table)
-  - [Accessing scripts](#Accessing-scripts)
+  - [Accessing Rules](#Accessing-scripts)
+  - [RPC Calls](#rpc)
   - [Lean View](#Lean-View)
 
 <a name="DevLess-API-Engine(DAE)"></a>
@@ -323,11 +324,11 @@ We have gone through a basic CRUD operation using the API engine. The next thing
 Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete API engine with the management console download it from [DevLess complete](#devlesscomplete). Another way you can add a script is doing so with a database client
 
 
-<a name="Accessing-scripts"></a>
-## Accessing scripts
-- Scripts are run each time you make a call to any of the database resources
-- Each Service has a script assigned to it  
-- Detailed explanation of how to use scripts can be found at [Services](/docs/{{version}}/service)#scripts
+<a name="Accessing-rules"></a>
+## Accessing rules
+- Rules are run each time you make a call to any of the CRUD actions
+- Each Service has a Rules section.
+- Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service)#scripts
 
 <a name="Lean-View"></a>
 

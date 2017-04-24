@@ -175,6 +175,24 @@ EG.
 
 ```
 
+
+ 
+ <a name="notify"></a>
+  ## Notify
+  **Notify**: This provides the developer ways to know the state of calls made to the DevLess backend, 
+ You may have noticed it being used in the ealier examples 
+ There are three types of notifiers available. Namely 
+- **'dv-notify'** This give debugging info right from the backend
+- **'dv-notify-success'** This class causes a the tag to disappear and only show on successful action performed. 
+- **'dv-notify-failed'** This class will only show up if the call to the DevLess backend returns false response. 
+
+EG.
+```
+<div class="dv-notify"></div>
+<div class="dv-notify-success">This Div will only show with this message if an action is successful</div>
+<div class="dv-notify-failed">This Div will only show with this message if an action is fails</div>
+
+```
 <a name="watch"></a>
   ## Video Tutorial
   I have prepared video tutorial demonstrating the use of the `HTML SDK` [here](#)

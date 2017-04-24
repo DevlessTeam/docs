@@ -52,4 +52,4 @@ With a call to this method, the DevLess instance will render the users token inv
 
 <a name="token"></a>
 ## Authentication Tokens
-The DevLess framework generates a JWT(JSON Web Token) for users who successfully login to the instance. The token is returned to the DevLess instance within the headers under the key name ``devless_user_token``. A token is valid for an hour, The client is will have to request another token if they are dormant for an hour.
+The DevLess framework generates a JWT(JSON Web Token) for users who successfully login to the instance. The token is returned to the DevLess instance within the headers under the key name ``devless-user-token``. A token is valid for an hour, The client is will have to request another token if they are dormant for an hour.

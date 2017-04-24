@@ -328,7 +328,7 @@ Again whenever you create a service with the management console a scripting colu
 ## Accessing rules
 - Rules are run each time you make a call to any of the CRUD actions
 - Each Service has a Rules section.
-- Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service#scripts)
+- Detailed explanation of how to use Rules can be found at [Services](/docs/{{version}}/service#rules)
 
 <a name="rpc"></a>
 ## RPC Calls

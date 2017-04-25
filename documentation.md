@@ -11,7 +11,7 @@
     - [A Simple Blog Engine ](/docs/{{version}}/blog-engine)
     
 - SDKs
-    - [HTML SDKs](/docs/{{version}}/html-sdk)
+    - [HTML SDKs (Getting data from DevLess the easiest way)](/docs/{{version}}/html-sdk)
     - [SDKs](/docs/{{version}}/SDKs)
     
     

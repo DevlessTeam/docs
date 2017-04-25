@@ -6,6 +6,7 @@
 - [Update Record](#update)
 - [Delete Data](#delete)
 - [Notification](#notify)
+- [Authentication(Signnup/Login)](#auth)
 - [Video Tutorial](#watch)
 
 
@@ -193,6 +194,66 @@ EG.
 <div class="dv-notify-failed">This Div will only show with this message if an action is fails</div>
 
 ```
+
+
+<a name="auth"></a>
+## Authentication
+The HTML SDK allows you to Signup, Login, Get Profile, Edit your profile and logout 
+
+EG.
+## Signup
+```
+  <form class="dv-signup" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="email" name="email" placeholder="Enter email here">
+    <input type="number" name="phone_number" placeholder="Enter phone number here">
+    <input type="text" name="first_name" placeholder="Enter first name here">
+    <input type="text" name="last_name" placeholder="Enter last name here">
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">SignUP</button>
+  </form>
+
+```
+## Login
+```
+  <form class="dv-login" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="email" name="email" placeholder="Enter email here">
+    <input type="number" name="phone_number" placeholder="Enter phone number here">
+    <!-- Choose between username, phone_number and email-->
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">SignUP</button>
+  </form>
+```
+## Get Profile
+```
+  <div class="dv-profile">
+    <span class="var-username"></span>
+    <span class="var-email"></span>
+    <span class="var-firstname"></span>
+    <span class="var-last_name"></span>
+    <span class="var-phone_number"></span>
+  </div>
+```
+## Update Profile 
+
+```
+  <form class="dv-updateProfile">
+    <input type="text" name="username">
+    <input type="email" name="email">
+    <input type="text" name="firstname">
+    <input type="text" name="lastname">
+    <input type="number" name="phone_number">
+    <input type="password" name="password">
+    <button type="submit">Update profile</button>
+  </form>
+```
+
+## Logout
+```
+  <button type="dv-logout" action="/home">Logout</button>
+```
+
 <a name="watch"></a>
   ## Video Tutorial
   I have prepared video tutorial demonstrating the use of the `HTML SDK` [here](#)

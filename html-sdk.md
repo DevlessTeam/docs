@@ -6,7 +6,7 @@
 - [Update Record](#update)
 - [Delete Data](#delete)
 - [Notification](#notify)
-- [Authentication(Signnup/Login)](#auth)
+- [Authentication(Signnup/Signin)](#auth)
 - [Video Tutorial](#watch)
 
 
@@ -75,12 +75,14 @@ and so you are required to make the field type for this `base64`
     <th>Firstname</th>
     <th>Lastname</th> 
     <th>Age</th>
+    <th>Profile Image</th>
   </tr>
   <tbody class="dv-get-all:profiles:details">
   <tr>
     <td class="var-firstname">Eve</td>
     <td class="var-lastname">Jackson</td> 
     <td class="var-age">94</td>
+    <td><img class="var-image" src="image/var-image"  width="20" height="20" \>...</td>
   </tr>	
   </tbody>
   
@@ -197,7 +199,7 @@ EG.
 ```
 ## Login
 ```
-  <form class="dv-login" action="/dasboard">
+  <form class="dv-signin" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
     <input type="email" name="email" placeholder="Enter email here">
     <input type="number" name="phone_number" placeholder="Enter phone number here">

@@ -14,7 +14,7 @@
     - [HTML SDK](/docs/{{version}}/html-sdk)
     - [SDKs](/docs/{{version}}/SDKs)
     
--internals
+- internals
     - [DataStore](/docs/{{version}}/datastore)  
     - [Api Engine](/docs/{{version}}/api-engine)
 

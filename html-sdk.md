@@ -189,9 +189,9 @@ EG.
   <form class="dv-signup" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
     <input type="email" name="email" placeholder="Enter email here">
-    <input type="number" name="phone_number" placeholder="Enter phone number here">
-    <input type="text" name="first_name" placeholder="Enter first name here">
-    <input type="text" name="last_name" placeholder="Enter last name here">
+    <input type="number" name="phonenumber" placeholder="Enter phone number here">
+    <input type="text" name="firstname" placeholder="Enter first name here">
+    <input type="text" name="lastname" placeholder="Enter last name here">
     <input type="password" name="password" placeholder="Enter password here">
     <button type="submit">SignUP</button>
   </form>
@@ -202,7 +202,7 @@ EG.
   <form class="dv-signin" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
     <input type="email" name="email" placeholder="Enter email here">
-    <input type="number" name="phone_number" placeholder="Enter phone number here">
+    <input type="number" name="phonenumber" placeholder="Enter phone number here">
     <!-- Choose between username, phone_number and email-->
     <input type="password" name="password" placeholder="Enter password here">
     <button type="submit">SignUP</button>

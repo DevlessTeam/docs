@@ -2,8 +2,8 @@
     "plugins": ["youtube","edit-link", "custom-favicon", "mixpanel", "noembed"],
     "pluginsConfig": {
     "edit-link": {
-    "base": "#",
-    "label": "#"                                                                
+    "base": "https://github.com/DevlessTeam/docs",
+    "label": "Seen something that can be improved?"                                                                
 },
         "favicon": "images/favico.png",
         "mixpanel": {

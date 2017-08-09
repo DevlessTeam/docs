@@ -1,32 +1,35 @@
-# DevLess Official Bible :blue_book:
-**DevLess** is an open source backend as a service for mobile web and IOT application developers to rapidly develop their backend services and generate api endpoints with ease. You can check it out @ **[DevLess](https://devless.io)**
+## **INTRODUCTION**
 
-__**Documentation Format **__
+For the 25+ years the web has existed, we have seen it evolve to become more than a publishing platform. Now we see the web supporting vast majority of businesses. We have also seen the tools surrounding the web evolve as well.
 
-The key words **“MUST”**, **“MUST NOT”**, **“REQUIRED”**, **“SHALL”**, **“SHALL NOT”**, **“SHOULD”**, **“SHOULD NOT”**, **“RECOMMENDED”**, **“MAY”**, and **“OPTIONAL”** in this document are to be interpreted as described in [RFC 2119](https://tools.ietf.org/html/rfc2119).
+More and more businesses are moving online and the demand for solid and advanced tools to put these businesses online is on the rise. Also as developers we are flooded with more generic and open tools to build online platforms. These tools range from SDKs to web frameworks that can be used to build anything that lives on the web, most hardly focus on providing right out of the box what businesses need to bootstrap their online platforms. In short we keep building everything from the ground up for each platform we build and DevLess looks to change that.
 
-**Content strucuture:**
-DevLess seeks to make building software applications really easy and this shouldn't come at the cost of going through every part of the documentation. The structure below is put in place to make looking up specific topics a breeze.
-* The top of the document must have the title written out boldly (# in markdown)
-* You must have on the next line hyperlinked content menu.
- * The parts of the documentations must have a heading or title (## markdown ) without hyperlinks.
- * Any references used within the documentation body must have a reference to the original part of the documentation.
-* You may get started with the structure of the documentation using the sample.md
+We pick up the challenge and acknowledge the fact that:
 
-**Rules:**
-* links must be provided to external tools used in demonstrations and descriptions.
-* keywords may be highlighted to emphasis.
-* Any tool introduced that has nothing to do with **DevLess** must be stated as such and clearly made known to the reader that is based on opinions and or preference.
+* Every business comes with unique requirements.
+* Although the underlying technology matters, business comes first.
+* The best tools provides harmony between developers and business owners.
 
-**Highlighting**
-* Use highlights to  emphasis.
+With these assumptions, we set out to build [DevLess](https://devless.io) an open source framework for bootstrapping your online business without the bells and whistles.
 
-**Hyperlinking**
-* Should be used primarily for moving across the documentation
-* You must add an hyperlink reference to your doc file within the documentation markdown, this is used in the sidebar of the documentation renderer to provide easy navigation to users of the doc
-**Context and Addressing**
-* As the writer of the documentation you must try as much as possible to clearly state  your intentions and provide  complete and comprehensive demonstrations.
-* Readers of the documentation may be addressed with the pronoun **"you"**
-* A writer may address him  or her self as **"we"** and only identifying one's self where necessory.
+[**DevLess**](https://devless.io/ "https://devless.io/") is an open source back-end as a service for mobile, web and IOT application developers to rapidly develop their back-end services and generate API endpoints with ease. You can check it out @ [https://devless.io](https://devless.io "https://devless.io").
 
-**NB:** : Most parts of the this doc is subject to change over time so carefully review before commiting to the documentation is imperative.
+All that is required of the developer is to write the front-end code \([JavaScript](https://www.javascript.com/ "https://www.javascript.com/"), [Android](https://developer.android.com "https://developer.android.com")\[[Java](https://java.com/en/download/ "https://java.com/en/download/")\], iOS\[[Swift](https://swift.org/ "https://swift.org/")/[Objective C](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html "https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html")\], etc.\) to consume the API endpoints. If the developer's required feature isn't available, he or she can build the module \(service with a lean view\) and share with the world through the Service Hub.
+
+#### Questions and support
+
+Follow or join these channels for questions and support, and to keep updated on latest releases and announcements.
+
+| [slack](https://slack.devless.io) | [Twitter](https://www.twitter.com/devlessio) |
+| :---: | :---: |
+| [![](https://raw.githubusercontent.com/gliechtenstein/images/master/slack_smaller.png)](https://slack.devless.io) | [![](https://raw.githubusercontent.com/gliechtenstein/images/master/twitter_smaller.png)](https://www.twitter.com/devlessio) |
+| [Join Now&gt;](https://slack.devless.io "https://slack.devless.io") | [Follow&gt;](https://www.twitter.com/devlessio) |
+
+#### How to contribute
+
+**Please checkout the **[**Contribute**](https://guides.github.com/activities/contributing-to-open-source/ "https://guides.github.com/activities/contributing-to-open-source/")** guide on how to contribute.** No contribution is too small.
+
+* We would love to hear from you. email us=&gt; [team@devless.io](mailto:team@devless.io)
+
+
+

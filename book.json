@@ -1,0 +1,16 @@
+{
+    "plugins": ["youtube","edit-link", "custom-favicon", "mixpanel", "noembed"],
+    "pluginsConfig": {
+    "edit-link": {
+    "base": "#",
+    "label": "#"                                                                
+},
+        "favicon": "images/favico.png",
+        "mixpanel": {
+            "token": "11449db5c43d7abda6be9383fab1d52c"
+        }
+    },
+    "variables": {
+        "version": "1.3.0"
+    }
+}

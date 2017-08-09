@@ -3,7 +3,7 @@
     "pluginsConfig": {
     "edit-link": {
     "base": "https://github.com/DevlessTeam/docs",
-    "label": "Edit the Docs?"                                                                
+    "label": "Edit the Docs"                                                                
 },
         "favicon": "images/favico.png",
         "mixpanel": {

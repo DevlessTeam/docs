@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Quick Start](quick-start.md)
 * [Why DevLess?](why-devless.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Getting started with DevLess](building-an-app-with-devless.md)
@@ -18,5 +19,5 @@
 * [List of Rules Assertions](list-of-rules-assertions.md)
 * [DevLess Status Codes](devless-status-codes.md)
 * [API Engine](api-engine.md)
-* [All about modules](all-about-modules.md)
+* Quick Start
 

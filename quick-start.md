@@ -1,0 +1,44 @@
+# Quick Start 
+
+Devless is a tool which helps you develop applications easier, by not having to worry about setting up a backend. In these N steps, we will set up a contact list application, with a minimal amount of coding. 
+
+#### Step 1: Install docker
+
+We will be using docker make running devless as seemless as possible. Docker is a widely used tool to package and run software on different platforms.
+
+If you already have docker installed, great! If not, head out to [https://www.docker.com/get-docker/](https://www.docker.com/get-docker/) and follow the installation links for your platform. If you are using a package manager, you can likely also get it from there.
+
+#### Step 2: Start up devless
+
+This is the first and only step requiring a command prompt:
+
+`docker run -p 4545:80 eddymens/devless`
+
+Docker will download devless with it's dependencies. Depending on your internet connection, this can take a while.
+
+When done downloading, you can open [http://localhost:4545](http://localhost:4545) in your web browser of choice. You are running your own instance of devless! Register as an admin by entering your email & password:
+
+![](/assets/signin.png)
+
+Later, you can shut down devless by hitting \`ctrl+c\` in the command prompt where you ran the docker command.
+
+#### Step 3: Set up a service 
+
+A service in devless is a set of functionality that goes together. For example, it could be a contact book, a blog or even something larger as a web shop. We will start easy, with creating a \*\*contact list\*\*. Hit the big, friendly, "create a service" button.
+
+In the following dialog, you only need to fill in the **name and description**. Enter "Contacts", and enter a suiting description. Then, hit create.
+
+#### Step 4: Set up a data table
+
+A table is a place where data can be stored. It acts just like a table in e.g. Excel.Set up a table by hitting the new table button:
+
+![](/assets/new_table_button.png)
+
+We will create two fields, one for \*\*name\*\* and one for \*\*email\*\*. A field is like a column in a table. It has a name and a type. The types are useful, since it allows devless to do automatic validation and optimization for you.
+
+In the table creation form hit the "add a field" button. Add a field called \`name\`, with type \`TEXT\`. Leave the other options at their default values. Add another field field called \`email\`, with type \`EMAIL\`. Again, leave the other options as they are. Then, hit the create table button.
+
+![](/assets/create_table.png)
+
+
+

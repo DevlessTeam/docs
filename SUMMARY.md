@@ -19,5 +19,4 @@
 * [List of Rules Assertions](list-of-rules-assertions.md)
 * [DevLess Status Codes](devless-status-codes.md)
 * [API Engine](api-engine.md)
-* Quick Start
 

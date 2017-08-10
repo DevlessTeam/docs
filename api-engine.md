@@ -6,6 +6,7 @@
 * [DevLess API Engine\(DAE\)](#devless-api-enginedae)
 
 * [Features of the API engine](#features-of-the-api-engine-include-)
+
 * [Structure of the Authentication Service](#structure-of-the-authentication-service)
 * [Creating a table](#creating-the-table)
 * [Adding data to table](#adding-data-to-table)
@@ -14,8 +15,6 @@
 * [Delete data from table](#delete-data-from-table)
 * [Accessing Rules](#accessing-rules)
 * [RPC Calls](#rpc-calls)
-
-
 
 ## DevLess API Engine\(DAE\)
 

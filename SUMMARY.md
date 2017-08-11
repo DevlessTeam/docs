@@ -1,15 +1,48 @@
 # Summary
 
-* [Introduction](README.md)
+* [Introduction](introduction.md)
 * [Quick Start](quick-start.md)
+* [Interacting With DevLess](interacting.md)
+  * [Html SDK](http_sdk.md)
+  * [Android SDK](android_sdk.md)
+  * [JavaScript SDK](javascript_sdk.md)
+  * [REST API](http_api.md)
+* [Managing Data](managing_data.md)
+  * [Data Model](data_model.md)
+  * [Table relationship](relating-tables.md)
+  * [Manipulating Data](rules_engine.md)
+  * [Rules Reference](rules_reference.md)
+* [Administration](administrating.md)
+  * [Securing your data on DevLess](securing-your-data-on-devless.md)
+  * [Gain direct access to your database](gain-direct-access-to-your-database.md)
+  * [Terminal Access within DevLess](terminal-access-within-devless.md)
+* [Extending DevLess](extending.md)
+  * [Services](services.md)
+  * [Workflow](workflow.md)
+  * [API reference](api_ref.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* [Philosophy](README.md)
 * [Why DevLess?](why-devless.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Getting started with DevLess](building-an-app-with-devless.md)
-* [Table relationship](relating-tables.md)
 * [Manipulate data before storing ](manipulate-data-before-storing.md)
-* [Securing your data on DevLess](securing-your-data-on-devless.md)
-* [Gain direct access to your database](gain-direct-access-to-your-database.md)
-* [Terminal Access within DevLess](terminal-access-within-devless.md)
+* 
 * [Change the default DevLess output](change-the-default-statuscode-message-and-payload-from-devless.md)
 * [Flow Control in Rules](flow-control-in-rules.md)
 * [Extending your app with services](calling-on-services-within-rules.md)

@@ -14,7 +14,9 @@ Next click this button.
 If you don't have an Heroku account, follow the signup process on Heroku.
 
 Next click the view button to get to DevLess.
+
 <img src="assets/view_devless.png" />
+
 #### Step 2: Setting up on Heroku 
 
 

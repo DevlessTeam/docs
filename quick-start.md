@@ -2,12 +2,15 @@
 
 Devless is a tool which helps you develop applications easier, by not having to worry about setting up a backend. In these N steps, we will set up a contact list application, with a minimal amount of coding. 
 
-#### Step 1: Install docker
+#### Step 1: Deploy DevLess to Heroku 
 
+Heroku is a platform as a service that makes hosting web projects easy. You will need an Heroku account to be able to deploy. You won't be charged, since this will fall into [Heroku's free tier](https://blog.heroku.com/heroku-free-dynos). Click the button below to get started. 
 <a href="https://elements.heroku.com/buttons/devlessteam/dv-php-core" class="heroBtn">
                                 <img src="assets/get_started.svg" alt="Deploy">
                             </a>
-#### Step 2: Start up devless
+
+
+#### Step 2: Setting up on Heroku 
 
 This is the first and only step requiring a command prompt:
 

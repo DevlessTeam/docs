@@ -7,7 +7,6 @@
   * [SDKs](sdks.md)
   * [REST API](http_api.md)
 * [Managing Data](managing_data.md)
-  * [Data Model](data_model.md)
   * [Table relationship](relating-tables.md)
   * [Manipulating Data](rules_engine.md)
   * [Rules Reference](rules_reference.md)

@@ -20,23 +20,6 @@
   * [Services](services.md)
   * [Workflow](workflow.md)
   * [API reference](api_ref.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * [Philosophy](README.md)
 * [Why DevLess?](why-devless.md)
 * [Setting up DevLess](how-to-setup-devless.md)

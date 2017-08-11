@@ -4,10 +4,9 @@ Devless is a tool which helps you develop applications easier, by not having to 
 
 #### Step 1: Install docker
 
-We will be using docker make running devless as seemless as possible. Docker is a widely used tool to package and run software on different platforms.
-
-If you already have docker installed, great! If not, head out to [https://www.docker.com/get-docker/](https://www.docker.com/get-docker/) and follow the installation links for your platform. If you are using a package manager, you can likely also get it from there.
-
+<a href="https://elements.heroku.com/buttons/devlessteam/dv-php-core" class="heroBtn">
+                                <img src="assets/get_started.svg" alt="Deploy">
+                            </a>
 #### Step 2: Start up devless
 
 This is the first and only step requiring a command prompt:

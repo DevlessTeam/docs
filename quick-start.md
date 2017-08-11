@@ -8,9 +8,9 @@ Heroku is a platform as a service that makes hosting web projects easy. You will
 <a href="https://elements.heroku.com/buttons/devlessteam/dv-php-core" class="heroBtn">
                                 <img src="assets/get_started.svg" alt="Deploy">
                             </a>
-
-
+<img src="assets/deploy_heroku.png" alt="deploy_heroku" />
 #### Step 2: Setting up on Heroku 
+
 
 This is the first and only step requiring a command prompt:
 

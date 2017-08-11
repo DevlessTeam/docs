@@ -17,20 +17,11 @@ Next click the view button to get to DevLess.
 
 <img src="assets/view_devless.png" />
 
-#### Step 2: Setting up on Heroku 
 
-
-This is the first and only step requiring a command prompt:
-
-`docker run -p 4545:80 eddymens/devless`
-
-Docker will download devless with it's dependencies. Depending on your internet connection, this can take a while.
-
-When done downloading, you can open [http://localhost:4545](http://localhost:4545) in your web browser of choice. You are running your own instance of devless! Register as an admin by entering your email & password:
+ Register as an admin by entering your email & password:
 
 ![](/assets/signin.png)
 
-Later, you can shut down devless by hitting \`ctrl+c\` in the command prompt where you ran the docker command.
 
 #### Step 3: Set up a service 
 

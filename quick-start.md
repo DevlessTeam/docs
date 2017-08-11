@@ -8,7 +8,13 @@ Heroku is a platform as a service that makes hosting web projects easy. You will
 <a href="https://elements.heroku.com/buttons/devlessteam/dv-php-core" class="heroBtn">
                                 <img src="assets/get_started.svg" alt="Deploy">
                             </a>
+Next click this button.
 <img src="assets/deploy_heroku.png" alt="deploy_heroku" />
+
+If you don't have an Heroku account, follow the signup process on Heroku.
+
+Next click the view button to get to DevLess.
+<img src="assets/view_devless.png" />
 #### Step 2: Setting up on Heroku 
 
 

@@ -27,7 +27,7 @@ Next click the view button to get to DevLess.
 
 A service in devless is a set of functionality that goes together. For example, it could be a contact book, a blog or even something larger as a web shop. We will start easy, with creating a \*\*contact list\*\*. Hit the big, friendly, "create a service" button.
 
-In the following dialog, you only need to fill in the **name and description**. Enter "Contacts", and enter a suiting description. Then, hit create.
+In the following dialog, you only need to fill in the **name and description**. Enter "contacts" as the name, and enter a suiting description. Then, hit create.
 
 #### Step 4: Set up a data table
 
@@ -35,11 +35,8 @@ A table is a place where data can be stored. It acts just like a table in e.g. E
 
 ![](/assets/new_table_button.png)
 
-We will create two fields, one for \*\*name\*\* and one for \*\*email\*\*. A field is like a column in a table. It has a name and a type. The types are useful, since it allows devless to do automatic validation and optimization for you.
+Let's create a table named **people**. We will create two fields, one for \*\*name\*\* and one for \*\*email\*\*. A field is like a column in a table. It has a name and a type. The types are useful, since it allows DevLess to do automatic validation and optimization for you.
 
 In the table creation form hit the "add a field" button. Add a field called \`name\`, with type \`TEXT\`. Leave the other options at their default values. Add another field field called \`email\`, with type \`EMAIL\`. Again, leave the other options as they are. Then, hit the create table button.
 
 ![](/assets/create_table.png)
-
-
-

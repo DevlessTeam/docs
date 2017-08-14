@@ -32,8 +32,39 @@ For example, using the following markup we can add people with name & email to t
     <button type="submit">Submit</button>
 </form>
 ```
-The `dv-notify-success` and `dv-notify-failed` classes is a means of getting notifications about if the operation succeeded or not. The `dv-notify-success` element will be hidden until an the person was successfully added, while `dv-notify-failed` will be hidden until something goes wrong. Examples are connection failures or incorrect input. 
+The `dv-notify-success` and `dv-notify-failed` classes is a means of getting notifications about if the operation succeeded or not. The `dv-notify-success` element will be hidden until an the person was successfully added, while `dv-notify-failed` will be hidden until something goes wrong. For example, connection failures or incorrect input.
 
 ## Listing data 
 
+In order to list data, you can use the `dv-get-all:SERVICE:TABLE` class. This makes the HTML SDK repeat the inner HTML for all entries in the table. You can use the `var-NAME` class to populate that element with that entry's value for the column referred to by the `NAME`.
 
+For example, we can create a list of all our contacts like this:
+
+```html
+<ul class="dv-get-all:contacts:people">
+    <li>
+        <span class="var-name"></span>:
+        <span class="var-email"></span>
+    </li>
+</ul> 
+
+```
+The classes can be used on any kind of html tag. This makes it trivial to layout your webpage any way you want it.
+
+## Selecting Data
+
+Data can be selected based on any column. This is done by using the `dv-where` prefix to the `get-all` class. For example, if I wanted to select all contacts with the name of 'joe', we would do it like this:
+```html
+<ul class="dv-where:name:joe-get-all:contacts:people">
+    <li>
+        <span class="var-name"></span>:
+        <span class="var-email"></span>
+    </li>
+</ul> 
+
+```
+You can use any of the fields in the row to do this, just replace the `name` and `joe` part with the column name and the value.
+
+## Deleting data
+
+Using our previous data listing as the base, 

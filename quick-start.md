@@ -31,7 +31,7 @@ In the following dialog, you only need to fill in the **name and description**. 
 
 #### Step 4: Set up a data table
 
-A table is a place where data can be stored. It acts just like a table in e.g. Excel.Set up a table by hitting the new table button:
+A table is a place where data can be stored. It acts just like a table in e.g. Excel. Set up a table by hitting the new table button:
 
 ![](/assets/new_table_button.png)
 

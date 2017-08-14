@@ -25,8 +25,8 @@ For example, using the following markup we can add people with name & email to t
 
 ```html
 <div class="dv-notify-success" style="color: green">Person added</div>
-<div class="dv-notify-failed" style="color: red">Failed to person</div>
-<form class="dv-add-oneto:profiles:details">
+<div class="dv-notify-failed" style="color: red">Failed to add person</div>
+<form class="dv-add-oneto:contacts:people">
     <input type="text" name="name" placeholder="Name"><br>
     <input type="text" name="email" placeholder="Email"><br>
     <button type="submit">Submit</button>
@@ -34,4 +34,6 @@ For example, using the following markup we can add people with name & email to t
 ```
 The `dv-notify-success` and `dv-notify-failed` classes is a means of getting notifications about if the operation succeeded or not. The `dv-notify-success` element will be hidden until an the person was successfully added, while `dv-notify-failed` will be hidden until something goes wrong. Examples are connection failures or incorrect input. 
 
-## 
+## Listing data 
+
+

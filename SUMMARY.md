@@ -15,6 +15,7 @@
   * [Gain direct access to your database](gain-direct-access-to-your-database.md)
   * [Terminal Access within DevLess](terminal-access-within-devless.md)
 * [Extending DevLess](extending.md)
+  * [Dev Setup](dev-setup.md)
   * [Modules](services.md)
   * [Workflow](workflow.md)
   * [API reference](api_ref.md)

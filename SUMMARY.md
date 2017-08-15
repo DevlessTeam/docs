@@ -6,6 +6,7 @@
   * [Html Kit](html_sdk.md)
   * [SDKs](sdks.md)
   * [REST API](http_api.md)
+  * [DevLess Status Codes](devless-status-codes.md)
 * [Managing Data](managing_data.md)
   * [Table relationship](relating-tables.md)
   * [Manipulating Data](rules_engine.md)
@@ -29,7 +30,5 @@
 * [Connecting DevLess to your Android app](connecting-devless-to-your-android-app.md)
 * [SDKs](sdks.md)
 * [List of keywords in Rules](list-of-rules.md)
-* [List of Rules Assertions](list-of-rules-assertions.md)
-* [DevLess Status Codes](devless-status-codes.md)
 * [API Engine](api-engine.md)
 

@@ -6,7 +6,7 @@
 ## Performing CRUD actions 
 {{ 'https://www.youtube.com/embed/XYchukmHe_U' | noembed}}
 
-## Authenticating 
+## Authentication 
 {{ 'https://www.youtube.com/watch?v=kddCS4vKXro' | noembed}}
 
 

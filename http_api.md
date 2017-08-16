@@ -123,6 +123,8 @@ Again, the `status_code` is one of the codes defined in [DevLess Status Codes](d
 
 ## CRUD
 
+Lets say that we have the same simple table as in the 
+
 ### Create - Adding data to a table
 
 ```js

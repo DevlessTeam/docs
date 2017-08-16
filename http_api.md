@@ -123,69 +123,84 @@ Again, the `status_code` is one of the codes defined in [DevLess Status Codes](d
 
 ## CRUD
 
-Lets say that we have the same simple table as in the 
+Lets say that we have set up a service named `contacts`, with a table named `people`. The table has one column for `name` and one for `email`. 
 
 ### Create - Adding data to a table
 
+We can add data to the table, by using the `POST` verb and sending in JSON data:
+
+```
+$ curl -L -XPOST \
+  -H "Content-type: application/json" \
+  -H "Devless-token: $DEVLESS_\
+  "http://$DEVLESS_URL/api/v1/service/contacts/db" -d@- <<EOF
+{
+  "resource":[{
+    "name":"people",
+    "field":[{
+      "name":"joe",
+      "email":"joe@example.com"
+    }]
+  }]
+}
+EOF
+```
+Note that "contacts", the name of the service, becomes part of the URL. The `name` param indicates which table to store data in. 
+
+This will give you a response looking something like this:
+
 ```js
-METHOD: POST
-
-URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db/
-
-HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
-
-REQUEST PAYLOAD:
-
 {
-"resource":[
-{
-"name":"auth_table",
-"field":[
-
-{
-"username":"Edmond",
-"password":"password"
+  "status_code": 609,
+  "message": "Data has been added to people table successfully",
+  "payload": {
+    "entry_id": 7
+  }
 }
-]
-}
+```
+Again, the status code corresponds to one of the [Status Codes](devless-status-codes.md), `609` indicates that data was added successfully. You also get back the `id` of the created resource. This is an automatically generated unique identifier for your resource.
 
-]
-}
+## Read - Query data from table
 
-RESPONSE PAYLOAD: {"status_code":609,"message":"data has been added to table successfully","payload":[]}
+Querying data can be done by using the `GET` verb on the same path as when adding data. This can be combined with some very powerful query parameters:
+
+```bash
+curl -L -H "Devless-token: $DEVLESS_TOKEN"\
+  "http://$DEVLESS_URL/api/v1/service/Contacts/db?table=people&orderBy=email&where=name,joe&size=2"
 ```
 
-We will repeat the above by replacing the name`Edmond`with`Charles`and keeping the password same. So now we have two records in auth\_table.
-
-Now we can query our table
-
-## Query data from table
-
+This will get you a response looking something like this:
 ```js
-METHOD: GET
-
-URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/db?table=auth_table&order=username&where=username,edmond&size=2
-
-HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
-
-REQUEST PAYLOAD: passed as part of the URL
-
-RESPONSE PAYLOAD:
 {
-"status_code": 625,
-"message": "Got response successfully",
-"payload": {
-"0": {
-"id": 1,
-"username": "Edmond",
-"password": "$2y$10$NO2Lpw5hYxoAtQ7EM.D4peWAhAWMjrDKgA4/0.bjJHnVuh1UPT0XS"
-},
-"related": []
-}
+  "status_code": 625,
+  "message": "Got response successfully",
+  "payload": {
+    "results": [
+      {
+        "id": 3,
+        "devless_user_id": 1,
+        "email": "joe@example.com",
+        "name": "joe"
+      },
+      {
+        "id": 8,
+        "devless_user_id": 1,
+        "email": "joe@gmail.com",
+        "name": "joe"
+      }
+    ],
+    "properties": {
+      "count": 4,
+      "current_count": 2
+    }
+  }
 }
 ```
 
 Now we query the auth\_table using the get parameters provided by the engine.
+
+| **STATUS CODE ** | DESCRIPTION | EXPLANATION |
+| :--- | :---: | :---: |
 
 * The`table`parameter is used to provide the table name.
 * The`orderBy`parameter makes it possible to arrange the data in descending order based on the field provided.
@@ -193,7 +208,7 @@ Now we query the auth\_table using the get parameters provided by the engine.
 * The`orWhere`parameter allows for quering data that might contain a keyword.`eg:&orWhere=name,edmond`.
 * The`size`parameter is used to set the total number of records to be returned.
 * The`offset`parameter sets an offset on the record.
-* The`search`parameter allows searching columns of a table that might contain a keyword.`eg:&search=name,edmond`.
+* The`search`parameter allows searching columns of a table that might contain a keyword, e.g.: `&search=name,edmond`.
 * The `greaterThan` parameter allows query for records who's column value is greater than a certain number `eg:&greaterThan=age,18`
 * The `lessThan` parameter allows query for records who's column value is less than a certain number `eg:&lessThan=age,18`
 * The `greaterThanEqual` parameter allows query for records who's column value is greater than or equals a certain number `eg:&greaterThanEqual=age,18`

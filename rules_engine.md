@@ -18,4 +18,31 @@ You can change the endpoint access rules going to your DevLess admin panel, and 
 
 ### Securing using the rules engine
 
-DevLess comes with a rules engine. The rules engine can be used to apply table-specific grants, and to 
+DevLess comes with a rules engine. The rules engine can be used to apply table-specific grants for reading or writing. You can access the rules which applies to your service in the DevLess admin UI. Under services, select your service and then select the "rules" tab.
+
+Here you will see something like this:
+
+```php
+ -> beforeQuerying()
+ -> beforeUpdating()
+ -> beforeDeleting()
+ -> beforeCreating()
+ ```
+
+Lets take a look at how to allow only admins to create entries in the `people` table. Start with setting the endpoint access rule for creating data to `PRIVATE`. We can now grant admins only access to creating data in the `people` table:
+
+```php
+-> beforeCreating()->onTable('people')->grantOnlyAdminAccess()
+```
+
+We can also make viewing the people table public:
+```php
+-> beforeQuerying()->onTable('people')->allowExternalAccess()
+```
+
+### Video tutorial
+
+For a more in-depth and hands-on walk-through of securing data, there is [a video tutorial](https://www.youtube.com/watch?v=SOlXNSPFmOg).
+
+####
+

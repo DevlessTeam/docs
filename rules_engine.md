@@ -27,6 +27,12 @@ Here you will see something like this:
  -> beforeUpdating()
  -> beforeDeleting()
  -> beforeCreating()
+ 
+
+ -> onQuery()
+ -> onUpdate()
+ -> onDelete()
+ -> onCreate()
  ```
 
 Lets take a look at how to allow only admins to create entries in the `people` table. Start with setting the endpoint access rule for creating data to `PRIVATE`. We can now grant admins only access to creating data in the `people` table:
@@ -44,5 +50,14 @@ We can also make viewing the people table public:
 
 For a more in-depth and hands-on walk-through of securing data, there is [a video tutorial](https://www.youtube.com/watch?v=SOlXNSPFmOg).
 
-####
+## Transforming data
+
+The rules engine can also transform data, both before writing to the database and after reading from it. This is done by using the same hooks as when securing data. 
+
+For example, you can normalize all emails to be lowercase by using the beforeCreating hook. 
+
+```php
+->beforeCreating()->convertToLowerCase($input_name)->storeAs($input_name)`
+```
+
 

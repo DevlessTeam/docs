@@ -1,10 +1,5 @@
-# Managing Data
-
-DevLess is a plug-and-play back-end that can do many things, but one of the core components is the ability to model and persist data.
-
-## Data Model
-
-DevLess uses the relational model for data. This is the same model as any relational database such as mysql or postgresql. 
+#  Data model
+DevLess is a plug-and-play back-end that can do many things, but one of the core components is the ability to model and persist data. DevLess uses the relational model for data. This is the same model as any relational database such as mysql or postgresql. 
 
 DevLess uses a relational database as it's backing database and can expose as much as you want to clients. Controlling what a user is allowed to access or write can be done by using the rules engine. The same is true for manipulation of data before writing or after reading. 
 
@@ -29,3 +24,6 @@ When creating fields in DevLess, you can chose what field type that field has. T
 
 ## Table relationships 
 
+When using the `reference` field types, you are creating relations to some specific `row` in another table. The table you refer to is specified at field creation. When inserting data in this field, you have to keep track of the `id` of the row you want to refer to in the referred table. 
+
+Check out [this video](https://www.youtube.com/watch?v=ih63gDK_6EA) for a deeper dive into linking up data using relationships.

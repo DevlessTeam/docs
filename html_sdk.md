@@ -48,6 +48,8 @@ The classes can be used on any kind of html tag. This makes it trivial to layout
 
 The `var-NAME` syntax can also be used within the `href` attribute of the `<a>` tag. Note that the `<a>` tag also needs to have `class="var-NAME"` set. Within the `href` attribute, the `var-NAME` part is *interpolated*, i.e. you can surround it with other text.
 
+Accessing data in `referred` tables can be done by using `var-REFERED_TABLE_NAME`. E.g. `var-category-name` for a product, which is linked to a category table with a field name.
+
 For example, we can create a list of all our contacts like this:
 
 ```html
@@ -62,6 +64,7 @@ For example, we can create a list of all our contacts like this:
 
 ```
 Here we list all entries in the `people` table in the `contacts` service. For each contact we print their name and their email. For the email, we also add a `mailto` link. 
+
 The classes can be used on any kind of html tag. This makes it trivial to layout your webpage any way you want it.
 
 ### Selecting Data

@@ -258,7 +258,7 @@ The response looks like this:
 
 ### Deleting data
 
-Deleting data is a lot like updating data. Instead of using a `PATCH` verb, we we use the `DELETE` verb. Like so:
+Deleting data is a lot like updating data. Instead of using the `PATCH` verb, we we use the `DELETE` verb. Like so:
 
 ```bash
 curl -L -XDELETE \
@@ -289,14 +289,6 @@ The response looks similar to the update call as well:
   "payload": []
 }
 ```
-
-* To truncate the table you set the`truncate`parameter to`true`"truncate":true this returns a response as`{"status_code":636,"message":"data/table/field deleted successfully","payload":[]}`
-
-* You may also drop the table by passing`true`to the`drop`parameter this also returns a response as`{"status_code":636,"message":"data/table/field deleted successfully","payload":[]}`
-
-We have gone through a basic CRUD operation using the API engine. The next thing we are going to look at is the script .
-
-Again whenever you create a service with the management console a scripting column is added. That's where your script lives. In case you want the complete API engine with the management console download it from[DevLess complete](https://docs.devless.io/docs/1.2.7/api-engine#devlesscomplete). Another way you can add a script is doing so with a database client
 
 ## Creating or Deleting tables
 
@@ -444,19 +436,6 @@ eg:`https:\\demo.devless.io\service\authentication\db?table=auth_table`_\(this e
 **Endpoints definition for specific resources and actions**
 
 For the rest of the documentation, we will assume creating a user authentication service.
-
-## Structure of the Authentication Service
-
-* Table name is auth\_table
-
-**Fields required include**
-
-* username \(string\)
-* password \(hashed string\)
-
-Also, we assume our server is on [http://localhost:8000/](http://localhost:8000/).
-
-**NB:**To get started you need to create a new service either via the [developer console](/developer-portal.md) or from a database management client. In our case it is assumed we have done that and the name of the service is authentication.
 
 ## Creating the table
 

@@ -8,7 +8,7 @@
   * [HTTP API](http_api.md)
   * [DevLess Status Codes](devless-status-codes.md)
 * [Data model](managing_data.md)
-* [Rules - Transforming & Protecting Data](rules_engine.md)
+* [Secure & Transform data](rules_engine.md)
 * [Rules Reference](rules_reference.md)
 * [Administration](administrating.md)
   * [Securing your data on DevLess](securing-your-data-on-devless.md)

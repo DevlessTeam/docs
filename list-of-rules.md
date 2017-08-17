@@ -61,7 +61,6 @@
 | getThirdCharacter |  Get third character eg: \`-&gt;beforeCreating\(\)-&gt;getThirdCharacter\("Hello"\)-&gt;storeAs\($third\_char\)-&gt;succeedWith\($third\_char\)\` @param $string  @return $this |
 | getLastCharacter | Get last character eg: \`-&gt;beforeCreating\(\)-&gt;getLastCharacter\("Hello"\)-&gt;storeAs\($last\_char\)-&gt;succeedWith\($last\_char\)\`  @param $string  @return $this  ||
 | getCharacter | Get nth character eg: \`-&gt;beforeCreating\(\)-&gt;getCharacter\(5, "Hello"\)-&gt;storeAs\($nth\_char\)-&gt;succeedWith\($nth\_char\)\`  @param $nth @param $string  @return $this  |
-
 | getLastButOneCharacter | Get last but one character eg: \`-&gt;beforeCreating\(\)-&gt;getLastButOneCharacter\("Hello"\)-&gt;storeAs\($last\_but\_one\_char\)-&gt;succeedWith\($last\_but\_one\_char\)\`  @param $string  @return $this |
 | reverseString | Reverse a string eg: -&gt;beforeQuerying\(\)-&gt;assign\("nan"\)-&gt;to\($string\)-&gt;reverseString\(\)-&gt;storeAs\($reverseString\) -&gt;whenever\(assertIts::equal\($string, $reverseString\)\)-&gt;succeedWith\("Its a palindrome :\)"\) -&gt;otherwise\(\)-&gt;failWith\("Its not a palindrome :\("\) @param $string @return $this  |
 | findNReplace | replace a string with another eg \`-&gt;beforeCreating\(\)-&gt;findNReplace\("{{name}}", $input\_name, $input\_message\)-&gt;storeAs\($input\_message\)\`  @param $string  @param $replacement  @param $subject  @return $this |

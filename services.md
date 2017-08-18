@@ -22,13 +22,13 @@ These files are tacked away in `resources/views/service_views/<service_name>`_ w
 
 Action Classes and me
 
-Making RPC call 
+Making RPC call
 
-UIs and asset management 
+Securing endpoints 
 
-Callable Helpers 
+UIs and asset management
 
-Submitting a module to the store 
+Callable Helpers
 
-
+Submitting a module to the store
 

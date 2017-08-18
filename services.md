@@ -1,14 +1,10 @@
-
-
 **Modules**
 
 DevLess provides  alot out of the box in addition to this DevLess allows you to add or extend existing functionalities using the concept of plugins known as modules .
 
 **When to create a module**
 
-As mentioned DevLess provides most of what you  need right out the box. But sometimes you may require some functionality that is either not available or a little different from what you need. In such situations  you may consider creating a module 
-
-
+As mentioned DevLess provides most of what you  need right out the box. But sometimes you may require some functionality that is either not available or a little different from what you need. In such situations  you may consider creating a module
 
 **How to install and use Modules**
 
@@ -18,5 +14,9 @@ To install a Module is easy, head over to the  `service hub` ..section within yo
 
 **How  to create one**
 
-If you are farmiliar 
+If you are familiar with the concept of services in DevLess, congrats you are half way to creating a Module. 
+
+Whenever you create a service additional files are generated. These files contain code that make extending the internals of DevLess easy.
+
+ These files are tacked away in `resources/views/service_views/<service_name> `_ within the DevLess framework. At this point to access the files you will need to se_
 

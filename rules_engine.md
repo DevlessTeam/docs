@@ -85,7 +85,7 @@ For modifying the payload, use the `mutateResponsePayload(payload_to_add)`. This
 E.g. to add the timestamp at which the server returned the payload, we can do this: 
 
 ```php
-->afterQuering()->onTable("people")->mutateResponsePayload(["timestamp"=>getTimestamp()])
+->afterQuering()->onTable("people")->getTimeStamp()->storeAs($timestamp)->mutateResponsePayload(["timestamp"=>$timestamp])
 ```
 We can also mutate the status code. This is for **advanced users only**. Modifying this will impact how SDKs and clients interpret the response, so proceed with caution. Use the `mutateStatusCode` method to 
 

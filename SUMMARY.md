@@ -11,7 +11,6 @@
 * [Secure & Transform data](rules_engine.md)
 * [Rules Reference](rules_reference.md)
 * [Administration](administrating.md)
-  * [Securing your data on DevLess](securing-your-data-on-devless.md)
   * [Gain direct access to your database](gain-direct-access-to-your-database.md)
   * [Terminal Access within DevLess](terminal-access-within-devless.md)
 * [Extending DevLess](extending.md)

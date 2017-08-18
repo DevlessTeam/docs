@@ -87,7 +87,9 @@ E.g. to add the timestamp at which the server returned the payload, we can do th
 ```php
 ->afterQuering()->onTable("people")->getTimeStamp()->storeAs($timestamp)->mutateResponsePayload(["timestamp"=>$timestamp])
 ```
-We can also mutate the status code. This is for **advanced users only**. Modifying this will impact how SDKs and clients interpret the response, so proceed with caution. Use the `mutateStatusCode` method to 
+We can also mutate the status code. This is for **advanced users only**. Modifying this will impact how SDKs and clients interpret the response, so proceed with caution. Use the `mutateStatusCode` method to change the status code.
+
+E.g., to make all requests for a table 
 
 ### On reading from the database
 

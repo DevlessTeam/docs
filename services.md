@@ -1,3 +1,2 @@
-Depending on what you are building you may want to customize the internals of DevLess to suit your needs. 
+DevLess provides  alot out of the box in addition to this DevLess allows you to add or extend existing functionalities using 
 
- g

@@ -14,7 +14,7 @@ You can change the endpoint access rules going to your DevLess admin panel, and 
 
 * `PUBLIC` access means that anyone with an API key can use the resource. 
 * `AUTHENTICATE` access means that **any** logged in user can use the resource. 
-* `PRIVATE` access that no-one can access the resource. This can be overridden in the rules engine. For production ready systems, you probably want this on all tables.
+* `PRIVATE` access that no-one can access the resource. This can be overridden in the rules engine. For production ready systems, you probably want this on all resources.
 
 ### Securing using the rules engine
 
@@ -57,7 +57,9 @@ The rules engine can also transform data, both before writing to the database an
 For example, you can normalize all emails to be lowercase by using the beforeCreating hook. 
 
 ```php
-->beforeCreating()->convertToLowerCase($input_name)->storeAs($input_name)`
+->beforeCreating()->onTable("people")->convertToLowerCase($input_name)->storeAs($input_name)`
 ```
+What happens here is that we for the `people` table convert all inputs for the field `name` to be lower-cased with the `convertToLowerCase` method. We then overwrite the `$input_name` variable with `storeAs`. The `$input_name` is the variable that will be stored in the database in the `name` field.
+
 
 

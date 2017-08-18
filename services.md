@@ -14,9 +14,21 @@ To install a Module is easy, head over to the  `service hub` ..section within yo
 
 **How  to create one**
 
-If you are familiar with the concept of services in DevLess, congrats you are half way to creating a Module. 
+If you are familiar with the concept of services in DevLess, congrats you are half way to creating a Module.
 
 Whenever you create a service additional files are generated. These files contain code that make extending the internals of DevLess easy.
 
- These files are tacked away in `resources/views/service_views/<service_name> `_ within the DevLess framework. At this point to access the files you will need to se_
+These files are tacked away in `resources/views/service_views/<service_name>`_ within the DevLess framework. At this point to access the files you will need to setup a _[_development environment.      _](/dev-setup.md)
+
+Action Classes and me
+
+Making RPC call 
+
+UIs and asset management 
+
+Callable Helpers 
+
+Submitting a module to the store 
+
+
 

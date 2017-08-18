@@ -20,19 +20,26 @@ You can change the endpoint access rules going to your DevLess admin panel, and 
 
 DevLess comes with a rules engine. The rules engine can be used to apply table-specific grants for reading or writing. You can access the rules which applies to your service in the DevLess admin UI. Under services, select your service and then select the "rules" tab.
 
-Here you will see something like this:
+Here you will see something like this (you might have to scroll in the editor):
 
 ```php
  -> beforeQuerying()
  -> beforeUpdating()
  -> beforeDeleting()
  -> beforeCreating()
- 
 
  -> onQuery()
  -> onUpdate()
  -> onDelete()
  -> onCreate()
+
+ -> onAnyRequest()
+
+ -> afterQuerying()
+ -> afterUpdating()
+ -> afterDeleting()
+ -> afterCreating()
+ 
  ```
 
 Lets take a look at how to allow only admins to create entries in the `people` table. Start with setting the endpoint access rule for creating data to `PRIVATE`. We can now grant admins only access to creating data in the `people` table:
@@ -54,6 +61,8 @@ For a more in-depth and hands-on walk-through of securing data, there is [a vide
 
 The rules engine can also transform data, both before writing to the database and after reading from it. This is done by using the same hooks as when securing data. 
 
+### Before storing
+
 For example, you can normalize all emails to be lowercase by using the beforeCreating hook. 
 
 ```php
@@ -61,5 +70,41 @@ For example, you can normalize all emails to be lowercase by using the beforeCre
 ```
 What happens here is that we for the `people` table convert all inputs for the field `name` to be lower-cased with the `convertToLowerCase` method. We then overwrite the `$input_name` variable with `storeAs`. The `$input_name` is the variable that will be stored in the database in the `name` field.
 
+### Before returning data to the client
 
+We can also manipulate data before we send it back to the client. There are three main methods for doing this.
+
+For modifying the response message, use the `mutateResponseMessage(new_message)` method.  The message is used for notifying the client about what happened using in a textual format. You can use it to e.g. give a more context aware message:
+
+```php
+-> afterCreating()->onTable("people")->mutateResponseMessage("Contact added")`
+```
+
+For modifying the payload, use the `mutateResponsePayload(payload_to_add)`. This can be used to add additional information for your clients.
+
+E.g. to add the timestamp at which the server returned the payload, we can do this: 
+
+```php
+->afterQuering()->onTable("people")->mutateResponsePayload(["timestamp"=>getTimestamp()])
+```
+We can also mutate the status code. This is for **advanced users only**. Modifying this will impact how SDKs and clients interpret the response, so proceed with caution. Use the `mutateStatusCode` method to 
+
+### On reading from the database
+
+
+
+### Controlling flow
+
+{{ 'https://www.youtube.com/embed/Mwurl21niSw' | noembed}}
+
+
+
+###Manipulate incoming data
+
+{{ 'https://www.youtube.com/watch?v=z6CXQhcQz6I' | noembed}}
+
+ 
+###Change the default DevLess output
+
+{{ 'https://youtu.be/a2ScbtehNeE' | noembed}}
 

@@ -105,18 +105,5 @@ For example, we can show different messages depending on the email domain:
 afterCreating()->onTable("people")->whenever(assertIts::endsWith($input_email, "gmail.com"))->mutateResponseMessage("Welcome gmail user")
 ```
 
-### Controlling flow
-
-{{ 'https://www.youtube.com/embed/Mwurl21niSw' | noembed}}
-
-
-
-###Manipulate incoming data
-
-{{ 'https://www.youtube.com/watch?v=z6CXQhcQz6I' | noembed}}
-
- 
-###Change the default DevLess output
-
-{{ 'https://youtu.be/a2ScbtehNeE' | noembed}}
+For a deeper dive into working with flow control in rules, see [this video](https://www.youtube.com/?v=Mwurl21niSw)
 

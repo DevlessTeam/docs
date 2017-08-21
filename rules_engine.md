@@ -70,6 +70,8 @@ For example, you can normalize all emails to be lowercase by using the beforeCre
 ```
 What happens here is that we for the `people` table convert all inputs for the field `name` to be lower-cased with the `convertToLowerCase` method. We then overwrite the `$input_name` variable with `storeAs`. The `$input_name` is the variable that will be stored in the database in the `name` field.
 
+[This video](https://www.youtube.com/watch?v=z6CXQhcQz6I) goes more into depth on how you can transform data before storing.
+
 ### Before returning data to the client
 
 We can also manipulate data before we send it back to the client. There are three main methods for doing this.
@@ -89,11 +91,19 @@ E.g. to add the timestamp at which the server returned the payload, we can do th
 ```
 We can also mutate the status code. This is for **advanced users only**. Modifying this will impact how SDKs and clients interpret the response, so proceed with caution. Use the `mutateStatusCode` method to change the status code.
 
-E.g., to make all requests for a table 
+[This video](https://youtu.be/a2ScbtehNeE) goes more into depth on how you can use data manipulation to affect what the clients see.
 
-### On reading from the database
+### Flow control
 
+The rules engine supports conditional flow, similar to the `if`/`else if`/`else` conditionals in programming languages. The functions are named `whenever`, `elseWhenever` and `otherwise`. 
 
+The flow control functions plays nicely together with the `assertIts` family of functions. Together, these functions allows you to take different actions depending on the user input. 
+
+For example, we can show different messages depending on the email domain:
+
+```php
+afterCreating()->onTable("people")->whenever(assertIts::endsWith($input_email, "gmail.com"))->mutateResponseMessage("Welcome gmail user")
+```
 
 ### Controlling flow
 

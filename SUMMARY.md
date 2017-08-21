@@ -9,7 +9,7 @@
   * [DevLess Status Codes](devless-status-codes.md)
 * [Managing your data](secure_transform_data.md)
   * [Data model](data_model.md)
-  * [Rules Engine](rules_engine.md)
+  * [Securing & Transforming data](rules_engine.md)
   * [Rules Reference](rules_reference.md)
 * [Administration](administrating.md)
   * [Gain direct access to your database](gain-direct-access-to-your-database.md)

@@ -383,146 +383,36 @@ TODO: This does not work atm
 
 ## RPC Calls
 
-As we saw when doing authentication, DevLess methods can be called using 
+As we saw when doing authentication, DevLess methods can be called using JSON RPC. This goes for both the built-in methods, as well as for any services that you install through the hub or write for yourself.
 
-## API Engine
+E.g. if we have the Weather service installed we can call it to get weather how hot it is in Accra:
 
-* [DevLess API Engine\(DAE\)](#devless-api-enginedae)
-
-* [Features of the API engine](#features-of-the-api-engine-include-)
-
-* [Structure of the Authentication Service](#structure-of-the-authentication-service)
-
-* [Creating a table](#creating-the-table)
-* [Adding data to table](#adding-data-to-table)
-* [Query data from table](#query-data-from-table)
-* [Updating data in table](#updating-data-to-table)
-* [Delete data from table](#delete-data-from-table)
-* [Accessing Rules](#accessing-rules)
-* [RPC Calls](#rpc-calls)
-
-## DevLess API Engine\(DAE\)
-
-**DevLess API Engine\(DAE\)**is an open source API engine that generates CRUD API access to databases as well as allows the execution of rules .
-
-The current implementation of the DevLess API Engine is in PHP and on top of the [Laravel framework](https://laravel.com/).
-
-**DAE **can be used as a standalone \(accessed solely via API calls\) however a [developer console](/developer-portal.md) is provided to interact with the API engine.
-
-This document explains the syntax and process for accessing and working with the **DEA**.
-
-## Features of the API engine include :
-
-**Database access**
-
-* Create database tables
-
-* Add data to tables
-
-* Query tables
-
-* Updates data in tables
-
-* Truncate, delete and drop tables
-
-**Rules**
-
-* Run rules against data. This allows you to edit data that is about to be added or updated within the database as well as the request.
-
-As you would have noticed from above the DevLess API Engine\(DAE\) works with two main entities tables, rules each known as a**RESOURCE**.
-
-You can also pair up resources together known as a **SERVICE **and this is responsible for one functionality of your **APPLICATION**.
-
-In response to this order of organisation the restful endpoints are generated in the form:`<hostname>\service\<service_name>\<resource_name>\`
-
-eg:`https:\\demo.devless.io\service\authentication\db?table=auth_table`_\(this example gets all data from the auth\_table\)_
-
-**Endpoints definition for specific resources and actions**
-
-For the rest of the documentation, we will assume creating a user authentication service.
-
-## Creating the table
-
-```js
-METHOD: POST
-
-URL_STRUCTURE: http://localhost:8000/api/v1/service/authentication/schema
-
-HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
-
-REQUEST PAYLOAD:
-
+```bash
+curl -L -XPOST \
+  -H "Devless-token: $DEVLESS_TOKEN" \
+  -H "Content-type: application/json" \
+  "http://$DEVLESS_URL/api/v1/service/Weather/rpc?action=getCelciusTemperatureFor" \
+  -d@- <<EOF
 {
-"resource":[
-{
-"name":"auth_table",
-"description":" demo authenticate users",
-"field":[
-
-{
-"name":"username",
-"field_type":"text",
-"default":null,
-"required":true,
-"is_unique":true,
-"ref_table":"",
-"validation":true
-},
-{
-"name":"password",
-"field_type":"password",
-"default":null,
-"required":true,
-"is_unique":false,
-"ref_table":"",
-"validation":true
+  "jsonrpc": "2.0",
+  "method": "Weather",
+  "id": "1000",
+  "params": ["Accra", "Ghana"]
 }
-]
-}
-]
-}
-
-RESPONSE PAYLOAD: {"status_code":606,"message":"created table successfully","payload":[]}
+EOF
 ```
+The `method` parameter as well as part of the URL path is the service name. The `action` query parameter specifies which method to call, and the `params` field the parameters to call the method with. See the documentation for each service for more details. 
 
-**Explanation**: From the URL after the`api/v1/service` route, the service\_name `authentication`is passed followed by the`schema`sub-route which is the route for creating new tables for any service.
-
-Also, the request payload takes the name of the table to be created and is prefixed with the service name during the creation of the table itself to ensure tables from other services do not conflict. You may also add a table description but this is optional
-
-For the`field`, there are a couple of options you have to provide with some being optional and others required.
-
-The`Response Body`provides three piece of information: the`status_code`in this case`606`, a`message`and`payload`which might contain extra information or return data. Here are the list of all the [status codes](/status-code.md)
-
-Next step would be adding some data to the table
-
-## Accessing rules
-
-* Rules are run each time you make a call to any of the CRUD actions
-* Each Service has a Rules section.
-* Detailed explanation of how to use Rules can be found at
-  All about Rules
-
-## RPC Calls
-
-DevLess Services come with in built functionalities that can be accessed via RPC calls. some of these functionalities include Authentication \(SignUp, Login, profile ..\). Also Every new service created has an ActionClass which is basically a class within which you can add methods. These methods are then accessible over RPC.
-
-## Request structure
-
+In this case, we get this response body back:
 ```js
-METHOD: POST
-
-URL_STRUCTURE: http://localhost:8000/api/v1/service/service_name/rpc?action=method_name
-
-HEADERS: Content-Type application/json , Devless-token get_it_from_the_app_section_of_DevLess
-
-REQUEST PAYLOAD:
 {
-"jsonrpc": "2.0",
-"method": "service_name",
-"id": "1000",
-"params": []
+  "status_code": 637,
+  "message": "Got RPC response successfully",
+  "payload": {
+    "jsonrpc": 2,
+    "result": 26,
+    "id": 1000
+  }
 }
 ```
-
-
-
+The `result` field is what we are looking for: it is 26 degrees Celsius in Accra. 

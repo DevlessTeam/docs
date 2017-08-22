@@ -21,10 +21,7 @@
   * [Workflow && DIR Structure ](workflow.md)
   * [Modules](services.md)
   * [API reference](api_ref.md)
-* [Why DevLess?](why-devless.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Extending your app with services](calling-on-services-within-rules.md)
-* [Connecting DevLess to your Android app](connecting-devless-to-your-android-app.md)
-* [SDKs](sdks.md)
 * [List of keywords in Rules](list-of-rules.md)
 

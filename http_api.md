@@ -381,6 +381,10 @@ TODO: This does not work atm
 
 ### Delete a table
 
+## RPC Calls
+
+As we saw when doing authentication, DevLess methods can be called using 
+
 ## API Engine
 
 * [DevLess API Engine\(DAE\)](#devless-api-enginedae)

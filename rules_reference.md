@@ -1,5 +1,8 @@
-# Rules 
+# Rules Reference
 
+## Keywords
+
+Keywords are methods/functions that allow you to control what happens with your data before storing or after reading. This is the full reference:
 
 | Keywords | Description |
 | :--- | :--- |
@@ -94,30 +97,11 @@
 
 
 
+## Assertions
 
+Assertions are a special kind of rule, which asserts that some condition holds. In a programming language, these would be functions returning booleans. Assertions are best used together with the conditional functions, such as `whenever`. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-| KEYWORD | DESCRIPTION |
+| Assertion | Description |
 | :--- | :--- |
 | anInteger | check if $value is an integer. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :anInteger\(3\)\) - &gt;then - &gt;stopAndOutput\(1001,'message','its an integer'\)\` @param $value |
 | aString | check if $value is a string. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\( assertIts: :aString\( "Hello"\)\) - &gt;then - &gt;stopAndOutput\(1001,'message', 'its a string'\)\` @param $value |

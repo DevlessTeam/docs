@@ -12,7 +12,7 @@
   * [Data model](data_model.md)
   * [Securing & Transforming data](rules_engine.md)
   * [Rules Reference](rules_reference.md)
-* [Administration](administrating.md)
+* [Using external services](using_services.md)
   * [Gain direct access to your database](gain-direct-access-to-your-database.md)
   * [Terminal Access within DevLess](terminal-access-within-devless.md)
 * [Extending your app with services](calling-on-services-within-rules.md)
@@ -23,5 +23,4 @@
   * [API reference](api_ref.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Extending your app with services](calling-on-services-within-rules.md)
-* [List of keywords in Rules](list-of-rules.md)
 

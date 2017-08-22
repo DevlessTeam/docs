@@ -16,20 +16,5 @@ With these assumptions, we set out to build [DevLess](https://devless.io) an ope
 
 All that is required of the developer is to write the front-end code \([JavaScript](https://www.javascript.com/ "https://www.javascript.com/"), [Android](https://developer.android.com "https://developer.android.com")\[[Java](https://java.com/en/download/ "https://java.com/en/download/")\], iOS\[[Swift](https://swift.org/ "https://swift.org/")/[Objective C](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html "https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html")\], etc.\) to consume the API endpoints. If the developer's required feature isn't available, he or she can build the module \(service with a lean view\) and share with the world through the Service Hub.
 
-#### Questions and support
-
-Follow or join these channels for questions and support, and to keep updated on latest releases and announcements.
-
-| [slack](https://slack.devless.io) | [Twitter](https://www.twitter.com/devlessio) |
-| :---: | :---: |
-| [![](https://raw.githubusercontent.com/gliechtenstein/images/master/slack_smaller.png)](https://slack.devless.io) | [![](https://raw.githubusercontent.com/gliechtenstein/images/master/twitter_smaller.png)](https://www.twitter.com/devlessio) |
-| [Join Now&gt;](https://slack.devless.io "https://slack.devless.io") | [Follow&gt;](https://www.twitter.com/devlessio) |
-
-#### How to contribute
-
-**Please checkout the **[**Contribute**](https://guides.github.com/activities/contributing-to-open-source/ "https://guides.github.com/activities/contributing-to-open-source/")** guide on how to contribute.** No contribution is too small.
-
-* We would love to hear from you. email us=&gt; [team@devless.io](mailto:team@devless.io)
-
 
 

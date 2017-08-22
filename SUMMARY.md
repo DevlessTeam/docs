@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](introduction.md)
+* [Philosophy](README.md)
 * [Quick Start](quick-start.md)
 * [Interacting With DevLess](interacting.md)
   * [Html Kit](html_sdk.md)
@@ -20,7 +21,6 @@
   * [Workflow && DIR Structure ](workflow.md)
   * [Modules](services.md)
   * [API reference](api_ref.md)
-* [Philosophy](README.md)
 * [Why DevLess?](why-devless.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Extending your app with services](calling-on-services-within-rules.md)

@@ -70,13 +70,15 @@ You may customize this to serve as an Admin panel for that particular service/Mo
 
 You may also add extra files. Be sure to follow the template naming convention `<filename>.blade.php`
 
-You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier. 
+You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier.
 
-* **DvAssetPath\($payload, $partialAssetPath\)**: This allows you to call on asset files from the asset folder within the service directory EG:  `<script src="<?=DvAssetPath($payload, '/js/main.js')?> >"  ></script> ` .This will pull in main.js from the js folder within the assets directory within that service. $payload is a global variable and preset so you don't have to worry about it. 
-*   **DvNavigate\($payload, 'pageName'\);** : Once you add extra pages to the service navigating between them should be done using **DvNavigate **EG**:` <a href="<?= DvNavigate($payload, 'pageName'); ?>" /> `**:  pageNames don't have to include `blade.php`
-* **DvJSSDK\(\)**: This method will insert the JS SDK into the page . EG: `<?= DvJSSDK()?> `
+* **DvAssetPath\($payload, $partialAssetPath\)**: This allows you to call on asset files from the asset folder within the service directory EG:  `<script src="<?=DvAssetPath($payload, '/js/main.js')?> >"  ></script>` .This will pull in main.js from the js folder within the assets directory within that service. $payload is a global variable and preset so you don't have to worry about it. 
+* **DvNavigate\($payload, 'pageName'\);** : Once you add extra pages to the service navigating between them should be done using **DvNavigate **EG**:**`<a href="<?= DvNavigate($payload, 'pageName'); ?>" />`:  pageNames don't have to include `blade.php`
+* **DvJSSDK\(\)**: This method will insert the JS SDK into the page . EG: `<?= DvJSSDK()?>`
 
 ### Submitting you module to the store
+
+
 
 
 

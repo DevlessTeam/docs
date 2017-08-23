@@ -10,4 +10,4 @@ To install a service, you can either use the service hub or import it manually. 
 
 ## Video walkthrough
 
-[This video](https://www.youtube.com/watch?v=ii99siuj1gs) talks more about how you can install service, with a case study of the Weather service.
+[This video](https://www.youtube.com/watch?v=ii99siuj1gs) talks more about how you can use services, with a case study of the Weather service.

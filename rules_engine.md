@@ -99,7 +99,7 @@ We can also mutate the status code. This is for **advanced users only**. Modifyi
 
 The rules engine supports conditional flow, similar to the `if`/`else if`/`else` conditionals in programming languages. The functions are named `whenever`, `elseWhenever` and `otherwise`.
 
-The flow control functions plays nicely together with the `assertIts` family of functions. Together, these functions allows you to take different actions depending on the user input.
+The flow control functions plays nicely together with the [`assertIts`](/assertion-list.md) family of functions. Together, these functions allows you to take different actions depending on the user input.
 
 For example, we can show different messages depending on the email domain:
 

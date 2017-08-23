@@ -17,6 +17,6 @@
 * [Examples of Services](list-of-services.md)
 * [Extending DevLess](extending.md)
   * [Dev Environment](dev-setup.md)
-  * [Modules](services.md)
+  * [Creating Modules](services.md)
   * [API reference](api_ref.md)
 

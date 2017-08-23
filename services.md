@@ -1,3 +1,19 @@
+### Module Development
+
+You may have used used a few modules from the [service hub](/using_services.md)  or Interested in how they work , even better interested in creating your own.
+
+#### Setting up
+
+#### Adding functionalities
+
+#### Adding an interactive interface
+
+#### 
+
+Sample Video creating a simple  module 
+
+Sample service with a view  
+
 **Modules**
 
 DevLess provides  alot out of the box in addition to this DevLess allows you to add or extend existing functionalities using the concept of plugins known as modules .
@@ -12,7 +28,7 @@ Before creating a Module  you should check the  `service hub`  ..  within the fr
 
 To install a Module is easy, head over to the  `service hub` ..section within your DevLess instance and hit `install:update` of the module you will like to install . Now when you visit the `all services`  you should see your module installed.
 
-**How  to create one**
+**How  to create one **
 
 If you are familiar with the concept of services in DevLess, congrats you are half way to creating a Module.
 
@@ -24,7 +40,7 @@ Action Classes and me
 
 Making RPC call
 
-Securing endpoints 
+Securing endpoints
 
 UIs and asset management
 

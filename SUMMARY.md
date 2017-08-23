@@ -5,7 +5,7 @@
 * [Quick Start](quick-start.md)
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Interacting With DevLess](interacting.md)
-  * [Html Kit](html_sdk.md)
+  * [HTML Kit](html_sdk.md)
   * [SDKs](sdks.md)
   * [HTTP API](http_api.md)
   * [DevLess Status Codes](devless-status-codes.md)

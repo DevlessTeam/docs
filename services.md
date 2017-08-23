@@ -68,39 +68,15 @@ The `index.blade/php` is the file responsible for the rendering of this docs
 
 You may customize this to serve as an Admin panel for that particular service/Module.
 
- You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier 
+You may also add extra files. Be sure to follow the template naming convention `<filename>.blade.php`
 
-**Modules**
+You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier. 
 
-DevLess provides  alot out of the box in addition to this DevLess allows you to add or extend existing functionalities using the concept of plugins known as modules .
+* **DvAssetPath\($payload, $partialAssetPath\)**: This allows you to call on asset files from the asset folder within the service directory EG:  `<script src="<?=DvAssetPath($payload, '/js/main.js')?> >"  ></script> ` .This will pull in main.js from the js folder within the assets directory within that service. $payload is a global variable and preset so you don't have to worry about it. 
+*   **DvNavigate\($payload, 'pageName'\);** : Once you add extra pages to the service navigating between them should be done using **DvNavigate **EG**:` <a href="<?= DvNavigate($payload, 'pageName'); ?>" /> `**:  pageNames don't have to include `blade.php`
+* **DvJSSDK\(\)**: This method will insert the JS SDK into the page . EG: `<?= DvJSSDK()?> `
 
-**When to create a module**
+### Submitting you module to the store
 
-As mentioned DevLess provides most of what you  need right out the box. But sometimes you may require some functionality that is either not available or a little different from what you need. In such situations  you may consider creating a module
 
-**How to install and use Modules**
-
-Before creating a Module  you should check the  `service hub`  ..  within the framework to see if a module meets  your need.
-
-To install a Module is easy, head over to the  `service hub` ..section within your DevLess instance and hit `install:update` of the module you will like to install . Now when you visit the `all services`  you should see your module installed.
-
-**How  to create one **
-
-If you are familiar with the concept of services in DevLess, congrats you are half way to creating a Module.
-
-Whenever you create a service additional files are generated. These files contain code that make extending the internals of DevLess easy.
-
-These files are tacked away in `resources/views/service_views/<service_name>`_ within the DevLess framework. At this point to access the files you will need to setup a _[_development environment.      _](/dev-setup.md)
-
-Action Classes and me
-
-Making RPC call
-
-Securing endpoints
-
-UIs and asset management
-
-Callable Helpers
-
-Submitting a module to the store
 

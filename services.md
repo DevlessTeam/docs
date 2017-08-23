@@ -76,9 +76,11 @@ You can do this using plain HTML CSS and JS . There are a few inbuilt helpers th
 * **DvNavigate\($payload, 'pageName'\);** : Once you add extra pages to the service navigating between them should be done using **DvNavigate **EG**:**`<a href="<?= DvNavigate($payload, 'pageName'); ?>" />`:  pageNames don't have to include `blade.php`
 * **DvJSSDK\(\)**: This method will insert the JS SDK into the page . EG: `<?= DvJSSDK()?>`
 
+#### TODO:video to explaining how to create view pages
+
 ### Submitting you module to the store
 
-
+Once you have a module, you may decide to share this with the world. One way you can share your new module is via the DevLess Service Hub  
 
 
 

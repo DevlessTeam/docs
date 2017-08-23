@@ -4,6 +4,11 @@ You may be interested in building a module or want to contribute back to the fra
 
 This guide is based on Docker. **Install Docker** if you don't have it. Download from [Docker's homepage](https://www.docker.com/community-edition#/download) or through your package manager. 
 
+## Video guide
+
+There is a video guide to go along with this page [right here](
+https://www.youtube.com/watch?v=EXMUQkSBzBw). 
+
 ## Start local docker image
 
 We start with opening one terminal and starting up the docker image:

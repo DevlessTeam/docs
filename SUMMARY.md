@@ -19,5 +19,4 @@
   * [Dev Environment](dev-setup.md)
   * [Modules](services.md)
   * [API reference](api_ref.md)
-* [Extending your app with services](calling-on-services-within-rules.md)
 

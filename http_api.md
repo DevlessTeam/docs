@@ -377,8 +377,6 @@ curl -L -XDELETE \
 EOF
 ```
 
-TODO: This does not work atm
-
 ### Delete a table
 
 ## RPC Calls

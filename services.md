@@ -10,50 +10,48 @@ Next create a service . Give it a **name** and **description** that best describ
 
 Modules are an extended version of Services. ie It can be shared and used by many people besides  the original author .
 
-When you create a service several files are also generated internally. These files can be found within the DevLess source. 
+When you create a service several files are also generated internally. These files can be found within the DevLess source.
 
-`resources/views/service_views/<service_name> ` .
+`resources/views/service_views/<service_name>` .
 
 In there you should find two files `ActionClass.php` and `index.blade.php` .Also you will find an `assets` directory
-
-
 
 #### Adding functionalities
 
 Functionalities that can be accessed from within your client or other services can be created in the `ActionClass.php` file .
 
-The **ActionClass**  is a `PHP` Class with a list of sample methods . 
+The **ActionClass**  is a `PHP` Class with a list of sample methods .
 
-These methods can be accessed via any of the [DevLess SDKs](/sdks.md) or [REST Endpoint. ](/http_api.md)   via  the call method. 
+These methods can be accessed via any of the [DevLess SDKs](/sdks.md) or [REST Endpoint. ](/http_api.md)   via  the call method.
 
- Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JS SDK](/sdks.md)     `SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})` this should return `public hello`  . 
+Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JS SDK](/sdks.md)     `SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})` this should return `public hello`  .
 
-Now you may go ahead and add your own methods with functionalities you require. 
+Now you may go ahead and add your own methods with functionalities you require.
 
-Here is an in dept video explaining the  process 
+Here is an in dept video explaining the  process
 
-#### Setting up Privacy for your methods 
+#### Setting up Privacy for your methods
 
 So you may have functionalities you want exposed to the outside world but then you want other modules to access this functionality. EG: An email module.  In this case you might want to set the permission on the methods within the module.
 
-To do so just decorate the method with the right `ACL`  
+To do so just decorate the method with the right `ACL`
 
-EG: 
+EG:
+```
+/\*\*
 
-`/**`
+\* @ACL public
 
-`     * @ACL public`
+\*/
 
-`     */`
+public function sendEmail\($subject, $body, $recpt\)
 
-`    public function sendEmail($subject, $body, $recpt)`
+{
 
-`    {`
+//sending email to $reciever
 
-`        //sending email to $reciever `
-
-`    } `
-
+}
+```
 TODO:  Sample Video creating a simple  module
 
 TODO:  Sample service with a view

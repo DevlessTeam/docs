@@ -4,15 +4,59 @@ You may have used used a few modules from the [service hub](/using_services.md) 
 
 #### Setting up
 
+To begin developing modules you will have to setup a [DevLess instance on your local ](/dev-setup.md).
+
+Next create a service . Give it a **name** and **description** that best describes your module .
+
+Modules are an extended version of Services. ie It can be shared and used by many people besides  the original author .
+
+When you create a service several files are also generated internally. These files can be found within the DevLess source. 
+
+`resources/views/service_views/<service_name> ` .
+
+In there you should find two files `ActionClass.php` and `index.blade.php` .Also you will find an `assets` directory
+
+
+
 #### Adding functionalities
 
-#### Adding an interactive interface
+Functionalities that can be accessed from within your client or other services can be created in the `ActionClass.php` file .
 
-#### 
+The **ActionClass**  is a `PHP` Class with a list of sample methods . 
 
-Sample Video creating a simple  module 
+These methods can be accessed via any of the [DevLess SDKs](/sdks.md) or [REST Endpoint. ](/http_api.md)   via  the call method. 
 
-Sample service with a view  
+ Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JS SDK](/sdks.md)     `SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})` this should return `public hello`  . 
+
+Now you may go ahead and add your own methods with functionalities you require. 
+
+Here is an in dept video explaining the  process 
+
+#### Setting up Privacy for your methods 
+
+So you may have functionalities you want exposed to the outside world but then you want other modules to access this functionality. EG: An email module.  In this case you might want to set the permission on the methods within the module.
+
+To do so just decorate the method with the right `ACL`  
+
+EG: 
+
+`/**`
+
+`     * @ACL public`
+
+`     */`
+
+`    public function sendEmail($subject, $body, $recpt)`
+
+`    {`
+
+`        //sending email to $reciever `
+
+`    } `
+
+TODO:  Sample Video creating a simple  module
+
+TODO:  Sample service with a view
 
 **Modules**
 

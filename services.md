@@ -80,7 +80,14 @@ You can do this using plain HTML CSS and JS . There are a few inbuilt helpers th
 
 ### Submitting you module to the store
 
-Once you have a module, you may decide to share this with the world. One way you can share your new module is via the DevLess Service Hub  
+Once you have a module, you may decide to share this with the world. One way you can share your new module  via the DevLess Service Hub.
+
+* To do this you have to head over to **migration tab** on your instance then export the module.
+* Next you will have to host your module online. Preferably using a code hosting platform like GitHub.
+* Clone the Service Hub JSON file. `https://github.com/DevlessTeam/service-hub.git` and update the JSON file with info about your service. 
+* You can now send a pull request  of the updated JSON 
+
+If everything is good it will be merged and your module will show up on the Service Hub. 
 
 
 

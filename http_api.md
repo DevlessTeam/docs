@@ -8,7 +8,7 @@ The REST API Can:
 * Create/Delete services and tables in your DevLess instance
 * Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or add-on modules.
 
-All operations in the REST API requires a header named `Devless-token`. This token is unique to each DevLess setup. It can be viewed by opening your DevLess GUI & pressing the "connect to DevLess" button in the top-right corner:   
+All operations in the REST API requires a header named `Devless-token`. This token is unique to each DevLess setup. It can be viewed by opening your DevLess GUI & pressing the "connect to DevLess" button in the top-right corner:  
 ![Connect to devless](assets/connect_to_devless.png)
 
 From there, select the "raw" tab. There you can view the DevLess token.
@@ -298,7 +298,7 @@ So far, we have been looking at creating and updating resources within a table. 
 
 Creating a table is done by issuing a `POST` request to `http://$DEVLESS_URL/api/v1/service/contacts/schema`. A `name` of the new table is required, while the `description` is optional.
 
-Please note that **access** for creating a table is **private by default**. This means that no-one can use it from the API. Change this by logging into the DevLess UI, go to the _Privacy_ tab on the left, select your service and set _Schema Access_ to `AUTHENTICATE` \(logged in can create\) or `PUBLIC` \(everyone can create\).
+Please note that **access** for creating a table is **private by default**. This means that no-one can use it from the API. Change this by logging into the DevLess UI, go to the _Privacy_ tab on the left, select your service and set _Schema Access_ to `AUTHENTICATE` \(logged in users can create\) or `PUBLIC` \(everyone can create\).
 
 Creating a table also entails specifying which fields it should have. For each field, parameters can be specified:
 
@@ -356,9 +356,10 @@ The result would look something like this:
 
 ### Deleting all data in a table
 
-Deleting all data in a table is known in the SQL world is _truncation_. DevLess follows this convention. Deleting, or truncating, all data in a table is done using the same endpoint and verb (`DELETE`) as deleting a single entry, but with different parameters.
+Deleting all data in a table is known in the SQL world is _truncation_. DevLess follows this convention. Deleting, or truncating, all data in a table is done using the same endpoint and verb \(`DELETE`\) as deleting a single entry, but with different parameters.
 
-I.e. to delete the `horses` created above, we can do this: 
+I.e. to delete the `horses` created above, we can do this:
+
 ```bash
 curl -L -XDELETE \
   -H "Devless-token: $DEVLESS_TOKEN" \
@@ -375,9 +376,8 @@ curl -L -XDELETE \
 }
 EOF
 ```
+
 TODO: This does not work atm
-
-
 
 ### Delete a table
 
@@ -401,9 +401,11 @@ curl -L -XPOST \
 }
 EOF
 ```
-The `method` parameter as well as part of the URL path is the service name. The `action` query parameter specifies which method to call, and the `params` field the parameters to call the method with. See the documentation for each service for more details. 
+
+The `method` parameter as well as part of the URL path is the service name. The `action` query parameter specifies which method to call, and the `params` field the parameters to call the method with. See the documentation for each service for more details.
 
 In this case, we get this response body back:
+
 ```js
 {
   "status_code": 637,
@@ -415,4 +417,6 @@ In this case, we get this response body back:
   }
 }
 ```
-The `result` field is what we are looking for: it is 26 degrees Celsius in Accra. 
+
+The `result` field is what we are looking for: it is 26 degrees Celsius in Accra.
+

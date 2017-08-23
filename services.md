@@ -64,11 +64,11 @@ There are three **ACLs ** there is `public` which makes the method publicly avai
 
 You may have noticed the `docs:UI` button on each service listed on the **All Service** section. Clicking on this lists out all the methods you currently have in the **ActionClass** of that service on adding another this will be automagically added with the docs as well.
 
-The `index.blade/php` is the file responsible for the rendering of this docs   
+The `index.blade/php` is the file responsible for the rendering of this docs
 
-You may customise this to serve as an Admin panel for that particular service/Module. 
+You may customize this to serve as an Admin panel for that particular service/Module.
 
-
+ You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier 
 
 **Modules**
 

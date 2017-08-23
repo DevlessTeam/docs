@@ -19,4 +19,5 @@
   * [Dev Environment](dev-setup.md)
   * [Creating Modules](services.md)
   * [API reference](api_ref.md)
+     * [DataStore](datastore.md) 
 

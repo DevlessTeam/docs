@@ -30,6 +30,8 @@ Now you may go ahead and add your own methods with functionalities you require.
 
 Here is an in dept video explaining the  process
 
+**TODO: **create a video for adding functionality 
+
 #### Setting up Privacy for your methods
 
 So you may have functionalities you want exposed to the outside world but then you want other modules to access this functionality. EG: An email module.  In this case you might want to set the permission on the methods within the module.
@@ -37,6 +39,7 @@ So you may have functionalities you want exposed to the outside world but then y
 To do so just decorate the method with the right `ACL`
 
 EG:
+
 ```
 /\*\*
 
@@ -44,7 +47,7 @@ EG:
 
 \*/
 
-public function sendEmail\($subject, $body, $recpt\)
+public function sendEmail\($subject, $body, $recpt)
 
 {
 
@@ -52,9 +55,12 @@ public function sendEmail\($subject, $body, $recpt\)
 
 }
 ```
-TODO:  Sample Video creating a simple  module
 
-TODO:  Sample service with a view
+There are three **ACLs ** there is ` public` which makes the method publicly available to anyone. `protected` which requires uses to authenticate to gain access to the method. `private` blocks all calls made from the outside world. This means the method can only be accessed within another module  no where else.  To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)` .
+
+**TODO:**How the ACLs work and affect the methods and how to use services within other services 
+
+**Adding a management interface  to your Module**
 
 **Modules**
 

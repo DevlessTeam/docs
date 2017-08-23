@@ -1,87 +1,56 @@
-You may be interested in building a module or want to contribute back to the framework.  
-Both  requires that you set up DevLess on your development machine.  
-Follow the steps below to setup locally
+# Local Dev Environment
 
-**Installing Docker: **The steps  for installing Docker varies on OS bases .
+You may be interested in building a module or want to contribute back to the framework.  Both requires that you set up DevLess on your development machine.  
+
+This guide is based on Docker. **Install Docker** if you don't have it. Download from [Docker's homepage](https://www.docker.com/community-edition#/download) or through your package manager. 
+
+## Start local docker image
+
+We start with opening one terminal and starting up the docker image:
 
 ```bash
-$ sudo apt-get install docker.io
+# Clone DevLess git repo
+git clone https://github.com/DevlessTeam/DV-PHP-CORE
+
+# Change PWD
+cd DV-PHP-CORE
+
+# Run docker. Add -d if you prefer running detached. 
+docker run -p 4545:80 -v "$PWD:/var/www/html" eddymens/devless
+```
+If you ran without the `-d` option, this terminal will now block, with DevLess running. To shut down DevLess, press ctrl+c. 
+
+We have now pulled the DevLess Docker image. It contains all system dependencies for DevLess, including MySQL and an nginx server. When starting docker, we also specify that we want the DevLess source within the container to point to our checked-out directory outside of the container. 
+
+## Set up php dependencies & fix permissions
+
+For this we need to know the container id of the container we just started. Run `docker ps`, and look for the DevLess container.
+
+```bash
+# Find the docker image id
+DOCKER_IMG=$(docker ps | awk '$2=="eddymens/devless" {print $1}')
+
+# Install DevLess dependencies & fix permissions
+docker exec -it $DEVLESS_IMG  bash -c "cd html ; composer install ; chmod -R a+rw ."
 ```
 
-For most linux distros the above should work fine. Checkout the [Docker web page](https://docs.docker.com/engine/installation/#supported-platforms ) page for a complete list of all installation options.
+Above, we install the DevLess dependencies using composer. Then we change file permissions, to allow everyone to read & write to the source directory. This is needed so that both the docker service and your user outside the container can edit files. 
 
-Once you have Docker installed \(confirm using `$ sudo docker -v`  \).
+## Modify the database settings
 
-Clone the DevLess repo `$git clone https://github.com/devlessteam/dv-php-core`
-
-Now that you have both Docker and the DevLess source code its time to hook them up.
-
-Run  `$ sudo docker run -p <pick_a_port>:80 -d -v /home/eddymens/workarea/devless:/var/www/html eddymens/devless`
-
-Replace `<pick_a_port>` with your desired port number eg:4545.
-
-The above  command will pull in the DevLess Docker image which contains a mysql database and nginx server as well as everything needed to run DevLess. The command also sets up a Docker volume which replaces the DevLess repo within the Docker container with the one your cloned from GitHub.
-
-If everything goes well you should see random alphanumeric appear on the screen. This is the container ID. 
-
-Next we secure a bash terminal within the container. `$sudo docker exec -i -t <container_id>  /bin/bash`  .
-
-Now that you are within the container cd into the `html `  directory. This is where you DevLess source from outside will reside. 
-
-Go ahead and install the DevLess dependencies ie: `composer install` 
-
-Once the dependencies are installed the next step is to set the environment variables. 
-
-Open up the DevLess source in your favorite editor and open the .env file . 
-
-Lets go ahead and connect to the  db within the container.  
-
-Edit the  `.env ` file to look  like below 
+The docker image comes with a MySQL database, while the default `.env` file assumes Postgres. Update database section the .env file to:
 
 ```
-APP_ENV=local
-APP_DEBUG=true
-APP_KEY=SomeRandomString
-
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_DATABASE=devless_production
 DB_USERNAME=admin
 DB_PASSWORD=pass
-
-CACHE_DRIVER=file
-SESSION_DRIVER=file
-QUEUE_DRIVER=sync
-
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-MAIL_DRIVER=smtp
-MAIL_HOST=mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
-
-Next lets get into the container.  
 ```
 
-With your enviroment set the last thing is to fix permissions 
+## View & Modify DevLess
 
-From you terminal navigate to the DevLess repo you cloned and run `chmod -R 777 . `   
+You should now be able to go to [localhost:4545](http://localhost:4545) in a browser, and see DevLess running. Any changes in the source files should be visible immediately if you refresh the browser.
 
-
-
-Now you should be able to access DevLess using the port you setup above `127.0.0.1:<pick_a_port>`  
-
-You are ready to make changes to DevLess 
-
-
-
-Pulling in the DevLess image  
-Getting the source on to your local  
-Pulling in Dependencies  
-Creating a volumn  
-Explaining the folder structure
+Happy hacking!
 

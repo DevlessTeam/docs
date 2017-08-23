@@ -30,7 +30,7 @@ Now you may go ahead and add your own methods with functionalities you require.
 
 Here is an in dept video explaining the  process
 
-**TODO: **create a video for adding functionality 
+**TODO: **create a video for adding functionality
 
 #### Setting up Privacy for your methods
 
@@ -56,11 +56,19 @@ public function sendEmail\($subject, $body, $recpt)
 }
 ```
 
-There are three **ACLs ** there is ` public` which makes the method publicly available to anyone. `protected` which requires uses to authenticate to gain access to the method. `private` blocks all calls made from the outside world. This means the method can only be accessed within another module  no where else.  To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)` .
+There are three **ACLs ** there is `public` which makes the method publicly available to anyone. `protected` which requires uses to authenticate to gain access to the method. `private` blocks all calls made from the outside world. This means the method can only be accessed within another module  no where else.  To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)` .
 
-**TODO:**How the ACLs work and affect the methods and how to use services within other services 
+**TODO:**How the ACLs work and affect the methods and how to use services within other services
 
-**Adding a management interface  to your Module**
+### **Adding a management interface  to your Module**
+
+You may have noticed the `docs:UI` button on each service listed on the **All Service** section. Clicking on this lists out all the methods you currently have in the **ActionClass** of that service on adding another this will be automagically added with the docs as well.
+
+The `index.blade/php` is the file responsible for the rendering of this docs   
+
+You may customise this to serve as an Admin panel for that particular service/Module. 
+
+
 
 **Modules**
 

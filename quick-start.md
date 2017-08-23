@@ -42,4 +42,8 @@ In the table creation form hit the "add a field" button. Add a field called \`na
 
 ## Step 5: Start using DevLess
 
-You now have a back-end, with a table, up and running! Head over to the [Interacting With Devless](interacting.md) to start using your service. 
+You now have a back-end, with a table, up and running! DevLess can now generate a basic html page which interacts with this instance. Press the button looking like this: `</>` to download an html file. 
+
+Try opening this file up in a browser and in an editor. You can use DevLess from this basic web app. Try changing something in the html file and hit refresh in the browser.
+
+Head over to the [Interacting With Devless](interacting.md) to learn of more ways to interact with DevLess. 

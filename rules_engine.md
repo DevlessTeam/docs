@@ -77,7 +77,7 @@ What happens here is that for the `people` table convert all inputs for the fiel
 
 We can also manipulate data before we send it back to the client. There are three main methods for doing this.
 
-For modifying the response message, use the `mutateResponseMessage(new_message)` method.  The message is used for notifying the client about what happened using in a textual format. You can use it to e.g. give a more context aware message:
+For modifying the response message, use the `mutateResponseMessage(new_message)` method.  The message is used for notifying the client about what happened using  a textual format. You can use it to e.g. give a more context aware message:
 
 ```php
 -> afterCreating()->onTable("people")->mutateResponseMessage("Contact added")`

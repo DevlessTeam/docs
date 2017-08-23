@@ -108,8 +108,6 @@ Using our previous data listing as the base, we can add deletion functionality b
 
 When it comes to updating existing data, we  use a combination of the `dv-update` and `dv-update-oneof` classes. Within a listing, use the `dv-update` class on a `<button>` or `<a>` tag. Then, create a `<form>` with the fields you want to update with a class of `dv-update-oneof:SERVICE:TABLE`. As when adding data, the `name` of the `input` elements map to columns in the table.
 
-TODO: VERIFY WORKING IN NEW VERSION
-
 For example, to updating emails in our contact book:
 
 ```html

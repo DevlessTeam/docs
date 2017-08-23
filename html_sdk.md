@@ -4,7 +4,10 @@ The HTML Kit makes it easy to build web pages that interact with DevLess, withou
 
 ## Scaffolding
 
-TODO: Describe how to get a scaffold
+To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder. 
+
+You can open this file in a browser, and you will be able to  interact with the DevLess data directly. Try editing it! This file is meant to be a starting point for writing web applications using DevLess.
+
 
 ## Larger examples
 

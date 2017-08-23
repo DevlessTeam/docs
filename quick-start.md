@@ -17,8 +17,7 @@ Next click the view button to get to DevLess.
 
 <img src="assets/view_devless.png" />
 
-
- Register as an admin by entering your email & password:
+Register as an admin by entering your email & password:
 
 ![](/assets/signin.png)
 

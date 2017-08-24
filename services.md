@@ -80,7 +80,7 @@ Here is an in dept video explaining the  process
 
 **TODO: **create a video for adding functionality
 
-#### Setting up Privacy for your methods
+### Setting up Privacy for your methods
 
 So you may have functionalities you want exposed to the outside world but then you want other modules to access this functionality. EG: An email module.  In this case you might want to set the permission on the methods within the module.
 

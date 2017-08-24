@@ -1,12 +1,34 @@
-### Module Development
+# Extending Services
 
-You may have used used a few modules from the [service hub](/using_services.md)  or Interested in how they work , even better interested in creating your own.
+Services is a core concept in DevLess. You can create your own basic services easily. But many of the services available at the [service hub](/using_services.md) have much more functionality. Let's take a look at how you can extend services with additional functionality.
 
-#### Setting up
+## Workflow
 
-To begin developing modules you will have to setup a [DevLess instance on your local ](/dev-setup.md).
+The workflow for extending services goes something like this:
 
-Next create a service . Give it a **name** and **description** that best describes your module .
+1. Set up a local instance of DevLess. For this step, see the [Development Setup Guide](/dev-setup.md).
+1. Create a new service in the DevLess UI. Just go to the "Services" tab and press "Create New"
+1. Extend the service by modifying files in `DV-PHP-CORE/resources/views/service_views/<service_name>`. This is covered on this page.
+1. Share your service by migrating it from the migration tab.
+
+## Anatomy of a Service
+
+Services are represented as 2 major parts.
+
+- Service meta-data. This includes the name and description. When creating a service, this is stored in DevLess' database. When migrating, this is exported as JSON meta-data in the service file.
+- Service code & assets. For new services, this is generated at `DV-PHP-CORE/resources/views/service_views/<service_name>`. When migrating, all these files is packed in the service file.
+
+The service code contains:
+
+- An `ActionClass.php` file. This contains a class with the same name as your service. This is where you can add new functionality.
+- An `index.blade.php` file. This is the documentation UI for your service. By default, it uses the `help` method from the `ActionClass.php` file to list all methods.
+- An `assets` folder. These are public assets such as css and js files, which can be accessed from e.g. the `index.blade.php` file.
+
+## 
+
+To begin developing modules you will have to setup a [DevLess instance on your local machine](/dev-setup.md).
+
+Next create a service . Give it a **name** and **description** that best describes your module.
 
 Modules are an extended version of Services. ie It can be shared and used by many people besides  the original author .
 
@@ -20,11 +42,15 @@ In there you should find two files `ActionClass.php` and `index.blade.php` .Also
 
 Functionalities that can be accessed from within your client or other services can be created in the `ActionClass.php` file .
 
-The **ActionClass**  is a `PHP` Class with a list of sample methods .
+The **ActionClass** is a `PHP` Class with a list of sample methods .
 
 These methods can be accessed via any of the [DevLess SDKs](/sdks.md) or [REST Endpoint. ](/http_api.md)   via  the call method.
 
-Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JS SDK](/sdks.md)     `SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})` this should return `public hello`  .
+Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JavaScript SDK](/sdks.md) 
+```js
+SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})
+```
+This should return `"Public Hello"`.
 
 Now you may go ahead and add your own methods with functionalities you require.
 
@@ -60,21 +86,29 @@ There are three **ACLs ** there is `public` which makes the method publicly avai
 
 **TODO:**How the ACLs work and affect the methods and how to use services within other services
 
-### **Adding a management interface  to your Module**
+## Changing the Documentation/Management UI
 
 You may have noticed the `docs:UI` button on each service listed on the **All Service** section. Clicking on this lists out all the methods you currently have in the **ActionClass** of that service on adding another this will be automagically added with the docs as well.
 
-The `index.blade/php` is the file responsible for the rendering of this docs
+The `index.blade/php` is the file responsible for the rendering of the docs. You may customize this to serve as an Admin panel for that particular service/Module.
 
-You may customize this to serve as an Admin panel for that particular service/Module.
+You may also add extra files. Be sure to follow the template naming convention `<filename>.blade.php`. There blade template engine is [documented in the Laravel docs](https://laravel.com/docs/5.1/blade), but using regular html/css/js generally just works.
 
-You may also add extra files. Be sure to follow the template naming convention `<filename>.blade.php`
+There are a few inbuilt helpers that may make creating the interface easier:
 
-You can do this using plain HTML CSS and JS . There are a few inbuilt helpers that may make creating the interface alot easier.
-
-* **DvAssetPath\($payload, $partialAssetPath\)**: This allows you to call on asset files from the asset folder within the service directory EG:  `<script src="<?=DvAssetPath($payload, '/js/main.js')?> >"  ></script>` .This will pull in main.js from the js folder within the assets directory within that service. $payload is a global variable and preset so you don't have to worry about it. 
-* **DvNavigate\($payload, 'pageName'\);** : Once you add extra pages to the service navigating between them should be done using **DvNavigate **EG**:**`<a href="<?= DvNavigate($payload, 'pageName'); ?>" />`:  pageNames don't have to include `blade.php`
-* **DvJSSDK\(\)**: This method will insert the JS SDK into the page . EG: `<?= DvJSSDK()?>`
+* `DvAssetPath($payload, $partialAssetPath)` allows you to call on asset files from the asset folder within the service directory. e.g: 
+  ```html
+  <script src="<?=DvAssetPath($payload, '/js/main.js')?> >"  ></script>``` 
+  This will pull in main.js from the js folder within the assets directory within that service. `$payload` is a global variable and preset so you don't have to worry about it. 
+* `DvNavigate($payload, 'pageName')`: Once you add extra pages to the service navigating between them should be done using `DvNavigate` e.g: 
+  ```html
+    <a href="<?= DvNavigate($payload, '<pagename>'); ?>" />`:  
+    ```
+    Page names don't have to include the `blade.php` suffix.
+* `DvJSSDK()`: This method will insert the JS SDK into the page . e.g: 
+  ```html
+  <?= DvJSSDK()?>```
+  You can now use all functionality in the JS SDK within your page.
 
 #### TODO:video to explaining how to create view pages
 

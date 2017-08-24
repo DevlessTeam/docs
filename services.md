@@ -24,29 +24,32 @@ The service code contains:
 - An `index.blade.php` file. This is the documentation UI for your service. By default, it uses the `help` method from the `ActionClass.php` file to list all methods.
 - An `assets` folder. These are public assets such as css and js files, which can be accessed from e.g. the `index.blade.php` file.
 
-## 
+## Extending functionality
 
-To begin developing modules you will have to setup a [DevLess instance on your local machine](/dev-setup.md).
+Start by [setting up DevLess locally](/dev-setup.md) and creating a service through the services UI. 
 
-Next create a service . Give it a **name** and **description** that best describes your module.
+When the service was created, it generated the base for a service at `DV-PHP-CORE/resources/views/service_views/<service_name>`.
 
-Modules are an extended version of Services. ie It can be shared and used by many people besides  the original author .
+The `ActionClass.php` file contains a `PHP` class with a list of sample methods . You can add methods to this file, which will then be available for calling via DevLess' [HTTP API](/http_api.md), [SDKs](/sdks.md) or from other services within DevLess.
 
-When you create a service several files are also generated internally. These files can be found within the DevLess source.
+E.g. to create a simple "greeter" method, we can use: 
+```
 
-`resources/views/service_views/<service_name>` .
+```php
+/**
+* @ACL public
+*/
 
-In there you should find two files `ActionClass.php` and `index.blade.php` .Also you will find an `assets` directory
+public function sendEmail($subject, $body, $recpt)
 
-#### Adding functionalities
+{
 
-Functionalities that can be accessed from within your client or other services can be created in the `ActionClass.php` file .
+//sending email to $reciever
 
-The **ActionClass** is a `PHP` Class with a list of sample methods .
+}
+```
 
-These methods can be accessed via any of the [DevLess SDKs](/sdks.md) or [REST Endpoint. ](/http_api.md)   via  the call method.
-
-Assuming you labelled you rnew module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JavaScript SDK](/sdks.md) 
+Assuming you labelled your new module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JavaScript SDK](/sdks.md) 
 ```js
 SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})
 ```

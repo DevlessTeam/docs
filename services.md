@@ -30,32 +30,51 @@ Start by [setting up DevLess locally](/dev-setup.md) and creating a service thro
 
 When the service was created, it generated the base for a service at `DV-PHP-CORE/resources/views/service_views/<service_name>`.
 
-The `ActionClass.php` file contains a `PHP` class with a list of sample methods . You can add methods to this file, which will then be available for calling via DevLess' [HTTP API](/http_api.md), [SDKs](/sdks.md) or from other services within DevLess.
+The `ActionClass.php` file contains a `PHP` class, named after your service, with a list of sample methods. You can add methods to this class, which will then be available for calling via DevLess' [HTTP API](/http_api.md), [SDKs](/sdks.md) or from other services within DevLess.
 
-E.g. to create a simple "greeter" method, we can use: 
-```
+E.g. to create a simple "greeter" method, we can add: 
 
 ```php
 /**
 * @ACL public
 */
-
-public function sendEmail($subject, $body, $recpt)
-
+public function greet($name)
 {
-
-//sending email to $reciever
-
+  return "Hello, $name";
 }
 ```
 
-Assuming you labelled your new module contacts the you should be able to access the `samplePublicMethod` in the **ActionClass** of the contacts module EG: using the  [JavaScript SDK](/sdks.md) 
-```js
-SDK.call('contacts', 'samplePublicMethod', [], function(resp){alert(resp);})
-```
-This should return `"Public Hello"`.
+Assuming you labelled your service "greeter" then you can access the `greet` method of the greeter service e.g. using curl:
 
-Now you may go ahead and add your own methods with functionalities you require.
+```bash
+% curl -L -XPOST \
+  -H "Devless-token: $DEVLESS_TOKEN" \
+  -H "Content-type: application/json" \
+  "http://$DEVLESS_URL/api/v1/service/greeter/rpc?action=greet" \
+  -d@- <<EOF
+{
+  "jsonrpc": "2.0",
+  "method": "greeter",
+  "id": "1000",
+  "params": ["Edmond"]
+}
+EOF
+```
+
+Gets you the following response:
+
+```js
+{
+  "status_code": 637,
+  "message": "Got RPC response successfully",
+  "payload": {
+    "jsonrpc": 2,
+    "result": "Hello, Edmond",
+    "id": 1000
+  }
+}
+```
+You can write any kind of functionality you want this way, going from very simple to very complex.
 
 Here is an in dept video explaining the  process
 

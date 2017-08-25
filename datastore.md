@@ -3,8 +3,8 @@
 - [DataStore](#ds)
 - [Query records](#query)
 - [Add records](#add)
-- [update records](#update)
-- [Deleting table and records](#delete)
+- [Update records](#update)
+- [Delete table and records](#delete)
 - [Instance Info](#info)
 - [Dump](#dump)
 

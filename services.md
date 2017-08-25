@@ -115,15 +115,12 @@ To use services from within the rules engine, use the `run` method:
 ->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)
 ```
 
-
 To use services from within php code, use the ``` execute($service, $method, $params = null)``` method. E.g.:
 
 ```php
 ActionClass::execute('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])
 ```
 
-To use services from within php code, use the 
-To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `` .
 **TODO:**How the ACLs work and affect the methods and how to use services within other services
 
 ## Changing the Documentation/Management UI

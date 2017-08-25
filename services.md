@@ -151,14 +151,14 @@ There are a few inbuilt helpers that may make creating the interface easier:
 
 ### Submitting you module to the store
 
-Once you have a module, you may decide to share this with the world. One way you can share your new module  via the DevLess Service Hub.
+Once you have extended a service, you may decide to share this with the world. One way you can share your new module is via the DevLess Service Hub.
 
-* To do this you have to head over to **migration tab** on your instance then export the module.
-* Next you will have to host your module online. For example, using a code hosting platform like GitHub.
+* To do this you have to head over to **migration tab** on your instance then export the service.
+* Next you will have to host your service online. For example, using a code hosting platform like GitHub.
 * Clone the Service Hub JSON file. `https://github.com/DevlessTeam/service-hub.git` and update the JSON file with info about your service. 
 * You can now send a pull request  of the updated JSON 
 
-If everything is good it will be merged and your module will show up on the Service Hub. 
+If everything is good it will be merged and your service will show up on the Service Hub. 
 
 
 

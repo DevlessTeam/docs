@@ -18,6 +18,4 @@
 * [Dev Environment](dev-setup.md)
 * [Extending Services](services.md)
 * [DataStore](datastore.md)
-* [API reference](api_ref.md)
-* [Extending DevLess](extending.md)
 

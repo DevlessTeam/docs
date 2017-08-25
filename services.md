@@ -82,7 +82,7 @@ Here is an in dept video explaining the  process
 
 ### Setting up Access Control Levels for your methods
 
-So you may have functionalities you want exposed to the outside world, but others that you only want other services to be able to access. e.g. in the case of an email module, you might want to set the permission on the methods within the module, so that RPC calls can't send emails.
+So you may have functionalities you want exposed to the outside world, but others that you only want other services to be able to access. e.g. in the case of an email service, you might want to set the permission on the methods within the service so that RPC calls can't send emails.
 
 To do so just decorate the method with the right `ACL` (Access Control Level), e.g:
 
@@ -127,7 +127,7 @@ ActionClass::execute('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@
 
 You may have noticed the `docs:UI` button on each service listed on the "All Service" part of the DevLess UI. Clicking on this lists out all the methods you currently have in the ActionClass of the service. If you add another method this will automagically be added to the docs.
 
-The `index.blade/php` is the file responsible for the rendering of the docs. You may customize this to serve as an Admin panel for that particular service/Module.
+The `index.blade/php` is the file responsible for the rendering of the docs. You may customize this to serve as an Admin panel for a particular service.
 
 You may also add extra files. Be sure to follow the template naming convention `<filename>.blade.php`. There blade template engine is [documented in the Laravel docs](https://laravel.com/docs/5.1/blade), but using regular html/css/js generally just works.
 
@@ -149,9 +149,9 @@ There are a few inbuilt helpers that may make creating the interface easier:
 
 #### TODO:video to explaining how to create view pages
 
-### Submitting you module to the store
+### Submitting you service to the store
 
-Once you have extended a service, you may decide to share this with the world. One way you can share your new module is via the DevLess Service Hub.
+Once you have extended a service, you may decide to share this with the world. One way you can share your new service is via the DevLess Service Hub.
 
 * To do this you have to head over to **migration tab** on your instance then export the service.
 * Next you will have to host your service online. For example, using a code hosting platform like GitHub.

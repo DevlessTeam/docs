@@ -1,4 +1,4 @@
-# REST API
+#REST API
 
 DevLess has a rich restful API. It is used by all the SDKs. This means that everything that you can do in the SDKs, you can do using the REST API.
 
@@ -6,7 +6,7 @@ The REST API Can:
 
 * Do CRUD actions on any data table
 * Create/Delete services and tables in your DevLess instance
-* Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or add-on modules.
+* Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or service extensions.
 
 All operations in the REST API requires a header named `Devless-token`. This token is unique to each DevLess setup. It can be viewed by opening your DevLess GUI & pressing the "connect to DevLess" button in the top-right corner:  
 ![Connect to devless](assets/connect_to_devless.png)

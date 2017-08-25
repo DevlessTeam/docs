@@ -80,37 +80,55 @@ Here is an in dept video explaining the  process
 
 **TODO: **create a video for adding functionality
 
-### Setting up Privacy for your methods
+### Setting up Access Control Levels for your methods
 
-So you may have functionalities you want exposed to the outside world but then you want other modules to access this functionality. EG: An email module.  In this case you might want to set the permission on the methods within the module.
+So you may have functionalities you want exposed to the outside world, but others that you only want other services to be able to access. e.g. in the case of an email module, you might want to set the permission on the methods within the module, so that RPC calls can't send emails.
 
-To do so just decorate the method with the right `ACL`
+To do so just decorate the method with the right `ACL` (Access Control Level), e.g:
 
-EG:
+```php
+/**
+ * @ACL private
+ */
 
-```
-/\*\*
-
-\* @ACL public
-
-\*/
-
-public function sendEmail\($subject, $body, $recpt)
-
+public function sendEmail($subject, $body, $reciever)
 {
-
-//sending email to $reciever
-
+  //sending email to $reciever
 }
 ```
 
-There are three **ACLs ** there is `public` which makes the method publicly available to anyone. `protected` which requires uses to authenticate to gain access to the method. `private` blocks all calls made from the outside world. This means the method can only be accessed within another module  no where else.  To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)` .
+There are three **ACLs **:
 
+| ACL | Description | 
+| --- | --- |
+| `public` | Public to everyone. |
+| `protected` | Accessible to logged in users of DevLess.  |
+| `private` |  Blocks all calls made from the outside world. This means the method can only be accessed from within DevLess services. | 
+
+
+### Using services from other services
+
+Methods exposed by one service can be used by other services in the same DevLess instance. This can be done both from the rules engine and from other service's `ActionClass.php` code base. 
+
+To use services from within the rules engine, use the `run` method:
+```php
+->beforeQuerying()->run('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])->getResult($state)->succeedWith($state)
+```
+
+
+To use services from within php code, use the ``` execute($service, $method, $params = null)``` method. E.g.:
+
+```php
+ActionClass::execute('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])
+```
+
+To use services from within php code, use the 
+To use  a module within another , you may use the `run` method within the   Rules section in the  service you will like to use this in . EG: `` .
 **TODO:**How the ACLs work and affect the methods and how to use services within other services
 
 ## Changing the Documentation/Management UI
 
-You may have noticed the `docs:UI` button on each service listed on the **All Service** section. Clicking on this lists out all the methods you currently have in the **ActionClass** of that service on adding another this will be automagically added with the docs as well.
+You may have noticed the `docs:UI` button on each service listed on the "All Service" part of the DevLess UI. Clicking on this lists out all the methods you currently have in the ActionClass of the service. If you add another method this will automagically be added to the docs.
 
 The `index.blade/php` is the file responsible for the rendering of the docs. You may customize this to serve as an Admin panel for that particular service/Module.
 
@@ -139,7 +157,7 @@ There are a few inbuilt helpers that may make creating the interface easier:
 Once you have a module, you may decide to share this with the world. One way you can share your new module  via the DevLess Service Hub.
 
 * To do this you have to head over to **migration tab** on your instance then export the module.
-* Next you will have to host your module online. Preferably using a code hosting platform like GitHub.
+* Next you will have to host your module online. For example, using a code hosting platform like GitHub.
 * Clone the Service Hub JSON file. `https://github.com/DevlessTeam/service-hub.git` and update the JSON file with info about your service. 
 * You can now send a pull request  of the updated JSON 
 

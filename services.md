@@ -2,6 +2,10 @@
 
 Services is a core concept in DevLess. You can create your own basic services easily. But many of the services available at the [service hub](/using_services.md) have much more functionality. Let's take a look at how you can extend services with additional functionality.
 
+## Video guide
+
+As many other pages in this documentation, there is a video guide to go along with it. It's [right here!](https://youtu.be/tS6-tS3yjLc)
+
 ## Workflow
 
 The workflow for extending services goes something like this:
@@ -76,10 +80,6 @@ Gets you the following response:
 ```
 You can write any kind of functionality you want this way, going from very simple to very complex.
 
-Here is an in dept video explaining the  process
-
-**TODO: **create a video for adding functionality
-
 ### Setting up Access Control Levels for your methods
 
 So you may have functionalities you want exposed to the outside world, but others that you only want other services to be able to access. e.g. in the case of an email service, you might want to set the permission on the methods within the service so that RPC calls can't send emails.
@@ -121,8 +121,6 @@ To use services from within php code, use the ``` execute($service, $method, $pa
 ActionClass::execute('mailer', 'sendEmail', ['hello', 'message goes here', 'joe@email.com'])
 ```
 
-**TODO:**How the ACLs work and affect the methods and how to use services within other services
-
 ## Changing the Documentation/Management UI
 
 You may have noticed the `docs:UI` button on each service listed on the "All Service" part of the DevLess UI. Clicking on this lists out all the methods you currently have in the ActionClass of the service. If you add another method this will automagically be added to the docs.
@@ -146,8 +144,6 @@ There are a few inbuilt helpers that may make creating the interface easier:
   ```html
   <?= DvJSSDK()?>```
   You can now use all functionality in the JS SDK within your page.
-
-#### TODO:video to explaining how to create view pages
 
 ### Submitting you service to the store
 

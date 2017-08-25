@@ -15,9 +15,9 @@
   * [Rules Reference](rules_reference.md)
 * [Using external services](using_services.md)
 * [Examples of Services](list-of-services.md)
+* [Dev Environment](dev-setup.md)
+* [Extending Services](services.md)
+* [DataStore](datastore.md)
+* [API reference](api_ref.md)
 * [Extending DevLess](extending.md)
-  * [Dev Environment](dev-setup.md)
-  * [Extending Services](services.md)
-  * [API reference](api_ref.md)
-    * [DataStore](datastore.md)
 

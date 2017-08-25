@@ -1,6 +1,6 @@
 # Local Dev Environment
 
-You may be interested in building a module or want to contribute back to the framework.  Both requires that you set up DevLess on your development machine.
+You may be interested in building a service or want to contribute back to the framework. Both requires that you set up DevLess on your development machine.
 
 This guide is based on Docker. **Install Docker** if you don't have it. Download from [Docker's homepage](https://www.docker.com/community-edition#/download) or through your package manager.
 

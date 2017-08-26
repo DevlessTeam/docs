@@ -107,5 +107,5 @@ For example, we can show different messages depending on the email domain:
 afterCreating()->onTable("people")->whenever(assertIts::endsWith($input_email, "gmail.com"))->mutateResponseMessage("Welcome gmail user")
 ```
 
-For a deeper dive into working with flow control in rules, see [this video](https://www.youtube.com/?v=Mwurl21niSw)
+For a deeper dive into working with flow control in rules, see [this video](https://www.youtube.com/watch?v=Mwurl21niSw)
 

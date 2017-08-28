@@ -4,10 +4,9 @@ The HTML Kit makes it easy to build web pages that interact with DevLess, withou
 
 ## Scaffolding
 
-To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder. 
+To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder.
 
 You can open this file in a browser, and you will be able to  interact with the DevLess data directly. Try editing it! This file is meant to be a starting point for writing web applications using DevLess.
-
 
 ## Larger examples
 
@@ -19,7 +18,7 @@ This document aims to describe how one can interact with DevLess with quite simp
 
 Go to your DevLess instance, press this buttton: ![](/assets/connect_to_devless.png). It is located at the top right in your DevLess panel. It should present you with an HTML tag to connect to your instance. It should look something like this:
 
-```
+```js
 <script src="http://bestapp.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="abcde123456789"></script>
 ```
 
@@ -58,6 +57,7 @@ Accessing data in `referred` tables can be done by using `var-REFERED_TABLE_NAME
 For example, we can create a list of all our contacts like this:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -77,6 +77,7 @@ The classes can be used on any kind of html tag. This makes it trivial to layout
 Data can be selected based on any column. This is done by using the `dv-where` prefix to the `get-all` class. For example, if I wanted to select all contacts with the name of 'joe', we would do it like this:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-where:name:joe-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -96,6 +97,7 @@ If you only want to show one entry, use this technique but with a unique key in 
 Using our previous data listing as the base, we can add deletion functionality by using the `dv-delete` class. The `dv-delete` class can be used within a listing, on `<a>` or `<button>` elements.
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -114,6 +116,7 @@ When it comes to updating existing data, we  use a combination of the `dv-update
 For example, to updating emails in our contact book:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -127,6 +130,85 @@ For example, to updating emails in our contact book:
     <input type="text" name="email" placeholder="Update email">
     <button type="submit">Update</button>
 </form>
+```
+
+### Signing up
+
+To signup a user , you will need to add the  `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your  DevLess instance.   
+**NB:** DevLess will move to the URL set for the `action` attribute on a successful signup.
+
+The example code below illustrates signing up a user and moving to the dashboard page on success.
+
+```html
+ <div class="dv-notify"></div>
+  <form class="dv-signup" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="email" name="email" placeholder="Enter email here">
+    <input type="number" name="phonenumber" placeholder="Enter phone number here">
+    <input type="text" name="firstname" placeholder="Enter first name here">
+    <input type="text" name="lastname" placeholder="Enter last name here">
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">Signup</button>
+  </form>
+```
+
+### Signing in
+
+To sign in users, you will need to add the `dv-signin` class to a form.  
+You will also need to pick either `phonenumber` , `email` or `username` as an identifier and a password for signin.
+
+The example below uses `username` and `password` for sign in
+
+```html
+  <div class="dv-notify"></div>
+  <form class="dv-signin" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <!--<input type="email" name="email" placeholder="Enter email here">-->
+    <!--<input type="number" name="phonenumber" placeholder="Enter phone number here">-->
+    <!-- Choose between username, phone_number and email-->
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">Signin</button>
+  </form>
+```
+
+### Get profile
+
+Once you are either signed in or signed up. You can now display the profile of the user. You will need the `dv-profile` class and use `var-<profile_field>` to get the the field value.
+
+```html
+   <div class="dv-profile">
+    <span class="var-username"></span>
+    <span class="var-email"></span>
+    <span class="var-firstname"></span>
+    <span class="var-last_name"></span>
+    <span class="var-phone_number"></span>
+  </div>
+```
+
+### Updating profile
+
+You can update the profile of a signed up or signed in user using a form.   
+You will need to add the `dv-updateProfile` class to the form as well as the fields to be updated.
+
+```html
+    <div class="dv-notify"></div>
+    <form class="dv-updateProfile">
+    <input type="text" name="username">
+    <input type="email" name="email">
+    <input type="text" name="firstname">
+    <input type="text" name="lastname">
+    <input type="number" name="phone_number">
+    <input type="password" name="password">
+    <button type="submit">Update profile</button>
+  </form>
+```
+
+### logging out
+
+Logging out a user is as simple as adding the `dv-logout` class and an `action` attribute to redirect to once the user is logged out.
+
+```html
+   <button type="dv-logout" action="/">Logout</button>
 ```
 
 

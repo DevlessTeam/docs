@@ -132,7 +132,7 @@ For example, to updating emails in our contact book:
 
 ### Sign Up
 
-Signing up a new user is as simple as adding `dv-signup` to your signup form. 
+Signing up a new user is as simple as adding `dv-signup` to your signup form. DevLess will redirect the user to the URL set in the **action** if the signup is successful. 
 
 ```html
   <div class="dv-notify"></div>  
@@ -145,8 +145,58 @@ Signing up a new user is as simple as adding `dv-signup` to your signup form.
     <input type="password" name="password" placeholder="Enter password here">
     <button type="submit">Signup</button>
   </form>
+```  
+
+### Sign In 
+Signing in a user will require you to add `dv-signin` to your sign in form.Also the user will be redirected to the **action**  URL on successful sign in.
+
+```html
+ <div class="dv-notify"></div> 
+  <form class="dv-signin" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="email" name="email" placeholder="Enter email here">
+    <input type="number" name="phonenumber" placeholder="Enter phone number here">
+    <!-- Choose between username, phone_number and email-->
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">Signin</button>
+  </form>
 ```
-###  
 
+### Get User Profile 
+To get the profile of a user add the `dv-profile` class to any html outer tag.You may now get the respective user profile value using the **var** keyword eg:`var-firstname` to get the user's name.  To get the profile of a user you need to be Signed in . 
 
+ ```html
+    <div class="dv-notify"></div>  
+    <div class="dv-profile">
+    <span class="var-username"></span>
+    <span class="var-email"></span>
+    <span class="var-firstname"></span>
+    <span class="var-last_name"></span>
+    <span class="var-phone_number"></span>
+  </div>
+```
 
+### Update User Profile
+
+To update a users profile add the `dv-updateProfile` class to the form.
+
+```html 
+  <div class="dv-notify"></div> 
+  <form class="dv-updateProfile">
+    <input type="text" name="username">
+    <input type="email" name="email">
+    <input type="text" name="firstname">
+    <input type="text" name="lastname">
+    <input type="number" name="phone_number">
+    <input type="password" name="password">
+    <button type="submit">Update profile</button>
+  </form>
+```
+
+## Logout User 
+
+To  logout a user is a simple task. Add the `dv-logout` class to a button or anchor tag. Also you may add an action attribute with a URL to redirect to once the logout is successful. 
+
+```html 
+  <button type="dv-logout" action="/home">Logout</button>
+```

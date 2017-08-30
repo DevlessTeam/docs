@@ -4,10 +4,9 @@ The HTML Kit makes it easy to build web pages that interact with DevLess, withou
 
 ## Scaffolding
 
-To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder. 
+To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder.
 
 You can open this file in a browser, and you will be able to  interact with the DevLess data directly. Try editing it! This file is meant to be a starting point for writing web applications using DevLess.
-
 
 ## Larger examples
 
@@ -96,6 +95,7 @@ If you only want to show one entry, use this technique but with a unique key in 
 Using our previous data listing as the base, we can add deletion functionality by using the `dv-delete` class. The `dv-delete` class can be used within a listing, on `<a>` or `<button>` elements.
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -114,6 +114,7 @@ When it comes to updating existing data, we  use a combination of the `dv-update
 For example, to updating emails in our contact book:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -128,6 +129,24 @@ For example, to updating emails in our contact book:
     <button type="submit">Update</button>
 </form>
 ```
+
+### Sign Up
+
+Signing up a new user is as simple as adding `dv-signup` to your signup form. 
+
+```html
+  <div class="dv-notify"></div>  
+  <form class="dv-signup" action="/dasboard">
+    <input type="text" name="username" placeholder="Enter username here">
+    <input type="email" name="email" placeholder="Enter email here">
+    <input type="number" name="phonenumber" placeholder="Enter phone number here">
+    <input type="text" name="firstname" placeholder="Enter first name here">
+    <input type="text" name="lastname" placeholder="Enter last name here">
+    <input type="password" name="password" placeholder="Enter password here">
+    <button type="submit">Signup</button>
+  </form>
+```
+###  
 
 
 

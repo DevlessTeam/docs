@@ -4,4 +4,7 @@ Once you have a Devless service up and running, there are multiple ways to inter
 
 * The [HTML Kit](html_sdk.md) allows you to use the service directly from HTML without a line of JavaScript.
 * There are multiple [SDKs](sdks.md) for when you want to interact with DevLess programmatically 
-* There is also a [JSON based REST api](rest_api.md)
+* There is also a [JSON based REST api](/http_api.md)
+
+
+

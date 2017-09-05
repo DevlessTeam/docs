@@ -377,7 +377,7 @@ curl -L -XDELETE \
 EOF
 ```
 
-### Delete a table
+### 
 
 ## RPC Calls
 

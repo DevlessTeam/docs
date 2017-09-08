@@ -50,3 +50,23 @@ The `dv-label` class serves as an identifier for the query data action and makes
 
 
 ### Intercepting submitted Data 
+
+```html
+
+<div class="dv-notify"></div>
+<form class="dv-add-oneto:inventory:products dv-label:admin">
+	<input type="text" name="name"><br>
+	<input type="number" name="price"><br>
+	<button type="submit">add</button>
+</form>
+
+<script type="text/javascript">
+	dvInterceptSubmission = function(resp) {
+			resp.admin.name = resp.admin.name.toLocaleUpperCase();
+		return resp;
+	}
+
+</script>
+
+```
+The example above describe the interception of data about to be submitted to DevLess and capitalizing the name before it finally gets to DevLess.

@@ -211,5 +211,15 @@ Logging out a user is as simple as adding the `dv-logout` class and an `action` 
    <button type="dv-logout" action="/">Logout</button>
 ```
 
+### Notifications
+
+To make you page more interactive you may use  `dv-notify`  as well as the `dv-processing` classes.
+
+**General notifications**: For every of the above operations except for a successful query DevLess returns a more generic message . You may display this by adding the class `<div class="dv-notify"></div>` This will print out the message as sent from the DevLess backend. These kind of messages are good for debugging purposes.
+
+**Specialized notifications: **Most likely you will like to show your users friendly message. In this case you may use `<div class="dv-notify-success">your success message here :)</div>` for successful operations  and `<div class="dv-notify-failed">you failure message goes here :(</div>` for failed operations.
+
+**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal  the user when the task starts and when its done. You can use  `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done 
+
 
 

@@ -134,7 +134,7 @@ For example, to updating emails in our contact book:
 
 ### Signing up
 
-To signup a user , you will need to add the  `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your  DevLess instance.   
+To signup a user , you will need to add the  `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your  DevLess instance.  
 **NB:** DevLess will move to the URL set for the `action` attribute on a successful signup.
 
 The example code below illustrates signing up a user and moving to the dashboard page on success.
@@ -187,7 +187,7 @@ Once you are either signed in or signed up. You can now display the profile of t
 
 ### Updating profile
 
-You can update the profile of a signed up or signed in user using a form.   
+You can update the profile of a signed up or signed in user using a form.  
 You will need to add the `dv-updateProfile` class to the form as well as the fields to be updated.
 
 ```html

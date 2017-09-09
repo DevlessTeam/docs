@@ -70,7 +70,9 @@ This will return a response like this:
 }
 ```
 
-The `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md), `637` indicates success. The `message` is a human-readable message about the status of the call. the `payload` contains a `result`, which is the result from the `signUp` action. It contains the created profile, but also a `token`. The token is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user.
+The `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md), `637` indicates success. The `message` is a human-readable message about the status of the call. the `payload` contains a `result`, which is the result from the `signUp` action. It contains the created profile, but also a `token`. The token is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
+
+## 
 
 ### Logging In
 
@@ -121,7 +123,7 @@ This will return a response like this:
 }
 ```
 
-Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user.
+**NB: **Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
 ## CRUD
 
@@ -134,7 +136,7 @@ We can add data to the table, by using the `POST` verb and sending in JSON data:
 ```
 $ curl -L -XPOST \
   -H "Content-type: application/json" \
-  -H "Devless-token: $DEVLESS_\
+  -H "Devless-token: $DEVLESS_TOKEN\
   "http://$DEVLESS_URL/api/v1/service/contacts/db" -d@- <<EOF
 {
   "resource":[{

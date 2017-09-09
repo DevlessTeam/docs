@@ -1,4 +1,4 @@
-#REST API
+# REST API
 
 DevLess has a rich restful API. It is used by all the SDKs. This means that everything that you can do in the SDKs, you can do using the REST API.
 
@@ -377,13 +377,13 @@ curl -L -XDELETE \
 EOF
 ```
 
-### Delete a table
+### 
 
 ## RPC Calls
 
-As we saw when doing authentication, DevLess methods can be called using JSON RPC. This goes for both the built-in methods, as well as for any services that you install through the hub or write for yourself.
+As we saw when doing authentication, DevLess methods can be called using JSON RPC. This goes for both the built-in methods, as well as for any services that you install through the hub or write  yourself.
 
-E.g. if we have the Weather service installed we can call it to get weather how hot it is in Accra:
+E.g. if we have the Weather service installed we can call it to get how hot it is in Accra:
 
 ```bash
 curl -L -XPOST \

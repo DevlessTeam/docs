@@ -18,7 +18,7 @@ This document aims to describe how one can interact with DevLess with quite simp
 
 Go to your DevLess instance, press this buttton: ![](/assets/connect_to_devless.png). It is located at the top right in your DevLess panel. It should present you with an HTML tag to connect to your instance. It should look something like this:
 
-```
+```js
 <script src="http://bestapp.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="abcde123456789"></script>
 ```
 
@@ -57,6 +57,7 @@ Accessing data in `referred` tables can be done by using `var-REFERED_TABLE_NAME
 For example, we can create a list of all our contacts like this:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -76,6 +77,7 @@ The classes can be used on any kind of html tag. This makes it trivial to layout
 Data can be selected based on any column. This is done by using the `dv-where` prefix to the `get-all` class. For example, if I wanted to select all contacts with the name of 'joe', we would do it like this:
 
 ```html
+<div class="dv-notify"></div>
 <ul class="dv-where:name:joe-get-all:contacts:people">
     <li>
         <span class="var-name"></span>:
@@ -130,12 +132,15 @@ For example, to updating emails in our contact book:
 </form>
 ```
 
-### Sign Up
+### Signing up
 
-Signing up a new user is as simple as adding `dv-signup` to your signup form. DevLess will redirect the user to the URL set in the **action** if the signup is successful. 
+To signup a user , you will need to add the  `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your  DevLess instance.  
+**NB:** DevLess will move to the URL set for the `action` attribute on a successful signup.
+
+The example code below illustrates signing up a user and moving to the dashboard page on success.
 
 ```html
-  <div class="dv-notify"></div>  
+ <div class="dv-notify"></div>
   <form class="dv-signup" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
     <input type="email" name="email" placeholder="Enter email here">
@@ -145,29 +150,33 @@ Signing up a new user is as simple as adding `dv-signup` to your signup form. De
     <input type="password" name="password" placeholder="Enter password here">
     <button type="submit">Signup</button>
   </form>
-```  
+```
 
-### Sign In 
-Signing in a user will require you to add `dv-signin` to your sign in form.Also the user will be redirected to the **action**  URL on successful sign in.
+### Signing in
+
+To sign in users, you will need to add the `dv-signin` class to a form.  
+You will also need to pick either `phonenumber` , `email` or `username` as an identifier and a password for signin.
+
+The example below uses `username` and `password` for sign in
 
 ```html
- <div class="dv-notify"></div> 
+  <div class="dv-notify"></div>
   <form class="dv-signin" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
-    <input type="email" name="email" placeholder="Enter email here">
-    <input type="number" name="phonenumber" placeholder="Enter phone number here">
+    <!--<input type="email" name="email" placeholder="Enter email here">-->
+    <!--<input type="number" name="phonenumber" placeholder="Enter phone number here">-->
     <!-- Choose between username, phone_number and email-->
     <input type="password" name="password" placeholder="Enter password here">
     <button type="submit">Signin</button>
   </form>
 ```
 
-### Get User Profile 
-To get the profile of a user add the `dv-profile` class to any html outer tag.You may now get the respective user profile value using the **var** keyword eg:`var-firstname` to get the user's name.  To get the profile of a user you need to be Signed in . 
+### Get profile
 
- ```html
-    <div class="dv-notify"></div>  
-    <div class="dv-profile">
+Once you are either signed in or signed up. You can now display the profile of the user. You will need the `dv-profile` class and use `var-<profile_field>` to get the the field value.
+
+```html
+   <div class="dv-profile">
     <span class="var-username"></span>
     <span class="var-email"></span>
     <span class="var-firstname"></span>
@@ -176,13 +185,14 @@ To get the profile of a user add the `dv-profile` class to any html outer tag.Yo
   </div>
 ```
 
-### Update User Profile
+### Updating profile
 
-To update a users profile add the `dv-updateProfile` class to the form.
+You can update the profile of a signed up or signed in user using a form.  
+You will need to add the `dv-updateProfile` class to the form as well as the fields to be updated.
 
-```html 
-  <div class="dv-notify"></div> 
-  <form class="dv-updateProfile">
+```html
+    <div class="dv-notify"></div>
+    <form class="dv-updateProfile">
     <input type="text" name="username">
     <input type="email" name="email">
     <input type="text" name="firstname">
@@ -193,10 +203,20 @@ To update a users profile add the `dv-updateProfile` class to the form.
   </form>
 ```
 
-## Logout User 
+### logging out
 
-To  logout a user is a simple task. Add the `dv-logout` class to a button or anchor tag. Also you may add an action attribute with a URL to redirect to once the logout is successful. 
+Logging out a user is as simple as adding the `dv-logout` class and an `action` attribute to redirect to once the user is logged out.
 
-```html 
-  <button type="dv-logout" action="/home">Logout</button>
+```html
+   <button type="dv-logout" action="/">Logout</button>
 ```
+
+### Notifications
+
+To make you page more interactive you may use  `dv-notify`  as well as the `dv-processing` classes.
+
+**General notifications**: For every of the above operations except for a successful query DevLess returns a more generic message . You may display this by adding the class `<div class="dv-notify"></div>` This will print out the message as sent from the DevLess backend. These kind of messages are good for debugging purposes.
+
+**Specialized notifications: **Most likely you will like to show your users friendly message. In this case you may use `<div class="dv-notify-success">your success message here :)</div>` for successful operations  and `<div class="dv-notify-failed">you failure message goes here :(</div>` for failed operations.
+
+**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal  the user when the task starts and when its done. You can use  `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done 

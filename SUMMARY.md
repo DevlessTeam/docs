@@ -6,6 +6,8 @@
 * [Setting up DevLess](how-to-setup-devless.md)
 * [Interacting With DevLess](interacting.md)
   * [HTML Kit](html_sdk.md)
+    * [The Basics](html_sdk.md)
+    * [Advanced Concepts](html-advanced-concepts.md)
   * [SDKs](sdks.md)
   * [HTTP API](http_api.md)
   * [DevLess Status Codes](devless-status-codes.md)

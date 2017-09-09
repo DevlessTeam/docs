@@ -11,8 +11,7 @@
 
 ## <a name="ds"></a> DataStore
 
-DataStore Helper is the DevLess internal API for working with data related to services. The API can be accessed from within the rules engine as well.
-
+DataStore Helper is the DevLess internal API for working with data related to services. 
 To use the DataStore class import it by inserting `use App\Helpers\DataStore;` at the very top of the php file, right after the `<?php` tag. Now you can use it to interact with the database.
 
 ## <a name="query"></a> Query Records

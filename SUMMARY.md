@@ -11,13 +11,13 @@
   * [SDKs](sdks.md)
   * [HTTP API](http_api.md)
   * [DevLess Status Codes](devless-status-codes.md)
+* [Using external services](using_services.md)
 * [Managing your data](secure_transform_data.md)
   * [Data model](data_model.md)
   * [Securing & Transforming data](rules_engine.md)
   * [Rules Reference](rules_reference.md)
-* [Using external services](using_services.md)
 * [Examples of Services](list-of-services.md)
 * [Dev Environment](dev-setup.md)
 * [Extending Services](services.md)
-* [DataStore](datastore.md)
+* Internal DevLess Service
 

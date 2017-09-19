@@ -68,6 +68,8 @@ For example, we can create a list of all our contacts like this:
 </ul>
 ```
 
+**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>`  
+
 Here we list all entries in the `people` table in the `contacts` service. For each contact we print their name and their email. For the email, we also add a `mailto` link.
 
 The classes can be used on any kind of html tag. This makes it trivial to layout your webpage any way you want it.
@@ -219,7 +221,5 @@ To make you page more interactive you may use  `dv-notify`  as well as the `dv-p
 
 **Specialized notifications: **Most likely you will like to show your users friendly message. In this case you may use `<div class="dv-notify-success">your success message here :)</div>` for successful operations  and `<div class="dv-notify-failed">you failure message goes here :(</div>` for failed operations.
 
-**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal  the user when the task starts and when its done. You can use  `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done 
-
-
+**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal  the user when the task starts and when its done. You can use  `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done
 

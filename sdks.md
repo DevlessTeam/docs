@@ -1,6 +1,6 @@
 # DevLess SDKs
 
-The DevLess SDKs can be used to easily access your DevLess data from the comfort of your favorite language. If there currently is no SDK for your language, feel free to use the [REST API](rest_api.md) instead.
+The DevLess SDKs can be used to easily access your DevLess data from the comfort of your favorite language. If there currently is no SDK for your language, feel free to use the [REST API](http_api.md) instead.
 
 #### Available SDKs
 

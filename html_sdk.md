@@ -68,6 +68,8 @@ For example, we can create a list of all our contacts like this:
 </ul>
 ```
 
+**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>`  
+
 Here we list all entries in the `people` table in the `contacts` service. For each contact we print their name and their email. For the email, we also add a `mailto` link.
 
 **NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>` 

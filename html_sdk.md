@@ -68,11 +68,11 @@ For example, we can create a list of all our contacts like this:
 </ul>
 ```
 
-**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>`  
+**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>`
 
 Here we list all entries in the `people` table in the `contacts` service. For each contact we print their name and their email. For the email, we also add a `mailto` link.
 
-**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>` 
+**NB: **In the case of image tags remember to set an empty src tag `<img src="" class="var-image"/>`
 
 The classes can be used on any kind of html tag. This makes it trivial to layout your webpage any way you want it.
 
@@ -212,7 +212,7 @@ You will need to add the `dv-updateProfile` class to the form as well as the fie
 Logging out a user is as simple as adding the `dv-logout` class and an `action` attribute to redirect to once the user is logged out.
 
 ```html
-   <button type="dv-logout" action="/">Logout</button>
+   <button class="dv-logout" action="/">Logout</button>
 ```
 
 ### Notifications

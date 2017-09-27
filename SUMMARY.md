@@ -19,5 +19,6 @@
 * [Examples of Services](list-of-services.md)
 * [Dev Environment](dev-setup.md)
 * [Extending Services](services.md)
-* Internal DevLess Service
+* [Internal DevLess Service](internal-devless-service.md)
+* [DataStore](datastore.md)
 

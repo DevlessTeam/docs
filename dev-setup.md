@@ -33,10 +33,10 @@ For this we need to know the container id of the container we just started. Run 
 
 ```bash
 # Find the docker image id
-DEVLESS_IMG=$(docker ps | awk '$2=="eddymens/devless" {print $1}')
+CONTAINER_ID=$(docker ps | awk '$2=="eddymens/devless" {print $1}')
 
 # Install DevLess dependencies & fix permissions
-docker exec -it $DEVLESS_IMG  bash -c "cd html ; composer install ; chmod -R a+rw ."
+docker exec -it $CONTAINER_ID  bash -c "cd html ; composer install ; chmod -R a+rw ."
 ```
 
 Above, we install the DevLess dependencies using composer. Then we change file permissions, to allow everyone to read & write to the source directory. This is needed so that both the docker service and your user outside the container can edit files.

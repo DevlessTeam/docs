@@ -5,7 +5,7 @@ Devless is a tool which helps you develop applications easier, by not having to 
 ## Step 1: Deploy DevLess to Heroku 
 
 Heroku is a platform as a service that makes hosting web projects easy. You will need an Heroku account to be able to deploy. You won't be charged, since this will fall into [Heroku's free tier](https://blog.heroku.com/heroku-free-dynos). Click the button below to get started. 
-<a href="https://elements.heroku.com/buttons/devlessteam/dv-php-core" class="heroBtn">
+<a href="https://dashboard.heroku.com/new?button-url=https://elements.heroku.com/buttons/devlessteam/dv-php-core&template=https%3A//github.com/DevlessTeam/DV-PHP-CORE/tree/heroku3" class="heroBtn">
                                 <img src="assets/get_started.svg" alt="Deploy">
                             </a>
 Next click this button.

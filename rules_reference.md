@@ -28,14 +28,56 @@ Just like  method chains in any language, you may chain up a bunch of methods li
 A couple of things to note though is that:
 *  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in PHP .
 
-* Also to concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `beforeQuerying()->assign("hello "." world")->to(greetings)` `beforeQuerying()->concatenate("hello "," world" )->storeAs(greetings)` 
-* Also although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `beforeQuering()->assign(input_name)->to(name)` and `beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
-* There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]`
+*  Also to concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `beforeQuerying()->assign("hello "." world")->to(greetings)` `beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
+*  Also although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `beforeQuering()->assign(input_name)->to(name)` and `beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
+*  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]`
 
 ### Database events
-Rules are database event driven .This means that Rules will only execute based on a database actions.Examples of database actions are  Querying, Adding, Updating or Deleting Records. 
+Rules are database event driven .This means that Rules will only execute based on a database actions.Examples of database actions are  Querying, Adding, Updating and Deleting Records.
+ For any newly created service  you will find these events already set in there. 
+For example if you will like to capitalize all first names you are about to add to the database you will have something similar to the below 
+```
+  
+/**
+* <?
+* Rules allow you to establish control over the flow of 
+* your data in and out of the database.
+* For example if you will like to change the output message 
+* your users receive after quering for data,
+* its as easy as `afterQuerying()->mutateResponseMessage("to something else")`. 
+* To view the list of callable method append ->help() to a 
+* flow statement ie ->beforeQuering()->help() and view from your app.
+**/
+ -> beforeQuerying()
+ -> beforeUpdating()
+ -> beforeDeleting()
+ -> beforeCreating()
+                ->onTable('register')->convertToUpperCase(input_first_name)_>storeAs(input_first_name)
+
+ -> onQuery()
+ -> onUpdate()
+ -> onDelete()
+ -> onCreate()
+
+ -> onAnyRequest()
+
+ -> afterQuerying()
+ -> afterUpdating()
+ -> afterDeleting()
+ -> afterCreating()
+ 
+```
+You will write your code under the `beforeCreating()` method to denote the fact that you want this action to only performed only when a write is about to be made the `register` table . 
+
+Similarly the  **after** methods will be run when the db action is performed .
+You most likely will  be mutating the output response using the **after** db actions or performing actions like sending out emails . We will touch this a little bit more when we take a look at response .
+
+The **on** methods will run before and after the respective db action. You may use this to execute Rules that you need   to run on both before and after actions. 
+
+Also the **onAnyRequest** method will execute Rules on any kind of db actions made to the service. 
 
 ### Getting inputs in Rules
+
  
 
 

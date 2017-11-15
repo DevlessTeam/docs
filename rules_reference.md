@@ -14,8 +14,8 @@ Just like  method chains in any language, you may chain up a bunch of methods li
 A couple of things to note though is that:
 *  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in PHP .
 
-*  Also to concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
-*  Also although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
+*  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
+*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
 *  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]`
 
 ### Database events

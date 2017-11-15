@@ -1,19 +1,5 @@
 # Rules Reference
 
-### What are Rules?
-Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability.
- 
-### How to get started
-On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: querying, delete, adding data to that particular Service table will be affected by the rule that you set.
-![](/assets/service_rules.png). A newly created service will have a rules page similar to the one above.
-
-### Rules Syntax definition 
-Rules are based on PHP method chains. Which is a bunch of methods you call together to get particular results. 
-Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
-A couple of things to note though is that:
-*  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in PHP .
-
-Also to concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and  might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")` try to use # Rules Reference
 
 ### What are Rules?
 Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability.

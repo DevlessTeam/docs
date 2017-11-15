@@ -79,10 +79,7 @@ Also the **onAnyRequest** method will execute Rules on any kind of db actions ma
 ### Getting inputs in Rules
 In the case of  DB actions that require the client to pass in variables. eg Adding data and updating records , these records will be made available within Rules as variables prefixed with `input_` . 
 For example if the client sends in JSON data like `"liked":0, "comment": "I agree with you"}`
-the keys will be converted to variables prefixed with  `input_` and assigned the values and so now you will be able to access the liked value through the variable `input_liked ` and comments through ,`
-
-
-input_comments` 
+the keys will be converted to variables prefixed with  `input_` and assigned the values and so now you will be able to access the liked value through the variable `input_liked ` and comments through ,`input_comments`. 
 
  
 

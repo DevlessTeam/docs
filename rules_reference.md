@@ -1,5 +1,17 @@
 # Rules Reference
 
+### What are Rules?
+Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  
+ 
+### How to get started
+### Rules Syntax definition 
+### Database events
+### Getting Inputs in Rules
+ 
+
+
+
+
 ## Keywords
 
 Keywords are methods/functions that allow you to control what happens with your data before storing or after reading. This is the full reference:

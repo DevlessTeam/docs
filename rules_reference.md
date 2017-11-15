@@ -10,12 +10,12 @@ On creating a new service you will be redirected to the service page where you w
 
 ### Rules Syntax definition 
 Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
-Just like  method chains in any language, you may chain up a bunch of methods like so `beforeQuering()->assign(input_name)->to(name)`.  
+Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
 A couple of things to note though is that:
 *  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in PHP .
 
 *  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
-*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
+*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
 *  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]`
 
 ### Database events

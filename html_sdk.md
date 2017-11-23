@@ -121,7 +121,7 @@ For example, to updating emails in our contact book:
 
 ```html
 <div class="dv-notify"></div>
-<ul class="dv-get-all:contacts:people">
+<ul class="dv-update-oneof:contacts:people">
     <li>
         <span class="var-name"></span>:
         <a class="var-email" href="mailto:var-email">

@@ -12,10 +12,10 @@ On creating a new service you will be redirected to the service page where you w
 Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
 Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
 A couple of things to note though is that:
-*  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in PHP .
+*  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in many languages.
 
-*  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
-*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
+*  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` do  `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
+*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
 *  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]`
 
 ### Database events
@@ -23,6 +23,7 @@ Rules are database event driven .This means that Rules will only execute based o
  For any newly created service  you will find these events already set in there. 
 For example if you will like to capitalize all first names you are about to add to the database you will have something similar to the below 
 ```
+
   
 /**
 * <?
@@ -38,7 +39,7 @@ For example if you will like to capitalize all first names you are about to add 
  -> beforeUpdating()
  -> beforeDeleting()
  -> beforeCreating()
-                ->onTable('register')->convertToUpperCase(input_first_name)_>storeAs(input_first_name)
+                ->onTable('register')->convertToUpperCase(input_first_name)->storeAs(input_first_name)
 
  -> onQuery()
  -> onUpdate()
@@ -62,15 +63,78 @@ The **on** methods will run before and after the respective db action. You may u
 
 Also the **onAnyRequest** method will execute Rules on any kind of db actions made to the service. 
 
-### Getting inputs in Rules
+### Using incomming inputs in Rules
 In the case of  DB actions that require the client to pass in variables. eg Adding data and updating records , these records will be made available within Rules as variables prefixed with `input_` . 
-For example if the client sends in JSON data like `"liked":0, "comment": "I agree with you"}`
-the keys will be converted to variables prefixed with  `input_` and assigned the values and so now you will be able to access the liked value through the variable `input_liked ` and comments through ,`input_comments`. 
+For example if the client sends in JSON data like `{"liked":0, "comment": "I agree with you"}`
+the keys will be converted to variables prefixed with  `input_` and assigned the values and so now you will be able to access the liked values through the variable `input_liked ` and comments through ,`input_comments`. 
 
+### Working with variables
+Just like in many programming languages. Rules allow you to create and access variables. 
+To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this similar to `name = "DevLess"` in some programming languages 
+Once you assign a value to a variable you can pass this to any method to be used. eg `->convertToUpperCase(name)` 
+Another instance where you might want to set the value of a variable is getting the output of a method. eg `->convertToUpperCase(name)->storeAs(nameInUpperCase) //nameInUpperCase = "DEVLESS" `.
+The method `convertToUpperCase` will convert the name given to it to upperCase and store the new uppercase name in the variable nameInUpperCase.
+**NB:** If you make reference to a variable without assigning it a value you will get null back . 
+
+
+### Modifying Data   
+DevLess rules are good for running custom logic on incoming data. The reason you might need this is to make sure data sent to the backend by the client is in the format required. 
+Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead on the frontend, so that you do it once instead of having 
+to do it over the different platforms ie: Mobile and web . 
+Devless provides inbuilt methods to help with the modificatiion of incoming data. 
+
+#### Working with Strings
+Rules provide a host of methods you may use to modify you text inputs. 
+Eg ```->getCharacter(5, "Devless")->storeAs(word) // word = "s" ``` This will return the 5th word in Devless counting from 0.
+There are a whole bunch of string methods which you may use. [String Methods](#)
+
+#### Working with Numbers
+Rules also allow you to perform mathmatical operations. One use case for this is calculating the price against the quantity of a product, as you wouldn't want to entrust this to 
+the client side Eg. ```->calculate(2+3/2)->storeAs(ans) //ans = 3.5```.
+Get the entire list of [Number Methods](#)
+
+#### Generating Unique and Random Values
+There are methods available incase you will like to generate unqiue identifiers. These methods are known as generators. 
+Eg: ```->generateUniqueId()->storeAs(uniqueId) `uniqueId = '5a155ef7dc237' ```
+Complete list of [Generator Methods]() can be found [here]()
+
+#### Working with Dates in DevLess
+You may want to get a timestamp or format some date you have. Either ways the Date Methods allow you do a whole lot with dates and time. 
+Eg: ```->getTimestamp()->storeAs(stamp)->succeedWith(stamp)``` 
+Find the complete list of [Date Methods here]()
+
+#### EVENT Variable 
+We already saw the input_* variable that gives you access to incoming data within rules. There is also the `EVENT` variable that
+contains information about the current state of the entire backend including the rules currently being implemented, as well as the logged in users 
+`id` and token. To view the entire list of info contains in `EVENT`  
+add this to the rules of any service eg: ``` ->stopAndOutput(1000, 'content of event variable', EVENT)``` and head over to the api console and try this out.
+
+#### Database Queries 
+
+#### Auth Activites 
+
+#### Working with collections
+
+#### Flow Controls and assertions
+
+#### Modifying Default output
+
+### Changing privacy settings  dynamically 
+You may also change the access rights of a service within Rules. There are 4 methods available for modifing privacy.
+Also note that the privacy section on the DevLess Dashboard allows you to configure these privacies at the service level.
+
+**authenticateUser:** based on which part of the rules its used this will require the user to be authenticated to access the backend 
+
+**denyExternalAccess:** This will block external access to the backend.
+
+**allowExternalAccess:** This makes every resource available to everyone 
+
+**grantOnlyAdminAccess:**  This will locked down every resource but will be accessible to the creator of the DevLess instance only.
+
+### Getting Help with Rules
+Rules provide an inbuilt method `->help()` which you may use to find out more about a particular method eg: `->help('stopAndOutput')` 
+or just `->help()` to see the full list of callable methods and how they work 
  
-
-
-
 
 ## Keywords
 

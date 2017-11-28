@@ -115,7 +115,43 @@ add this to the rules of any service eg: ``` ->stopAndOutput(1000, 'content of e
 
 #### Working with collections
 
-#### Flow Controls and assertions
+#### Flow Controls
+Rules won't be complete without flow controls. Flow Controls provide ways to perform actions only if certain conditions are met. 
+
+**->onTable('table_name')** Using `onTable` allows you to run code given that the table currently being accessed matches the one set in the `onTable` statement.
+eg: `->beforeQuerying()
+			->onTable('meals')
+					->succeedWith("shows when we are not on meals table")
+			->end()
+`
+With the above example the sucees message will only show if we try to perform a db action on the `meals` table. 
+Next lets take a look at choice based flow control statements.
+
+```	
+     ->whenever(1==2)
+             ->succeedWith("In whenever block")
+     ->elseWhenever(1==1)
+            ->succeedWith("In first elseWhenever block")
+    ->elseWhenever(1==1)
+           ->succeedWith("In second elseWhenever block")
+    ->otherwise()
+          ->succeedWith("In otherwise block")
+    ->end() 
+```
+In the case of the above example we expect `In first elseWhenever block` to be returned when we run this on the console. 
+This is the same as the code below as seen in languages like ruby. 
+
+```
+  if 1 == 2 
+  		puts "In if block"
+  elsif 1==1
+  		puts "In first elsif block"]
+  elsif 1==1 
+  		puts "In second elsif block"
+  else 
+  		puts "In otherwise block"
+  end
+```
 
 #### Modifying Default output
 
@@ -131,11 +167,12 @@ Also note that the privacy section on the DevLess Dashboard allows you to config
 
 **grantOnlyAdminAccess:**  This will locked down every resource but will be accessible to the creator of the DevLess instance only.
 
-### Getting Help with Rules
+#### Getting Help with Rules
 Rules provide an inbuilt method `->help()` which you may use to find out more about a particular method eg: `->help('stopAndOutput')` 
 or just `->help()` to see the full list of callable methods and how they work 
  
-
+#### Fillers 
+#### Internal Methods
 ## Keywords
 
 Keywords are methods/functions that allow you to control what happens with your data before storing or after reading. This is the full reference:

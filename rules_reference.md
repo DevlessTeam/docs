@@ -170,7 +170,7 @@ Also note that the privacy section on the DevLess Dashboard allows you to config
 #### Getting Help with Rules
 Rules provide an inbuilt method `->help()` which you may use to find out more about a particular method eg: `->help('stopAndOutput')` 
 or just `->help()` to see the full list of callable methods and how they work 
- 
+ 	
 #### Fillers 
 #### Internal Methods
 ## Keywords

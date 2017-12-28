@@ -2,7 +2,7 @@
 
 
 ### What are Rules?
-Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability. To get the best out of Rules, its recommended that you go through the entire page. 
+Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability. To get the best out of Rules, it's recommended that you are thorough with this page.
  
 ### How to get started
 On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Services table will be affected by the rule that you write.

@@ -349,4 +349,4 @@ the `apply` method applys the `convertToUpperCase` method on each element in the
 element. 
 There are a host of methods that makes [working with collections](#collections-methods) easy. 
 
-### String Methods
+### Strings Methods

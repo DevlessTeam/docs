@@ -351,28 +351,26 @@ There are a host of methods that makes [working with collections](#collections-m
 
 ### Strings Methods
 
-* `concatenate`: Concatenate strings together eg: `->beforeQuerying()->concatenate("user_","edmond")->storeAs($string)->succeedWith($string) #user_edmond"`
-* `getFirstCharacter`: Get first character eg: `->beforeCreating()->getFirstCharacter("Hello")->storeAs($first_char)->succeedWith($first_char) #H`
-* `getSecondCharacter`: Get second character eg: `->beforeCreating()->getSecondCharacter("Hello")->storeAs($second_char)->succeedWith($second_char) #e`
-* `getThirdCharacter`: Get third character eg: `->beforeCreating()->getThirdCharacter("Hello")->storeAs($third_char)->succeedWith($third_char) #l`
-* `getCharacter`: Get nth character eg: `->beforeCreating()->getCharacter(4, "Hello")->storeAs($nth_char)->succeedWith($nth_char) #o`
-* `getLastCharacter`: Get last character eg: `->beforeCreating()->getLastCharacter("Hello")->storeAs($last_char)->succeedWith($last_char) #o`
-* `getLastButOneCharacter`: Get last but one character eg: `->beforeCreating()->getLastButOneCharacter("Hello")->storeAs($last_but_one_char)->succeedWith($last_but_one_char) #l`
-* `reverseString`: Reverse a string eg: `->beforeQuerying()
-        ->assign("nan")->to($string)
+* **concatenate**: Concatenate strings together eg: `->beforeQuerying()->concatenate("user_","edmond")->storeAs($string)->succeedWith($string) #user_edmond"`
+* **getFirstCharacter**: Get first character eg: `->beforeCreating()->getFirstCharacter("Hello")->storeAs($first_char)->succeedWith($first_char) #H`
+* **getSecondCharacter**: Get second character eg: `->beforeCreating()->getSecondCharacter("Hello")->storeAs($second_char)->succeedWith($second_char) #e`
+* **getThirdCharacter**: Get third character eg: `->beforeCreating()->getThirdCharacter("Hello")->storeAs($third_char)->succeedWith($third_char) #l`
+* **getCharacter**: Get nth character eg: `->beforeCreating()->getCharacter(4, "Hello")->storeAs($nth_char)->succeedWith($nth_char) #o`
+* **getLastCharacter**: Get last character eg: `->beforeCreating()->getLastCharacter("Hello")->storeAs($last_char)->succeedWith($last_char) #o`
+* **getLastButOneCharacter**: Get last but one character eg: `->beforeCreating()->getLastButOneCharacter("Hello")->storeAs($last_but_one_char)->succeedWith($last_but_one_char) #l`
+* **reverseString**: Reverse a string eg: `->beforeQuerying()->assign("nan")->to($string)
         ->reverseString()->storeAs($reverseString)
         ->whenever(assertIts::equal($string, $reverseString))
                 ->succeedWith("Its a palindrome :)") 
         ->otherwise()
                 ->failWith("Its not a palindrom :(")
-
         #Its a palindrome        
         `
-* `findNReplace`: replace a string with another eg `->beforeCreating()->findNReplace("{{name}}", "John", "welcome {{name}}")->storeAs($message)->succeedWith($message) #welcome John`
-* `convertToUpperCase`: change string to uppercase eg: `->beforeCreating()->convertToUpperCase("John")->storeAs($name)->succeedWith($name) #JOHN`
-* `convertToLowerCase`: change string to lowercase eg: `->beforeCreating()->convertToLowerCase("JOHN")->storeAs($name)->succeedWith($name) #john`
-* `truncateString`: Truncate a string to some length eg `->beforeCreating()->truncateString(11, "some long text", "...")->storeAs($truncatedString)->succeedWith($truncatedString)
+* **findNReplace**: replace a string with another eg `->beforeCreating()->findNReplace("{{name}}", "John", "welcome {{name}}")->storeAs($message)->succeedWith($message) #welcome John`
+* **convertToUpperCase**: change string to uppercase eg: `->beforeCreating()->convertToUpperCase("John")->storeAs($name)->succeedWith($name) #JOHN`
+* **convertToLowerCase**: change string to lowercase eg: `->beforeCreating()->convertToLowerCase("JOHN")->storeAs($name)->succeedWith($name) #john`
+* **truncateString**: Truncate a string to some length eg `->beforeCreating()->truncateString(11, "some long text", "...")->storeAs($truncatedString)->succeedWith($truncatedString)
  #some lon...`     
-* `countWords`: Count the number of words in a sentence eg: `->beforeCreating()->countWords("text here")->storeAs($desc_length)->whenever($desc_length <= 5)->failWith("Your product description is very short") #Your product description is very short`
-* `countCharacters`: Find the number of characters in a word or sentence eg: `->beforeCreating()->countCharacters("")->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty")($input_name)->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty") #name seems to be empty`
+* **countWords**: Count the number of words in a sentence eg: `->beforeCreating()->countWords("text here")->storeAs($desc_length)->whenever($desc_length <= 5)->failWith("Your product description is very short") #Your product description is very short`
+* **countCharacters**: Find the number of characters in a word or sentence eg: `->beforeCreating()->countCharacters("")->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty")($input_name)->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty") #name seems to be empty`
 

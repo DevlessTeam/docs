@@ -346,3 +346,5 @@ You may want to say capitalize all the names in the collection.For this you may 
 the `apply` method applys the `convertToUpperCase` method on each element in the collection, thus capitalizing each 
 element. 
 There are a host of methods that makes [working with collections](#collections-methods) easy. 
+
+### String Methods

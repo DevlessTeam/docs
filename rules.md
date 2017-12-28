@@ -9,7 +9,7 @@ On creating a new service you will be redirected to the service page where you w
 ![](/assets/service_rules.png). A newly created service will have a rules page similar to the one above.
 
 ### Rules Syntax definition 
-Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
+Rules provide you with ways to modify data from the client as well as modify what is being sent back. Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
 Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
 A couple of things to note though is that:
 *  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in many languages.

@@ -181,11 +181,13 @@ Find the full list of [assertions here](#assertions-methods)
 
 ### Modifying Default output
 All outputs from DevLess js generally in JSON with the following structure: 
-```{
+
+`{
     "status_code": <code_here>,
     "message": "<message_block>",
     "payload": <payload_block>
-}```
+}`
+
 `status_code`: usually represent the state of request you made and allows your client app to act accordingly.Find the list inbuilt status_code (here)[status-code] 
 `message`: is a verbose explanation for the `status_code`. 
 `payload`: this may contain extra details such as stack traces.

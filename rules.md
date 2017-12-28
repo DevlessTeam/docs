@@ -85,7 +85,7 @@ Devless provides inbuilt methods to help with the modificatiion of incoming data
 #### Working with Strings
 Rules provide a host of methods you may use to modify you text inputs. 
 Eg ```->getCharacter(5, "Devless")->storeAs(word) // word = "s" ``` This will return the 5th word in Devless counting from 0.
-There are a whole bunch of string methods which you may use. [String Methods](#String-Methods)
+There are a whole bunch of string methods which you may use. [String Methods](#string-methods)
 
 #### Working with Numbers
 Rules also allow you to perform mathmatical operations. One use case for this is calculating the price against the quantity of a product, as you wouldn't want to entrust this to 

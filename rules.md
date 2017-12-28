@@ -79,7 +79,7 @@ The method `convertToUpperCase` will convert the name given to it to upperCase a
 
 ### Modifying Data   
 DevLess rules are good for running custom logic on incoming data. The reason you might need this is to make sure data sent to the backend by the client is in the format required. 
-Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead on the frontend, so that you do it once instead of having to do it over the different platforms ie: Mobile and web . 
+Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead of on the frontend, so that you do it once instead of having to do it over the different platforms ie: Mobile and web . 
 Devless provides inbuilt methods to help with the modificatiion of incoming data. 
 
 #### Working with Strings

@@ -6,7 +6,7 @@ Rules allow you set conditions and rules which may modify incoming data or outpu
  
 ### How to get started
 On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Service table will be affected by the rule that you write.
-![](/assets/service_rules.png). A newly created service will have a rules page similar to the one above.
+![](/assets/service_rules.png) A newly created service will have a rules page similar to the one above.
 
 ### Rules Syntax definition 
 Rules provide you with ways to modify data from the client as well as modify what is being sent back. Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 

@@ -72,11 +72,11 @@ the keys will be converted to variables prefixed with  `input_` and assigned the
 
 ### Working with variables
 Just like in many programming languages. Rules allow you to create and access variables. 
-To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this similar to `name = "DevLess"` in many programming languages 
+To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this is similar to `name = "DevLess"` in many programming languages 
 Once you assign a value to a variable you can pass this to any method to be used. eg `->convertToUpperCase(name)` 
 Another instance where you might want to set the value of a variable is when getting the output of a method. eg `->convertToUpperCase(name)->storeAs(nameInUpperCase) //nameInUpperCase = "DEVLESS" `.
 The method `convertToUpperCase` will convert the name given to it to upperCase and store the new uppercase name in the variable nameInUpperCase.
-**NB:** If you make reference to a variable without assigning it a value you will get `null` back . 
+**NB:** If you make reference to a variable without assigning it, it will be set to `null` . 
 
 
 ### Modifying Data   

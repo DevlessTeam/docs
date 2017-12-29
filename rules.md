@@ -2,20 +2,22 @@
 
 
 ### What are Rules?
-Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability. To get the best out of Rules, its recommended that you are thoroughly with this page. 
+Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability. To get the best out of Rules, it's recommended that you are thorough with this page.
  
 ### How to get started
-On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Services table will be affected by the rule that you write.
-![](/assets/service_rules.png). A newly created service will have a rules page similar to the one above.
+On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Service table will be affected by the rule that you write.
+![](/assets/service_rules.png) A newly created service will have a rules page similar to the one above.
 
 ### Rules Syntax definition 
-Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
+Rules provide you with ways to modify data from the client as well as modify what is being sent back. Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
 Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
 A couple of things to note though is that:
 *  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in many languages.
 
 *  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` do  `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
-*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules. ##NB during compilation of Rules DevLess prefixes all variables with `$` before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the `$` prefix yourself. 
+*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules. 
+
+##NB **during compilation of Rules DevLess prefixes all variables with `$` before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the `$` prefix yourself.** 
 *  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]` but are referred to as collections in DevLess Rules. 
 
 ### Database events
@@ -70,16 +72,16 @@ the keys will be converted to variables prefixed with  `input_` and assigned the
 
 ### Working with variables
 Just like in many programming languages. Rules allow you to create and access variables. 
-To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this similar to `name = "DevLess"` in many programming languages 
+To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this is similar to `name = "DevLess"` in many programming languages 
 Once you assign a value to a variable you can pass this to any method to be used. eg `->convertToUpperCase(name)` 
 Another instance where you might want to set the value of a variable is when getting the output of a method. eg `->convertToUpperCase(name)->storeAs(nameInUpperCase) //nameInUpperCase = "DEVLESS" `.
 The method `convertToUpperCase` will convert the name given to it to upperCase and store the new uppercase name in the variable nameInUpperCase.
-**NB:** If you make reference to a variable without assigning it a value you will get `null` back . 
+**NB:** If you make reference to a variable without assigning it, it will be set to `null` . 
 
 
 ### Modifying Data   
 DevLess rules are good for running custom logic on incoming data. The reason you might need this is to make sure data sent to the backend by the client is in the format required. 
-Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead on the frontend, so that you do it once instead of having to do it over the different platforms ie: Mobile and web . 
+Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead of on the frontend, so that you do it once instead of having to do it over the different platforms ie: Mobile and web . 
 Devless provides inbuilt methods to help with the modificatiion of incoming data. 
 
 #### Working with Strings

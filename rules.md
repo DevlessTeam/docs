@@ -102,7 +102,7 @@ Complete list of [Generator Methods](#Generator-Methods) can be found [here](#Ge
 #### Working with Dates in DevLess
 You may want to get a timestamp or formatted date. Either way the Date Methods provides you options. 
 Eg: ```->getTimestamp()->storeAs(stamp)->succeedWith(stamp)``` 
-Find the complete list of [Date Methods here](#Date-Methods)
+Find the complete list of [Date Methods here](#date-methods)
 
 #### EVENT Variable 
 We already saw the input_* variable that gives you access to incoming data within rules. There is also the `EVENT` variable that

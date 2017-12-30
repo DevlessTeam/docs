@@ -90,7 +90,7 @@ Eg ```->getCharacter(5, "Devless")->storeAs(word) // word = "s" ``` This will re
 There are a whole bunch of string methods which you may use. [String Methods](#strings-methods)
 
 #### Working with Numbers
-Rules also allow you to perform mathmatical operations. One use case for this is calculating the price against the quantity of a product, as you wouldn't want to entrust this to 
+Rules also allow you to perform arithmetic operations. One use case for this is calculating the price against the quantity of a product, as you wouldn't want to entrust this to 
 the client side Eg. ```->calculate(2+3/2)->storeAs(ans) //ans = 3.5```.
 Get the entire list of [Math Methods](#Math-Methods)
 
@@ -100,7 +100,7 @@ Eg: ```->generateUniqueId()->storeAs(uniqueId) `uniqueId = '5a155ef7dc237' ```
 Complete list of [Generator Methods](#Generator-Methods) can be found [here](#Generator-Methods)
 
 #### Working with Dates in DevLess
-You may want to get a timestamp or formatted date. Either ways the Date Methods provides you options. 
+You may want to get a timestamp or formatted date. Either way the Date Methods provides you options. 
 Eg: ```->getTimestamp()->storeAs(stamp)->succeedWith(stamp)``` 
 Find the complete list of [Date Methods here](#Date-Methods)
 
@@ -397,4 +397,22 @@ There are a host of methods that makes [working with collections](#collections-m
 * **roundUp**: round up a number.eg: `->beforeQuerying()->roundUp(3.3445, 1)->storeAs($answer)->succeedWith($answer) #3.3`
    
 * **percentOf**: Find the percent of a number eg: `->beforeQuerying()->find(10)->percentOf(200)->storeAs($discount)->succeedWith($discount) #20`   
+
+### Date-Methods 
+
+* **getTimestamp**:  The `getTimestamp` method returns the current timestamp. eg: `->beforeQuerying()->getTimestamp()->storeAs($timestamp)->succeedWith($timestamp) #1514656911`  
+
+* **getCurrentYear**: Get the current year using the `getCurrentYear` method eg:`->beforeQuerying()->getCurrentYear()->storeAs($currentYear)->succeedWith($currentYear) #2017`
+   
+* **getCurrentMonth**: Get the current month using the `getCurrentMonth` method eg:`->beforeQuerying()->getCurrentMonth()->storeAs($currentMonth)->succeedWith($currentMonth) #12`
+    
+* **getCurrentDay**: Get the current day using the `getCurrentDay` method eg: `->beforeQuerying()->getCurrentDay()->storeAs($currentDay)->succeedWith($currentDay) #30`
+
+* **getCurrentHour**: Get the current hour using the `getCurrentHour` method eg:`->beforeQuerying()->getCurrentHour()->storeAs($currentHour)->succeedWith($currentHour) #06`
+
+* **getCurrentMinute**: Get the current minute using the `getCurrentMinute` method eg:`->beforeQuerying()->getCurrentMinute()->storeAs($currentMinute)->succeedWith($currentMinute) #27`
+
+* **getCurrentSecond**: Get the current second using the `getCurrentSecond` method eg:`->beforeQuerying()->getCurrentSecond()->storeAs($currentSecond)->succeedWith($currentSecond) #02`
+    
+* **getFormattedDate**: Get the human readable date using `getFormattedDate` method eg:`->beforeQuerying()->getFormattedDate()->storeAs($formattedDate)->succeedWith($formattedDate)`
     

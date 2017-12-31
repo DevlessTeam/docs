@@ -97,7 +97,7 @@ Get the entire list of [Math Methods](#Math-Methods)
 #### Generating Unique and Random Values
 There are methods available incase you will like to generate unqiue identifiers. These methods are known as generators. 
 Eg: ```->generateUniqueId()->storeAs(uniqueId) `uniqueId = '5a155ef7dc237' ```
-Complete list of [Generator Methods](#Generator-Methods) can be found [here](#Generator-Methods)
+Complete list of [Generator Methods](#generator-methods) can be found [here](#generator-methods)
 
 #### Working with Dates in DevLess
 You may want to get a timestamp or formatted date. Either way the Date Methods provides you options. 

@@ -402,11 +402,11 @@ There are a host of methods that makes [working with collections](#collections-m
 
 * **getTimestamp**:  The `getTimestamp` method returns the current timestamp. eg: `->beforeQuerying()->getTimestamp()->storeAs($timestamp)->succeedWith($timestamp) #1514656911`  
 
-* **getCurrentYear**: Get the current year using the `getCurrentYear` method eg:`->beforeQuerying()->getCurrentYear()->storeAs($currentYear)->succeedWith($currentYear) #2017`
+* **getCurrentYear**: Get the current year using the `getCurrentYear` method eg:`->beforeQuerying()->getCurrentYear($word = false)->storeAs($currentYear)->succeedWith($currentYear) #2017`
    
-* **getCurrentMonth**: Get the current month using the `getCurrentMonth` method eg:`->beforeQuerying()->getCurrentMonth()->storeAs($currentMonth)->succeedWith($currentMonth) #12`
+* **getCurrentMonth**: Get the current month using the `getCurrentMonth` method eg:`->beforeQuerying()->getCurrentMonth($word = false)->storeAs($currentMonth)->succeedWith($currentMonth) #12`
     
-* **getCurrentDay**: Get the current day using the `getCurrentDay` method eg: `->beforeQuerying()->getCurrentDay()->storeAs($currentDay)->succeedWith($currentDay) #30`
+* **getCurrentDay**: Get the current day using the `getCurrentDay` method eg: `->beforeQuerying()->getCurrentDay($word = false)->storeAs($currentDay)->succeedWith($currentDay) #30`
 
 * **getCurrentHour**: Get the current hour using the `getCurrentHour` method eg:`->beforeQuerying()->getCurrentHour()->storeAs($currentHour)->succeedWith($currentHour) #06`
 
@@ -415,4 +415,14 @@ There are a host of methods that makes [working with collections](#collections-m
 * **getCurrentSecond**: Get the current second using the `getCurrentSecond` method eg:`->beforeQuerying()->getCurrentSecond()->storeAs($currentSecond)->succeedWith($currentSecond) #02`
     
 * **getFormattedDate**: Get the human readable date using `getFormattedDate` method eg:`->beforeQuerying()->getFormattedDate()->storeAs($formattedDate)->succeedWith($formattedDate) #Saturday 30th of December 2017 06:28:35 PM`
+
+### Generator Methods    
+
+* **generateRandomInteger**: generates random integers. This may be used for invitation or promotional code generation. eg `->beforeCreating()->generateRandomInteger($max=10)->storeAs($promo_code)->succeedWith($promo_code) #7`
+
+* **generateRandomAlphanums**:  generates random alphanumeric values. This may be used for generating order Ids. eg `->beforeCreating()->generateRandomAlphanums($length = 5)->storeAs($order_id)->succeedWith($order_id) #QJXIS`
+
+* **generateRandomString**: generates random string.This generates random string codes. eg `->beforeCreating()->generateRandomString($length = 10)->storeAs($promo_code)->succeedWith($promo_code) #vXJNKuBaWK`
+
+* **generateUniqueId**: generates unique Id.This generates unique Id . eg `->beforeCreating()->generateUniqueId()->storeAs($user_id)->succeedWith($user_id) #5a48b44ca776c`
     

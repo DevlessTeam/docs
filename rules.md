@@ -444,6 +444,8 @@ There are a host of methods that makes [working with collections](#collections-m
 
 * **alphanumeric**: check if $value is alphanumeric. eg: `->beforeCreating()->whenever(assertIts::alphanumeric("E23D"))->then->stopAndOutput(1001,'message', 'its alphanumeric') #its alphanumeric`
 
+* **alphabets**: check if $value are alphabets eg: `->beforeCreating()->whenever(assertIts::alphabets("abcd"))->then->stopAndOutput(1001,'message', 'its alphabets') #its alphabets`
+
 * **startsWith**: check if $value startswith $prefix eg: `->beforeCreating()->whenever(assertIts::startsWith("E23D", "E"))->then->stopAndOutput(1001,'message', 'it starts with E') #it starts with E`
 
 * **endsWith**: check if $value ends with $suffix eg: `->beforeCreating()->whenever(assertIts::endsWith("E23D", "D"))->then->stopAndOutput(1001,'message', 'it ends with D') #it ends with D`

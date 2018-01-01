@@ -218,11 +218,12 @@ Logging out a user is as simple as adding the `dv-logout` class and an `action` 
 There are situations where you might want to set a value of an attribute. EG: Setting the value of a select box. 
 
 ```html
-	<select class="dv-get-all:test:sample">
-		<option class="set-value:var-id  set-id:var-id var-name"></option>
+	<select class="dv-get-all:service_name:table_name">
+		<option class="set-value:var-id "></option>
 	</select>
-	<span class="var-name"></span><br>
 ```
+The above code will generate a series of `option` tags looking like `<option value="1">Beverages</option>`.
+ 
 ### Notifications
 
 To make you page more interactive you may use  `dv-notify`  as well as the `dv-processing` classes.

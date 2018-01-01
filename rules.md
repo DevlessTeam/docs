@@ -178,7 +178,7 @@ From the above you may have noticed that the truth statements in `whenever`, `el
 An example could be checking if a string contains a substring , say `edmond` can be found in `edmond@devless.io` . 
 This can easily be achieved with the inbuilt Assertion library that comes with Rules. 
 ie:  `->beforeCreating()->whenever(assertIt::contains("edmond@devless.io", "edmond"))->then->stopAndOutput(1001,'message', 'email containes edmond')`
-Find the full list of [assertions here](#assertions-methods) 
+Find the full list of [assertions here](#assertion-methods) 
 
 
 ### Modifying Default output
@@ -425,4 +425,48 @@ There are a host of methods that makes [working with collections](#collections-m
 * **generateRandomString**: generates random string.This generates random string codes. eg `->beforeCreating()->generateRandomString($length = 10)->storeAs($promo_code)->succeedWith($promo_code) #vXJNKuBaWK`
 
 * **generateUniqueId**: generates unique Id.This generates unique Id . eg `->beforeCreating()->generateUniqueId()->storeAs($user_id)->succeedWith($user_id) #5a48b44ca776c`
+
+### Assertion Methods   
+
+* **anInteger**: check if $value is an integer. eg `->beforeCreating()->whenever(assertIts::anInteger(3))->then->stopAndOutput(1001,'message', 'its an integer') #its an integer`
+
+* **aString**: check if $value is a string. eg: `->beforeCreating()->whenever(assertIts::aString("Hello"))->then->stopAndOutput(1001,'message', 'its a string') #its a string`
+
+* **aBoolean**: check if $value is a  boolean eg: `->beforeCreating()->whenever(assertIts::aBoolean(1 == 1))->then->stopAndOutput(1001,'message', 'its a boolean') #its a boolean`
+   
+* **aFloat**: check if $value is a float eg: `->beforeCreating()->whenever(assertIts::aFloat(3.034))->then->stopAndOutput(1001,'message', 'its a float') #its a float`
+
+* **withinRange**: check if $value is within th range $min $max eg: `->beforeCreating()->whenever(assertIts::withinRange($value=2, $min=1, $max=4))->then->stopAndOutput(1001,'message', 'its within range') #its within range`
+
+* **upperCase**: check if $value is upppercase eg: `->beforeCreating()->whenever(assertIts::upperCase("HELLO"))->then->stopAndOutput(1001,'message', 'its upper case') #its upper case`
+
+* **lowerCase**: check if $value is lowercase. eg: `->beforeCreating()->whenever(assertIts::lowerCase("hello"))->then->stopAndOutput(1001,'message', 'its lower case ') #its lower case`
+
+* **alphanumeric**: check if $value is alphanumeric. eg: `->beforeCreating()->whenever(assertIts::alphanumeric("E23D"))->then->stopAndOutput(1001,'message', 'its alphanumeric') #its alphanumeric`
+
+* **startsWith**: check if $value startswith $prefix eg: `->beforeCreating()->whenever(assertIts::startsWith("E23D", "E"))->then->stopAndOutput(1001,'message', 'it starts with E') #it starts with E`
+
+* **endsWith**: check if $value ends with $suffix eg: `->beforeCreating()->whenever(assertIts::endsWith("E23D", "D"))->then->stopAndOutput(1001,'message', 'it ends with D') #it ends with D`
+
+* **matchesRegex**: check if $value is matched regex eg: `->beforeCreating()->whenever(assertIt::matchesRegex("edmond@devless.io", "<email-regex-goes-here>"))->then->stopAndOutput(1001,'message', 'it matches the email regex')`
+
+* **anEmail**: check if $value is an email eg: `->beforeCreating()->whenever(assertIts::anEmail("edmond@devless.io"))->then->stopAndOutput(1001,'message', 'its an email') #its an email`
+
+* **notEmpty**: check if $value is not an empty array or empty string eg: `->beforeCreating()->whenever(assertIt::notEmpty("some text"))->then->stopAndOutput(1001,'message', 'its not empty') #its not empty`
+
+* **isEmpty**: check if $value is  an empty array or empty string eg: `->beforeCreating()->whenever(assertIt::isEmpty(""))->then->stopAndOutput(1001,'message', 'its  empty') #its  empty`
+   
+* **contains**: check if $value is contains $subString eg: `->beforeCreating()->whenever(assertIt::contains("edmond@devless.io", "edmond"))->then->stopAndOutput(1001,'message', 'email containes edmond') #email containes edmond`
+    
+* **equal**: check if $value equals $value1 eg: `->beforeCreating()->whenever(assertIts::equal("a", "a"))->then->stopAndOutput(1001,'message', 'a is equal to a :)') #a is equal to a :)`
+     *
+* **notEqual**: check if $value is not equal to $value1 eg: `->beforeCreating()->whenever(assertIts::notEqual("a", "b"))->then->stopAndOutput(1001,'message', 'a is not equal to b ') #a is not equal to b `
+    
+* **greaterThan**: check if $value is greater than $value1 eg: `->beforeCreating()->whenever(assertIt::greaterThan(45, 12))->then->stopAndOutput(1001,'message', '45 is greater than 12') #45 is greater than 12`
+
+* **lessThan**: check if $value is less than $value1 eg: `->beforeCreating()->whenever(assertIt::lessThan(12, 45))->then->stopAndOutput(1001,'message', '12 is less than 45') #12 is less than 45`
+
+* **greaterThanOrEqualTo**: check if $value is greater than or equal to $value1 eg: `->beforeCreating()->whenever(assertIt::greaterThanOrEqualTo(45, 45))->then->stopAndOutput(1001,'message', '45 is greater than or equal to 45') #45 is greater than or equal to 45`
+    
+* **lessThanOrEqualTo**: check if $value is less than or equal to $value1  `->beforeCreating()->whenever(assertIt::lessThanOrEqualTo($v=45, $v1=45))->then->stopAndOutput(1001,'message', "$v is less than or equal to $v1") #45 is less than or equal to 45`
     

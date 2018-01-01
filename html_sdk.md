@@ -222,7 +222,7 @@ There are situations where you might want to set a value of an attribute. EG: Se
 		<option class="set-value:var-id "></option>
 	</select>
 ```
-The above code will generate a series of `option` tags looking like `<option value="1">Beverages</option>`.
+The above code will generate a series of `option` tags each looking like `<option value="1">Beverages</option>` with changes depending on data from `table_name`.
  
 ### Notifications
 

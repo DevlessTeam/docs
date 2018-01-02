@@ -319,7 +319,7 @@ This comes in handy when you have external services and resources you need to ac
                   ->queryData("service_name", "table_name")->storeAs(data)
                   ->stopAndOutput(1000, "message here", data) 
 `
-The above imports `queryData` from `devless` and allows you to query data from other services as well as the current one. Find the list of of methods under the [devless import here](#devless-import)
+The above imports `queryData` from `devless` and allows you to query data from other services as well as the current one. Find the list of of methods under the [devless import here](#Devless-Import)
 
 ### Collections 
 You may have noticed there are no references to loops anywhere above. We try to keep rules as simple as possible. Well that isn't to say not adding loops make things simple. You generally need loops to go over a set of data or run a block of intructions a couple of times. 
@@ -472,3 +472,28 @@ There are a host of methods that makes [working with collections](#collections-m
     
 * **lessThanOrEqualTo**: check if $value is less than or equal to $value1  `->beforeCreating()->whenever(assertIt::lessThanOrEqualTo($v=45, $v1=45))->then->stopAndOutput(1001,'message', "$v is less than or equal to $v1") #45 is less than or equal to 45`
     
+### Devless Import    
+
+* **signUp**: Signup new users  `->beforeCreating()->run('devless','signUp', [$email = "team@devless.io",$password = "pass",$username = null,$phone_number = "020198475",$first_name = "John",$last_name = "Doe",$remember_token = null,$role = 5,$extraParams = null])->storeAs($output)->stopAndOutput(1000, "Created Profile Successfully",$output)
+   
+* **login**: login users  `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
+
+* **addData**: add data to a service `->import('devless')->beforeCreating()->addData('service_name','table_name',["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)` 
+   
+* **queryData**:  Get data from a service table `->import('devless')->beforeCreating()->queryData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **getData**: Get data from a service table `->import('devless')->beforeCreating()->getData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+    
+* **updateData**: update data in a service table `->import('devless')->beforeCreating()->updateData('service_name','table_name', "id", 1, ["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **deleteData**:  delete record from a service table `->import('devless')->beforeCreating()->deleteData('test','sample', 1)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+   
+* **getUserProfile**: get user profile by id `->import('devless')->beforeCreating()->getUserProfile(2)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **getAllUsers**: Get all users `->import('devless')->beforeCreating()->getAllUsers(2)->storeAs($output)->stopAndOutput(1000, "output", $output)` 
+
+* **deleteUserProfile**: Delete a users profile `->import('devless')->beforeCreating()->deleteUserProfile(9)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **updateUserProfile**: Update a users profile `->import('devless')->beforeCreating()->updateUserProfile($id=1,$email = '',$password = '',$username = 'eddymens',$phone_number = '',$first_name = '',$last_name = '')->storeAs($output)->stopAndOutput(1000, "output", $output)`
+    
+

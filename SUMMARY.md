@@ -15,7 +15,7 @@
 * [Managing your data](secure_transform_data.md)
   * [Data model](data_model.md)
   * [Securing & Transforming data](rules_engine.md)
-  * [Rules Reference](rules_reference.md)
+  * [Rules](rules_reference.md)
 * [Examples of Services](list-of-services.md)
 * [Dev Environment](dev-setup.md)
 * [Extending Services](services.md)

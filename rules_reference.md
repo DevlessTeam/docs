@@ -1,138 +1,474 @@
+# Rules Reference
 
 
-## Keywords
+### What are Rules?
+Rules allow you set conditions and rules which may modify incoming data or output by providing you  a [method chain](https://en.wikipedia.org/wiki/Method_chaining?oldformat=true#PHP) based  [DSL](https://www.wikiwand.com/en/Domain-specific_language).  The methods provided are verbose, this is to ensure readability. To get the best out of Rules, it's recommended that you are thorough with this page.
+ 
+### How to get started
+On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Service table will be affected by the rule that you write.
+![](/assets/service_rules.png) A newly created service will have a rules page similar to the one above.
 
-Keywords are methods/functions that allow you to control what happens with your data before storing or after reading. This is the full reference:
+### Rules Syntax definition 
+Rules provide you with ways to modify data from the client as well as modify what is being sent back. Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results. 
+Just like  method chains in any language, you may chain up a bunch of methods like so `->beforeQuering()->assign(input_name)->to(name)`.  
+A couple of things to note though is that:
+*  Rules in DevLess uses the arrow operator `->` for joining methods together instead of `.` as seen in many languages.
 
-| Keywords | Description |
-| :--- | :--- |
-| also | \`also\` filler word like all other filler words does not come with any side effects but is used sorely for readability purposes.  eg: \`-&gt;beforeCreating\(\)-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;convertToUpperCase\(\)-&gt;reverseString\(\)-&gt;storeAs\($text\)-&gt;succeedWith\($text\)\` this can be rewritten as \`beforeCreating\(\)-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;convertToUpperCase\(\)-&gt;also-&gt;reverseString\(\)-&gt;storeAs\($text\)-&gt;succeedWith\($text\)\` notice the introduction of the \`also\` keyword, this does not change the end results but just makes it more readable. @return $this |
-| then | \`then\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes. eg: \`-&gt;beforeCreating\(\)-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;convertToUpperCase\(\)-&gt;reverseString\(\)-&gt;storeAs\($text\)-&gt;succeedWith\($text\)\` this can be rewritten as \`beforeCreating\(\)-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;convertToUpperCase\(\)-&gt;then-&gt;reverseString\(\)-&gt;storeAs\($text\)-&gt;succeedWith\($text\)\` notice the introduction of the \`then\` keyword, this does not change the end results but just makes it more readable. @return $this |
-| firstly | \`firstly\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;then-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`.  @return $this |
-| Secondly | \`secondly\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;then-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`. @return $this |
-| thirdly | \`thirdly\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;then-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`. @return $this |
-| lastly | \`lastly\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;then-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`. @return $this |
-| beSureTo | \`beSureTo\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;then-&gt;beSureTo-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`.  @return $this |
-| next | \`next\` filler word like all other filler words does not come with any side effects but is used solely for readability purposes eg: \`-&gt;beforeCreating\(\)-&gt;firstly-&gt;assign\("hello"\)-&gt;to\($text\)-&gt;secondly-&gt;convertToUpperCase\(\)-&gt;next-&gt;storeAs\($text\)-&gt;lastly-&gt;succeedWith\($text\)\`.  @return $this |
-| authenticateUser | Appending the authenticateUser method to any query action will force users to login to gain access to the system eg: -&gt;beforeQuerying\(\)-&gt;onTable\('subscriptions'\)-&gt;autheticateUser\(\)  @return $this |
-| denyExternalAccess | In the event you do not want to grant external access to a table to any users you should use \`denyExternalAccess\` method . \`-&gt;beforeQuerying\(\)-&gt;onTable\('subscriptions'\)-&gt;denyExternalAccess\(\)\` In this case no user will be able to access the \`subscriptions\` table  @return $this |
-| allowExternalAccess | You may decide to set all your table access to either \`authenticated\` or \`private\` from within the \`privacy tab\` but then decide to make one or more tables public in this case use the \`allowExternalAccess\` method \`-&gt;beforeQuerying\(\)-&gt;onTable\('news', 'tariffs'\)-&gt;allowExternalAccess\(\)\`  @return $this |
-| grantOnlyAdminAccess | You may decide to provide access of some tables to just the admin instead locking them up totally . To do this use the \`grantOnlyAdminAccess\` method.\`-&gt;beforeQuerying\(\)-&gt;onTable\('news', 'tariffs'\)-&gt;grantOnlyAdminAccess\(\)\` @return $this |
-| onQuery | Checks if a table is being queried for data then the code attached to it will run. This will run twice before and after the data is being queried.  @return $this |
-| onUpdate | Checks if data is being updated on a table then the code attached to it will run.This will run twice before and after the data is being updated.  @return $this |
-| onCreate | Checks if data is being added to table then the code attached to it will run. This will run twice before and after the data is being added  @return $this |
-| onDelete | Check if data is being deleted from a table. This will run code attached to it before and after its being run  @return $this |
-| beforeQuerying | Checks if a table is about to be queried for data .The code attached to it will run before the data is queried  @return $this |
-| beforeCreating | Checks if data is about to be added to a table and runs the code attached to it before this happens @return $this |
-| beforeUpdating | Checks if table data is about to be updated, and will run the code attached to it before the action is performed  @return $this |
-| beforeDeleting | Check if data is about to be deleted from table. Then run the code attached to the action before its being performed. This allows you to perform actions such as \`afterQuering\(\)-&gt;mutateResponseMessage\("the response message has been altered"\)  @return $this |
-| afterQuerying | Runs code attached to this method just before the response is being returned to the client. This allows you to perform actions such as \`afterQuering\(\)-&gt;whenever\($rules-&gt;status\_code == 625\)-&gt;mutateResponseMessage\("the response message has been altered"\)  @return $this |
-| afterCreating | Runs code attached to this method after the data has been added to the DB. This allows you to perform actions such as \`afterCreating\(\)-&gt;whenever\($rules-&gt;status\_code == 625\)-&gt;mutateResponseMessage\("the response message has been altered"\) @return $this |
-| afterUpdating | Run code attached to this method after the data has been updated . This allows you to perform actions such as \`afterUpdating\(\)-&gt;whenever\($rules-&gt;status\_code == 619\)-&gt;mutateResponseMessage\("the response message has been altered"\)  @return $this |
-| afterDeleting | Runs code attached to the \`afterDeleting\(\)\` method. This allows you to perform actions such as \`afterDeleting\(\)-&gt;whenever\($rules-&gt;status\_code == 636\)-&gt;mutateResponseMessage\("the response message has been altered"\) @return $this |
-| onAnyReequest | Code attached to the \`onAnyRequest\(\)\` will run regardless of whether its a query, create delete or update action  @return $this |
-| whenever | This is the equivalence of if and is mostly used together with assertions to alter execution flows. eg beforeQuerying\(\)-&gt;whenever\(assertIts::equal\($input\_name, "edmond"\)\)-&gt;then-&gt;succeedWith\("yes the names are same"\)  @param $assertion @return $this |
-| elseWhenever | This is the equivalence of elseif and is mostly used together with assertions to alter execution flows eg.beforeQuerying\(\)-&gt;whenever\(assertIts::equal\($input\_name, "edmond"\)\)-&gt;then-&gt;succeedWith\("yes the names are same"\)-&gt;elseWhenever\(assertIts::equal\($input\_name, "charles"\)\)\)-&gt;then-&gt;succeedWith\("yes the name is charles"\) @param $assertion @return $this |
-| otherwise | This is the equivalence of else eg.beforeQuerying\(\)-&gt;whenever\(assertIts::equal\($input\_name, "edmond"\)\)-&gt;then-&gt;succeedWith\("yes the names are same"\)-&gt;elseWhenever\(assertIts::equal\($input\_name, "charles"\)\)\)-&gt;then-&gt;succeedWith\("yes the names are charles"\)-&gt;otherwise\(\)-&gt;succeedWith\("Its some other name"\) @return $this |
-| onTable | Checks if the db action to be conducted around one of the tables. Eg beforeQuerying\(\)-&gt;onTable\('register', 'subscription'\)-&gt;succeedWith\("yes"\). In the example above yes will be outputted in case data is being queried from either register or subscription table.  @param string $expectedTableName  @return mixed\|
-| succeedWith | Stop execution with an exception and output the message provided. Eg. afterQuering\(\)-&gt;succeedWith\("I will show up after quering"\)  @param null $msg  @return mixed\|
-| failWith | Stop execution with an exception and output the message provided. Eg. afterQuering\(\)-&gt;failWith\("I will show up after quering"\). Difference between this and succeedWith is the status code  @param string  $msg  @return mixed\|
-| run | DevLess provides developers with ready to use code and one of the ways to access this is via the run statement. After installing an external service you may call it within the rules portion of your app using run eg: beforeCreating\(\)-&gt;run\('businessMath','discount',\[10, $input\_price\]\)-&gt;getResults\($input\_price\) @param $service  @param $method  @param array $params  @return mixed\|
-| makeExternalRequest | In the event where you need to make say an api call, the \`makeExternalRequest\` method becomes handy. eg beforeUpdating()->makeExternalRequest('GET', 'https://www.calcatraz.com/calculator/api?c=3%2A3')->storeAs($ans)  ->succeedWith($ans)  @param STRING $method  @param STRING $url @param JSON $data (opt)  @param JSON $headers (optional) @return $this  @param STRING $method  @param STRING $url  @param JSON $data \(opt\)  @param JSON $headers \(optional\)  @return $this |
-| getResults | one of the ways to store results from a method with output is by using the \`getResults\` method. This will allow you to the output of a method  @param $input\_var  @return $this |
-| storeAs | Get results from the last executed method and assign to a variable. eg: beforeQuerying\(\)-&gt;sumUp\(1.2,3,4,5\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001, 'summed up numbers successfully' $ans\)  @param $input\_var  @return $this |
-| assign | Assigns one variable to another just like \`$sum2 = $sum\` . This method works together with \`to\` method to achive this. eg: afterQuering\(\)-&gt;sumUp\(1,2,3,4,5\)-&gt;storeAs\($sum\)-&gt;assign\($sum\)-&gt;to\($sum2\)-&gt;succeedWith\($sum2\)  @param $input\_var  @return $this |
-| usingService | Set the name of service from which you want to use method from.  eg: usingService\('devless'\)-&gt;callMethod\('hello'\)-&gt; withParams\(\)-&gt;getResults\($output\)-&gt;succeedWith\($output\)  @param $serviceName  @return $this |
-| callMethod | Set the name of the method after setting the service from which you will like to run. eg:usingService\('devless'\)-&gt;callMethod\('hello'\)-&gt; withParams\(\)-&gt;getResults\($output\)-&gt;succeedWith\($output\)  @param $methodName  @return $this |
-| withParams | Set parameters for method from which you will like to run eg: usingService\('devless'\)-&gt;callMethod\('getUserProfile'\)-&gt; withParams\(1\)-&gt;getResults\($output\)-&gt;succeedWith\($output\)  @param can have n number of parameters  @return $this |
-| withoutParams | Use this in place of \`params\(\)\` in case the service method you want to run has no parameters  eg: usingService\('devless'\)-&gt;callMethod\('hello'\)-&gt;withoutParams\(\)-&gt;getResults\($output\)-&gt;succeedWith\($output\)  @return $this |
-| to | \`to\` keyword should be used together with \`assign\` to assign either variables or values to a new variable  @param $output  @return $this |
-| assignValues | Behaves just like the \`assign\` method but has a much shorter construct. where you will assign say the string "edmond" to variable $name using \`assign\` \`assign\("edmond"\)-&gt;to\($name\)\` , \`assignValue\("edmond", $name\)\` provides a much shorter construct but loses its redability.  @param $input  @param $output  @return $this |
-| stopAndOutput | Should you perform some rules and based on that will like to exit earlier with a response before the actual db command completes, you will want to use \`stopAndOutput\` eg: beforeQuerying\(\)-&gt;usingService\('devless'\)-&gt;callMethod\('getUserProfile'\)-&gt;withParams\(1\)-&gt;storeAs\($profile\)-&gt;stopAndOutput\(1000, 'got profile successfully', $profile\). @param $status\_code  @param $message  @param $payload  @return $this |
-| help | List out all methods as well as get docs on specific method eg: -&gt;help\('stopAndOutput'\)  @param $methodToGetDocsFor  @return $this |
-| calculate | Perform mathematical operations eg: \`-&gt;beforeQuerying\(\)-&gt;calculate\(3\*5\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @param mathematical expression  @return $this |
-| evaluate | Evaluate PHP expressions eg:beforeQuering\(\)-&gt;evaluate\("\DB::table\('users'\)-&gt;get\(\)"\)-&gt;storeAs\($output\)-&gt;stopAndOutput\(1001, 'got users successfully', $output\)  @param $expression  @return $this |
-| sumUp | find the sum of numbers. eg: \`-&gt;beforeQuerying\(\)-&gt;sumUp\(3,4,5,6,7\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @param integer $num @return $this |
-| subtract | subtract a bunch of numbers. eg: \`-&gt;beforeQuerying\(\)-&gt;subtract\(3,4,5,6,7\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\` also \`-&gt;beforeQuerying\(\)-&gt;from\(5\)-&gt;subtract\(3\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @return $this |
-| multiply | find the product of numbers .eg: \`-&gt;beforeQuerying\(\)-&gt;multiply\(3,4,5,6,7\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @return $this  |
-| divide | divide a range of numbers.eg: \`-&gt;beforeQuerying\(\)-&gt;divide\(6,2\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @return $this |
-| divideBy | This picks results from your earlier computation and divides it by a given number. eg: \`-&gt;beforeQuerying\(\)-&gt;sumUp\(3,4,5,6,7\)-&gt;divdeBy\(6\)-&gt;storeAs\($ans\)-&gt;stopAndOutput\(1001,'got answer successfully', $ans\)\`  @param $number @return $this |
-| findSquareRootOf |  Find the square root of a number. eg:\`-&gt;beforeQuerying\(\)-&gt;findSquareRoot\($number\)-&gt;storeAs\($input\_root\)\`  @param integer $num  @return $this |
-| getSquareRoot |  Get the squareRoot of the result of the preceeding computation eg: \`-&gt;beforeQuerying\(\)-&gt;divide\(20, 40\)-&gt;getSquareRoot\(\)-&gt;storeAs\($output\)-&gt;succeedWith\($output\)\`  return $this |
-| roundUp | round up a number. eg: \`-&gt;beforeCreating\(\)-&gt;roundUp\($input\_milage, 1\)-&gt;storeAs\($input\_milage\)\`  @param integer $number  @param integer $precision  @return $this |
-| percentOf |  Find the percent of a number eg: \`-&gt;beforeQuerying\(\)-&gt;find\(10\)-&gt;percentOf\(200\)-&gt;storeAs\($input\_discount\)\`  @param $number  @return $this |
-| concatenate | Concatenate strings together eg: \`-&gt;beforeCreating\(\)-&gt;concatenate\("user\_",$input\_name\)\`  @param n number of params @return $this |
-| getFirstCharacter | Get first character eg: \`-&gt;beforeCreating\(\)-&gt;getFirstCharacter\("Hello"\)-&gt;storeAs\($first\_char\)-&gt;succeedWith\($first\_char\)\`  @param $string  @return $this |
-| getSecondCharacter | Get second character eg: \`-&gt;beforeCreating\(\)-&gt;getSecondCharacter\("Hello"\)-&gt;storeAs\($second\_char\)-&gt;succeedWith\($second\_char\)\`  @param $string  @return $this |
-| getThirdCharacter |  Get third character eg: \`-&gt;beforeCreating\(\)-&gt;getThirdCharacter\("Hello"\)-&gt;storeAs\($third\_char\)-&gt;succeedWith\($third\_char\)\` @param $string  @return $this |
-| getLastCharacter | Get last character eg: \`-&gt;beforeCreating\(\)-&gt;getLastCharacter\("Hello"\)-&gt;storeAs\($last\_char\)-&gt;succeedWith\($last\_char\)\`  @param $string  @return $this  ||
-| getCharacter | Get nth character eg: \`-&gt;beforeCreating\(\)-&gt;getCharacter\(5, "Hello"\)-&gt;storeAs\($nth\_char\)-&gt;succeedWith\($nth\_char\)\`  @param $nth @param $string  @return $this  |
-| getLastButOneCharacter | Get last but one character eg: \`-&gt;beforeCreating\(\)-&gt;getLastButOneCharacter\("Hello"\)-&gt;storeAs\($last\_but\_one\_char\)-&gt;succeedWith\($last\_but\_one\_char\)\`  @param $string  @return $this |
-| reverseString | Reverse a string eg: -&gt;beforeQuerying\(\)-&gt;assign\("nan"\)-&gt;to\($string\)-&gt;reverseString\(\)-&gt;storeAs\($reverseString\) -&gt;whenever\(assertIts::equal\($string, $reverseString\)\)-&gt;succeedWith\("Its a palindrome :\)"\) -&gt;otherwise\(\)-&gt;failWith\("Its not a palindrome :\("\) @param $string @return $this  |
-| findNReplace | replace a string with another eg \`-&gt;beforeCreating\(\)-&gt;findNReplace\("{{name}}", $input\_name, $input\_message\)-&gt;storeAs\($input\_message\)\`  @param $string  @param $replacement  @param $subject  @return $this |
-| convertToUpperCase | change string to uppercase eg: \`-&gt;beforeCreating\(\)-&gt;convertToUpperCase\($input\_name\)-&gt;storeAs\($input\_name\)\`  @param $string  @return $this |
-| convertToLowerCase | change string to lowercase eg: \`-&gt;beforeCreating\(\)-&gt;convertToLowerCase\($input\_name\)-&gt;storeAs\($input\_name\)\`  @param $string  @return $this |
-| truncateString | Truncate a string to some length eg \`-&gt;beforeCreating\(\)-&gt;truncateString\(4, $input\_desc\)-&gt;getResults\($trucatedString\)-&gt;storeAs\($stub\)\`  @param $len @param $string  @param $trimMaker  @return $this |
-| countWords | Count the number of words in a sentence eg: \`-&gt;beforeCreating\(\)-&gt;onTable\('users'\)-&gt;countWords\($input\_description\)-&gt;storeAs\($desc\_length\)-&gt;whenever\($desc\_length &lt;= 5\)-&gt;failWith\("Your product description is very short"\)\`  @param $sentence @return $this |
-| countCharacters | Find the number of characters in a word or sentence eg: \`-&gt;beforeCreating\(\)-&gt;onTable\('users'\)-&gt;countCharacters\($input\_name\)-&gt;storeAs\($name\_length\)-&gt;whenever\($name\_length &lt;= 0\)-&gt;failWith\("name seems to be empty"\)\`  @param word  @return $this |
-| getTimestamp | The \`getTimestamp\` method returns the current timestamp. eg: beforeQuerying\(\)-&gt;getTimestamp\(\)-&gt;storeAs\($timestamp\)-&gt;succeedWith\($timestamp\)  @return $this |
-| getCurrentYear | Get the current year using the \`getCurrentYear\` method eg:beforeQuering\(\)-&gt;getCurrentYear\(\)-&gt;storeAs\($currentYear\)succeedWith\($currentYear\)  @return $this |
-| getCurrentMonth | Get the current month using the \`getCurrentMonth\` method eg:beforeQuering\(\)-&gt;getCurrentMonth\(\)-&gt;storeAs\($currentMonth\)-&gt;succeedWith\($currentMonth\) @return $this |
-| getCurrentDay | Get the current day using the \`getCurrentDay\` method eg:beforeQuering\(\)-&gt;getCurrentDay\(\)-&gt;storeAs\($currentDay\)-&gt;succeedWith\($currentDay\)  @return $this |
-| getCurrentHour | Get the current hour using the \`getCurrentHour\` method eg:beforeQuering\(\)-&gt;getCurrentHour\(\)-&gt;storeAs\($currentHour\)-&gt;succeedWith\($currentHour\)  @return $this |
-| getFormattedDate | Get the human readable date using the \`getFormattedDate\` method eg: beforeQuering\(\)-&gt;getFormattedDate\(\)-&gt;storeAs\($formattedDate\)-&gt;succeedWith\($formattedDate\) @return $this |
-| generateRandomInteger | generates random integers. This may be used for invitation or promotional code generation. eg \`-&gt;beforeCreating\(\)-&gt;generateRandomInteger\(10\)-&gt;storeAs\($promo\_code\)-&gt;assign\($promo\_code\)-&gt;to\($input\_promo\)\`  @param $length  @return $this |
-| generateRandomAlphanums | generates random alphanumeric values. This may be used for generating order Ids. eg \`-&gt;beforeCreating\(\)-&gt;generateRandomAlphanums\(\)-&gt;storeAs\($order\_id\)-&gt;assign\($order\_id\)-&gt;to\($input\_order\_id\)\`  @return $this |
-| generateRandomString |  generates random string.This generates random string codes. eg \`-&gt;beforeCreating\(\)-&gt;generateRandomInteger\(10\)-&gt;storeAs\($promo\_code\)-&gt;assign\($promo\_code\)-&gt;to\($input\_promo\)\`  @param $length  @return $this |
-| generateUniqueId | generates unique Id.This generates unique Id . eg \`-&gt;beforeCreating\(\)-&gt;generateUniqueId\(\)-&gt;storeAs\($user\_id\)-&gt;assign\($user\_id\)-&gt;to\($input\_id\)\`  @param $length @return $this ", |
-| mutateStatusCode | mutate response status code. This will change the status code that is being outputed eg: \`-&gt;afterQuering\(\)-&gt;mutateStatusCode\(1111\)\`. NB: you should only change the status code if you know what you doing. Changing it might cause some of the official SDKs to malfunction.  @param $newCode  @return $this |
-|mutateResponseMessage| mutate response message. This will change the Message within the response body sent back to the client. eg `->afterQuering()->mutateResponseMessage("new response message")`  @param $newMessage @return $this|
-|mutateResponsePayload| mutate response payload. This will Replace the Response payload being sent back to the client eg: `->afterQuering()->mutateResponsePayload(["name"=>"Edmond"])` @param $newPayload  @return $this
-| getResponse | get the output response message. This will fetch the Message about to be sent back to the client . eg `->afterQuering()->getResponse($status_code, $message, $payload)` now the variable $status_code, $message, $payload will be available to use within Rules.  @param $status_code @param $message @param $payload @return $this |
-| getStatusCode |  get the output status code. This will fetch the status code about to be sent back to the client . eg `->afterQuering()->getStatusCode()->storeAs($status_code)` now the variable $status_code will be available to use within Rules. @param $status_code @return $this |
-| getResponseMessage | get the output message. This will fetch the message about to be sent back to the client . eg `->afterQuering()->getResponseMessage()->storeAs($message)` now the variable $message will be available to use within Rules. @param $message @return $this|
-| getResponsePayload |   get the output payload. This will fetch the payload about to be sent back to the client . eg `->afterQuering()->getResponsePayload()->storeAs($payload)` now the variable $paylaod will be available to use within Rules.@param $payload @return $this|
+*  To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` do  `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)` 
+*  Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules. 
+
+##NB **during compilation of Rules DevLess prefixes all variables with `$` before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the `$` prefix yourself.** 
+*  There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]` but are referred to as collections in DevLess Rules. 
+
+### Database events
+Rules are database event driven .This means that Rules will only execute based on a database actions.Examples of database actions are  `Querying`, `Adding`, `Updating` and `Deleting` Records.
+ For any newly created service  you will find these events already set in there. 
+For example if you will like to capitalize all first names you are about to add to the database you will have something similar to the below 
+```
+
+  
+/**
+* <?
+* Rules allow you to establish control over the flow of 
+* your data in and out of the database.
+* For example if you will like to change the output message 
+* your users receive after quering for data,
+* its as easy as `afterQuerying()->mutateResponseMessage("to something else")`. 
+* To view the list of callable method append ->help() to a 
+* flow statement ie ->beforeQuering()->help() and view from your app.
+**/
+ -> beforeQuerying()
+ -> beforeUpdating()
+ -> beforeDeleting()
+ -> beforeCreating()
+                ->onTable('register')->convertToUpperCase(input_first_name)->storeAs(input_first_name)
+
+ -> onQuery()
+ -> onUpdate()
+ -> onDelete()
+ -> onCreate()
+
+ -> onAnyRequest()
+
+ -> afterQuerying()
+ -> afterUpdating()
+ -> afterDeleting()
+ -> afterCreating()
+ 
+```
+You will write your code under the `beforeCreating()` method to denote that you want this action to only be performed  when a write is about to be made to the `register` table . 
+
+Similarly the  **after** methods will be run when the db action is performed .
+You most likely will  be mutating the output response using the **after** db actions or performing actions like sending out emails . We will touch this a little bit more when we take a look at [Modifying Default output](#modifying-default-output) .
+
+The **on** prefixed  methods eg `onQuery` will run before and after the respective db action. You may use these to execute Rules that you need to run on both before and after actions. 
+
+Also the **onAnyRequest** method will execute Rules on any kind of db actions made to the service. 
+
+### Using incoming inputs in Rules
+In the case of DB actions that require the client to pass in variables. eg Adding data and updating records , these data will be made available within Rules as variables prefixed with `input_` . 
+For example if the client sends in JSON data like `{"liked":0, "comment": "I agree with you"}`,
+the keys will be converted to variables prefixed with  `input_` and assigned the values and so now you will be able to access the liked values through the variable `input_liked ` and comments through ,`input_comment`. 
+
+### Working with variables
+Just like in many programming languages. Rules allow you to create and access variables. 
+To assign a variable you use the `assign` `to` combination. eg `assign("DevLess")->to(name)` this is similar to `name = "DevLess"` in many programming languages 
+Once you assign a value to a variable you can pass this to any method to be used. eg `->convertToUpperCase(name)` 
+Another instance where you might want to set the value of a variable is when getting the output of a method. eg `->convertToUpperCase(name)->storeAs(nameInUpperCase) //nameInUpperCase = "DEVLESS" `.
+The method `convertToUpperCase` will convert the name given to it to upperCase and store the new uppercase name in the variable nameInUpperCase.
+**NB:** If you make reference to a variable without assigning it, it will be set to `null` . 
 
 
+### Modifying Data   
+DevLess rules are good for running custom logic on incoming data. The reason you might need this is to make sure data sent to the backend by the client is in the format required. 
+Since in most instances you might be using DevLess to serve both your mobile and web app. You may want to modify the backend instead of on the frontend, so that you do it once instead of having to do it over the different platforms ie: Mobile and web . 
+Devless provides inbuilt methods to help with the modificatiion of incoming data. 
+
+#### Working with Strings
+Rules provide a host of methods you may use to modify you text inputs. 
+Eg ```->getCharacter(5, "Devless")->storeAs(word) // word = "s" ``` This will return the 5th word in Devless counting from 0.
+There are a whole bunch of string methods which you may use. [String Methods](#strings-methods)
+
+#### Working with Numbers
+Rules also allow you to perform arithmetic operations. One use case for this is calculating the price against the quantity of a product, as you wouldn't want to entrust this to 
+the client side Eg. ```->calculate(2+3/2)->storeAs(ans) //ans = 3.5```.
+Get the entire list of [Math Methods](#Math-Methods)
+
+#### Generating Unique and Random Values
+There are methods available incase you will like to generate unqiue identifiers. These methods are known as generators. 
+Eg: ```->generateUniqueId()->storeAs(uniqueId) `uniqueId = '5a155ef7dc237' ```
+Complete list of [Generator Methods](#generator-methods) can be found [here](#generator-methods)
+
+#### Working with Dates in DevLess
+You may want to get a timestamp or formatted date. Either way the Date Methods provides you options. 
+Eg: ```->getTimestamp()->storeAs(stamp)->succeedWith(stamp)``` 
+Find the complete list of [Date Methods here](#date-methods)
+
+#### EVENT Variable 
+We already saw the input_* variable that gives you access to incoming data within rules. There is also the `EVENT` variable that
+contains information about the current state of the entire service including the rules currently being run, as well as the logged in users 
+`id` and `token`. To view the entire list of info contained in `EVENT`  
+add this line to the rules of any service eg: ``` ->stopAndOutput(1000, 'content of event variable', EVENT)``` and head over to the api console and see what you get.
+You should have something similar to the below ``` {
+    "status_code": 1000,
+    "message": "content of event variable",
+    "payload": {
+        "method": "GET",
+        "params": [],
+        "script": "->beforeQuerying()->stopAndOutput(1000, \"content of event variable\", $EVENT);",
+        "user_id": "",
+        "user_token": "",
+        "request_type": "db",
+        "request_phase": "before",
+        "access_rights": {
+            "query": 1,
+            "update": 1,
+            "delete": 1,
+            "script": 1,
+            "schema": 1,
+            "create": 1,
+            "view": 1
+        },
+        "requestPayload": null,
+        "status_code": null,
+        "message": null,
+        "results_payload": null
+    }
+} ```
+
+### Flow Controls
+Rules won't be complete without flow controls. Flow Controls provide ways to perform actions only if certain conditions are met. 
+
+**->onTable('table_name')** Using `onTable` allows you to run code given that the table currently being accessed matches the one set in the `onTable` statement.
+eg: `->beforeQuerying()
+			->onTable('meals')
+					->succeedWith("shows when we are not on meals table")
+			->end()
+`
+With the above example the success message will only show if we try to perform a db action on the `meals` table. 
+Next lets take a look at choice based flow control statements.
+
+```	
+     ->whenever(1==2)
+             ->succeedWith("In whenever block")
+     ->elseWhenever(1==1)
+            ->succeedWith("In first elseWhenever block")
+    ->elseWhenever(1==1)
+           ->succeedWith("In second elseWhenever block")
+    ->otherwise()
+          ->succeedWith("In otherwise block")
+    ->end() 
+```
+In the case of the above example we expect `In first elseWhenever block` to be returned when we run this on the console. 
+This is the same as the code below as seen in the ruby language. 
+
+```
+  if 1 == 2 
+  		puts "In if block"
+  elsif 1==1
+  		puts "In first elsif block"]
+  elsif 1==1 
+  		puts "In second elsif block"
+  else 
+  		puts "In otherwise block"
+  end
+```
+### Assertions 
+From the above you may have noticed that the truth statements in `whenever`, `elseWhenever`  use a very basic form of assertion ie `1 == 2` and `1 ==1`. Sometimes you may need to perform an assertion that is a little bit more complex 
+An example could be checking if a string contains a substring , say `edmond` can be found in `edmond@devless.io` . 
+This can easily be achieved with the inbuilt Assertion library that comes with Rules. 
+ie:  `->beforeCreating()->whenever(assertIt::contains("edmond@devless.io", "edmond"))->then->stopAndOutput(1001,'message', 'email containes edmond')`
+Find the full list of [assertions here](#assertion-methods) 
 
 
+### Modifying Default output
+All outputs from DevLess js generally in JSON with the following structure: 
 
-## Assertions
+`{
+    "status_code": <code_here>,
+    "message": "<message_block>",
+    "payload": <payload_block>
+}`
 
-Assertions are a special kind of rule, which asserts that some condition holds. In a programming language, these would be functions returning booleans. Assertions are best used together with the conditional functions, such as `whenever`. 
+`status_code`: usually represent the state of request you made and allows your client app to act accordingly.Find the list inbuilt status_code (here)[status-code] 
+`message`: is a verbose explanation for the `status_code`. 
+`payload`: this may contain extra details such as stack traces.
 
-| Assertion | Description |
-| :--- | :--- |
-| anInteger | check if $value is an integer. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :anInteger\(3\)\) - &gt;then - &gt;stopAndOutput\(1001,'message','its an integer'\)\` @param $value |
-| aString | check if $value is a string. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\( assertIts: :aString\( "Hello"\)\) - &gt;then - &gt;stopAndOutput\(1001,'message', 'its a string'\)\` @param $value |
-| aBoolean | check if $value is a boolean. eg: \` - &gt;beforeCreating\(\) - &gt; whenever\( assertIts : : aBoolean\(true\)\) - &gt; stopAndOutput\(1001,'message', 'its a boolean'\)\` @param $value |
-| aFloat | check if $value is a float. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts : :aFloat\(3.034\)\) - &gt;then - &gt;stopAndOutput\(1001, 'message', 'its a float'\)\` @param $value |
-| withinRange | check if $value is within the range $min $max. eg: \`beforeCreating\(\) - &gt;whenever\( assertIts : :withinRange\($input\_value, 1,4\)\) - &gt;then - &gt;stopAndOutput\(1001, 'message', 'its within range'\)\` @param $value @param $min @ param $max |
-| upperCase | check if $value is uppercase eg: \` - &gt;beforeCreating\(\) - &gt;whenever\( assertIts: :upperCase\("HELLO"\)\) - &gt;then- &gt;stopAndOutput\(1001, 'message', 'its upper case'\)\`\` @param $value |
-| lowerCase | check is $value is lowercase. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :lowerCase\("hello"\)\) - &gt;then- &gt;stopAndOutput\(1001, 'message', 'its lower case'\)\` @param $value |
-| alphanumeric | check if $value is alphanumeric. eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :\("E23D"\)\)- &gt;stopAndOutput\(1001, 'message', 'its alphanumeric'\)\` @param $value |
-| alphabets | check if $value are alphabets eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :alphabet\("abcd"\)\) - &gt;then- &gt;stopAndOutput\(1001, 'message', its alphabets'\)\` @param $value |
-| startsWith | check if $value starts with $prefix eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :startsWith\("E23D", "E"\)\)- &gt;then- &gt;stopAndOutput\(1001, 'message', 'it starts with an E'\)\` @param $value @param $prefix |
-| endsWith | check if $value ends with $suffix eg: \` - &gt;beforeCreating\(\)- &gt;whenever\(assertIts : :endsWith \("E23D","D"\)\)- &gt;then - &gt;stopAndOutput\(1001,'message', 'it ends with D'\)\` @param $value @param $suffix |
-| matchesRegex | check if $value is matched regex eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIt: :matchesRegex\("edmond@devless.io", "email-regex-goes-here"\)\)- &gt;then - &gt;stopAndOutput\(1001,'message', 'it matches the email regex'\)\` @param $value @param $pattern |
-| anEmail | check if $value is an email eg: \`beforeCreating\(\)- &gt;whenever\(assertIts: :email\("edmond@devless.io"\)\)- &gt;then- &gt;stopAndOutput\(1001, 'message', 'its an email'\)\` @param $value |
-| notEmpty | check if $value is not an empty array or empty string eg: \` - &gt;beforeCreating\(\)- &gt;whenever\(assertIts: :notEmpty\("some text"\)\)- &gt;then -&gt;stopAndOutput\(1001, 'message', 'its not empty'\)\` @param $value |
-| contains | check if $value contains $subString  eg:  \`beforeCreating\(\) - &gt;whenever\(assertIts: :contains\( "edmond@devless.io", "edmond"\)\) - &gt;then- &gt;stopAndOutput\( 1001, 'message', 'email contains edmond'\) @param $value @param $substring |
-| equal | check if $value equals $value1 eg: \` - &gt;beforeCreating\(\)- &gt;whenever\(assertIts : :equal\("a", "a"\)\)- &gt;then-&gt;stopAndOutput\( 1001,'message', 'a is equal to a : \)'\)\` @param $value @param $value1 |
-| notEqual | check if $value is not equal to $value1 eg: \`beforeCreating\(\)- &gt;wheneverassertIts: :notEqual\("a", "b"\)\)- &gt;then-&gt;stopAndOutput\(1001, 'message', 'a is not equal to b'\) @param $value @param $value1 |
-| greaterThan | check if $value is greater than $value1 eg: \` - &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :greaterThan\(45, 12\)\)- &gt;then- &gt;stopAndOutput\(1001,'message', '45 is greater than 12'\)\` @param $value @param $value1 |
-| lessThan | check if $value is less than $value1 eg:\`- &gt; beforeCreating\(\) - &gt;whenever\(assertIts: :lessThan\(12, 45\)\)- &gt;stopAndOutput\(1001, 'message', '12 is less than 45'\)\` @param $value @param $value1 |
-| greaterThanOrEqualTo | check if $value is greater than or equal to $value1 eg: \`- &gt;beforeCreating whenever\(assertIts: :greaterThanOrEqualTo\(45, 45\)\)- &gt;then stopAndOutput\(1001, 'message', '45 is greater than or equal to 45'\)\` @param $value @param $value1 |
-| lessThanOrEqualTo | check if $value is less than or equal $value1 \`- &gt;beforeCreating\(\) - &gt;whenever\(assertIts: :lessThanOrEqualTo \(45, 45\)\)- &gt;then- &gt;stopAndOutput\(1001, 'message', '45 is less than or equal to 45'0\` @param $value @param $value1 |
-| 
-| getAllUsers | Get the list of all registed DevLess users  \`- &gt;beforeCreating\(\) - &gt;run\('devless', 'getAllUsers', []\)- &gt;storeAs($users)- &gt;then- &gt;stopAndOutput\(1000, 'All DevLess Users',$users)` @param $value @param $value1 |
-| 
-| queryData | Query Data from a service table  ->run('devless', 'queryData', ['service_name', 'table_name'])->storeAs($users)->stopAndOutput(3, '', $users)|
-| addData | add Data to a service table  `->run('devless', 'addData', ['service_name', 'table_name', ['field_name'=>'field_value'] ])->storeAs($output)->stopAndOutput(1, 'message', $output)`|
-| updateData | update Data from a service table  ->run('devless', 'updateData', ['service_name', 'table_name', 'id', 2 , ['field_name'=>'field_value'] ])->storeAs($output)->stopAndOutput(1, 'message', $output)|
-| deleteData | Delete Data from a service table  `->run('devless', 'addData', ['service_name', 'table_name', 2])->storeAs($output)->stopAndOutput(1, 'message', $output)`|
-| getUserProfile | Get the profile of a specific user   ->run('devless', 'getUserProfile', [1])->storeAs($output)->stopAndOutput(1, 'message', $output)|
-| getUserProfile | Get the profile of a specific user   ->run('devless', 'getUserProfile', [1])->storeAs($output)->stopAndOutput(1, 'message', $output)|
-| deleteUserProfile | Delete user profile   ->run('devless', 'deleteUserProfile', [1])->storeAs($output)->stopAndOutput(1, 'message', $output)|
-| updateUserProfile | Update user profile   ->run('devless', 'updateUserProfile', ['id', 'email', 'password', 'username', 'phonenumber', 'firstname', 'lastname'], '<email>', '<password>', '<username>', '<phonenumber>', '<firstname>', '<lastname>'])->storeAs($output)->stopAndOutput(1, 'message', $output)|
+Well within Rules you may intercept the outgoing response either to decide if some other rules should be run or mutate them. 
 
+#### getResponse
+You can only try to get the response only with the `after` prefixed db methods.
+eg:
+ ```                              
+/**
+* <?
+* Rules allow you to establish control over the flow of 
+* your data in and out of the database.
+* For example if you will like to change the output message 
+* your users receive after quering for data,
+* its as easy as `afterQuerying()->mutateResponseMessage("to something else")`. 
+* To view the list of callable method append ->help() to a 
+* flow statement ie ->beforeQuering()->help() and view from your app.
+**/
+ -> afterQuerying()
+        -> getResponse(status_code, message, payload)
+        ->whenever($status_code == 625)
+                ->stopAndOutput(status_code, "in whenever block", payload)
+    
+
+
+```
+This will output something similar to 
+
+```
+  {
+    "status_code": 625,
+    "message": "in whenever block",
+    "payload": {
+        "results": [
+            {
+                "id": 1,
+                "devless_user_id": 1,
+                "name": "kofi"
+            },
+            {
+                "id": 2,
+                "devless_user_id": 1,
+                "name": "kofi"
+            },
+            {
+                "id": 3,
+                "devless_user_id": 1,
+                "name": "kofi"
+            },
+            {
+                "id": 4,
+                "devless_user_id": 1,
+                "name": "mike"
+            },
+            {
+                "id": 5,
+                "devless_user_id": 1,
+                "name": "sd"
+            },
+            {
+                "id": 6,
+                "devless_user_id": 1,
+                "name": "mike"
+            }
+        ],
+        "properties": {
+            "count": 6,
+            "current_count": 6
+        }
+    }
+}
+```
+You may also get the individual parts of the response with 
+`-> getStatusCode()`, `-> getResponseMessage()`, `-> getResponsePayload()`  for  `status_code`, `message` and `payload` respectively.
+
+`->stopAndOutput` You may have noticed `stopAndOutput` being used in multiple examples. This methods stops execution of any rules after it and outputs 
+the `status_code` , `message` and `payload` that you provide it. eg `->stopAndOutput(1000, "message goes here", ["name"=>"foo"])` This provides you with the 
+option to send out a custom output. 
+
+#### mutations.
+You may also send out a custom output without necessorily using `stopAndOutput`. To do this you use mutators. 
+eg `->afterCreating()->mutateResponse(1000, "message goes here", ["name"=>"foo"])` 
+You may also mutate the individual response using `->mutateStatusCode(1000)`, 
+`->mutateResponseMessage("message goes here")`, 
+`->mutateResponsePayload(["name"=>"foo"])` 
+
+### Changing privacy settings dynamically 
+
+You may also change the access rights of a service within Rules. There are 4 methods available for modifing privacy.
+Also note that the privacy section on the DevLess Dashboard allows you to configure these privacies at the service level.
+
+**authenticateUser:** based on which part of the rules its used this will require the user to be authenticated to access the backend 
+
+**denyExternalAccess:** This will block external access to the backend.
+
+**allowExternalAccess:** This makes every resource available to everyone 
+
+**grantOnlyAdminAccess:**  This will locked down every resource but will be accessible to the creator of the DevLess instance only.
+eg: `->beforeCreating()
+          ->authenticateUser()`
+
+### Getting Help with Rules
+Rules provide an inbuilt method `->help()` which you may use to find out more about a particular method eg: `->help('stopAndOutput')` 
+or just `->help()` to see the full list of callable methods and how they work. 
+ 	
+### Fillers 
+Fillers are a set of nice to have constructs in Rules. They do  nothing to the meaning of your rules (semantically). 
+They are only there for you to add to make your code more readable.
+Eg:  `->beforeCreating()
+            ->whenever(assertIt::contains("edmond@devless.io", "edmond"))
+            ->then->stopAndOutput(1001,'message', 'email containes edmond')`
+Notice the `then` keyword before the `stopAndOutput` method. That is an example of a filler you can take it out and your Rules will still have the same behaviour. 
+The list of available helpers are:  `also`,`then`,`firstly`,`secondly`,`thirdly`,`lastly`,`beSureTo`,`next`,
+
+### Making External Calls 
+Rules provide a host of methods that allow you manipulate data before they hit the db. But then Rules is not mean't to be a complete programming language and so don't expect to use this for mainstream programming.
+That been said you may make api Request over to another server within Rules. 
+This comes in handy when you have external services and resources you need to accees 
+`makeExternalRequest:` eg: `->beforeUpdating()->makeExternalRequest('GET', 'https://www.calcatraz.com/calculator/api?c=3%2A3')->storeAs($ans)
+          ->succeedWith($ans)` This will call on an api that multiplies 3 by 3 
+
+`import:` Import allows you to import code from the [ ActionClass](/services.md) Section of any Service.
+ Also you may get access to methods that allow you to perform CRUD actions on Data as well as  Åuth by importing Devless. eg: `->import("devless")
+               ->beforeCreating()
+                  ->queryData("service_name", "table_name")->storeAs(data)
+                  ->stopAndOutput(1000, "message here", data) 
+`
+The above imports `queryData` from `devless` and allows you to query data from other services as well as the current one. Find the list of of methods under the [devless import here](#devless-import)
+
+### Collections 
+You may have noticed there are no references to loops anywhere above. We try to keep rules as simple as possible. Well that isn't to say not adding loops make things simple. You generally need loops to go over a set of data or run a block of intructions a couple of times. 
+
+You will handly need to loop over a bunch of rules  a number of times as rules carry out a more specific task. 
+What you might need however is to mutate a list of values in a `collection`. 
+A collection is an array of values eg: `["Mike", "Jerry", "John", "Zac" ]`. 
+
+The example shows a collection of names. 
+You may want to say capitalize all the names in the collection.For this you may use the apply method
+`-> beforeCreating()
+        ->assign(["Mike", "Jerry", "John", "Zac" ])
+                    ->apply("convertToUpperCase")
+        ->to(names)
+        ->stopAndOutput(1000, "inputs", names)
+ `
+ this will return `{
+    "status_code": 1000,
+    "message": "inputs",
+    "payload": [
+        "MIKE",
+        "JERRY",
+        "JOHN",
+        "ZAC"
+    ]
+}`
+
+the `apply` method applys the `convertToUpperCase` method on each element in the collection, thus capitalizing each 
+element. 
+There are a host of methods that makes [working with collections](#collections-methods) easy. 
+
+### Strings Methods
+
+* **concatenate**: Concatenate strings together eg: `->beforeQuerying()->concatenate("user_","edmond")->storeAs($string)->succeedWith($string) #user_edmond"`
+* **getFirstCharacter**: Get first character eg: `->beforeCreating()->getFirstCharacter("Hello")->storeAs($first_char)->succeedWith($first_char) #H`
+* **getSecondCharacter**: Get second character eg: `->beforeCreating()->getSecondCharacter("Hello")->storeAs($second_char)->succeedWith($second_char) #e`
+* **getThirdCharacter**: Get third character eg: `->beforeCreating()->getThirdCharacter("Hello")->storeAs($third_char)->succeedWith($third_char) #l`
+* **getCharacter**: Get nth character eg: `->beforeCreating()->getCharacter(4, "Hello")->storeAs($nth_char)->succeedWith($nth_char) #o`
+* **getLastCharacter**: Get last character eg: `->beforeCreating()->getLastCharacter("Hello")->storeAs($last_char)->succeedWith($last_char) #o`
+* **getLastButOneCharacter**: Get last but one character eg: `->beforeCreating()->getLastButOneCharacter("Hello")->storeAs($last_but_one_char)->succeedWith($last_but_one_char) #l`
+* **reverseString**: Reverse a string eg: `->beforeQuerying()->assign("nan")->to($string)
+        ->reverseString()->storeAs($reverseString)
+        ->whenever(assertIts::equal($string, $reverseString))
+                ->succeedWith("Its a palindrome :)") 
+        ->otherwise()
+                ->failWith("Its not a palindrom :(")
+        #Its a palindrome        
+        `
+* **findNReplace**: replace a string with another eg `->beforeCreating()->findNReplace("{{name}}", "John", "welcome {{name}}")->storeAs($message)->succeedWith($message) #welcome John`
+* **convertToUpperCase**: change string to uppercase eg: `->beforeCreating()->convertToUpperCase("John")->storeAs($name)->succeedWith($name) #JOHN`
+* **convertToLowerCase**: change string to lowercase eg: `->beforeCreating()->convertToLowerCase("JOHN")->storeAs($name)->succeedWith($name) #john`
+* **truncateString**: Truncate a string to some length eg `->beforeCreating()->truncateString(11, "some long text", "...")->storeAs($truncatedString)->succeedWith($truncatedString)
+ #some lon...`     
+* **countWords**: Count the number of words in a sentence eg: `->beforeCreating()->countWords("text here")->storeAs($desc_length)->whenever($desc_length <= 5)->failWith("Your product description is very short") #Your product description is very short`
+* **countCharacters**: Find the number of characters in a word or sentence eg: `->beforeCreating()->countCharacters("")->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty")($input_name)->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty") #name seems to be empty`
+
+
+### Math Methods
+* **calculate**: Perform mathematical operations eg: `->beforeQuerying()->calculate(3*5)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans) #15`
+
+ * **sumUp**: find the sum of numbers. eg: `->beforeQuerying()->sumUp(3,4,5,6,7)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans) #25`
+
+ * **subtract**: subtract a bunch of numbers. eg: `->beforeQuerying()->subtract(3,4,5,6,7)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans) #19` also `->beforeQuerying()->from(5)->subtract(3)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans)#2`
+ 
+ * **multiply**:  find the product of numbers.eg: `->beforeQuerying()->multiply(3,4,5,6,7)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans)#2520`   
+
+* **divide**: divide a range of numbers.eg: `->beforeQuerying()->divide(6,2)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans) #3`   
+
+* **divideBy**: This picks results from your earlier computation and divides it by a given number. eg: `->beforeQuerying()->sumUp(3,4,5,6,7)->divideBy(6)->storeAs($ans)->stopAndOutput(1001,'got answer successfully', $ans) #4.1666666666667`
+
+* **findSquareRootOf**: Find the square root of a number. eg:`->beforeQuerying()->findSquareRootOf(4)->storeAs($root)->succeedWith($root) #2`
+    
+* **getSquareRoot**: Get the squareRoot of the result of the preceeding computation eg: `->beforeQuerying()->divide(20, 40)->getSquareRoot()->storeAs($output)->succeedWith($output) #0.70710678118655`
+
+* **roundUp**: round up a number.eg: `->beforeQuerying()->roundUp(3.3445, 1)->storeAs($answer)->succeedWith($answer) #3.3`
+   
+* **percentOf**: Find the percent of a number eg: `->beforeQuerying()->find(10)->percentOf(200)->storeAs($discount)->succeedWith($discount) #20`   
+
+### Date Methods 
+
+* **getTimestamp**:  The `getTimestamp` method returns the current timestamp. eg: `->beforeQuerying()->getTimestamp()->storeAs($timestamp)->succeedWith($timestamp) #1514656911`  
+
+* **getCurrentYear**: Get the current year using the `getCurrentYear` method eg:`->beforeQuerying()->getCurrentYear($word = false)->storeAs($currentYear)->succeedWith($currentYear) #2017`
+   
+* **getCurrentMonth**: Get the current month using the `getCurrentMonth` method eg:`->beforeQuerying()->getCurrentMonth($word = false)->storeAs($currentMonth)->succeedWith($currentMonth) #12`
+    
+* **getCurrentDay**: Get the current day using the `getCurrentDay` method eg: `->beforeQuerying()->getCurrentDay($word = false)->storeAs($currentDay)->succeedWith($currentDay) #30`
+
+* **getCurrentHour**: Get the current hour using the `getCurrentHour` method eg:`->beforeQuerying()->getCurrentHour()->storeAs($currentHour)->succeedWith($currentHour) #06`
+
+* **getCurrentMinute**: Get the current minute using the `getCurrentMinute` method eg:`->beforeQuerying()->getCurrentMinute()->storeAs($currentMinute)->succeedWith($currentMinute) #27`
+
+* **getCurrentSecond**: Get the current second using the `getCurrentSecond` method eg:`->beforeQuerying()->getCurrentSecond()->storeAs($currentSecond)->succeedWith($currentSecond) #02`
+    
+* **getFormattedDate**: Get the human readable date using `getFormattedDate` method eg:`->beforeQuerying()->getFormattedDate()->storeAs($formattedDate)->succeedWith($formattedDate) #Saturday 30th of December 2017 06:28:35 PM`
+
+### Generator Methods    
+
+* **generateRandomInteger**: generates random integers. This may be used for invitation or promotional code generation. eg `->beforeCreating()->generateRandomInteger($max=10)->storeAs($promo_code)->succeedWith($promo_code) #7`
+
+* **generateRandomAlphanums**:  generates random alphanumeric values. This may be used for generating order Ids. eg `->beforeCreating()->generateRandomAlphanums($length = 5)->storeAs($order_id)->succeedWith($order_id) #QJXIS`
+
+* **generateRandomString**: generates random string.This generates random string codes. eg `->beforeCreating()->generateRandomString($length = 10)->storeAs($promo_code)->succeedWith($promo_code) #vXJNKuBaWK`
+
+* **generateUniqueId**: generates unique Id.This generates unique Id . eg `->beforeCreating()->generateUniqueId()->storeAs($user_id)->succeedWith($user_id) #5a48b44ca776c`
+
+### Assertion Methods   
+
+* **anInteger**: check if $value is an integer. eg `->beforeCreating()->whenever(assertIts::anInteger(3))->then->stopAndOutput(1001,'message', 'its an integer') #its an integer`
+
+* **aString**: check if $value is a string. eg: `->beforeCreating()->whenever(assertIts::aString("Hello"))->then->stopAndOutput(1001,'message', 'its a string') #its a string`
+
+* **aBoolean**: check if $value is a  boolean eg: `->beforeCreating()->whenever(assertIts::aBoolean(1 == 1))->then->stopAndOutput(1001,'message', 'its a boolean') #its a boolean`
+   
+* **aFloat**: check if $value is a float eg: `->beforeCreating()->whenever(assertIts::aFloat(3.034))->then->stopAndOutput(1001,'message', 'its a float') #its a float`
+
+* **withinRange**: check if $value is within th range $min $max eg: `->beforeCreating()->whenever(assertIts::withinRange($value=2, $min=1, $max=4))->then->stopAndOutput(1001,'message', 'its within range') #its within range`
+
+* **upperCase**: check if $value is upppercase eg: `->beforeCreating()->whenever(assertIts::upperCase("HELLO"))->then->stopAndOutput(1001,'message', 'its upper case') #its upper case`
+
+* **lowerCase**: check if $value is lowercase. eg: `->beforeCreating()->whenever(assertIts::lowerCase("hello"))->then->stopAndOutput(1001,'message', 'its lower case ') #its lower case`
+
+* **alphanumeric**: check if $value is alphanumeric. eg: `->beforeCreating()->whenever(assertIts::alphanumeric("E23D"))->then->stopAndOutput(1001,'message', 'its alphanumeric') #its alphanumeric`
+
+* **alphabets**: check if $value are alphabets eg: `->beforeCreating()->whenever(assertIts::alphabets("abcd"))->then->stopAndOutput(1001,'message', 'its alphabets') #its alphabets`
+
+* **startsWith**: check if $value startswith $prefix eg: `->beforeCreating()->whenever(assertIts::startsWith("E23D", "E"))->then->stopAndOutput(1001,'message', 'it starts with E') #it starts with E`
+
+* **endsWith**: check if $value ends with $suffix eg: `->beforeCreating()->whenever(assertIts::endsWith("E23D", "D"))->then->stopAndOutput(1001,'message', 'it ends with D') #it ends with D`
+
+* **matchesRegex**: check if $value is matched regex eg: `->beforeCreating()->whenever(assertIt::matchesRegex("edmond@devless.io", "<email-regex-goes-here>"))->then->stopAndOutput(1001,'message', 'it matches the email regex')`
+
+* **anEmail**: check if $value is an email eg: `->beforeCreating()->whenever(assertIts::anEmail("edmond@devless.io"))->then->stopAndOutput(1001,'message', 'its an email') #its an email`
+
+* **notEmpty**: check if $value is not an empty array or empty string eg: `->beforeCreating()->whenever(assertIt::notEmpty("some text"))->then->stopAndOutput(1001,'message', 'its not empty') #its not empty`
+
+* **isEmpty**: check if $value is  an empty array or empty string eg: `->beforeCreating()->whenever(assertIt::isEmpty(""))->then->stopAndOutput(1001,'message', 'its  empty') #its  empty`
+   
+* **contains**: check if $value is contains $subString eg: `->beforeCreating()->whenever(assertIt::contains("edmond@devless.io", "edmond"))->then->stopAndOutput(1001,'message', 'email containes edmond') #email containes edmond`
+    
+* **equal**: check if $value equals $value1 eg: `->beforeCreating()->whenever(assertIts::equal("a", "a"))->then->stopAndOutput(1001,'message', 'a is equal to a :)') #a is equal to a :)`
+     *
+* **notEqual**: check if $value is not equal to $value1 eg: `->beforeCreating()->whenever(assertIts::notEqual("a", "b"))->then->stopAndOutput(1001,'message', 'a is not equal to b ') #a is not equal to b `
+    
+* **greaterThan**: check if $value is greater than $value1 eg: `->beforeCreating()->whenever(assertIt::greaterThan(45, 12))->then->stopAndOutput(1001,'message', '45 is greater than 12') #45 is greater than 12`
+
+* **lessThan**: check if $value is less than $value1 eg: `->beforeCreating()->whenever(assertIt::lessThan(12, 45))->then->stopAndOutput(1001,'message', '12 is less than 45') #12 is less than 45`
+
+* **greaterThanOrEqualTo**: check if $value is greater than or equal to $value1 eg: `->beforeCreating()->whenever(assertIt::greaterThanOrEqualTo(45, 45))->then->stopAndOutput(1001,'message', '45 is greater than or equal to 45') #45 is greater than or equal to 45`
+    
+* **lessThanOrEqualTo**: check if $value is less than or equal to $value1  `->beforeCreating()->whenever(assertIt::lessThanOrEqualTo($v=45, $v1=45))->then->stopAndOutput(1001,'message', "$v is less than or equal to $v1") #45 is less than or equal to 45`
+    

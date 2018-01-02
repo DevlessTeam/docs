@@ -207,14 +207,23 @@ You will need to add the `dv-updateProfile` class to the form as well as the fie
   </form>
 ```
 
-### logging out
+### Logging out
 
 Logging out a user is as simple as adding the `dv-logout` class and an `action` attribute to redirect to once the user is logged out.
 
 ```html
    <button class="dv-logout" action="/">Logout</button>
 ```
+### Setting attribute values
+There are situations where you might want to set a value of an attribute. EG: Setting the value of a select box. 
 
+```html
+	<select class="dv-get-all:service_name:table_name">
+		<option class="set-value:var-id "></option>
+	</select>
+```
+The above code will generate a series of `option` tags each looking like `<option value="1">Beverages</option>` with changes depending on data from `table_name`.
+ 
 ### Notifications
 
 To make you page more interactive you may use  `dv-notify`  as well as the `dv-processing` classes.

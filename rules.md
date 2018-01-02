@@ -1,4 +1,4 @@
-# Rules 
+# Rules Reference
 
 
 ### What are Rules?

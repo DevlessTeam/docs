@@ -166,7 +166,7 @@ This is the same as the code below as seen in the ruby language.
   if 1 == 2 
   		puts "In if block"
   elsif 1==1
-  		puts "In first elsif block"]
+  		puts "In first elsif block"
   elsif 1==1 
   		puts "In second elsif block"
   else 

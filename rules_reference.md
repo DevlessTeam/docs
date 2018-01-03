@@ -349,7 +349,7 @@ You may want to say capitalize all the names in the collection.For this you may 
 
 the `apply` method applys the `convertToUpperCase` method on each element in the collection, thus capitalizing each 
 element. 
-There are a host of methods that makes [working with collections](#collections-methods) easy. 
+There are a host of methods that makes [working with collections](#Collections-Methods) easy. 
 
 ### Strings Methods
 
@@ -471,4 +471,85 @@ There are a host of methods that makes [working with collections](#collections-m
 * **greaterThanOrEqualTo**: check if $value is greater than or equal to $value1 eg: `->beforeCreating()->whenever(assertIt::greaterThanOrEqualTo(45, 45))->then->stopAndOutput(1001,'message', '45 is greater than or equal to 45') #45 is greater than or equal to 45`
     
 * **lessThanOrEqualTo**: check if $value is less than or equal to $value1  `->beforeCreating()->whenever(assertIt::lessThanOrEqualTo($v=45, $v1=45))->then->stopAndOutput(1001,'message', "$v is less than or equal to $v1") #45 is less than or equal to 45`
+
     
+### Devless Import    
+
+* **signUp**: Signup new users  `->beforeCreating()->run('devless','signUp', [$email = "team@devless.io",$password = "pass",$username = null,$phone_number = "020198475",$first_name = "John",$last_name = "Doe",$remember_token = null,$role = 5,$extraParams = null])->storeAs($output)->stopAndOutput(1000, "Created Profile Successfully",$output)
+   
+* **login**: login users  `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
+
+* **addData**: add data to a service `->import('devless')->beforeCreating()->addData('service_name','table_name',["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)` 
+   
+* **queryData**:  Get data from a service table `->import('devless')->beforeCreating()->queryData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **getData**: Get data from a service table `->import('devless')->beforeCreating()->getData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+    
+* **updateData**: update data in a service table `->import('devless')->beforeCreating()->updateData('service_name','table_name', "id", 1, ["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **deleteData**:  delete record from a service table `->import('devless')->beforeCreating()->deleteData('test','sample', 1)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+   
+* **getUserProfile**: get user profile by id `->import('devless')->beforeCreating()->getUserProfile(2)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **getAllUsers**: Get all users `->import('devless')->beforeCreating()->getAllUsers(2)->storeAs($output)->stopAndOutput(1000, "output", $output)` 
+
+* **deleteUserProfile**: Delete a users profile `->import('devless')->beforeCreating()->deleteUserProfile(9)->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **updateUserProfile**: Update a users profile `->import('devless')->beforeCreating()->updateUserProfile($id=1,$email = '',$password = '',$username = 'eddymens',$phone_number = '',$first_name = '',$last_name = '')->storeAs($output)->stopAndOutput(1000, "output", $output)`
+    
+### Collections Methods
+
+* **fromTheCollectionOf**: convert an array into a collection eg: `->beforeCreating()->fromTheCollectionOf(["name"=>"mike", "age"=>29])->getAllKeys()->storeAs($keys)->stopAndOutput(1000, "got response", $keys) #["name", "age"]`
+
+* **collect**: convert an array into a collection eg: `->beforeCreating()->collect(["name"=>"mike", "age"=>29])->getAllKeys()->storeAs($keys)->stopAndOutput(1000, "got response", $keys) #["name", "age"]`
+
+* **getValuesWithoutKeys**: gets all the values in a collection eg: `->beforeCreating()->collect(["name"=>"mike", "age"=>29])->getValuesWithoutKeys()->storeAs($values)->stopAndOutput(1000, "got response", $values) # ["mike",29]`
+
+* **getAllKeys**: convert an array into a collection eg: `->beforeCreating()->fromTheCollectionOf(["name"=>"mike", "age"=>29])->getAllKeys()->storeAs($keys)->stopAndOutput(1000, "got response", $keys) #["name", "age"]`
+
+* **getFirstElement**: get the first element in a collection eg: `->beforeCreating()->fromTheCollectionOf(["name"=>"mike", "age"=>29])->getFirstElement()->storeAs($element)->stopAndOutput(1000, "got response", $element) #["mike"]`
+
+* **getFirstElement**: convert an array into a collection eg: `->beforeCreating()->fromTheCollectionOf(["name"=>"mike", "age"=>29])->getFirstElement()->storeAs($element)->stopAndOutput(1000, "got response", $element) #["mike"]`
+
+* **appendCollectionTo**: Match up and pair collections eg: `->beforeCreating()->collect(["name"=>"mike", "age"=>29])->appendCollectionTo($superArray=[["id"=>1,"name"=>"sam"],["id"=>2,"name"=>"josh"]], $subArray=[["id"=>2,"age"=>20],["id"=>1,"age"=>12]], $subArray="id",$subKey="id", $resultingKey="result" )->storeAs($element)->stopAndOutput(1000, "got response", $element)`
+
+* **appendCollectionToRelated**: match up and pair collections but store results in related.eg: `->beforeCreating()->collect(["name"=>"mike", "age"=>29])->appendCollectionToRelated($superArray=[["id"=>1,"name"=>"sam"],["id"=>2,"name"=>"josh"]], $subArray=[["id"=>2,"age"=>20],["id"=>1,"age"=>12]], $subArray="id",$subKey="id", $resultingKey="result" )->storeAs($element)->stopAndOutput(1000, "got response", $element)`
+
+* **getElement**: get the nth element in a collections eg: `->beforeCreating()->collect(["Joe", "Sam", "Mike"])->getElement(1)->storeAs($element)->stopAndOutput(1000, "got response", $element) #Joe`
+
+* **getLastElement**: get the last element in a collections eg: `->beforeCreating()->collect(["Joe", "Sam", "Mike"])->getLastElement()->storeAs($element)->stopAndOutput(1000, "got response", $element) #Mike`
+
+* **countTheNumberOfElements**: count the number of elements in a collections eg: `->beforeCreating()->collect(["Joe", "Sam", "Mike"])->countTheNumberOfElements()->storeAs($count)->stopAndOutput(1000, "got response", $count) #3`
+
+* **fetchAllWith**: Fetch all elements whos key are of a particular value eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchAllWith("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["item"=>"soap", "quantity"=>5],["item"=>"book", "quantity"=>5]]`
+
+* **fetchAllWithout**: Fetch all elements whos key are of a particular value eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchAllWithout("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["item"=>"milk", "quantity"=>3]]`
+
+* **fetchOnly**: get a new collection of only a particular key value pair eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchOnly("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[5,3,5]`
+
+* **apply**: apply a method to a collection eg: `->beforeCreating()->collect(["Joe", "Mike"])->apply("convertToUpperCase", $params = [])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["JOE","MIKE"]`
+
+* **applyOnElement**: apply a method to a key in the collection eg: `->beforeCreating()->collect([["name"=>"Joe", "age"=>12],["name"=>"Mark", "age"=>23]])->applyOnElement("convertToUpperCase", "name" )->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["name"=>"JOE", "age"=>12],["name"=>"MARK", "age"=>23]]`
+
+* **reverseTheCollection**: reverse the order of a collection eg: `->beforeCreating()->collect(["Joe", "Mike"])->reverseTheCollection()->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Mike","Joe"]`
+
+* **sortCollectionBy**: sort the order of a collection by a key eg: `->beforeCreating()->collect(["Zina", "Adam"])->sortCollectionBy("name")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Adam","Zina"]`
+
+* **offsetCollectionBy**: offsets N number of elements eg: `->beforeCreating()->collect(["Adam", "Ben", "Zina"])->offsetCollectionBy(1)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Ben","Zina"]`
+
+* **reduceNumberOfElementsTo**: reduce the number of elements to N eg: `->beforeCreating()->collect(["Adam", "Ben", "Zina"])->reduceNumberOfElementsTo(1)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Adam"]`
+
+* **paginateCollection**: offset N elements and get Y elements eg: `->beforeCreating()->collect(["Adam", "Ben", "Zina"])->paginateCollection(1, 1)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Ben"]`
+
+    
+* **findCollectionDiffs**: find the difference between two collections eg: `->beforeCreating()->findCollectionDiffs(["name"=>"Mark", "age"=>45], ["name"=>"Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #  ["age": 45]`
+    
+* **expandCollection**:  expand and flatten a collection eg: `->beforeCreating()->expandCollection(["name"=>["Mark", "zowy"], "age"=>45])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["name"=>"Mark","age"=>45],["name"=>"zowy","age"=>45]]`
+
+* **addElementToCollection**: add an element to a collection eg: `->beforeCreating()->collect(["name"=>"mike"])->addElementToCollection(23,"age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"mike","age"=>23] #["age"=>23,"name"=>"mike"]`
+
+* **removeElementFromCollection**: remove an element from collection  eg: `->beforeCreating()->collect(["age"=>23,"name"=>"mike"])->removeELementFromCollection("age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"mike","age"=>23] #["name"=>"mike"]` 
+
+* **useCollectionAsKeys**: create key value pairs from two collections  eg: `->beforeCreating()->collect(["Mark",23])->useCollectionAsKeys(["name", "age"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"Mark","age"=>23]`
+
+* **checkIfCollectionContains**: check if a collection contains a key or value  eg: `->beforeCreating()->collect(["Mark",23])->checkIfCollectionContains(["Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #true`     

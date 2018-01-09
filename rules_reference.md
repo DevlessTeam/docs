@@ -546,7 +546,7 @@ There are a host of methods that makes [working with collections](#Collections-M
 
 * **NB: apply can be used as a for loop. using $ITR and #counter as the index counter ** 
 ``` ->assign([["name"=>"sackey","id"=>1],["name"=>"kalid","id"=>2],["name"=>"roff","id"=>3]])->to($data)
-        ->apply('updateData', ['test', 'sample', 'id', $ITR($data,'#counter.id'), $ITR($data, '#counter')])
+        ->apply('updateData', ['service_name', 'table_name', 'id', $ITR($data,'#counter.id'), $ITR($data, '#counter')])
  ```
 * **applyOnElement**: apply a method to a key in the collection eg: `->beforeCreating()->collect([["name"=>"Joe", "age"=>12],["name"=>"Mark", "age"=>23]])->applyOnElement("convertToUpperCase", "name" )->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["name"=>"JOE", "age"=>12],["name"=>"MARK", "age"=>23]]`
 

@@ -364,9 +364,9 @@ You may want to say capitalize all the names in the collection.For this you may 
 
 the `apply` method applys the `convertToUpperCase` method on each element in the collection, thus capitalizing each   
 element.   
-There are a host of methods that makes [working with collections](Collections-Methods) easy.
+There are a host of methods that makes [working with collections](#Collections-Methods) easy.
 
-### Strings Methods
+### String Methods
 
 * **concatenate**: Concatenate strings together eg: `->beforeQuerying()->concatenate("user_","edmond")->storeAs($string)->succeedWith($string) #user_edmond"`
 * **getFirstCharacter**: Get first character eg: `->beforeCreating()->getFirstCharacter("Hello")->storeAs($first_char)->succeedWith($first_char) #H`

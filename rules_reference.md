@@ -386,8 +386,7 @@ There are a host of methods that makes [working with collections](#Collections-M
 * **findNReplace**: replace a string with another eg `->beforeCreating()->findNReplace("{{name}}", "John", "welcome {{name}}")->storeAs($message)->succeedWith($message) #welcome John`
 * **convertToUpperCase**: change string to uppercase eg: `->beforeCreating()->convertToUpperCase("John")->storeAs($name)->succeedWith($name) #JOHN`
 * **convertToLowerCase**: change string to lowercase eg: `->beforeCreating()->convertToLowerCase("JOHN")->storeAs($name)->succeedWith($name) #john`
-* **truncateString**: Truncate a string to some length eg \`-&gt;beforeCreating\(\)-&gt;truncateString\(11, "some long text", "..."\)-&gt;storeAs\($truncatedString\)-&gt;succeedWith\($truncatedString\)
-  # some lon...\`
+* **truncateString**: Truncate a string to some length eg \`-&gt;beforeCreating\(\)-&gt;truncateString\(11, "some long text", "..."\)-&gt;storeAs\($truncatedString\)-&gt;succeedWith\($truncatedString\) #some lon...`
 * **countWords**: Count the number of words in a sentence eg: `->beforeCreating()->countWords("text here")->storeAs($desc_length)->whenever($desc_length <= 5)->failWith("Your product description is very short") #Your product description is very short`
 * **countCharacters**: Find the number of characters in a word or sentence eg: `->beforeCreating()->countCharacters("")->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty")($input_name)->storeAs($name_length)->whenever($name_length <= 0)->failWith("name seems to be empty") #name seems to be empty`
 

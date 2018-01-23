@@ -489,7 +489,7 @@ There are a host of methods that makes [working with collections](#collections-m
 
 ### Devless Import
 
-* **signUp**: Signup new users  \`-&gt;beforeCreating\(\)-&gt;run\('devless','signUp', \[$email = "team@devless.io",$password = "pass",$username = null,$phone\_number = "020198475",$first\_name = "John",$last\_name = "Doe",$remember\_token = null,$role = 5,$extraParams = null\]\)-&gt;storeAs\($output\)-&gt;stopAndOutput\(1000, "Created Profile Successfully",$output\)
+* **signUp**: Signup new users  `-&gt;beforeCreating\(\)-&gt;run\('devless','signUp', \[$email = "team@devless.io",$password = "pass",$username = null,$phone\_number = "020198475",$first\_name = "John",$last\_name = "Doe",$remember\_token = null,$role = 5,$extraParams = null\]\)-&gt;storeAs\($output\)-&gt;stopAndOutput\(1000, "Created Profile Successfully",$output\)`
 
 * **login**: login users  `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
 

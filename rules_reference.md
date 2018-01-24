@@ -539,7 +539,7 @@ There are a host of methods that makes [working with collections](#collections-m
 
 * **fetchAllWithout**: Fetch all elements whos key are of a particular value eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchAllWithout("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["item"=>"milk", "quantity"=>3]]`
 
-* **fetchOnly**: get a new collection of only a particular key value pair eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchOnly("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[5,3,5]`
+* **fetchOnly**: get a new collection of only a particular key  eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchOnly("quantity")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[5,3,5]`
 
 * **apply**: apply a method to a collection eg: `->beforeCreating()->collect(["Joe", "Mike"])->apply("convertToUpperCase", $params = [])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["JOE","MIKE"]`
 

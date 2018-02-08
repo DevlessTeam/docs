@@ -8,7 +8,7 @@ Rules allow you set conditions and rules which may modify incoming data or outpu
 
 On creating a new service you will be redirected to the service page where you will find a section where you may write out rules for that particular service. This means any data action ie: query, delete, adding or updating data to that particular Service table will be affected by the rule that you write.  
 ![](/assets/service_rules.png) A newly created service will have a rules page similar to the one above.
-
+re
 ### Rules Syntax definition
 
 Rules provide you with ways to modify data from the client as well as modify what is being sent back. Rules is based on a PHP method chain. Which is a bunch of methods you call together to get particular results.   
@@ -559,13 +559,13 @@ There are a host of methods that makes [working with collections](#collections-m
 
 * **paginateCollection**: offset N elements and get Y elements eg: `->beforeCreating()->collect(["Adam", "Ben", "Zina"])->paginateCollection(1, 1)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["Ben"]`
 
-* **findCollectionDiffs**: find the difference between two collections eg: `->beforeCreating()->findCollectionDiffs(["name"=>"Mark", "age"=>45], ["name"=>"Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #  ["age": 45]`
+* **findCollectionDiffs**: find the difference between two collections eg: `->beforeCreating()->findCollectionDiffs(["name"=>"Mark", "age"=>45], ["name"=>"Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #  ["age"=> 45]`
 
 * **expandCollection**:  expand and flatten a collection eg: `->beforeCreating()->expandCollection(["name"=>["Mark", "zowy"], "age"=>45])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["name"=>"Mark","age"=>45],["name"=>"zowy","age"=>45]]`
 
-* **addElementToCollection**: add an element to a collection eg: `->beforeCreating()->collect(["name"=>"mike"])->addElementToCollection(23,"age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"mike","age"=>23] #["age"=>23,"name"=>"mike"]`
+* **addElementToCollection**: add an element to a collection eg: `->beforeCreating()->collect(["name"=>"mike"])->addElementToCollection(23,"age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)  #["age"=>23,"name"=>"mike"]`
 
-* **removeElementFromCollection**: remove an element from collection  eg: `->beforeCreating()->collect(["age"=>23,"name"=>"mike"])->removeELementFromCollection("age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"mike","age"=>23] #["name"=>"mike"]`
+* **removeElementFromCollection**: remove an element from collection  eg: `->beforeCreating()->collect(["age"=>23,"name"=>"mike"])->removeELementFromCollection("age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)#["name"=>"mike"]`
 
 * **useCollectionAsKeys**: create key value pairs from two collections  eg: `->beforeCreating()->collect(["Mark",23])->useCollectionAsKeys(["name", "age"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"Mark","age"=>23]`
 

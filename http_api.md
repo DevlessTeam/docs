@@ -173,7 +173,7 @@ Querying data can be done by using the `GET` verb on the same path as when addin
 | Query Param | What |
 | :--- | :--- |
 | `table` | Specifies which table to query from. |
-| `orderBy` | Orders the data in descending order based on the field provided |
+| `orderBy` | Orders the data in ascending order based on the field provided |
 | `where` | Selects data based on field values. The format is `where=field,value`. E.g. to select all people with the name "joe", use `&where=name,joe`. If multiple `where` statements are sent, only records matching all statements will be returned. |
 | `orWhere` | Similar to `where`, but in the case of multiple statements, records matching _any_ of the statements will be returned. |
 | `size` | Specifies how many records to return |
@@ -183,6 +183,9 @@ Querying data can be done by using the `GET` verb on the same path as when addin
 | `greaterThanEqual` | Selects data where the column value is greater than **or equal to** the specified value. E.g. `&greaterThanEqual=age,18`. |
 | `lessThan` | Selects data where the column value is **less than** the specified value. E.g. `&lessThan=age,18`. |
 | `lessThanEqual` | Selects data where the column value is less than **or equal to** the specified value. E.g. `&lessThanEqual=age,18`. |
+| `desc` | Orders the data in descending order based on the field provided E.g. `&desc=name` |
+| `asc` | Orders the data in ascending order based on the field provided E.g. `&asc=name` |
+
 
 For example, you can select 2 people both named `joe` like this:
 

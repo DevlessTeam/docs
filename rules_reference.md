@@ -489,7 +489,7 @@ There are a host of methods that makes [working with collections](#collections-m
 
 ### Devless Import
 
-* **signUp**: Signup new users  `-&gt;beforeCreating\(\)-&gt;run\('devless','signUp', \[$email = "team@devless.io",$password = "pass",$username = null,$phone\_number = "020198475",$first\_name = "John",$last\_name = "Doe",$remember\_token = null,$role = 5,$extraParams = null\]\)-&gt;storeAs\($output\)-&gt;stopAndOutput\(1000, "Created Profile Successfully",$output\)`
+* **signUp**: Signup new users  `->beforeCreating()->run('devless','signUp', [$email = "team@devless.io",$password = "pass",$username = null,$phone_number = "020198475",$first_name = "John",$last_name = "Doe",$remember_token = null,$role = 5,$extraParams = null])->storeAs($output)->stopAndOutput(1000, "Created Profile Successfully",$output)`
 
 * **login**: login users  `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
 
@@ -510,6 +510,14 @@ There are a host of methods that makes [working with collections](#collections-m
 * **deleteUserProfile**: Delete a users profile `->import('devless')->beforeCreating()->deleteUserProfile(9)->storeAs($output)->stopAndOutput(1000, "output", $output)`
 
 * **updateUserProfile**: Update a users profile `->import('devless')->beforeCreating()->updateUserProfile($id=1,$email = '',$password = '',$username = 'eddymens',$phone_number = '',$first_name = '',$last_name = '')->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **getUserWhere**: get user profile using a field `->import('devless')->beforeCreating()->getUserWhere("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **deactivateUserAccount**: Deactivate user account `->import('devless')->beforeCreating()->deactivateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **activateUserAccount**: Activate User Account`->import('devless')->beforeCreating()->activateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
+
+* **toggleUserAccountState**: Toggle User Account Status`->import('devless')->beforeCreating()->toggleUserAccountState(0, "username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 
 ### Collections Methods
 

@@ -143,7 +143,7 @@ The example code below illustrates signing up a user and moving to the dashboard
 
 ```html
  <div class="dv-notify"></div>
-  <form class="dv-signup" action="/dasboard">
+  <form class="dv-signup" action="/dashboard">
     <input type="text" name="username" placeholder="Enter username here">
     <input type="email" name="email" placeholder="Enter email here">
     <input type="number" name="phonenumber" placeholder="Enter phone number here">

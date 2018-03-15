@@ -163,7 +163,7 @@ The example below uses `username` and `password` for sign in
 
 ```html
   <div class="dv-notify"></div>
-  <form class="dv-signin" action="/dasboard">
+  <form class="dv-signin" action="/dashboard">
     <input type="text" name="username" placeholder="Enter username here">
     <!--<input type="email" name="email" placeholder="Enter email here">-->
     <!--<input type="number" name="phonenumber" placeholder="Enter phone number here">-->

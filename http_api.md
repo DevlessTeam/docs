@@ -123,6 +123,23 @@ This will return a response like this:
 }
 ```
 
+### Logging Out
+
+Logging out is straight forward. We use the `logout` action by calling `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=logout` with the `POST` verb:
+
+```
+curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/service/devless/rpc?action=login" -d@-   <<EOF
+{
+    "jsonrpc": "2.0",
+    "method": "devless",
+    "id": "1000",
+    "params": []
+}
+EOF
+```
+
+
+
 **NB: **Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
 ## CRUD

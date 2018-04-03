@@ -1,6 +1,6 @@
 # Quick Start 
 
-Devless is a tool which helps you develop applications easier, by not having to worry about setting up a backend. In these N steps, we will set up a contact list application, with a minimal amount of coding. 
+Devless is a tool which helps you develop applications easier, by not having to worry about setting up a backend. In these 5 steps, we will set up a contact list application, with a minimal amount of coding. 
 
 ## Step 1: Deploy DevLess to Heroku 
 

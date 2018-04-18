@@ -490,7 +490,7 @@ There are a host of methods that makes [working with collections](#collections-m
    
 * **getUserProfile**: get user profile by id `->import('devless')->beforeCreating()->getUserProfile(2)->storeAs($output)->stopAndOutput(1000, "output", $output)`
 
-* **getAllUsers**: Get all users `->import('devless')->beforeCreating()->getAllUsers(2)->storeAs($output)->stopAndOutput(1000, "output", $output)` 
+* **getAllUsers**: Get all users `->import('devless')->beforeCreating()->getAllUsers()->storeAs($output)->stopAndOutput(1000, "output", $output)` 
 
 * **deleteUserProfile**: Delete a users profile `->import('devless')->beforeCreating()->deleteUserProfile(9)->storeAs($output)->stopAndOutput(1000, "output", $output)`
 

@@ -1,16 +1,14 @@
-# Using the internal service 
+# Internal DevLess Service
 
-You create services when you have a new functionality you want to add to your app. DevLess also provide some  more functionalities out of the box that are only accessible within other services you create. 
+You create services when you have a new functionality you want to add to your app. DevLess also provide some more functionalities out of the box that are only accessible within other services you create.
 
+Add Data
 
+Query Data
 
-Add Data 
+Update Data
 
-Query Data 
-
-Update Data 
-
-Delete Data 
+Delete Data
 
 Installation
 

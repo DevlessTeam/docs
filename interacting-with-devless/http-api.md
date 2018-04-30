@@ -1,4 +1,4 @@
-# REST API
+# HTTP API
 
 DevLess has a rich restful API. It is used by all the SDKs. This means that everything that you can do in the SDKs, you can do using the REST API.
 
@@ -9,7 +9,7 @@ The REST API Can:
 * Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or service extensions.
 
 All operations in the REST API requires a header named `Devless-token`. This token is unique to each DevLess setup. It can be viewed by opening your DevLess GUI & pressing the "connect to DevLess" button in the top-right corner:  
-![Connect to devless](assets/connect_to_devless.png)
+![Connect to devless](../.gitbook/assets/connect_to_devless.png)
 
 From there, select the "raw" tab. There you can view the DevLess token.
 
@@ -21,7 +21,7 @@ You should log in as the end-user of your product. DevLess will make sure that t
 
 ### Signing Up
 
-You can sign up new users to your application by calling the `signUp` method. This method is exposed over the JSON RPC interface. We can call it on  `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=signUp` using the `POST` http verb.
+You can sign up new users to your application by calling the `signUp` method. This method is exposed over the JSON RPC interface. We can call it on `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=signUp` using the `POST` http verb.
 
 ```bash
 $ curl -F -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/service/devless/rpc?action=signUp" -d@- <<EOF
@@ -47,7 +47,7 @@ Either an email, a username or a phone number needs to be provided. All other ar
 
 This will return a response like this:
 
-```js
+```javascript
 {
   "status_code": 637,
   "message": "Got RPC response successfully",
@@ -72,13 +72,11 @@ This will return a response like this:
 
 The `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md), `637` indicates success. The `message` is a human-readable message about the status of the call. the `payload` contains a `result`, which is the result from the `signUp` action. It contains the created profile, but also a `token`. The token is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
-## 
-
 ### Logging In
 
 Logging in is quite similar to signing up. We use the `login` action by calling `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=login` with the `POST` verb:
 
-```
+```text
 curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/service/devless/rpc?action=login" -d@-   <<EOF
 {
     "jsonrpc": "2.0",
@@ -100,7 +98,7 @@ Either an email, a username or a phone number needs to be provided. The password
 
 This will return a response like this:
 
-```js
+```javascript
 {
   "status_code": 637,
   "message": "Got RPC response successfully",
@@ -127,7 +125,7 @@ This will return a response like this:
 
 Logging out is straight forward. We use the `logout` action by calling `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=logout` with the `POST` verb:
 
-```
+```text
 curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/service/devless/rpc?action=login" -d@-   <<EOF
 {
     "jsonrpc": "2.0",
@@ -137,8 +135,6 @@ curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/se
 }
 EOF
 ```
-
-
 
 **NB: **Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
@@ -150,7 +146,7 @@ Lets say that we have set up a service named `contacts`, with a table named `peo
 
 We can add data to the table, by using the `POST` verb and sending in JSON data:
 
-```
+```text
 $ curl -L -XPOST \
   -H "Content-type: application/json" \
   -H "Devless-token: $DEVLESS_TOKEN\
@@ -171,7 +167,7 @@ Note that "contacts", the name of the service, becomes part of the URL. The `nam
 
 This will give you a response looking something like this:
 
-```js
+```javascript
 {
   "status_code": 609,
   "message": "Data has been added to people table successfully",
@@ -203,7 +199,6 @@ Querying data can be done by using the `GET` verb on the same path as when addin
 | `desc` | Orders the data in descending order based on the field provided E.g. `&desc=name` |
 | `asc` | Orders the data in ascending order based on the field provided E.g. `&asc=name` |
 
-
 For example, you can select 2 people both named `joe` like this:
 
 ```bash
@@ -213,7 +208,7 @@ curl -L -H "Devless-token: $DEVLESS_TOKEN"\
 
 This will get you a response looking something like this:
 
-```js
+```javascript
 {
   "status_code": 625,
   "message": "Got response successfully",
@@ -270,7 +265,7 @@ Again, note that the service name, `contacts` is embedded in the URL. The `name`
 
 The response looks like this:
 
-```js
+```javascript
 {
   "status_code": 619,
   "message": "table people updated successfuly",
@@ -304,7 +299,7 @@ Again, the name of the service is in the URL, and the `name` indicates the table
 
 The response looks similar to the update call as well:
 
-```js
+```javascript
 {
   "status_code": 636,
   "message": "Data / table / field has been deleted",
@@ -368,7 +363,7 @@ EOF
 
 The result would look something like this:
 
-```js
+```javascript
 {
   "status_code": 606,
   "message": "Created table successfully",
@@ -399,11 +394,9 @@ curl -L -XDELETE \
 EOF
 ```
 
-### 
-
 ## RPC Calls
 
-As we saw when doing authentication, DevLess methods can be called using JSON RPC. This goes for both the built-in methods, as well as for any services that you install through the hub or write  yourself.
+As we saw when doing authentication, DevLess methods can be called using JSON RPC. This goes for both the built-in methods, as well as for any services that you install through the hub or write yourself.
 
 E.g. if we have the Weather service installed we can call it to get how hot it is in Accra:
 
@@ -426,7 +419,7 @@ The `method` parameter as well as part of the URL path is the service name. The 
 
 In this case, we get this response body back:
 
-```js
+```javascript
 {
   "status_code": 637,
   "message": "Got RPC response successfully",

@@ -6,7 +6,7 @@ The HTML Kit makes it easy to build web pages that interact with DevLess, withou
 
 To get started with editing data for a table, you can use automatically generated "Scaffolds" for a table. Go to the list of tables in your application, and press the button looking like this: `</>`. This will download a html file to your browser's download folder.
 
-You can open this file in a browser, and you will be able to  interact with the DevLess data directly. Try editing it! This file is meant to be a starting point for writing web applications using DevLess.
+You can open this file in a browser, and you will be able to interact with the DevLess data directly. Try editing it! This file is meant to be a starting point for writing web applications using DevLess.
 
 ## Larger examples
 
@@ -16,9 +16,9 @@ This document aims to describe how one can interact with DevLess with quite simp
 
 ### Setting up
 
-Go to your DevLess instance, press this buttton: ![](/assets/connect_to_devless.png). It is located at the top right in your DevLess panel. It should present you with an HTML tag to connect to your instance. It should look something like this:
+Go to your DevLess instance, press this buttton: ![](../../.gitbook/assets/connect_to_devless.png). It is located at the top right in your DevLess panel. It should present you with an HTML tag to connect to your instance. It should look something like this:
 
-```js
+```javascript
 <script src="http://bestapp.herokuapp.com/js/devless-sdk.js" class="devless-connection" devless-con-token="abcde123456789"></script>
 ```
 
@@ -32,7 +32,7 @@ For example, say that I have a service named `contacts` with a table named `peop
 
 For example, using the following markup we can add people with name & email to the people table:
 
-```html
+```markup
 <div class="dv-notify-success" style="color: green">Person added</div>
 <div class="dv-notify-failed" style="color: red">Failed to add person</div>
 <form class="dv-add-oneto:contacts:people">
@@ -56,7 +56,7 @@ Accessing data in `referred` tables can be done by using `var-REFERED_TABLE_NAME
 
 For example, we can create a list of all our contacts like this:
 
-```html
+```markup
 <div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
@@ -80,7 +80,7 @@ The classes can be used on any kind of html tag. This makes it trivial to layout
 
 Data can be selected based on any column. This is done by using the `dv-where` prefix to the `get-all` class. For example, if I wanted to select all contacts with the name of 'joe', we would do it like this:
 
-```html
+```markup
 <div class="dv-notify"></div>
 <ul class="dv-where:name:joe-get-all:contacts:people">
     <li>
@@ -100,7 +100,7 @@ If you only want to show one entry, use this technique but with a unique key in 
 
 Using our previous data listing as the base, we can add deletion functionality by using the `dv-delete` class. The `dv-delete` class can be used within a listing, on `<a>` or `<button>` elements.
 
-```html
+```markup
 <div class="dv-notify"></div>
 <ul class="dv-get-all:contacts:people">
     <li>
@@ -115,11 +115,11 @@ Using our previous data listing as the base, we can add deletion functionality b
 
 ### Updating data
 
-When it comes to updating existing data, we  use a combination of the `dv-update` and `dv-update-oneof` classes. Within a listing, use the `dv-update` class on a `<button>` or `<a>` tag. Then, create a `<form>` with the fields you want to update with a class of `dv-update-oneof:SERVICE:TABLE`. As when adding data, the `name` of the `input` elements map to columns in the table.
+When it comes to updating existing data, we use a combination of the `dv-update` and `dv-update-oneof` classes. Within a listing, use the `dv-update` class on a `<button>` or `<a>` tag. Then, create a `<form>` with the fields you want to update with a class of `dv-update-oneof:SERVICE:TABLE`. As when adding data, the `name` of the `input` elements map to columns in the table.
 
 For example, to updating emails in our contact book:
 
-```html
+```markup
 <div class="dv-notify"></div>
 <ul class="dv-update-oneof:contacts:people">
     <li>
@@ -138,12 +138,12 @@ For example, to updating emails in our contact book:
 
 ### Signing up
 
-To signup a user , you will need to add the  `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your  DevLess instance.  
+To signup a user , you will need to add the `dv-signup` class. You will need to place this in the form tag. Also the list of registered users can be found under the users tab on your DevLess instance.  
 **NB:** DevLess will move to the URL set for the `action` attribute on a successful signup.
 
 The example code below illustrates signing up a user and moving to the dashboard page on success.
 
-```html
+```markup
  <div class="dv-notify"></div>
   <form class="dv-signup" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
@@ -163,7 +163,7 @@ You will also need to pick either `phonenumber` , `email` or `username` as an id
 
 The example below uses `username` and `password` for sign in
 
-```html
+```markup
   <div class="dv-notify"></div>
   <form class="dv-signin" action="/dasboard">
     <input type="text" name="username" placeholder="Enter username here">
@@ -179,7 +179,7 @@ The example below uses `username` and `password` for sign in
 
 Once you are either signed in or signed up. You can now display the profile of the user. You will need the `dv-profile` class and use `var-<profile_field>` to get the the field value.
 
-```html
+```markup
    <div class="dv-profile">
     <span class="var-username"></span>
     <span class="var-email"></span>
@@ -194,7 +194,7 @@ Once you are either signed in or signed up. You can now display the profile of t
 You can update the profile of a signed up or signed in user using a form.  
 You will need to add the `dv-updateProfile` class to the form as well as the fields to be updated.
 
-```html
+```markup
     <div class="dv-notify"></div>
     <form class="dv-updateProfile">
     <input type="text" name="username">
@@ -211,26 +211,29 @@ You will need to add the `dv-updateProfile` class to the form as well as the fie
 
 Logging out a user is as simple as adding the `dv-logout` class and an `action` attribute to redirect to once the user is logged out.
 
-```html
+```markup
    <button class="dv-logout" action="/">Logout</button>
 ```
-### Setting attribute values
-There are situations where you might want to set a value of an attribute. EG: Setting the value of a select box. 
 
-```html
-	<select class="dv-get-all:service_name:table_name">
-		<option class="set-value:var-id "></option>
-	</select>
+### Setting attribute values
+
+There are situations where you might want to set a value of an attribute. EG: Setting the value of a select box.
+
+```markup
+    <select class="dv-get-all:service_name:table_name">
+        <option class="set-value:var-id "></option>
+    </select>
 ```
+
 The above code will generate a series of `option` tags each looking like `<option value="1">Beverages</option>` with changes depending on data from `table_name`.
- 
+
 ### Notifications
 
-To make you page more interactive you may use  `dv-notify`  as well as the `dv-processing` classes.
+To make you page more interactive you may use `dv-notify` as well as the `dv-processing` classes.
 
 **General notifications**: For every of the above operations except for a successful query DevLess returns a more generic message . You may display this by adding the class `<div class="dv-notify"></div>` This will print out the message as sent from the DevLess backend. These kind of messages are good for debugging purposes.
 
-**Specialized notifications: **Most likely you will like to show your users friendly message. In this case you may use `<div class="dv-notify-success">your success message here :)</div>` for successful operations  and `<div class="dv-notify-failed">you failure message goes here :(</div>` for failed operations.
+**Specialized notifications: **Most likely you will like to show your users friendly message. In this case you may use `<div class="dv-notify-success">your success message here :)</div>` for successful operations and `<div class="dv-notify-failed">you failure message goes here :(</div>` for failed operations.
 
-**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal  the user when the task starts and when its done. You can use  `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done
+**Progress notifications: **Some operations might take a couple of seconds and might lead to users having to wait. Its best practice to signal the user when the task starts and when its done. You can use `<div class="dv-processing">Sending...</div>` to notify users when the processing begins and `<div class="dv-doneProcessing">Done</div>` when the operation is done
 

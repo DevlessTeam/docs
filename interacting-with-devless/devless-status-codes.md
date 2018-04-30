@@ -1,21 +1,23 @@
+# DevLess Status Codes
+
 | **STATUS CODE ** | DESCRIPTION | EXPLANATION |
 | :--- | :---: | :---: |
 | 400 | Sorry something went wrong with payload\(check JSON format\) | You should almost never see this error if you use DevLess via any of the SDKs . But if you ever use the raw Endpoints where you have to pass in JSON chances are you pass in a malformed JSON and you get this message.😐 |
-| 600 | Data type does not exist | In the event you ask DevLess to create you a table field with a type it doesn't understand it will yell at you with this message. [DevLess data types](#) |
+| 600 | Data type does not exist | In the event you ask DevLess to create you a table field with a type it doesn't understand it will yell at you with this message. [DevLess data types](devless-status-codes.md) |
 | 601 | Reference column name does not exist | In the process of creating a relationship between two tables and you intentionally or unintentionally select a column that does not exist for referencing you get this error. |
 | 602 | Database schema could not be created | DevLess works very hard to make things simple and as part of that sometimes it still has to work to make your life easier to the point sometimes it shuts up and work when its not feeling well. But when it breaks down in the middle of creating a new table and can't say it, it sends you this error. |
 | 603 | Table could not be created | Same explanation as the above 👆 |
 | 604 | Service does not exist or you just misspelt it. Also be sure the service is set to active | Since Service names are case sensitive DevLess might not get it when you miss the case or misspell your service. Which in this case means the service does not exist as DevLess can't find it |
-| 605 | No such resource, try \(rpc db view or schema\) | DevLess allows one to perform three major actions namely working with data belonging to a service known as  **db. **Working with **rpc **for invoking classes from within DevLess and **schema  ** for creating tables. You will hardly encounter this error if you use the official [DevLess SDKs](/sdks.md). Also note that these are to be passed in as lower case |
+| 605 | No such resource, try \(rpc db view or schema\) | DevLess allows one to perform three major actions namely working with data belonging to a service known as  **db. **Working with **rpc **for invoking classes from within DevLess and **schema  ** for creating tables. You will hardly encounter this error if you use the official [DevLess SDKs](sdks.md). Also note that these are to be passed in as lower case |
 | 606 | Created table successfully | In the event your table creation process was successful you get this message |
 | 607 | Could not find the right DB method | So this message is likely to hit someone working on the internals of DevLess. This error arises in the event the DB method chosen does not belong to the following **\[query, create,update,delete\]** |
 | 608 | Request method not supported | So there are a host of request method types . If you ever decide to send in a request using a request type outside of **POST, GET,PATCH,DELETE **you see DevLess is going to yell at you |
 | 609 | Data has been added to the table successfully | You get this when your Data hits the DB |
-| 610 | Query parameter does not exist | In the event where you manufacture your own query params and expect DevLess to understand them I will like to say you are too kind. [List of query params](/api-engine.md) |
+| 610 | Query parameter does not exist | In the event where you manufacture your own query params and expect DevLess to understand them I will like to say you are too kind. [List of query params](https://github.com/devless/devless-docs-1-3-0/tree/949b00258810c377469907e7bc8021ecb2d4412d/api-engine.md) |
 | 611 | Table name is not set | This means you didn't pass in the table name parameter when working with DB action |
 | 612 | Query parameter is not set | The query parameter you passed in the URL does match any within DevLess |
 | 613 | Database has been deleted successfully | When your Data finally hits the Database |
-| 614 | Parameters 'where' and 'data' not set | Chances are there is something wrong with your delete payload. check it out [here](/api-engine.md) |
+| 614 | Parameters 'where' and 'data' not set | Chances are there is something wrong with your delete payload. check it out [here](https://github.com/devless/devless-docs-1-3-0/tree/949b00258810c377469907e7bc8021ecb2d4412d/api-engine.md) |
 | 615 | Delete action not set | Same explanation as the above 👆 |
 | 616 | There is something wrong with your field | When the field you have specified for logging in /signup is not identified by DevLess |
 | 617 | No such table belongs to the service | When the name  provided does not belong to the specified service |
@@ -42,7 +44,7 @@
 | 638 | Sorry there is no such method or the method is set to private or protected | Yh so RPC allows you to access classes but based on the privacy clause set on the docstring of each method you may not get access to the method |
 | 639 | Sorry, RPC can only be processed over POST | Based on the spec for RPC everything happens over a POST 🙂 and DevLess implements it as such |
 | 640 | Sorry, there are no such related tables | When you lie to DevLess telling it table A is related to b and that it should get data from b this is what you get |
-| 641 | Something is wrong with your payload | When you are about to add data via JSON and your payload is all wrong .Look up the right way from [here](/api-engine.md). |
+| 641 | Something is wrong with your payload | When you are about to add data via JSON and your payload is all wrong .Look up the right way from [here](https://github.com/devless/devless-docs-1-3-0/tree/949b00258810c377469907e7bc8021ecb2d4412d/api-engine.md). |
 | 642 | There is no such method in Rules engine | Mostly you misspelt the method but append **-&gt;help\(\) **to the current action type to get the list of methods eg . if you are querying to **beforeQuering\(\)-&gt;help\(\)** |
 | 643 | Sorry, your account is not active | This means the owner of the app which could be you has frozen user accounts |
 | 644 | Seems user already exists | When you try to create a user that already exists |
@@ -50,6 +52,4 @@
 | 646 | Seems your query params is malformed | When you pass anything in as query params. Two ways to avoid this: use the SDK or follow URL rules |
 | 647 | Seems there is no such route/endpoint. Please check your urls | Shows up when you hit a route\(URL\) that does not exists |
 | 700 | Internal system error | This captures all unforseen errors . Sometimes errors from within the core of the framework |
-
-
 

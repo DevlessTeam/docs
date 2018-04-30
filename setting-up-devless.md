@@ -1,15 +1,15 @@
-# INSTALLATION
+# Setting up DevLess
 
-* [Requirements](#requirements)
-* [One Click Heroku Install](#one-click-install)
-* [Docker Procedure](#docker-procedure)
-* [Local Installation](#local-procedure)
+## INSTALLATION
 
----
+* [Requirements](setting-up-devless.md#requirements)
+* [One Click Heroku Install](setting-up-devless.md#one-click-install)
+* [Docker Procedure](setting-up-devless.md#docker-procedure)
+* [Local Installation](setting-up-devless.md#local-procedure)
 
-# **ONE CLICK INSTALL**
+## **ONE CLICK INSTALL**
 
-{{ 'https://www.youtube.com/watch?v=f5BwbMNoXGw' | noembed}}
+
 
 * First, you will need an [Heroku account.](https://www.heroku.com/)
 * Next, make sure you are [logged in to Heroku.](https://id.heroku.com/login)
@@ -17,10 +17,9 @@
 
 What will we do without Heroku?
 
----
+## **DOCKER PROCEDURE**
 
-# **DOCKER PROCEDURE**
-{{ 'https://www.youtube.com/watch?v=0_82kez2JMk' | noembed}}
+
 
 * You will need [Docker](https://docs.docker.com/engine/installation) installed.
 * Run the following command on your terminal or command prompt,`docker run -p 4545:80 -d --restart always eddymens/devless`.
@@ -35,20 +34,18 @@ Docker is already installed, all you need to do is:
 
 * First bypass the `I'm not a robot captcha`🙄
 * Next, click on `+ ADD NEW INSTANCE` to gain access to a terminal with Docker already installed.
-* Now, run the following command on the terminal; \`docker run -p 4545:80 -d --restart always eddymens/devless`.
+* Now, run the following command on the terminal; \`docker run -p 4545:80 -d --restart always eddymens/devless\`.
 * You can now click on `4545` up at the top to open up DevLess.
 
 By the way, `Play with Docker` provides you up to 4 hours to play around.
 
-Don't you love [Play with Docker](http://labs.play-with-docker.com/ "http://labs.play-with-docker.com/") already?
+Don't you love [Play with Docker](http://labs.play-with-docker.com/) already?
 
-# **Installation Procedure**
+## **Installation Procedure**
 
 I will be honest and tell you the truth. This procedure is a pain😤.The last time I did a manual install was when I committed code for DevLess. Please, just use Docker or Heroku, only use manual install if you know your way around it. Please holla in case you've got this manual installation thing down. [DevLess Slack](https://slack.devless.io/). Look for `@eddymens`
 
----
-
-# **REQUIREMENTS**
+## **REQUIREMENTS**
 
 * Database \(MySQL, PostgreSQL, SQLSRV\)
 * An HTTP server
@@ -58,20 +55,18 @@ I will be honest and tell you the truth. This procedure is a pain😤.The last t
 * Tokenizer PHP Extension
 * Composer
 
----
-
-# **LOCAL PROCEDURE**
+## **LOCAL PROCEDURE**
 
 * Clone the repo `git clone`[`https://github.com/DevlessTeam/DV-PHP-CORE.git`](https://github.com/DevlessTeam/DV-PHP-CORE)
 * Change into directory `cd DV-PHP-CORE`
-* Run `composer install` to grab dependencies. [Installing composer](https://getcomposer.org/download/ "https://getcomposer.org/download/")
+* Run `composer install` to grab dependencies. [Installing composer](https://getcomposer.org/download/)
 * Copy
 * .env.example\* to
 * .env\* `cp .env.example .env` and update the database options within the file
 * run migrations with `./devless migrate`
 * .`/devless serve`
 
-If everything goes smoothly you should be able to access the setup screen at [localhost:8000](http://localhost:8000 "localhost:8000")
+If everything goes smoothly you should be able to access the setup screen at [localhost:8000](http://localhost:8000)
 
-If you will need extra help setting up you may check out the [Laravel installation](https://laravel.com/docs/5.1)  guide as the DevLess core is based on Laravel.
+If you will need extra help setting up you may check out the [Laravel installation](https://laravel.com/docs/5.1) guide as the DevLess core is based on Laravel.
 

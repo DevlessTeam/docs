@@ -1,4 +1,4 @@
-# Local Dev Environment
+# Dev Environment
 
 You may be interested in building a service or want to contribute back to the framework. Both requires that you set up DevLess on your development machine.
 
@@ -45,7 +45,7 @@ Above, we install the DevLess dependencies using composer. Then we change file p
 
 The docker image comes with a MySQL database, while the default `.env` file assumes Postgres. Update database section the .env file to:
 
-```
+```text
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_DATABASE=devless_production

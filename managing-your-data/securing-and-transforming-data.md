@@ -77,7 +77,7 @@ What happens here is that for the `people` table convert all inputs for the fiel
 
 We can also manipulate data before we send it back to the client. There are three main methods for doing this.
 
-For modifying the response message, use the `mutateResponseMessage(new_message)` method.  The message is used for notifying the client about what happened using  a textual format. You can use it to e.g. give a more context aware message:
+For modifying the response message, use the `mutateResponseMessage(new_message)` method. The message is used for notifying the client about what happened using a textual format. You can use it to e.g. give a more context aware message:
 
 ```php
 -> afterCreating()->onTable("people")->mutateResponseMessage("Contact added")`
@@ -99,7 +99,7 @@ We can also mutate the status code. This is for **advanced users only**. Modifyi
 
 The rules engine supports conditional flow, similar to the `if`/`else if`/`else` conditionals in programming languages. The functions are named `whenever`, `elseWhenever` and `otherwise`.
 
-The flow control functions plays nicely together with the [`assertIts`](/assertion-list.md) family of functions. Together, these functions allows you to take different actions depending on the user input.
+The flow control functions plays nicely together with the [`assertIts`](https://github.com/devless/devless-docs-1-3-0/tree/949b00258810c377469907e7bc8021ecb2d4412d/assertion-list.md) family of functions. Together, these functions allows you to take different actions depending on the user input.
 
 For example, we can show different messages depending on the email domain:
 

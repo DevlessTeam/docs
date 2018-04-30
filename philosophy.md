@@ -1,4 +1,4 @@
-# Introduction
+# Philosophy
 
 For the 25+ years the web has existed, we have seen it evolve to become more than a publishing platform. Now we see the web supporting vast majority of businesses. We have also seen the tools surrounding the web evolve as well.
 

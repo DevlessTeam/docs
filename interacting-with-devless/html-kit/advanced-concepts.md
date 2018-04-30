@@ -1,12 +1,12 @@
 # Advanced Concepts
 
-The HTML Kit  provides developers with easy ways to work with their data. It also provides more advanced functionalities.
+The HTML Kit provides developers with easy ways to work with their data. It also provides more advanced functionalities.
 
 ## Advanced Queries
 
-Adding the class `dv-get-all:inventory:products` will get you data from the table  `products` under the service `inventory` . This is well explained  [here ](/html_sdk.md) . Its possible to craft more advanced queries using the query parameters below:
+Adding the class `dv-get-all:inventory:products` will get you data from the table `products` under the service `inventory` . This is well explained [here ]() . Its possible to craft more advanced queries using the query parameters below:
 
-Lets assume we have  an `inventory` service  which has a table `products` from which a query is being made
+Lets assume we have an `inventory` service which has a table `products` from which a query is being made
 
 | Query Keyword | Usage | Explanation |
 | :--- | :--- | :--- |
@@ -20,53 +20,51 @@ Lets assume we have  an `inventory` service  which has a table `products` from w
 | randomize | class="dv-param:randomize:1-get-all:inventory:products" | This parameter allows records to  be populated in a more random form |
 | orderBy | class="dv-param:orderBy:price-get-all:inventory:products dv-label:front\_page" | This allows for records to be ordered in descending order based on a particular field |
 
-**NB: **Its possible to pair up multiple  parameters for a  query eg: `class="dv-param:search:name^shoes-param:randomize:1-get-all:inventory:products` This will return results containing the name shoes in a random order. Also parameter values may be passed in via URL query strings . eg `class="dv-param:search:searchQuery-get-all:inventory:products"`  to make  this  more dynamic you may pass the searchQuery via the URL using a query string eg: `mydevless.herokuapp.com/?searchQuery=name^shoes` this will replace `searchQuery` with `name^shoes`
+**NB: **Its possible to pair up multiple parameters for a query eg: `class="dv-param:search:name^shoes-param:randomize:1-get-all:inventory:products` This will return results containing the name shoes in a random order. Also parameter values may be passed in via URL query strings . eg `class="dv-param:search:searchQuery-get-all:inventory:products"` to make this more dynamic you may pass the searchQuery via the URL using a query string eg: `mydevless.herokuapp.com/?searchQuery=name^shoes` this will replace `searchQuery` with `name^shoes`
 
-### Intercepting  Queried Data 
+### Intercepting  Queried Data
 
 Getting the records from a table and rendering it is straight forward. Sometimes you might want to pre-process this data before rendering. To do this you will have to intercept the query using the `dvInterceptQueryResponse` hook and Javascript .
 
-Eg: Lets say we will like to capi talize every name before rendering to screen 
+Eg: Lets say we will like to capi talize every name before rendering to screen
 
-```html
+```markup
 <div class="dv-get-all:inventory:products dv-label:front_page">
-	<span class="var-name"></span>
-	<span class="var-price"></span>
-	<br>
+    <span class="var-name"></span>
+    <span class="var-price"></span>
+    <br>
 </div>
 
 <script type="text/javascript">
-	dvInterceptQueryResponse = function(resp) {
-		for( each in resp.front_page) {
-			resp.front_page[each].name = resp.front_page[each].name.toLocaleUpperCase();
-		}
-		return resp;
-	}
+    dvInterceptQueryResponse = function(resp) {
+        for( each in resp.front_page) {
+            resp.front_page[each].name = resp.front_page[each].name.toLocaleUpperCase();
+        }
+        return resp;
+    }
 </script>
 ```
-The `dv-label` class serves as an identifier for the query data action and makes it possible to access the record from  within JavaScript  
 
+The `dv-label` class serves as an identifier for the query data action and makes it possible to access the record from within JavaScript
 
+### Intercepting submitted Data
 
-
-### Intercepting submitted Data 
-
-```html
-
+```markup
 <div class="dv-notify"></div>
 <form class="dv-add-oneto:inventory:products dv-label:admin">
-	<input type="text" name="name"><br>
-	<input type="number" name="price"><br>
-	<button type="submit">add</button>
+    <input type="text" name="name"><br>
+    <input type="number" name="price"><br>
+    <button type="submit">add</button>
 </form>
 
 <script type="text/javascript">
-	dvInterceptSubmission = function(resp) {
-			resp.admin.name = resp.admin.name.toLocaleUpperCase();
-		return resp;
-	}
+    dvInterceptSubmission = function(resp) {
+            resp.admin.name = resp.admin.name.toLocaleUpperCase();
+        return resp;
+    }
 
 </script>
-
 ```
+
 The example above describe the interception of data about to be submitted to DevLess and capitalizing the name before it finally gets to DevLess.
+

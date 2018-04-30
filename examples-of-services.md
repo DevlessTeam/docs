@@ -7,3 +7,4 @@ The Database manager service allows you to get more direct access to your databa
 ## Web Console service
 
 The Web Console service allows you to get SSH access to the instance running DevLess. This is done through the [Web Console](http://web-console.org/) project. The Web Console service can be installed through the service hub. There is a [walk-through video](https://www.youtube.com/watch?v=s3q6cGytLqc).
+

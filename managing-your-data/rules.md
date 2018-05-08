@@ -476,6 +476,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **deactivateUserAccount**: Deactivate user account `->import('devless')->beforeCreating()->deactivateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **activateUserAccount**: Activate User Account`->import('devless')->beforeCreating()->activateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **toggleUserAccountState**: Toggle User Account Status`->import('devless')->beforeCreating()->toggleUserAccountState(0, "username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
+* **searchUserProfile**:Search for users users were the input matches either username, phone number, first name , last name or emails `->import('devless')-> beforeQuerying()->searchUserProfile("3284324343")>storeAs($users)->stopAndOutput(1000, 'list of users',$users)`
 
 ### Collections Methods
 

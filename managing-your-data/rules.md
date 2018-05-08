@@ -513,4 +513,5 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **removeElementFromCollection**: remove an element from collection eg: `->beforeCreating()->collect(["age"=>23,"name"=>"mike"])->removeELementFromCollection("age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)#["name"=>"mike"]`
 * **useCollectionAsKeys**: create key value pairs from two collections eg: `->beforeCreating()->collect(["Mark",23])->useCollectionAsKeys(["name", "age"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"Mark","age"=>23]`
 * **checkIfCollectionContains**: check if a collection contains a key or value eg: `->beforeCreating()->collect(["Mark",23])->checkIfCollectionContains(["Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #true`
+* **fetchExcept: **Get a new collection containing all keys except a chosen few pair eg: `->import('devless')->beforeQuerying()->getAllUsers()->fetchExcept("first_name")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)`
 

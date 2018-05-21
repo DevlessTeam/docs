@@ -20,7 +20,7 @@ A couple of things to note though is that:
 * To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` do `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)`
 * Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
 
-## NB **during compilation of Rules DevLess prefixes all variables with **`$`** before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the **`$`** prefix yourself.**
+## NB **during compilation of Rules DevLess prefixes all variables with** `$` **before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the** `$` **prefix yourself.**
 
 * There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]` but are referred to as collections in DevLess Rules. 
 
@@ -426,6 +426,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **getCurrentMinute**: Get the current minute using the `getCurrentMinute` method eg:`->beforeQuerying()->getCurrentMinute()->storeAs($currentMinute)->succeedWith($currentMinute) #27`
 * **getCurrentSecond**: Get the current second using the `getCurrentSecond` method eg:`->beforeQuerying()->getCurrentSecond()->storeAs($currentSecond)->succeedWith($currentSecond) #02`
 * **getFormattedDate**: Get the human readable date using `getFormattedDate` method eg:`->beforeQuerying()->getFormattedDate()->storeAs($formattedDate)->succeedWith($formattedDate) #Saturday 30th of December 2017 06:28:35 PM`
+* **setTimezone:**The `setTimezone` method changes the timezone for which the dates are created. eg: `->beforeQuerying()->setTimezone('UTC')->getTimestamp()->storeAs($timestamp)->succeedWith($timestamp) #1514656911`
 
 ### Generator Methods
 
@@ -493,9 +494,9 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **countTheNumberOfElements**: count the number of elements in a collections eg: `->beforeCreating()->collect(["Joe", "Sam", "Mike"])->countTheNumberOfElements()->storeAs($count)->stopAndOutput(1000, "got response", $count) #3`
 * **fetchAllWith**: Fetch all elements whos key are of a particular value eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchAllWith("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["item"=>"soap", "quantity"=>5],["item"=>"book", "quantity"=>5]]`
 * **fetchAllWithout**: Fetch all elements whos key are of a particular value eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchAllWithout("quantity", 5)->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[["item"=>"milk", "quantity"=>3]]`
-* **fetchOnly**: get a new collection of only a particular key eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchOnly("quantity")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[5,3,5] `**`NB: You may pass in an array of keys as well.`**
+* **fetchOnly**: get a new collection of only a particular key eg: `->beforeCreating()->collect([["item"=>"soap", "quantity"=>5],["item"=>"milk", "quantity"=>3],["item"=>"book", "quantity"=>5]])->fetchOnly("quantity")->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #[5,3,5]` **`NB: You may pass in an array of keys as well.`**
 * **apply**: apply a method to a collection eg: `->beforeCreating()->collect(["Joe", "Mike"])->apply("convertToUpperCase", $params = [])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["JOE","MIKE"]`
-* **NB: apply can be used as a for loop. using $ITR and \#counter as the index counter **
+* **NB: apply can be used as a for loop. using $ITR and \#counter as the index counter** 
 
   ```text
         ->apply('updateData', ['service_name', 'table_name', 'id', $ITR($data,'#counter.id'), $ITR($data, '#counter')])
@@ -513,5 +514,5 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **removeElementFromCollection**: remove an element from collection eg: `->beforeCreating()->collect(["age"=>23,"name"=>"mike"])->removeELementFromCollection("age")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)#["name"=>"mike"]`
 * **useCollectionAsKeys**: create key value pairs from two collections eg: `->beforeCreating()->collect(["Mark",23])->useCollectionAsKeys(["name", "age"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #["name"=>"Mark","age"=>23]`
 * **checkIfCollectionContains**: check if a collection contains a key or value eg: `->beforeCreating()->collect(["Mark",23])->checkIfCollectionContains(["Mark"])->storeAs($collection)->stopAndOutput(1000, "got response", $collection) #true`
-* **fetchExcept: **Get a new collection containing all keys except a chosen few pair eg: `->import('devless')->beforeQuerying()->getAllUsers()->fetchExcept("first_name")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)`
+* **fetchExcept:** Get a new collection containing all keys except a chosen few pair eg: `->import('devless')->beforeQuerying()->getAllUsers()->fetchExcept("first_name")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)`
 

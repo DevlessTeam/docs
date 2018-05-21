@@ -136,7 +136,7 @@ curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/se
 EOF
 ```
 
-**NB: **Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
+**NB:** Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
 ## CRUD
 

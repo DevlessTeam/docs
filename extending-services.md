@@ -98,7 +98,7 @@ public function sendEmail($subject, $body, $reciever)
 }
 ```
 
-There are three **ACLs **:
+There are three **ACLs** :
 
 | ACL | Description |
 | --- | --- |

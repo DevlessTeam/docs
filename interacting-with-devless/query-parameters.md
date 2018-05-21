@@ -11,10 +11,10 @@ Query Keyword
 | lessThan | @param **string:** key eg id             @param **mixed:** value eg 2 | The lessThan parameter  will get all records where the key is greater than the given value. In this case all products with ids less than 2 |
 | offset | @param **integer:** key eg 2              | An offset of 2 will ignore the first two records in the database , returning data from the third record in the database. Combining the offset with size gives  pagination |
 | search | @param **string:** key eg name             @param **mixed:** value eg mark | The search parameter allows to search a table column that contains a keyword. The match may be an exact one or a partial match |
-| randomize | @param **any: **polar eg 1 | This parameter allows records to  be populated in a more random form |
-| orderBy | @param **string: **key age | This allows for records to be ordered in descending order based on a particular field |
-| asc | @param **mixed: **key age | Orders records in ascending order based on the age field  |
-| desc | @param **mixed: **key age | Orders records in descending  order based on the age field |
+| randomize | @param **any:** polar eg 1 | This parameter allows records to  be populated in a more random form |
+| orderBy | @param **string:** key age | This allows for records to be ordered in descending order based on a particular field |
+| asc | @param **mixed:** key age | Orders records in ascending order based on the age field  |
+| desc | @param **mixed:** key age | Orders records in descending  order based on the age field |
 
 
 

@@ -19,7 +19,7 @@ Follow or join these channels for questions and support, and to keep updated on 
 
 ## How to contribute
 
-**Please checkout the **[**Contribute**](https://guides.github.com/activities/contributing-to-open-source/)** guide on how to contribute.** No contribution is too small.
+**Please checkout the** [**Contribute**](https://guides.github.com/activities/contributing-to-open-source/) **guide on how to contribute.** No contribution is too small.
 
 * We would love to hear from you. email us=&gt; [team@devless.io](mailto:team@devless.io)
 

@@ -28,7 +28,7 @@ What will we do without Heroku?
 
 **Quick Try Out Option**
 
-**NB: **In case you still have troubles installing Docker on your machine \(which is something that happens often for linux users\), you may try DevLess out on [Play with Docker.](http://labs.play-with-docker.com/)
+**NB:** In case you still have troubles installing Docker on your machine \(which is something that happens often for linux users\), you may try DevLess out on [Play with Docker.](http://labs.play-with-docker.com/)
 
 Docker is already installed, all you need to do is:
 

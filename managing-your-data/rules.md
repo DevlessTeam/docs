@@ -516,3 +516,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **fetchExcept:** Get a new collection containing all keys except a chosen few pair eg: `->import('devless')->beforeQuerying()->getAllUsers()->fetchExcept("first_name")->storeAs($collection)->stopAndOutput(1000, "got response", $collection)`
 * **mergeCollectionWith:** merge two collections together eg:  `-> beforeQuerying()->assign([5,6,7,8])->to($collectionOne)->assign([1,2,3,4])->to($collectionTwo)->mergeCollectionWith($collectionOne)->storeAs($mergedCollection)->stopAndOutput(111, 'output', [$mergedCollection])#[1,2,3,4,5,6,7,8]`
 
+### Deferring Task
+
+**Deferring Task:** Sometimes you might not need the results from some methods you run an example will be sending out an email. Yet such methods might slow down the time to returning response to the user. You may defer such task which will basically cause it to run on another process without blocking the current process. eg: `->deferTask('run', ['ZohoMail','send', ['subject','message', ['name@email.com']]])`
+

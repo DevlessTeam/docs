@@ -20,7 +20,7 @@ A couple of things to note though is that:
 * To concatenate strings together you are advised to use the `concatenate` method as `.` is used for concatenation in PHP and this might be a little confusing. So instead of `->beforeQuerying()->assign("hello "." world")->to(greetings)` do `->beforeQuerying()->concatenate("hello ","world" )->storeAs(greetings)`
 * Although PHP variables starts with a `$` prefix you may choose to omit this when working with DevLess rules , eg `->beforeQuering()->assign(input_name)->to(name)` and `->beforeQuering()->assign($input_name)->to($name)` will work fine with DevLess Rules.
 
-## NB **during compilation of Rules DevLess prefixes all variables with** `$` **before the PHP interpreter runs it. And so from time to time you will find situations where you have to set the** `$` **prefix yourself.**
+## NB **during compilation of Rules DevLess prefixes all variables with** `$` **before the PHP interpreter runs it. Also from time to time you will find situations where you have to set the** `$` **prefix yourself.**
 
 * There are times you might have to work with DevLess arrays. DevLess Rules implement [arrays as seen in PHP](http://php.net/manual/en/function.array.php) eg `["key" => "value"]` but are referred to as collections in DevLess Rules. 
 
@@ -463,7 +463,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 ### Devless Import
 
 * **signUp**: Signup new users `->beforeCreating()->run('devless','signUp', [$email = "team@devless.io",$password = "pass",$username = null,$phone_number = "020198475",$first_name = "John",$last_name = "Doe",$remember_token = null,$role = 5,$extraParams = null])->storeAs($output)->stopAndOutput(1000, "Created Profile Successfully",$output)`
-* **login**: login users `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
+* **login**: login users `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully", $output)`
 * **addData**: add data to a service `->import('devless')->beforeCreating()->addData('service_name','table_name',["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **queryData**: Get data from a service table `->import('devless')->beforeCreating()->queryData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **getData**: Get data from a service table `->import('devless')->beforeCreating()->getData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
@@ -478,6 +478,8 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **activateUserAccount**: Activate User Account`->import('devless')->beforeCreating()->activateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **toggleUserAccountState**: Toggle User Account Status`->import('devless')->beforeCreating()->toggleUserAccountState(0, "username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **searchUserProfile**:Search for users users were the input matches either username, phone number, first name , last name or emails `->import('devless')-> beforeQuerying()->searchUserProfile("3284324343")>storeAs($users)->stopAndOutput(1000, 'list of users',$users)`
+* **generatePasswordRecoveryToken:** To recover a password you first need to generate a recover token. which you may then forward via mail to the user `->beforeCreating()->run('devless','generatePasswordRecoveryToken', [$userId])->storeAs($output)->stopAndOutput(1000, "recovery token". $output)`
+* **resetPassword:** A user may submit a token generated using the above method as well as a new password to be used with their account. `->beforeCreating()->run('devless','resetPassword', [$token = '', $newPassword = ''])->storeAs($output)->stopAndOutput(1000, "password reset", $output)`
 
 ### Collections Methods
 

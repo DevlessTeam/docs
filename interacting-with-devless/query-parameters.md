@@ -15,6 +15,7 @@ Query Keyword
 | orderBy | @param **string:** key age | This allows for records to be ordered in descending order based on a particular field |
 | asc | @param **mixed:** key age | Orders records in ascending order based on the age field  |
 | desc | @param **mixed:** key age | Orders records in descending  order based on the age field |
+| notEqual | @param **string:** key age                                    @param **mixed:** value 23 | Get all records whose age is not equal to 22 |
 
 
 

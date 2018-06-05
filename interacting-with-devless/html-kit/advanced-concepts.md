@@ -19,6 +19,7 @@ Lets assume we have an `inventory` service which has a table `products` from whi
 | search | class="dv-param:search:name^shoes:get-all:inventory:products" | The search parameter allows to search a table column that contains a keyword. The match may be an exact one or a partial match |
 | randomize | class="dv-param:randomize:1-get-all:inventory:products" | This parameter allows records to  be populated in a more random form |
 | orderBy | class="dv-param:orderBy:price-get-all:inventory:products dv-label:front\_page" | This allows for records to be ordered in descending order based on a particular field |
+| notEqual | @param string: key eg age                               @param value eg 22 | Get all records whose age is not equal to 22 |
 
 **NB:** Its possible to pair up multiple parameters for a query eg: `class="dv-param:search:name^shoes-param:randomize:1-get-all:inventory:products` This will return results containing the name shoes in a random order. Also parameter values may be passed in via URL query strings . eg `class="dv-param:search:searchQuery-get-all:inventory:products"` to make this more dynamic you may pass the searchQuery via the URL using a query string eg: `mydevless.herokuapp.com/?searchQuery=name^shoes` this will replace `searchQuery` with `name^shoes`
 

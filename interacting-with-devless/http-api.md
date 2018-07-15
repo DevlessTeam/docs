@@ -138,6 +138,21 @@ EOF
 
 **NB:** Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
+### Get Profile 
+
+Getting a logged in users profile is also straight forward. We use the `getProfile` action by calling `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=getProfile` with the `POST` verb. Also make sure the user is already [logged in](http-api.md#logging-in) , as you will need the token issued on login to access the users profile. This token is to be set in the header of your request with the key `Devless-user-token`
+
+```text
+curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "Devless-user-token" "http://$DEVLESS_URL/api/v1/service/devless/rpc?action=getProfile" -d@-   <<EOF
+{
+    "jsonrpc": "2.0",
+    "method": "devless",
+    "id": "1000",
+    "params": []
+}
+EOF
+```
+
 ## CRUD
 
 Lets say that we have set up a service named `contacts`, with a table named `people`. The table has one column for `name` and one for `email`.

@@ -4,9 +4,9 @@ DevLess has a rich restful API. It is used by all the SDKs. This means that ever
 
 The REST API Can:
 
-* Do CRUD actions on any data table
-* Create/Delete services and tables in your DevLess instance
-* Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or service extensions.
+- Do CRUD actions on any data table
+- Create/Delete services and tables in your DevLess instance
+- Use [JSON RPC](http://www.jsonrpc.org/) to call a wide range of functions exposed by DevLess core or service extensions.
 
 All operations in the REST API requires a header named `Devless-token`. This token is unique to each DevLess setup. It can be viewed by opening your DevLess GUI & pressing the "connect to DevLess" button in the top-right corner:  
 ![Connect to devless](../.gitbook/assets/connect_to_devless.png)
@@ -41,7 +41,7 @@ $ curl -F -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/
 }
 ```
 
-This is what the params are, in order: **email**, **password**, **username**, **phone\_number**, **first\_name**, **last\_name**, **role**.
+This is what the params are, in order: **email**, **password**, **username**, **phone_number**, **first_name**, **last_name**, **role**.
 
 Either an email, a username or a phone number needs to be provided. All other arguments except for the password are optional. Optional arguments that you don't want to set should be sent as `null`.
 
@@ -92,7 +92,7 @@ curl -L -XPOST -H "Devless-token: $DEVLESS_TOKEN" "http://$DEVLESS_URL/api/v1/se
 EOF
 ```
 
-This is what the params are, in order: **username**, **email**, **phone\_number**, **password**.
+This is what the params are, in order: **username**, **email**, **phone_number**, **password**.
 
 Either an email, a username or a phone number needs to be provided. The password is required.
 
@@ -138,7 +138,7 @@ EOF
 
 **NB:** Again, the `status_code` is one of the codes defined in [DevLess Status Codes](devless-status-codes.md). As when signing up, the `token` is a [JSON Web Token](https://jwt.io/). This token should be used for further interaction with DevLess as this user by setting it as a header property.ie `-H "Devless-user-token:$DEVLESS_USER_TOKEN"`
 
-### Get Profile 
+### Get Profile
 
 Getting a logged in users profile is also straight forward. We use the `getProfile` action by calling `http://$DEVLESS_URL/api/v1/service/devless/rpc?action=getProfile` with the `POST` verb. Also make sure the user is already [logged in](http-api.md#logging-in) , as you will need the token issued on login to access the users profile. This token is to be set in the header of your request with the key `Devless-user-token`
 
@@ -198,21 +198,21 @@ Again, the status code corresponds to one of the [Status Codes](devless-status-c
 
 Querying data can be done by using the `GET` verb on the same path as when adding data. This can be combined with some very powerful query parameters:
 
-| Query Param | What |
-| :--- | :--- |
-| `table` | Specifies which table to query from. |
-| `orderBy` | Orders the data in ascending order based on the field provided |
-| `where` | Selects data based on field values. The format is `where=field,value`. E.g. to select all people with the name "joe", use `&where=name,joe`. If multiple `where` statements are sent, only records matching all statements will be returned. |
-| `orWhere` | Similar to `where`, but in the case of multiple statements, records matching _any_ of the statements will be returned. |
-| `size` | Specifies how many records to return |
-| `offset` | Specifies what offset to start with. Combine with size for pagination |
-| `search` | Similar to the `where` parameter, but does partial matching. e.g. `&search=email,gmail` |
-| `greaterThan` | Selects data where the column value is **greater than** the specified value. E.g. `&greaterThan=age,18`. |
-| `greaterThanEqual` | Selects data where the column value is greater than **or equal to** the specified value. E.g. `&greaterThanEqual=age,18`. |
-| `lessThan` | Selects data where the column value is **less than** the specified value. E.g. `&lessThan=age,18`. |
-| `lessThanEqual` | Selects data where the column value is less than **or equal to** the specified value. E.g. `&lessThanEqual=age,18`. |
-| `desc` | Orders the data in descending order based on the field provided E.g. `&desc=name` |
-| `asc` | Orders the data in ascending order based on the field provided E.g. `&asc=name` |
+| Query Param        | What                                                                                                                                                                                                                                         |
+| :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `table`            | Specifies which table to query from.                                                                                                                                                                                                         |
+| `orderBy`          | Orders the data in ascending order based on the field provided                                                                                                                                                                               |
+| `where`            | Selects data based on field values. The format is `where=field,value`. E.g. to select all people with the name "joe", use `&where=name,joe`. If multiple `where` statements are sent, only records matching all statements will be returned. |
+| `orWhere`          | Similar to `where`, but in the case of multiple statements, records matching _any_ of the statements will be returned.                                                                                                                       |
+| `size`             | Specifies how many records to return                                                                                                                                                                                                         |
+| `offset`           | Specifies what offset to start with. Combine with size for pagination                                                                                                                                                                        |
+| `search`           | Similar to the `where` parameter, but does partial matching. e.g. `&search=email,gmail`                                                                                                                                                      |
+| `greaterThan`      | Selects data where the column value is **greater than** the specified value. E.g. `&greaterThan=age,18`.                                                                                                                                     |
+| `greaterThanEqual` | Selects data where the column value is greater than **or equal to** the specified value. E.g. `&greaterThanEqual=age,18`.                                                                                                                    |
+| `lessThan`         | Selects data where the column value is **less than** the specified value. E.g. `&lessThan=age,18`.                                                                                                                                           |
+| `lessThanEqual`    | Selects data where the column value is less than **or equal to** the specified value. E.g. `&lessThanEqual=age,18`.                                                                                                                          |
+| `desc`             | Orders the data in descending order based on the field provided E.g. `&desc=name`                                                                                                                                                            |
+| `asc`              | Orders the data in ascending order based on the field provided E.g. `&asc=name`                                                                                                                                                              |
 
 For example, you can select 2 people both named `joe` like this:
 
@@ -334,14 +334,14 @@ Please note that **access** for creating a table is **private by default**. This
 
 Creating a table also entails specifying which fields it should have. For each field, parameters can be specified:
 
-| Param | Required? | What |
-| :--- | :---: | :--- |
-| `name` | **yes** | The name of the field. Must be lowercase letters or underscore \(\_\). |
-| `field_type` | **yes** | This is the type of field. It specifies both the database representation and validation rules. Valid values are: `text`, `textarea`, `integer`, `decimal`, `password`, `percentage`, `url`, `timestamp`, `boolean`, `email` and `reference`. The `password` type will make DevLess automatically apply cryptographic hashing. |
-| `required` | **yes** | Specifies if all records in the table need to have this value |
-| `default` | no | The default value for this field. Only applies to fields which are not `required`. |
-| `is_unique` | **yes** | Sets if the field is a unique key for records in this table. |
-| `ref_table` | no | Only valid if the `reference` field type is used. For references, this specifies which field it refers to. DevLess automatically creates the relationship between the field and primary key of the table being referenced. You can use any table as the reference, including the built in`_devless_users` table. |
+| Param        | Required? | What                                                                                                                                                                                                                                                                                                                          |
+| :----------- | :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       |  **yes**  | The name of the field. Must be lowercase letters or underscore \(\_\).                                                                                                                                                                                                                                                        |
+| `field_type` |  **yes**  | This is the type of field. It specifies both the database representation and validation rules. Valid values are: `text`, `textarea`, `integer`, `decimal`, `password`, `percentage`, `url`, `timestamp`, `boolean`, `email` and `reference`. The `password` type will make DevLess automatically apply cryptographic hashing. |
+| `required`   |  **yes**  | Specifies if all records in the table need to have this value                                                                                                                                                                                                                                                                 |
+| `default`    |    no     | The default value for this field. Only applies to fields which are not `required`.                                                                                                                                                                                                                                            |
+| `is_unique`  |  **yes**  | Sets if the field is a unique key for records in this table.                                                                                                                                                                                                                                                                  |
+| `ref_table`  |    no     | Only valid if the `reference` field type is used. For references, this specifies which field it refers to. DevLess automatically creates the relationship between the field and primary key of the table being referenced. You can use any table as the reference, including the built in`_devless_users` table.              |
 
 For example, I could create a table listing my favorite horses like this:
 
@@ -447,4 +447,3 @@ In this case, we get this response body back:
 ```
 
 The `result` field is what we are looking for: it is 26 degrees Celsius in Accra.
-

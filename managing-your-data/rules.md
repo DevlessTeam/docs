@@ -426,6 +426,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **getCurrentMinute**: Get the current minute using the `getCurrentMinute` method eg:`->beforeQuerying()->getCurrentMinute()->storeAs($currentMinute)->succeedWith($currentMinute) #27`
 * **getCurrentSecond**: Get the current second using the `getCurrentSecond` method eg:`->beforeQuerying()->getCurrentSecond()->storeAs($currentSecond)->succeedWith($currentSecond) #02`
 * **getFormattedDate**: Get the human readable date using `getFormattedDate` method eg:`->beforeQuerying()->getFormattedDate()->storeAs($formattedDate)->succeedWith($formattedDate) #Saturday 30th of December 2017 06:28:35 PM`
+* **setTimezone:**The `setTimezone` method changes the timezone for which the dates are created. eg: `->beforeQuerying()->setTimezone('UTC')->getTimestamp()->storeAs($timestamp)->succeedWith($timestamp) #1514656911`
 
 ### Generator Methods
 
@@ -462,7 +463,7 @@ There are a host of methods that makes [working with collections](rules.md#colle
 ### Devless Import
 
 * **signUp**: Signup new users `->beforeCreating()->run('devless','signUp', [$email = "team@devless.io",$password = "pass",$username = null,$phone_number = "020198475",$first_name = "John",$last_name = "Doe",$remember_token = null,$role = 5,$extraParams = null])->storeAs($output)->stopAndOutput(1000, "Created Profile Successfully",$output)`
-* **login**: login users `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully")`
+* **login**: login users `->beforeCreating()->run('devless','login', [$username = null, $email = "team@devless.io", $phone_number = null, $password = "pass"])->storeAs($output)->stopAndOutput(1000, "login user Successfully", $output)`
 * **addData**: add data to a service `->import('devless')->beforeCreating()->addData('service_name','table_name',["name"=>"mike"])->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **queryData**: Get data from a service table `->import('devless')->beforeCreating()->queryData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **getData**: Get data from a service table `->import('devless')->beforeCreating()->getData('service_name','table_name',["where"=>["id,1"]])->storeAs($output)->stopAndOutput(1000, "output", $output)`
@@ -473,10 +474,13 @@ There are a host of methods that makes [working with collections](rules.md#colle
 * **deleteUserProfile**: Delete a users profile `->import('devless')->beforeCreating()->deleteUserProfile(9)->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **updateUserProfile**: Update a users profile `->import('devless')->beforeCreating()->updateUserProfile($id=1,$email = '',$password = '',$username = 'eddymens',$phone_number = '',$first_name = '',$last_name = '')->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **getUserWhere**: get user profile using a field `->import('devless')->beforeCreating()->getUserWhere("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
+* **getUserUsingExtraParamsWhere**: get user(s) profile using field(s) from extend `user_profile` on the DevLess Auth plugin. `->import('devless')->beforeCreating()->getUserUsingExtraParamsWhere(["location" => "foo", "membership_id" => "1394"])->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **deactivateUserAccount**: Deactivate user account `->import('devless')->beforeCreating()->deactivateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **activateUserAccount**: Activate User Account`->import('devless')->beforeCreating()->activateUserAccount("username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **toggleUserAccountState**: Toggle User Account Status`->import('devless')->beforeCreating()->toggleUserAccountState(0, "username", "foo")->storeAs($output)->stopAndOutput(1000, "output", $output)`
 * **searchUserProfile**:Search for users users were the input matches either username, phone number, first name , last name or emails `->import('devless')-> beforeQuerying()->searchUserProfile("3284324343")>storeAs($users)->stopAndOutput(1000, 'list of users',$users)`
+* **generatePasswordRecoveryToken:** To recover a password you first need to generate a recover token. which you may then forward via mail to the user `->beforeCreating()->run('devless','generatePasswordRecoveryToken', [$userId])->storeAs($output)->stopAndOutput(1000, "recovery token". $output)`
+* **resetPassword:** A user may submit a token generated using the above method as well as a new password to be used with their account. `->beforeCreating()->run('devless','resetPassword', [$token = '', $newPassword = ''])->storeAs($output)->stopAndOutput(1000, "password reset", $output)`
 
 ### Collections Methods
 
